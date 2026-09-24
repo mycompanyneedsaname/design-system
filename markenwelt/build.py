@@ -608,7 +608,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <h2 class="ht"><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Weniger Verbrauch, mehr Spielraum.</span></h2>
       </div>
       <div class="cfg" id="cfg">
-        <div class="hnote" id="hnote" aria-live="polite"><span id="hnote-t">Wir kommen zu Ihnen, messen nach und setzen mit Ihnen um, was sich rechnet. Stück für Stück.</span><svg viewBox="0 0 90 70" aria-hidden="true"><path d="M8 6 C 14 30, 36 48, 76 56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M62 46 L 78 57 L 62 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div id="plate" style="color:var(--accent)"></div>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
       </div>
