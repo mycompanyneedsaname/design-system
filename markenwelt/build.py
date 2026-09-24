@@ -547,7 +547,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </div>
     <div class="team">
       <article class="pers">
-        <div class="pers-l"><div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div><p class="pers-n"><svg viewBox="0 0 40 34" aria-hidden="true"><path d="M30 30 C 26 18, 20 10, 12 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M11 15 L 11 4 L 21 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>findet es in der ersten Stunde.</span></p></div>
+        <div class="pers-l"><div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
           <h3>Michael Schenk</h3>
           <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat rund 150 Betriebe von innen gesehen und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <mark class="hl"><strong>erklären</strong></mark>, dass jeder im Betrieb versteht, <mark class="hl"><strong>warum sich eine Maßnahme lohnt</strong></mark>.</p>
