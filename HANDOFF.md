@@ -5,7 +5,7 @@
 Die Gründer arbeiten an der **Markenwelt**: Deliverable 1 aus dem Briefing, jetzt als ausgearbeitete Startseite plus Markensystem. Sie geben Feedback per Kommentar direkt im Artifact.
 
 **Live-Seite (Hauptarbeit):** https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP
-(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 50, privat. Die Freigabe macht der Nutzer über das Share-Menü.
+(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 51, privat. Die Freigabe macht der Nutzer über das Share-Menü.
 
 Weitere Artifacts:
 - Logo-Kurvenvergleich (abgeschlossen): https://claude.ai/artifact/UsjPbmEEpBYStt4gh1TZeu
@@ -24,7 +24,7 @@ Kopfleiste (Petrol): Logo ohne Untertitel (steht jetzt im Einstieg), Navigation 
 
 **Trennband „Ab hier: Markensystem“**, danach:
 3. **Signaturelement**: drei Beispiele mit Korrekturzeichen.
-4. **Baukasten-Übersicht** (`#bausteine`): zwölf isometrische Module.
+4. **Baukasten-Übersicht** (`#bausteine`): neun Felder in zwei Gruppen (Energie, Ressourcen) plus Vorgehen Messen → Nachrechnen → Umsetzen.
 5. **Icons und Fotografie**: Hand-Icons, Foto mit Annotation.
 6. **Plakatserie**: Kurve, Baukasten, Korrektur.
 7. **Anwendung**: Bericht, LinkedIn-Post, Visitenkarte, E-Mail-Signatur.
@@ -37,7 +37,7 @@ Kopfleiste (Petrol): Logo ohne Untertitel (steht jetzt im Einstieg), Navigation 
 - **Offener Kommentar-Thread** `c4f123c5-264b-48ad-ad31-030e61e93764` zur Feld-Gruppierung: Frage, ob die Baukasten-Übersicht weiter unten nachgezogen werden soll. Gruppierung wurde seitdem weiter angepasst (Speicher zu Energie, PV gestrichen).
 
 - **Akzentfarbe entschieden:** Lime #C8F04A (24.09.). Schalter entfernt, Texte im Markensystem angepasst, Logo-Punkt auf hellem Grund mit feinem Ring.
-- **Baukasten-Übersicht weiter unten** (zwölf Module) mischt noch Leistungen (Messen, Nachrechnen …) und alte Medien (Abwärme, PV, Speicher einzeln). Auch Plakat 02 und die Handschrift-Notizen am Foto nennen teils noch alte Felder. Sollte an die neue Gruppierung aus dem Hero angepasst werden.
+- **Markensystem durchgesehen (Version 51):** Baukasten-Übersicht zeigt jetzt die neun Felder in zwei Gruppen plus „Für jeden Stein: Messen → Nachrechnen → Umsetzen“. Neue Icons für Kälte, Druckluft, Reststoffe, Betriebsstoffe. Mini-System mit vier Regeln (zwei Marker, Lime ist Fläche, hell/dunkel, Handschrift) und Textmarker-Zeile. Herkunft an Punktraster-Verzicht und Textmarker angepasst.
 - **Abschnitte 3 bis 9** haben noch kein direktes Feedback bekommen. Sie enthalten noch Texte, die zum neuen Stand passen sollten. Nach Tagen oder „Effizienz-Kompass“ ist bereits bereinigt.
 - **Handschrift:** Kalam ist Platzhalter und den Gründern besonders wichtig („die Leute haben keinen Bock mehr auf KI“). Angefragt: ein Foto mit der Standard-Notiz und den neun Feld-Notizen, mit dickem Filzstift auf weißem Papier. Dann als SVG-Pfade oder als eigene Schrift einbauen.
 - **Gründerfotos und echte Referenzen** fehlen noch. Die Team-Texte stammen aus den Notion-Antworten und sollten von den Gründern gegengelesen werden. Alle Zahlen auf der Seite sind Beispielwerte.

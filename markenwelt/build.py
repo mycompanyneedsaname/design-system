@@ -148,6 +148,10 @@ ICONS = {
  "Wasser": '<path d="M20 5 c 6 9 10 14 10 19 a 10 10 0 0 1 -20 0 c 0 -5 4 -10 10 -19 z"/><path d="M15 24 q 0 5 5 6"/>',
  "Abwärme": '<path d="M12 34 v -16 h 8 v 16"/><path d="M8 34 h 26"/><path d="M24 12 c 4 -3 4 -6 0 -9 M30 16 c 4 -3 4 -6 0 -9"/>',
  "PV": '<path d="M6 30 l 6 -16 h 22 l -6 16 z"/><path d="M11 22 h 20 M14 14 l -3 8 M23 14 l -3 16"/><path d="M6 34 h 28"/>',
+ "Kälte": '<path d="M20 5 v 30"/><path d="M7 12.5 l 26 15"/><path d="M7 27.5 l 26 -15"/><path d="M16 8 l 4 4 4 -4"/><path d="M16 32 l 4 -4 4 4"/>',
+ "Druckluft": '<path d="M10 14 h 16 a 7 7 0 0 1 0 14 h -16 a 7 7 0 0 1 0 -14 z"/><path d="M14 28 v 5 M22 28 v 5"/><path d="M31 9 q 3 3 0 6"/><path d="M35 6 q 4 6 0 12"/>',
+ "Reststoffe": '<path d="M9 13 h 22 l -2 21 h -18 z"/><path d="M6 13 h 28"/><path d="M16 9 h 8"/><path d="M16 19 v 10 M24 19 v 10"/>',
+ "Betriebsstoffe": '<path d="M7 20 h 17 l 6 -6 h 4"/><path d="M7 20 v 12 h 17 v -12"/><path d="M13 20 v -5 h 6 v 5"/><path d="M34 21 c 2 3 2.6 5 0 6.5 c -2.6 -1.5 -2 -3.5 0 -6.5 z"/>',
  "Speicher": '<path d="M7 12 h 24 v 18 h -24 z"/><path d="M31 17 h 4 v 8 h -4"/><path d="M12 17 v 8 M18 17 v 8"/>',
 }
 
@@ -158,14 +162,22 @@ def icon(name, color="currentColor", size=44):
     return (f'<svg viewBox="0 0 40 40" width="{size}" height="{size}" fill="none" stroke="{color}" stroke-width="2.2" '
             f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{pl(ICONS[name])}</svg>')
 
-MODULES = [("Messen", 1.0, 0), ("Nachrechnen", 1.4, 4), ("Priorisieren", 1.8, 0), ("Umsetzen", 2.2, 5), ("Handwerk", 1.2, 0), ("Strom", 2.0, 4),
-           ("Wärme", 1.6, 0), ("Material", 1.3, 4), ("Wasser", 1.1, 0), ("Abwärme", 2.4, 5), ("PV", 0.9, 0), ("Speicher", 1.7, 4)]
+# Handlungsfelder wie im Hero-Baukasten (zwei Gruppen), dazu das Vorgehen je Stein
+FIELDS_E = [("Strom", 2.0, 4), ("Wärme", 2.4, 0), ("Kälte", 1.4, 0), ("Druckluft", 1.8, 5), ("Speicher", 1.2, 4)]
+FIELDS_R = [("Material", 1.6, 4), ("Wasser", 1.1, 0), ("Reststoffe", 1.3, 0), ("Betriebsstoffe", 0.9, 4)]
+STEPS = ["Messen", "Nachrechnen", "Umsetzen"]
+MODULES = FIELDS_E + FIELDS_R + [(n, 1.0, 0) for n in STEPS]
+
+def mod_cards(items):
+    return "\n".join(f'<div class="mod"><div class="mod-iso">{module_iso(n, h, hatch)}</div><div class="mod-ic">{icon(n, "currentColor", 30)}</div><b>{n}</b></div>' for n, h, hatch in items)
 
 def modules_html():
-    out = []
-    for name, h, hatch in MODULES:
-        out.append(f'<div class="mod"><div class="mod-iso">{module_iso(name, h, hatch)}</div><div class="mod-ic">{icon(name, "currentColor", 30)}</div><b>{name}</b></div>')
-    return "\n".join(out)
+    return (f'<div class="modgrp"><span class="grp-l">Energie</span><div class="mods m5">{mod_cards(FIELDS_E)}</div></div>'
+            f'<div class="modgrp"><span class="grp-l">Ressourcen</span><div class="mods m4">{mod_cards(FIELDS_R)}</div></div>')
+
+def steps_html():
+    arrow = '<span class="st-ar" aria-hidden="true">→</span>'
+    return arrow.join(f'<span class="st">{icon(n, "currentColor", 30)}<b>{n}</b></span>' for n in STEPS)
 
 def icons_html():
     return "\n".join(f'<div class="hic">{icon(n, "currentColor", 40)}<span>{n}</span></div>' for n, _, _ in MODULES)
@@ -246,7 +258,16 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .prinzip .why{{font-size:14px;color:var(--muted)}}
 
   /* baukasten */
-  .mods{{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}}
+  .modgroups{{display:grid;grid-template-columns:5fr 4fr;gap:28px}}
+  .grp-l{{display:block;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}}
+  .mods{{display:grid;gap:12px}}
+  .mods.m5{{grid-template-columns:repeat(5,1fr)}}
+  .mods.m4{{grid-template-columns:repeat(4,1fr)}}
+  .steps{{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:28px;padding-top:20px;border-top:1px solid var(--line-d)}}
+  .steps .k{{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-right:8px}}
+  .st{{display:inline-flex;align-items:center;gap:10px;color:var(--accent)}}
+  .st b{{color:#fff;font-weight:500;font-size:15px}}
+  .st-ar{{color:rgba(255,255,255,.5);font-family:var(--mono)}}
   .mod{{display:grid;grid-template-rows:auto auto auto;gap:8px;justify-items:center;text-align:center;padding:16px 8px 14px;border:1px solid var(--line-d)}}
   .mod-iso svg{{width:86px;height:auto;display:block}}
   .mod b{{font-weight:500;font-size:13.5px}}
@@ -303,7 +324,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .type .row{{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:baseline;padding:16px 18px;border-top:1px solid var(--line-l)}}
   .type .row:first-child{{border-top:0}}
   .type .k{{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}}
-  .rules{{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}}
+  .rules{{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 32px}}
   .rules > div{{border-top:3px solid var(--petrol);padding-top:14px}}
   .rules h4{{font-size:15px;margin-bottom:6px}}
   .rules p{{font-size:14px;color:var(--muted)}}
@@ -319,13 +340,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     .grid2,.apps{{grid-template-columns:1fr}}
     .grid3,.prinzip,.posters,.rules,.src{{grid-template-columns:1fr}}
     .grid4{{grid-template-columns:1fr 1fr}}
-    .mods{{grid-template-columns:repeat(3,1fr)}}
+    .modgroups{{grid-template-columns:1fr}}
+    .mods.m5,.mods.m4{{grid-template-columns:repeat(3,1fr)}}
     .hicons{{grid-template-columns:repeat(4,1fr)}}
     .sw{{grid-template-columns:repeat(3,1fr)}}
     section{{padding-block:56px}}
   }}
   @media (max-width:520px){{
-    .mods,.hicons{{grid-template-columns:repeat(2,1fr)}}
+    .mods.m5,.mods.m4,.hicons{{grid-template-columns:repeat(2,1fr)}}
     .sw{{grid-template-columns:repeat(2,1fr)}}
     .type .row{{grid-template-columns:1fr}}
   }}
@@ -553,12 +575,12 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sec-head">
       <span class="eyebrow">Das Signaturelement</span>
       <h2>Behauptung gestrichen. Wert am Rand.</h2>
-      <p class="muted">Das Signaturelement ist ein Korrekturzeichen, wie es Lektoren und Prüfingenieure nach DIN 16511 setzen: Die Behauptung wird mit einer feinen Linie gestrichen, ein nummeriertes Zeichen verweist auf den Rand, dort steht der nachgerechnete Wert mit Einheit. Präzise statt laut. Es funktioniert in Anzeige, LinkedIn-Post und im Bericht.</p>
+      <p class="muted">Das Signaturelement ist ein Korrekturzeichen, wie es Lektoren und Prüfingenieure nach DIN 16511 setzen: Die Behauptung wird mit einer feinen Linie gestrichen, ein nummeriertes Zeichen verweist auf den Rand, dort steht der nachgerechnete Wert mit Einheit. Präzise statt laut. Es funktioniert in Anzeige, LinkedIn-Post und Bericht. Für das, was zählt, gibt es daneben den Lime-Textmarker (siehe Startseite).</p>
     </div>
     <div class="prinzip">
       <div>
         <span class="k">Beispiel 01 · Amortisation</span>
-        <div class="big"><span class="korr"><span class="alt">Rechnet sich</span> <span style="white-space:nowrap"><span class="alt">sofort.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>Druckluft 5 Monate · LED 3,3 Jahre · beides im Bericht</span></span></div>
+        <div class="big"><span class="korr"><span class="alt">Rechnet sich</span> <span style="white-space:nowrap"><span class="alt">sofort.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>Druckluft 5 Monate · Beleuchtung 3,3 Jahre</span></span></div>
         <p class="why">Keine pauschale ROI-Zahl, wie im Briefing verlangt. Der Rand liefert die Zahl mit Kontext.</p>
       </div>
       <div>
@@ -581,12 +603,13 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sec-head">
       <span class="eyebrow">Das Produkt als Bild</span>
       <h2>Der modulare Effizienz-Baukasten</h2>
-      <p class="muted">Jede Leistung und jede Maßnahme ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Die Grundplatte ist die gemeinsame Aufnahme im Betrieb, danach setzt der Kunde die Steine in seiner Reihenfolge. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist.</p>
+      <p class="muted">Jedes Handlungsfeld ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Neun Felder in zwei Gruppen, genau wie im Baukasten auf der Startseite. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist.</p>
     </div>
-    <div class="mods">
+    <div class="modgroups">
       {modules_html()}
     </div>
-    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website werden sie zur Konfiguration: Der Kunde klickt seine Steine, die Grundplatte zeigt den Umfang. Im Bericht sind sie die Kapitelmarken.</p>
+    <div class="steps"><span class="k">Für jeden Stein</span>{steps_html()}</div>
+    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website sind sie der Konfigurator, im Bericht die Kapitelmarken.</p>
   </div>
 </section>
 
@@ -596,7 +619,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div>
       <span class="eyebrow">Icon-Sprache</span>
       <h2 style="font-size:30px;margin-top:10px">Ein Strich, mit der Hand, in Lime.</h2>
-      <p class="muted" style="margin-top:12px;font-size:15px;max-width:48ch">Zwölf Icons für Leistungen und Medien. Bewusst nicht perfekt: leicht gewellte Linien, runde Enden, wie mit dem Filzstift auf den Schaltschrank gezeichnet. Auf hellem Grund werden sie Petrol.</p>
+      <p class="muted" style="margin-top:12px;font-size:15px;max-width:48ch">Zwölf Icons: neun Handlungsfelder und drei Schritte. Bewusst nicht perfekt: leicht gewellte Linien, runde Enden, wie mit dem Filzstift auf den Schaltschrank gezeichnet. Auf hellem Grund werden sie Petrol.</p>
       <div class="hicons" style="margin-top:22px">
         {icons_html()}
       </div>
@@ -671,7 +694,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sec-head">
       <span class="eyebrow">Anwendung</span>
       <h2>Bericht, Karte, Post, Signatur.</h2>
-      <p class="muted">Der Bericht ist das wichtigste Stück, weil der Kunde ihn behält. Papierweiß, Plex, Zahlen in Mono. Die Hand kommt genau einmal vor: als Prüfvermerk der beiden Gründer.</p>
+      <p class="muted">Der Bericht ist das wichtigste Stück, weil der Kunde ihn behält. Papierweiß, Plex, Zahlen in Mono. Die Hand kommt sparsam vor: als Prüfvermerk der beiden Gründer und als kurze Notiz auf Karte und Signatur.</p>
     </div>
     <div class="apps">
       <div class="report">
@@ -725,7 +748,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Mini-System</span>
-      <h2>Farben, Schriften, drei Regeln.</h2>
+      <h2>Farben, Schriften, vier Regeln.</h2>
     </div>
     <div class="sw">
       <div><div class="chip" style="background:{PETROL}"></div><div class="lbl"><b>Petrol</b><code>{PETROL}</code></div></div>
@@ -740,12 +763,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div class="row"><span class="k">Fließtext · Plex Sans 400</span><span style="font-size:16px">Wir messen im Betrieb und legen danach mindestens zehn Maßnahmen auf den Tisch.</span></div>
       <div class="row"><span class="k">Zahl · Plex Mono 500</span><span style="font-family:var(--mono);font-size:30px;font-weight:500;color:{PETROL};line-height:1">312 MWh <span style="font-size:13px;color:var(--muted)">Strom p. a.</span></span></div>
       <div class="row"><span class="k">Korrektur · Plex Mono</span><span class="light" style="font-size:26px;font-weight:600;letter-spacing:-.02em"><span class="korr"><span class="alt">Bis zu 40 %</span> <span style="white-space:nowrap"><span class="alt">sparen.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>18 % · amortisiert in 2,1 Jahren</span></span></span></div>
+      <div class="row"><span class="k">Textmarker · Lime-Fläche</span><span style="font-size:26px;font-weight:600;letter-spacing:-.02em;color:{PETROL}">Wir nehmen es <mark class="hl">persönlich</mark>.</span></div>
       <div class="row"><span class="k">Notiz · Kalam 700</span><span class="hand" style="font-size:22px;color:{PETROL}">gemessen 12.09., 14:10</span></div>
     </div>
     <div class="rules" style="margin-top:32px">
-      <div><h4>Korrektur statt Marker.</h4><p>Gestrichen wird mit einer 2-px-Linie, korrigiert wird in Mono am Rand. Handschrift gibt es nur für kleine Notizen am Foto und den Prüfvermerk im Bericht.</p></div>
-      <div><h4>Die Marker-Farbe ist Marker, nicht Text.</h4><p>Auf Petrol trägt sie Handschrift und Icons (Lime auf Petrol 9,3 : 1). Auf Papier ist es nur Strich, Punkt oder Fläche mit dunkler Schrift. Petrol übernimmt Buttons, Kennzahlen und Links.</p></div>
-      <div><h4>Dunkel für die Bühne, hell für das Dokument.</h4><p>Hero, Plakat, LinkedIn und Baukasten auf Petrol oder Tiefe ohne Punktraster. Bericht, Angebot, Brief und Formular auf Papier. Das Logo läuft auf beidem.</p></div>
+      <div><h4>Zwei Marker, zwei Aufgaben.</h4><p>Der Lime-Textmarker hebt hervor, was zählt: ein Wort, höchstens eine Zeile. Das Korrekturzeichen nach DIN 16511 widerlegt eine Behauptung mit der Zahl am Rand. Nie beides im selben Satz.</p></div>
+      <div><h4>Lime ist Fläche, nicht Schrift.</h4><p>Auf Petrol trägt Lime Handschrift, Icons und Linien (9,3 : 1). Auf Papier und Sand nur als Textmarker, Punkt oder Button-Fläche, immer mit Petrol-Schrift darauf.</p></div>
+      <div><h4>Hell zum Kennenlernen, dunkel fürs Produkt.</h4><p>Einstieg und Team auf Sand und Papier. Baukasten, Plakat und LinkedIn auf Petrol. Bericht, Angebot und Brief auf Papier. Kein Punktraster, keine Schatten.</p></div>
+      <div><h4>Handschrift heißt: wir persönlich.</h4><p>Notizen, Zitate und Prüfvermerke in Handschrift, heute Kalam, später die echte von Michael und Tobias. Nie für Headlines oder Fließtext.</p></div>
     </div>
   </div>
 </section>
@@ -760,13 +785,13 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="src">
       <div>
         <h4>ecoworks</h4>
-        <ul><li>Dunkler Petrol-Grund mit Punktraster</li><li>Isometrische Bausteine als Produktbild</li><li>Schraffuren als Zustand, nicht als Deko</li><li>Kleine Label in Mono</li></ul>
+        <ul><li>Dunkler Petrol-Grund (das Punktraster haben wir weggelassen)</li><li>Isometrische Bausteine als Produktbild</li><li>Schraffuren als Zustand, nicht als Deko</li><li>Kleine Label in Mono</li></ul>
         <p class="no"><b>Entschieden:</b> das Neongrün, bei uns als Lime #C8F04A. Nur als Marker und Fläche, nie als Schrift auf hellem Grund.</p>
       </div>
       <div>
         <h4>The Academy for Climate Jobs</h4>
-        <ul><li>Durchstreichen und korrigieren, bei uns als Korrekturzeichen nach DIN 16511</li><li>Marker-Kreis um das, was zählt</li><li>Handgezeichnete Icons auf dunklem Grund</li><li>Fotos mit Annotation darüber</li></ul>
-        <p class="no"><b>Nicht übernommen:</b> Kreisel-Kritzeleien um Gesichter und die Textmarker-Farbe. Bei uns markiert die Hand Zahlen, nicht Menschen.</p>
+        <ul><li>Durchstreichen und korrigieren, bei uns als Korrekturzeichen nach DIN 16511</li><li>Textmarker für das, was zählt, bei uns in Lime</li><li>Handgezeichnete Icons auf dunklem Grund</li><li>Fotos mit Annotation darüber</li></ul>
+        <p class="no"><b>Nicht übernommen:</b> Kreisel-Kritzeleien um Gesichter. Bei uns markiert die Hand Zahlen und Kernaussagen, nicht Menschen.</p>
       </div>
       <div>
         <h4>Claude / Anthropic</h4>
@@ -774,7 +799,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <p class="no"><b>Nicht übernommen:</b> Terrakotta. Die Farbe gehört Anthropic.</p>
       </div>
     </div>
-    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Notiz-Handschrift Kalam bleibt oder durch die echte Handschrift von Micha oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
+    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Notiz-Handschrift Kalam bleibt oder durch die echte Handschrift von Michael oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
   </div>
 </section>
 

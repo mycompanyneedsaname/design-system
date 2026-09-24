@@ -74,7 +74,16 @@
   .prinzip .why{font-size:14px;color:var(--muted)}
 
   /* baukasten */
-  .mods{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .modgroups{display:grid;grid-template-columns:5fr 4fr;gap:28px}
+  .grp-l{display:block;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
+  .mods{display:grid;gap:12px}
+  .mods.m5{grid-template-columns:repeat(5,1fr)}
+  .mods.m4{grid-template-columns:repeat(4,1fr)}
+  .steps{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:28px;padding-top:20px;border-top:1px solid var(--line-d)}
+  .steps .k{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-right:8px}
+  .st{display:inline-flex;align-items:center;gap:10px;color:var(--accent)}
+  .st b{color:#fff;font-weight:500;font-size:15px}
+  .st-ar{color:rgba(255,255,255,.5);font-family:var(--mono)}
   .mod{display:grid;grid-template-rows:auto auto auto;gap:8px;justify-items:center;text-align:center;padding:16px 8px 14px;border:1px solid var(--line-d)}
   .mod-iso svg{width:86px;height:auto;display:block}
   .mod b{font-weight:500;font-size:13.5px}
@@ -131,7 +140,7 @@
   .type .row{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:baseline;padding:16px 18px;border-top:1px solid var(--line-l)}
   .type .row:first-child{border-top:0}
   .type .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 32px}
   .rules > div{border-top:3px solid var(--petrol);padding-top:14px}
   .rules h4{font-size:15px;margin-bottom:6px}
   .rules p{font-size:14px;color:var(--muted)}
@@ -147,13 +156,14 @@
     .grid2,.apps{grid-template-columns:1fr}
     .grid3,.prinzip,.posters,.rules,.src{grid-template-columns:1fr}
     .grid4{grid-template-columns:1fr 1fr}
-    .mods{grid-template-columns:repeat(3,1fr)}
+    .modgroups{grid-template-columns:1fr}
+    .mods.m5,.mods.m4{grid-template-columns:repeat(3,1fr)}
     .hicons{grid-template-columns:repeat(4,1fr)}
     .sw{grid-template-columns:repeat(3,1fr)}
     section{padding-block:56px}
   }
   @media (max-width:520px){
-    .mods,.hicons{grid-template-columns:repeat(2,1fr)}
+    .mods.m5,.mods.m4,.hicons{grid-template-columns:repeat(2,1fr)}
     .sw{grid-template-columns:repeat(2,1fr)}
     .type .row{grid-template-columns:1fr}
   }
@@ -381,12 +391,12 @@
     <div class="sec-head">
       <span class="eyebrow">Das Signaturelement</span>
       <h2>Behauptung gestrichen. Wert am Rand.</h2>
-      <p class="muted">Das Signaturelement ist ein Korrekturzeichen, wie es Lektoren und Prüfingenieure nach DIN 16511 setzen: Die Behauptung wird mit einer feinen Linie gestrichen, ein nummeriertes Zeichen verweist auf den Rand, dort steht der nachgerechnete Wert mit Einheit. Präzise statt laut. Es funktioniert in Anzeige, LinkedIn-Post und im Bericht.</p>
+      <p class="muted">Das Signaturelement ist ein Korrekturzeichen, wie es Lektoren und Prüfingenieure nach DIN 16511 setzen: Die Behauptung wird mit einer feinen Linie gestrichen, ein nummeriertes Zeichen verweist auf den Rand, dort steht der nachgerechnete Wert mit Einheit. Präzise statt laut. Es funktioniert in Anzeige, LinkedIn-Post und Bericht. Für das, was zählt, gibt es daneben den Lime-Textmarker (siehe Startseite).</p>
     </div>
     <div class="prinzip">
       <div>
         <span class="k">Beispiel 01 · Amortisation</span>
-        <div class="big"><span class="korr"><span class="alt">Rechnet sich</span> <span style="white-space:nowrap"><span class="alt">sofort.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>Druckluft 5 Monate · LED 3,3 Jahre · beides im Bericht</span></span></div>
+        <div class="big"><span class="korr"><span class="alt">Rechnet sich</span> <span style="white-space:nowrap"><span class="alt">sofort.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>Druckluft 5 Monate · Beleuchtung 3,3 Jahre</span></span></div>
         <p class="why">Keine pauschale ROI-Zahl, wie im Briefing verlangt. Der Rand liefert die Zahl mit Kontext.</p>
       </div>
       <div>
@@ -409,67 +419,54 @@
     <div class="sec-head">
       <span class="eyebrow">Das Produkt als Bild</span>
       <h2>Der modulare Effizienz-Baukasten</h2>
-      <p class="muted">Jede Leistung und jede Maßnahme ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Die Grundplatte ist die gemeinsame Aufnahme im Betrieb, danach setzt der Kunde die Steine in seiner Reihenfolge. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist.</p>
+      <p class="muted">Jedes Handlungsfeld ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Neun Felder in zwei Gruppen, genau wie im Baukasten auf der Startseite. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist.</p>
     </div>
-    <div class="mods">
-      <div class="mod"><div class="mod-iso"><svg viewBox="-58 -36 116 102" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,30.0 -52.0,-0.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,30.0 52.0,-0.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-30.0 52.0,-0.0 0.0,30.0 -52.0,-0.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 30 A 13 13 0 1 1 33 30"/><path pathLength="1" d="M20 27 l 7 -11"/><circle pathLength="1" cx="20" cy="28" r="1.6" fill="currentColor" stroke="none"/><path pathLength="1" d="M6 33 h28"/></svg></div><b>Messen</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -48 116 114" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,18.0 -52.0,-12.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,18.0 52.0,-12.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-42.0 52.0,-12.0 0.0,18.0 -52.0,-12.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="39.0" y1="37.5" x2="39.0" y2="-4.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="26.0" y1="45.0" x2="26.0" y2="3.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="13.0" y1="52.5" x2="13.0" y2="10.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M10 5 l 21 1 -1 29 -21 -1 z"/><path pathLength="1" d="M15 13 h11 M15 19 h7 M15 25 h11"/><path pathLength="1" d="M27 21 q -2 4 1 7" /></svg></div><b>Nachrechnen</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -60 116 126" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,6.0 -52.0,-24.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,6.0 52.0,-24.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-54.0 52.0,-24.0 0.0,6.0 -52.0,-24.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M9 12 h20 M9 20 h13 M9 28 h7"/><path pathLength="1" d="M6 9 C 4 4, 32 3, 33 9 C 35 14, 24 17, 8 15 C 3 14, 2 11, 6 9" stroke-opacity=".9"/></svg></div><b>Priorisieren</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -72 116 138" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-6.0 -52.0,-36.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,-6.0 52.0,-36.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-66.0 52.0,-36.0 0.0,-6.0 -52.0,-36.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="41.6" y1="36.0" x2="41.6" y2="-30.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="31.2" y1="42.0" x2="31.2" y2="-24.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="20.8" y1="48.0" x2="20.8" y2="-18.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="10.4" y1="54.0" x2="10.4" y2="-12.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 32 L 18 20"/><path pathLength="1" d="M16 15 l 9 -9 8 8 -9 9 z"/><path pathLength="1" d="M25 6 l 5 -3 M33 14 l 3 -5"/></svg></div><b>Umsetzen</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -42 116 108" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,24.0 -52.0,-6.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,24.0 52.0,-6.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-36.0 52.0,-6.0 0.0,24.0 -52.0,-6.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M8 33 L 20 21"/><path pathLength="1" d="M17 12 l 10 -6 6 6 -6 10"/><path pathLength="1" d="M14 16 l 8 8"/></svg></div><b>Handwerk</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -66 116 132" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-0.0 -52.0,-30.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+    <div class="modgroups">
+      <div class="modgrp"><span class="grp-l">Energie</span><div class="mods m5"><div class="mod"><div class="mod-iso"><svg viewBox="-58 -66 116 132" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-0.0 -52.0,-30.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
 <polygon points="52.0,30.0 0.0,60.0 0.0,-0.0 52.0,-30.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
 <polygon points="0.0,-60.0 52.0,-30.0 0.0,-0.0 -52.0,-30.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
 <line x1="39.0" y1="37.5" x2="39.0" y2="-22.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
 <line x1="26.0" y1="45.0" x2="26.0" y2="-15.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
 <line x1="13.0" y1="52.5" x2="13.0" y2="-7.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M22 4 l -11 18 h 9 l -4 15 l 13 -20 h -9 z"/></svg></div><b>Strom</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -54 116 120" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,12.0 -52.0,-18.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -78 116 144" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-12.0 -52.0,-42.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,-12.0 52.0,-42.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-72.0 52.0,-42.0 0.0,-12.0 -52.0,-42.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/><path pathLength="1" d="M22 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/></svg></div><b>Wärme</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -48 116 114" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,18.0 -52.0,-12.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,18.0 52.0,-12.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-42.0 52.0,-12.0 0.0,18.0 -52.0,-12.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M20 5 v 30"/><path pathLength="1" d="M7 12.5 l 26 15"/><path pathLength="1" d="M7 27.5 l 26 -15"/><path pathLength="1" d="M16 8 l 4 4 4 -4"/><path pathLength="1" d="M16 32 l 4 -4 4 4"/></svg></div><b>Kälte</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -60 116 126" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,6.0 -52.0,-24.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,6.0 52.0,-24.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-54.0 52.0,-24.0 0.0,6.0 -52.0,-24.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="41.6" y1="36.0" x2="41.6" y2="-18.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="31.2" y1="42.0" x2="31.2" y2="-12.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="20.8" y1="48.0" x2="20.8" y2="-6.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="10.4" y1="54.0" x2="10.4" y2="-0.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M10 14 h 16 a 7 7 0 0 1 0 14 h -16 a 7 7 0 0 1 0 -14 z"/><path pathLength="1" d="M14 28 v 5 M22 28 v 5"/><path pathLength="1" d="M31 9 q 3 3 0 6"/><path pathLength="1" d="M35 6 q 4 6 0 12"/></svg></div><b>Druckluft</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -42 116 108" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,24.0 -52.0,-6.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,24.0 52.0,-6.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-36.0 52.0,-6.0 0.0,24.0 -52.0,-6.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="39.0" y1="37.5" x2="39.0" y2="1.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="26.0" y1="45.0" x2="26.0" y2="9.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="13.0" y1="52.5" x2="13.0" y2="16.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 12 h 24 v 18 h -24 z"/><path pathLength="1" d="M31 17 h 4 v 8 h -4"/><path pathLength="1" d="M12 17 v 8 M18 17 v 8"/></svg></div><b>Speicher</b></div></div></div><div class="modgrp"><span class="grp-l">Ressourcen</span><div class="mods m4"><div class="mod"><div class="mod-iso"><svg viewBox="-58 -54 116 120" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,12.0 -52.0,-18.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
 <polygon points="52.0,30.0 0.0,60.0 0.0,12.0 52.0,-18.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-48.0 52.0,-18.0 0.0,12.0 -52.0,-18.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/><path pathLength="1" d="M22 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/></svg></div><b>Wärme</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -45 116 111" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,21.0 -52.0,-9.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,21.0 52.0,-9.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-39.0 52.0,-9.0 0.0,21.0 -52.0,-9.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="39.0" y1="37.5" x2="39.0" y2="-1.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="26.0" y1="45.0" x2="26.0" y2="6.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="13.0" y1="52.5" x2="13.0" y2="13.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 24 l 13 7 13 -7 -13 -7 z"/><path pathLength="1" d="M7 16 l 13 7 13 -7"/><path pathLength="1" d="M7 8 l 13 7 13 -7 -13 -7 z"/></svg></div><b>Material</b></div>
+<polygon points="0.0,-48.0 52.0,-18.0 0.0,12.0 -52.0,-18.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="39.0" y1="37.5" x2="39.0" y2="-10.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="26.0" y1="45.0" x2="26.0" y2="-3.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="13.0" y1="52.5" x2="13.0" y2="4.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 24 l 13 7 13 -7 -13 -7 z"/><path pathLength="1" d="M7 16 l 13 7 13 -7"/><path pathLength="1" d="M7 8 l 13 7 13 -7 -13 -7 z"/></svg></div><b>Material</b></div>
 <div class="mod"><div class="mod-iso"><svg viewBox="-58 -39 116 105" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,27.0 -52.0,-3.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
 <polygon points="52.0,30.0 0.0,60.0 0.0,27.0 52.0,-3.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
 <polygon points="0.0,-33.0 52.0,-3.0 0.0,27.0 -52.0,-3.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M20 5 c 6 9 10 14 10 19 a 10 10 0 0 1 -20 0 c 0 -5 4 -10 10 -19 z"/><path pathLength="1" d="M15 24 q 0 5 5 6"/></svg></div><b>Wasser</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -78 116 144" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-12.0 -52.0,-42.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,-12.0 52.0,-42.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-72.0 52.0,-42.0 0.0,-12.0 -52.0,-42.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="41.6" y1="36.0" x2="41.6" y2="-36.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="31.2" y1="42.0" x2="31.2" y2="-30.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="20.8" y1="48.0" x2="20.8" y2="-24.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="10.4" y1="54.0" x2="10.4" y2="-18.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 34 v -16 h 8 v 16"/><path pathLength="1" d="M8 34 h 26"/><path pathLength="1" d="M24 12 c 4 -3 4 -6 0 -9 M30 16 c 4 -3 4 -6 0 -9"/></svg></div><b>Abwärme</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -45 116 111" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,21.0 -52.0,-9.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,21.0 52.0,-9.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-39.0 52.0,-9.0 0.0,21.0 -52.0,-9.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M9 13 h 22 l -2 21 h -18 z"/><path pathLength="1" d="M6 13 h 28"/><path pathLength="1" d="M16 9 h 8"/><path pathLength="1" d="M16 19 v 10 M24 19 v 10"/></svg></div><b>Reststoffe</b></div>
 <div class="mod"><div class="mod-iso"><svg viewBox="-58 -33 116 99" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,33.0 -52.0,3.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
 <polygon points="52.0,30.0 0.0,60.0 0.0,33.0 52.0,3.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-27.0 52.0,3.0 0.0,33.0 -52.0,3.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 30 l 6 -16 h 22 l -6 16 z"/><path pathLength="1" d="M11 22 h 20 M14 14 l -3 8 M23 14 l -3 16"/><path pathLength="1" d="M6 34 h 28"/></svg></div><b>PV</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -57 116 123" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,9.0 -52.0,-21.0" fill="#0B3236" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,9.0 52.0,-21.0" fill="#0E393D" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-51.0 52.0,-21.0 0.0,9.0 -52.0,-21.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="39.0" y1="37.5" x2="39.0" y2="-13.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="26.0" y1="45.0" x2="26.0" y2="-6.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
-<line x1="13.0" y1="52.5" x2="13.0" y2="1.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 12 h 24 v 18 h -24 z"/><path pathLength="1" d="M31 17 h 4 v 8 h -4"/><path pathLength="1" d="M12 17 v 8 M18 17 v 8"/></svg></div><b>Speicher</b></div>
+<polygon points="0.0,-27.0 52.0,3.0 0.0,33.0 -52.0,3.0" fill="#14474C" stroke="#C8F04A" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="39.0" y1="37.5" x2="39.0" y2="10.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="26.0" y1="45.0" x2="26.0" y2="18.0" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="13.0" y1="52.5" x2="13.0" y2="25.5" stroke="#C8F04A" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 20 h 17 l 6 -6 h 4"/><path pathLength="1" d="M7 20 v 12 h 17 v -12"/><path pathLength="1" d="M13 20 v -5 h 6 v 5"/><path pathLength="1" d="M34 21 c 2 3 2.6 5 0 6.5 c -2.6 -1.5 -2 -3.5 0 -6.5 z"/></svg></div><b>Betriebsstoffe</b></div></div></div>
     </div>
-    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website werden sie zur Konfiguration: Der Kunde klickt seine Steine, die Grundplatte zeigt den Umfang. Im Bericht sind sie die Kapitelmarken.</p>
+    <div class="steps"><span class="k">Für jeden Stein</span><span class="st"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 30 A 13 13 0 1 1 33 30"/><path pathLength="1" d="M20 27 l 7 -11"/><circle pathLength="1" cx="20" cy="28" r="1.6" fill="currentColor" stroke="none"/><path pathLength="1" d="M6 33 h28"/></svg><b>Messen</b></span><span class="st-ar" aria-hidden="true">→</span><span class="st"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M10 5 l 21 1 -1 29 -21 -1 z"/><path pathLength="1" d="M15 13 h11 M15 19 h7 M15 25 h11"/><path pathLength="1" d="M27 21 q -2 4 1 7" /></svg><b>Nachrechnen</b></span><span class="st-ar" aria-hidden="true">→</span><span class="st"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 32 L 18 20"/><path pathLength="1" d="M16 15 l 9 -9 8 8 -9 9 z"/><path pathLength="1" d="M25 6 l 5 -3 M33 14 l 3 -5"/></svg><b>Umsetzen</b></span></div>
+    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website sind sie der Konfigurator, im Bericht die Kapitelmarken.</p>
   </div>
 </section>
 
@@ -479,20 +476,20 @@
     <div>
       <span class="eyebrow">Icon-Sprache</span>
       <h2 style="font-size:30px;margin-top:10px">Ein Strich, mit der Hand, in Lime.</h2>
-      <p class="muted" style="margin-top:12px;font-size:15px;max-width:48ch">Zwölf Icons für Leistungen und Medien. Bewusst nicht perfekt: leicht gewellte Linien, runde Enden, wie mit dem Filzstift auf den Schaltschrank gezeichnet. Auf hellem Grund werden sie Petrol.</p>
+      <p class="muted" style="margin-top:12px;font-size:15px;max-width:48ch">Zwölf Icons: neun Handlungsfelder und drei Schritte. Bewusst nicht perfekt: leicht gewellte Linien, runde Enden, wie mit dem Filzstift auf den Schaltschrank gezeichnet. Auf hellem Grund werden sie Petrol.</p>
       <div class="hicons" style="margin-top:22px">
-        <div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 30 A 13 13 0 1 1 33 30"/><path pathLength="1" d="M20 27 l 7 -11"/><circle pathLength="1" cx="20" cy="28" r="1.6" fill="currentColor" stroke="none"/><path pathLength="1" d="M6 33 h28"/></svg><span>Messen</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M10 5 l 21 1 -1 29 -21 -1 z"/><path pathLength="1" d="M15 13 h11 M15 19 h7 M15 25 h11"/><path pathLength="1" d="M27 21 q -2 4 1 7" /></svg><span>Nachrechnen</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M9 12 h20 M9 20 h13 M9 28 h7"/><path pathLength="1" d="M6 9 C 4 4, 32 3, 33 9 C 35 14, 24 17, 8 15 C 3 14, 2 11, 6 9" stroke-opacity=".9"/></svg><span>Priorisieren</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 32 L 18 20"/><path pathLength="1" d="M16 15 l 9 -9 8 8 -9 9 z"/><path pathLength="1" d="M25 6 l 5 -3 M33 14 l 3 -5"/></svg><span>Umsetzen</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M8 33 L 20 21"/><path pathLength="1" d="M17 12 l 10 -6 6 6 -6 10"/><path pathLength="1" d="M14 16 l 8 8"/></svg><span>Handwerk</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M22 4 l -11 18 h 9 l -4 15 l 13 -20 h -9 z"/></svg><span>Strom</span></div>
+        <div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M22 4 l -11 18 h 9 l -4 15 l 13 -20 h -9 z"/></svg><span>Strom</span></div>
 <div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/><path pathLength="1" d="M22 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/></svg><span>Wärme</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M20 5 v 30"/><path pathLength="1" d="M7 12.5 l 26 15"/><path pathLength="1" d="M7 27.5 l 26 -15"/><path pathLength="1" d="M16 8 l 4 4 4 -4"/><path pathLength="1" d="M16 32 l 4 -4 4 4"/></svg><span>Kälte</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M10 14 h 16 a 7 7 0 0 1 0 14 h -16 a 7 7 0 0 1 0 -14 z"/><path pathLength="1" d="M14 28 v 5 M22 28 v 5"/><path pathLength="1" d="M31 9 q 3 3 0 6"/><path pathLength="1" d="M35 6 q 4 6 0 12"/></svg><span>Druckluft</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 12 h 24 v 18 h -24 z"/><path pathLength="1" d="M31 17 h 4 v 8 h -4"/><path pathLength="1" d="M12 17 v 8 M18 17 v 8"/></svg><span>Speicher</span></div>
 <div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 24 l 13 7 13 -7 -13 -7 z"/><path pathLength="1" d="M7 16 l 13 7 13 -7"/><path pathLength="1" d="M7 8 l 13 7 13 -7 -13 -7 z"/></svg><span>Material</span></div>
 <div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M20 5 c 6 9 10 14 10 19 a 10 10 0 0 1 -20 0 c 0 -5 4 -10 10 -19 z"/><path pathLength="1" d="M15 24 q 0 5 5 6"/></svg><span>Wasser</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 34 v -16 h 8 v 16"/><path pathLength="1" d="M8 34 h 26"/><path pathLength="1" d="M24 12 c 4 -3 4 -6 0 -9 M30 16 c 4 -3 4 -6 0 -9"/></svg><span>Abwärme</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 30 l 6 -16 h 22 l -6 16 z"/><path pathLength="1" d="M11 22 h 20 M14 14 l -3 8 M23 14 l -3 16"/><path pathLength="1" d="M6 34 h 28"/></svg><span>PV</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 12 h 24 v 18 h -24 z"/><path pathLength="1" d="M31 17 h 4 v 8 h -4"/><path pathLength="1" d="M12 17 v 8 M18 17 v 8"/></svg><span>Speicher</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M9 13 h 22 l -2 21 h -18 z"/><path pathLength="1" d="M6 13 h 28"/><path pathLength="1" d="M16 9 h 8"/><path pathLength="1" d="M16 19 v 10 M24 19 v 10"/></svg><span>Reststoffe</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 20 h 17 l 6 -6 h 4"/><path pathLength="1" d="M7 20 v 12 h 17 v -12"/><path pathLength="1" d="M13 20 v -5 h 6 v 5"/><path pathLength="1" d="M34 21 c 2 3 2.6 5 0 6.5 c -2.6 -1.5 -2 -3.5 0 -6.5 z"/></svg><span>Betriebsstoffe</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 30 A 13 13 0 1 1 33 30"/><path pathLength="1" d="M20 27 l 7 -11"/><circle pathLength="1" cx="20" cy="28" r="1.6" fill="currentColor" stroke="none"/><path pathLength="1" d="M6 33 h28"/></svg><span>Messen</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M10 5 l 21 1 -1 29 -21 -1 z"/><path pathLength="1" d="M15 13 h11 M15 19 h7 M15 25 h11"/><path pathLength="1" d="M27 21 q -2 4 1 7" /></svg><span>Nachrechnen</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 32 L 18 20"/><path pathLength="1" d="M16 15 l 9 -9 8 8 -9 9 z"/><path pathLength="1" d="M25 6 l 5 -3 M33 14 l 3 -5"/></svg><span>Umsetzen</span></div>
       </div>
     </div>
     <div>
@@ -591,7 +588,7 @@
     <div class="sec-head">
       <span class="eyebrow">Anwendung</span>
       <h2>Bericht, Karte, Post, Signatur.</h2>
-      <p class="muted">Der Bericht ist das wichtigste Stück, weil der Kunde ihn behält. Papierweiß, Plex, Zahlen in Mono. Die Hand kommt genau einmal vor: als Prüfvermerk der beiden Gründer.</p>
+      <p class="muted">Der Bericht ist das wichtigste Stück, weil der Kunde ihn behält. Papierweiß, Plex, Zahlen in Mono. Die Hand kommt sparsam vor: als Prüfvermerk der beiden Gründer und als kurze Notiz auf Karte und Signatur.</p>
     </div>
     <div class="apps">
       <div class="report">
@@ -645,7 +642,7 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Mini-System</span>
-      <h2>Farben, Schriften, drei Regeln.</h2>
+      <h2>Farben, Schriften, vier Regeln.</h2>
     </div>
     <div class="sw">
       <div><div class="chip" style="background:#0F3B3F"></div><div class="lbl"><b>Petrol</b><code>#0F3B3F</code></div></div>
@@ -660,12 +657,14 @@
       <div class="row"><span class="k">Fließtext · Plex Sans 400</span><span style="font-size:16px">Wir messen im Betrieb und legen danach mindestens zehn Maßnahmen auf den Tisch.</span></div>
       <div class="row"><span class="k">Zahl · Plex Mono 500</span><span style="font-family:var(--mono);font-size:30px;font-weight:500;color:#0F3B3F;line-height:1">312 MWh <span style="font-size:13px;color:var(--muted)">Strom p. a.</span></span></div>
       <div class="row"><span class="k">Korrektur · Plex Mono</span><span class="light" style="font-size:26px;font-weight:600;letter-spacing:-.02em"><span class="korr"><span class="alt">Bis zu 40 %</span> <span style="white-space:nowrap"><span class="alt">sparen.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>18 % · amortisiert in 2,1 Jahren</span></span></span></div>
+      <div class="row"><span class="k">Textmarker · Lime-Fläche</span><span style="font-size:26px;font-weight:600;letter-spacing:-.02em;color:#0F3B3F">Wir nehmen es <mark class="hl">persönlich</mark>.</span></div>
       <div class="row"><span class="k">Notiz · Kalam 700</span><span class="hand" style="font-size:22px;color:#0F3B3F">gemessen 12.09., 14:10</span></div>
     </div>
     <div class="rules" style="margin-top:32px">
-      <div><h4>Korrektur statt Marker.</h4><p>Gestrichen wird mit einer 2-px-Linie, korrigiert wird in Mono am Rand. Handschrift gibt es nur für kleine Notizen am Foto und den Prüfvermerk im Bericht.</p></div>
-      <div><h4>Die Marker-Farbe ist Marker, nicht Text.</h4><p>Auf Petrol trägt sie Handschrift und Icons (Lime auf Petrol 9,3 : 1). Auf Papier ist es nur Strich, Punkt oder Fläche mit dunkler Schrift. Petrol übernimmt Buttons, Kennzahlen und Links.</p></div>
-      <div><h4>Dunkel für die Bühne, hell für das Dokument.</h4><p>Hero, Plakat, LinkedIn und Baukasten auf Petrol oder Tiefe ohne Punktraster. Bericht, Angebot, Brief und Formular auf Papier. Das Logo läuft auf beidem.</p></div>
+      <div><h4>Zwei Marker, zwei Aufgaben.</h4><p>Der Lime-Textmarker hebt hervor, was zählt: ein Wort, höchstens eine Zeile. Das Korrekturzeichen nach DIN 16511 widerlegt eine Behauptung mit der Zahl am Rand. Nie beides im selben Satz.</p></div>
+      <div><h4>Lime ist Fläche, nicht Schrift.</h4><p>Auf Petrol trägt Lime Handschrift, Icons und Linien (9,3 : 1). Auf Papier und Sand nur als Textmarker, Punkt oder Button-Fläche, immer mit Petrol-Schrift darauf.</p></div>
+      <div><h4>Hell zum Kennenlernen, dunkel fürs Produkt.</h4><p>Einstieg und Team auf Sand und Papier. Baukasten, Plakat und LinkedIn auf Petrol. Bericht, Angebot und Brief auf Papier. Kein Punktraster, keine Schatten.</p></div>
+      <div><h4>Handschrift heißt: wir persönlich.</h4><p>Notizen, Zitate und Prüfvermerke in Handschrift, heute Kalam, später die echte von Michael und Tobias. Nie für Headlines oder Fließtext.</p></div>
     </div>
   </div>
 </section>
@@ -680,13 +679,13 @@
     <div class="src">
       <div>
         <h4>ecoworks</h4>
-        <ul><li>Dunkler Petrol-Grund mit Punktraster</li><li>Isometrische Bausteine als Produktbild</li><li>Schraffuren als Zustand, nicht als Deko</li><li>Kleine Label in Mono</li></ul>
+        <ul><li>Dunkler Petrol-Grund (das Punktraster haben wir weggelassen)</li><li>Isometrische Bausteine als Produktbild</li><li>Schraffuren als Zustand, nicht als Deko</li><li>Kleine Label in Mono</li></ul>
         <p class="no"><b>Entschieden:</b> das Neongrün, bei uns als Lime #C8F04A. Nur als Marker und Fläche, nie als Schrift auf hellem Grund.</p>
       </div>
       <div>
         <h4>The Academy for Climate Jobs</h4>
-        <ul><li>Durchstreichen und korrigieren, bei uns als Korrekturzeichen nach DIN 16511</li><li>Marker-Kreis um das, was zählt</li><li>Handgezeichnete Icons auf dunklem Grund</li><li>Fotos mit Annotation darüber</li></ul>
-        <p class="no"><b>Nicht übernommen:</b> Kreisel-Kritzeleien um Gesichter und die Textmarker-Farbe. Bei uns markiert die Hand Zahlen, nicht Menschen.</p>
+        <ul><li>Durchstreichen und korrigieren, bei uns als Korrekturzeichen nach DIN 16511</li><li>Textmarker für das, was zählt, bei uns in Lime</li><li>Handgezeichnete Icons auf dunklem Grund</li><li>Fotos mit Annotation darüber</li></ul>
+        <p class="no"><b>Nicht übernommen:</b> Kreisel-Kritzeleien um Gesichter. Bei uns markiert die Hand Zahlen und Kernaussagen, nicht Menschen.</p>
       </div>
       <div>
         <h4>Claude / Anthropic</h4>
@@ -694,7 +693,7 @@
         <p class="no"><b>Nicht übernommen:</b> Terrakotta. Die Farbe gehört Anthropic.</p>
       </div>
     </div>
-    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Notiz-Handschrift Kalam bleibt oder durch die echte Handschrift von Micha oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
+    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Notiz-Handschrift Kalam bleibt oder durch die echte Handschrift von Michael oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
   </div>
 </section>
 
