@@ -467,7 +467,21 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     .team-link .tl-dot{{transition:transform .5s cubic-bezier(.2,.9,.3,1.4) .9s}}
     .team-link .tl-fade{{transition:opacity .5s ease-out 1.3s}}
   }}
-  @media (max-width:980px){{.team-link{{display:none}}}}
+  .team-sec{{padding-bottom:0}}
+  #baukasten{{padding-top:0}}
+  .bk-link{{display:block;width:100%;height:auto;overflow:visible}}
+  .js .bk-link .tl-curve{{stroke-dasharray:1;stroke-dashoffset:1}}
+  .js .bk-link .tl-dot{{transform:scale(.6);opacity:0;transform-box:fill-box;transform-origin:center}}
+  .js .bk-link .tl-fade{{opacity:0}}
+  .js .bk-link.on .tl-curve{{stroke-dashoffset:0}}
+  .js .bk-link.on .tl-dot{{transform:scale(1);opacity:1}}
+  .js .bk-link.on .tl-fade{{opacity:1}}
+  @media (prefers-reduced-motion:no-preference){{
+    .bk-link .tl-curve{{transition:stroke-dashoffset .5s linear}}
+    .bk-link .tl-dot{{transition:transform .6s cubic-bezier(.2,.9,.3,1.2) .4s,opacity .4s ease-out .4s}}
+    .bk-link .tl-fade{{transition:opacity .5s ease-out .9s}}
+  }}
+  @media (max-width:980px){{.team-link,.bk-link{{display:none}}.team-sec{{padding-bottom:56px}}#baukasten{{padding-top:56px}}}}
   .pers{{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start}}
   .pers-ph{{aspect-ratio:4/5;background:var(--sand);border-radius:12px;position:relative;overflow:hidden}}
   .pers-img{{width:100%;height:100%;display:block}}
@@ -540,7 +554,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 </section>
 
 <!-- ============================ 2 · TEAM ============================ -->
-<section class="light" id="team">
+<section class="light team-sec" id="team">
   <div class="wrap">
     <div class="sec-head">
       <h2>Wir nehmen es <mark class="hl">persönlich</mark>.</h2>
@@ -561,20 +575,13 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         </div>
       </article>
     </div>
-    <svg class="team-link" viewBox="0 0 1000 232" role="img" aria-label="Zwei Ströme, Ressourcen und Energie, fließen in einen Baustein: Ihr Betrieb. Notiz: beides zusammen gedacht.">
-      <path class="tl-curve" pathLength="1" d="M65 8 C 65 100, 323 62, 323 140" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
-      <path class="tl-curve" pathLength="1" d="M582 8 C 582 100, 323 62, 323 140" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
-      <g class="tl-dot" stroke="{PETROL}" stroke-width="2.5" stroke-linejoin="round">
-        <path d="M323 140 L 363 160 L 323 180 L 283 160 Z" fill="#C8F04A"/>
-        <path d="M283 160 L 323 180 L 323 220 L 283 200 Z" fill="{SAND}"/>
-        <path d="M323 180 L 363 160 L 363 200 L 323 220 Z" fill="#DCD2BC"/>
-      </g>
+    <svg class="team-link" viewBox="0 0 1000 200" role="img" aria-label="Zwei Ströme, Ressourcen und Energie, fließen zusammen in Ihren Betrieb.">
+      <path class="tl-curve" pathLength="1" d="M241 8 C 241 110, 500 80, 500 200" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
+      <path class="tl-curve" pathLength="1" d="M759 8 C 759 110, 500 80, 500 200" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
       <g class="tl-fade">
-        <text x="80" y="22" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="{PETROL}">RESSOURCEN</text>
-        <text x="597" y="22" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="{PETROL}">ENERGIE</text>
-        <text x="378" y="216" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="{PETROL}">IHR BETRIEB</text>
-        <path d="M372 150 q 14 12 34 10" fill="none" stroke="{PETROL}" stroke-width="2" stroke-linecap="round"/>
-        <text x="414" y="168" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="{PETROL}">beides zusammen gedacht.</text>
+        <text x="256" y="24" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="{PETROL}">RESSOURCEN</text>
+        <text x="744" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="{PETROL}">ENERGIE</text>
+        <text x="516" y="186" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="{PETROL}">beides zusammen gedacht.</text>
       </g>
     </svg>
   </div>
@@ -583,6 +590,19 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 <!-- ============================ 3 · BAUKASTEN ============================ -->
 <section class="dark" id="baukasten">
   <div class="wrap">
+    <svg class="bk-link" viewBox="0 0 1000 190" role="img" aria-label="Ihr Betrieb als Grundplatte: darauf setzen wir die Bausteine.">
+      <path class="tl-curve" pathLength="1" d="M500 0 L 500 36" fill="none" stroke="#C8F04A" stroke-width="3.5" stroke-linecap="round"/>
+      <g class="tl-dot">
+        <path d="M500 40 L 620 100 L 500 160 L 380 100 Z" fill="#15474C" stroke="#C8F04A" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M380 100 L 500 160 L 500 172 L 380 112 Z" fill="#0B3033" stroke="#C8F04A" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M500 160 L 620 100 L 620 112 L 500 172 Z" fill="#092629" stroke="#C8F04A" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M500 40 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M460 60 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M420 80 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M540 60 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M500 80 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M460 100 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M580 80 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M540 100 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M500 120 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/>
+      </g>
+      <g class="tl-fade">
+        <text x="640" y="104" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="#FFFFFF" fill-opacity=".8">IHR BETRIEB</text>
+        <text x="640" y="134" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="#C8F04A">darauf bauen wir auf.</text>
+      </g>
+    </svg>
     <div class="hero grid2">
       <div>
         <h2 class="ht"><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Weniger Verbrauch, mehr Spielraum.</span></h2>
@@ -835,7 +855,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
 <script>
 (function(){{
-  var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link');
+  var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link,.bk-link');
   if(!('IntersectionObserver' in window)){{Array.prototype.forEach.call(els,function(e){{e.classList.add('on');}});return;}}
   var io=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{en.target.classList.add('on');io.unobserve(en.target);}}}});}},{{threshold:.6}});
   Array.prototype.forEach.call(els,function(e){{io.observe(e);}});
