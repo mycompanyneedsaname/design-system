@@ -619,12 +619,13 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <path class="tl-curve" pathLength="1" d="M241 8 C 241 110, 500 80, 500 200" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
       <path class="tl-curve" pathLength="1" d="M759 8 C 759 110, 500 80, 500 200" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
       <g class="tl-fade">
-        <text x="256" y="24" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="{PETROL}">RESSOURCEN</text>
-        <text x="744" y="24" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="{PETROL}">ENERGIE</text>
+        <text x="258" y="26" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="19" letter-spacing="-.01em" fill="{PETROL}">Ressourceneffizienz</text>
+        <text x="742" y="26" text-anchor="end" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="19" letter-spacing="-.01em" fill="{PETROL}">Energieeffizienz</text>
+        <rect x="511" y="174" width="262" height="14" fill="#C8F04A"/>
         <text x="516" y="186" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="{PETROL}">beides zusammen gedacht.</text>
       </g>
     </svg>
-    <p class="tl-m"><span class="lab">Ressourcen + Energie</span>beides zusammen gedacht.</p>
+    <p class="tl-m"><span class="lab">Ressourceneffizienz + Energieeffizienz</span><mark class="hl">beides zusammen gedacht.</mark></p>
   </div>
 </section>
 
