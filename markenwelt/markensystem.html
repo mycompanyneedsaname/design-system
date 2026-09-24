@@ -233,31 +233,35 @@
   .wp-h{font-size:clamp(30px,3.6vw,48px);color:#0F3B3F;margin-top:0;max-width:18ch}
   .wp-p{font-size:clamp(20px,2vw,26px);line-height:1.35;color:#0F3B3F;margin-top:22px;max-width:30ch}
   .wp-art{width:100%;height:auto;display:block}
-  .bk-cta{margin-top:8px;padding-bottom:16px;text-align:center}
-  .wp-proof{display:flex;gap:14px;align-items:baseline;margin-top:26px;max-width:34ch;color:#0F3B3F;font-size:17px;line-height:1.4}
-  .wp-proof .num{font-family:var(--mono);font-weight:500;font-size:30px;line-height:1;letter-spacing:-.02em;flex:none}
+  @media (min-width:981px){.wp-right{padding-top:40px}}
+  .bk-cta{margin-top:8px;padding-bottom:16px;text-align:left}
+  .wp-proof{display:flex;gap:12px;align-items:baseline;margin-top:24px;max-width:none;color:#0F3B3F;font-size:16px;line-height:1.4;opacity:.9}
+  .wp-proof .num{font-family:var(--mono);font-weight:500;font-size:21px;line-height:1;letter-spacing:-.02em;flex:none}
   .wp-mnotes{display:none;list-style:none;margin:14px 0 0;padding:0;font-family:var(--hand);font-weight:700;font-size:18px;line-height:1.3;color:#0F3B3F}
   .wp-mnotes li{display:grid;grid-template-columns:64px 1fr;gap:10px;padding-block:5px}
   .wp-mnotes .k{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;padding-top:5px}
   .tl-m{display:none;text-align:center;margin:36px 0 0;font-family:var(--hand);font-weight:700;font-size:22px;color:#0F3B3F}
   .tl-m .lab{display:block;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;opacity:.75}
-  .bk-how{text-align:center;max-width:44ch;margin:18px auto 26px;font-size:18px;line-height:1.45;color:rgba(255,255,255,.82)}
+  .bk-how{text-align:left;max-width:44ch;margin:18px 0 26px;font-size:18px;line-height:1.45;color:rgba(255,255,255,.82)}
   .bk-how b{color:#fff;font-weight:600}
   .bk-contact{margin:18px 0 0;font-size:15px;color:rgba(255,255,255,.7)}
   .bk-contact a{color:#fff;text-decoration:underline;text-underline-offset:3px}
   .site-foot{padding-block:22px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.7)}
   .site-foot .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
   .site-foot nav{display:flex;gap:20px}
+  .site-foot .fsig{display:inline-flex;align-items:center;gap:10px}
   .site-foot a{color:#fff;text-decoration:none}
   .site-foot a:hover{text-decoration:underline}
   .bk-stack .ht{font-size:clamp(36px,4.2vw,56px)}
   @media (max-width:640px){.wp-art .wp-note{display:none}.wp-mnotes{display:block}}
   @media (max-width:980px){.tl-m{display:block}.team-sec{padding-bottom:48px}}
-  .bk-stack{display:block;text-align:center;padding-top:20px}
+  .bk-stack{display:block;text-align:left;padding-top:20px;padding-bottom:20px}
   .bk-stack .ht{margin-top:0}
-  .bk-stack .ht .l2{max-width:none}
+  .bk-stack .ht .l2{max-width:26ch}
+  .bk-stack .ht{max-width:22ch}
   .bk-stack .cfg{max-width:640px;margin:40px auto 0}
   .bk-stack .chips{justify-content:center}
+  .bk-stack .chips .grp{text-align:center}
   .bk-stack .hnote{position:static;transform:rotate(-1.5deg);transform-origin:center;max-width:34ch;text-wrap:balance;text-align:center;font-size:21px;margin:0 auto 6px}
   .bk-stack .hnote svg{display:none}
   .bk-stack .cfg{margin-top:12px}
@@ -315,7 +319,7 @@
   }
   .team-sec{padding-bottom:0}
   #baukasten{padding-top:0}
-  .bk-link{display:block;width:100%;height:auto;overflow:visible}
+  .bk-link{display:block;width:100%;height:auto;overflow:visible;margin-bottom:-8px}
   .js .bk-link .tl-curve{stroke-dasharray:1;stroke-dashoffset:1}
   .js .bk-link .tl-dot{transform:scale(.6);opacity:0;transform-box:fill-box;transform-origin:center}
   .js .bk-link .tl-fade{opacity:0}
@@ -323,8 +327,8 @@
   .js .bk-link.on .tl-dot{transform:scale(1);opacity:1}
   .js .bk-link.on .tl-fade{opacity:1}
   @media (prefers-reduced-motion:no-preference){
-    .bk-link .tl-curve{transition:stroke-dashoffset .5s linear}
-    .bk-link .tl-dot{transition:transform .6s cubic-bezier(.2,.9,.3,1.2) .4s,opacity .4s ease-out .4s}
+    .bk-link .tl-curve{transition:stroke-dashoffset .9s linear}
+    .bk-link .tl-dot{transition:transform .6s cubic-bezier(.2,.9,.3,1.2) .8s,opacity .4s ease-out .8s}
     .bk-link .tl-fade{transition:opacity .5s ease-out .9s}
   }
   @media (max-width:980px){.team-link,.bk-link{display:none}.team-sec{padding-bottom:56px}#baukasten{padding-top:56px}}
