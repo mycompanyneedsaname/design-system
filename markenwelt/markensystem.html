@@ -179,13 +179,20 @@
   .cfg svg{width:100%;height:auto;display:block}
   .blk{transform-box:fill-box;transform-origin:center}
   .blk.new{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
+  .js #plate .blk.stone{opacity:0}
+  .js #plate.on .blk.stone{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+  #plate .blk.stone{transition:opacity .25s}
+  #plate.has .blk.stone:not(.hi){opacity:.42}
+  #plate .blk.stone.hi path[stroke="currentColor"]{stroke-width:2.4}
+  .chips .chip.hi{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .bk-note{margin:6px 0 0;min-height:1.5em;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.72);text-align:center}
   @keyframes rise{from{transform:translateY(-22px);opacity:0}}
   .slot{stroke-dasharray:4 4;opacity:.45}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chips button{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;border:1px solid var(--line-d);border-radius:10px;background:transparent;color:#fff;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
   .chips button svg{width:16px;height:16px}
   .chips button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-  .chips .chip{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 11px;border:1px solid var(--line-d);border-radius:10px;color:rgba(255,255,255,.85)}
+  .chips .chip{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 11px;border:1px solid var(--line-d);border-radius:10px;color:rgba(255,255,255,.85);background:transparent;cursor:default;transition:background .15s,color .15s}
   .tally{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;border-top:1px solid var(--line-d);padding-top:12px}
   .tally b{display:block;font-size:24px;font-weight:500;color:var(--accent);line-height:1.1}
   .tally span{opacity:.75}
@@ -212,7 +219,7 @@
   .light .korr .neu{color:var(--petrol);border-color:var(--petrol)}
   @keyframes strike{to{background-size:100% 2px}}
   @keyframes fade{to{opacity:1}}
-  @media (prefers-reduced-motion:reduce){.korr .alt{animation:none;background-size:100% 2px}.korr .neu{animation:none;opacity:1}.blk.new{animation:none}}
+  @media (prefers-reduced-motion:reduce){.korr .alt{animation:none;background-size:100% 2px}.korr .neu{animation:none;opacity:1}.blk.new{animation:none}.js #plate .blk.stone{opacity:1;animation:none}}
 
   /* Baukasten-Erklärung */
   .expl{border:1px solid var(--line-d);padding:16px 18px;display:grid;gap:8px}

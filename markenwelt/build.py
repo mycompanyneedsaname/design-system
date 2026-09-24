@@ -363,13 +363,20 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .cfg svg{{width:100%;height:auto;display:block}}
   .blk{{transform-box:fill-box;transform-origin:center}}
   .blk.new{{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}}
+  .js #plate .blk.stone{{opacity:0}}
+  .js #plate.on .blk.stone{{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}}
+  #plate .blk.stone{{transition:opacity .25s}}
+  #plate.has .blk.stone:not(.hi){{opacity:.42}}
+  #plate .blk.stone.hi path[stroke="currentColor"]{{stroke-width:2.4}}
+  .chips .chip.hi{{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}}
+  .bk-note{{margin:6px 0 0;min-height:1.5em;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.72);text-align:center}}
   @keyframes rise{{from{{transform:translateY(-22px);opacity:0}}}}
   .slot{{stroke-dasharray:4 4;opacity:.45}}
   .chips{{display:flex;flex-wrap:wrap;gap:8px}}
   .chips button{{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;border:1px solid var(--line-d);border-radius:10px;background:transparent;color:#fff;cursor:pointer;display:inline-flex;gap:8px;align-items:center}}
   .chips button svg{{width:16px;height:16px}}
   .chips button[aria-pressed="true"]{{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}}
-  .chips .chip{{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 11px;border:1px solid var(--line-d);border-radius:10px;color:rgba(255,255,255,.85)}}
+  .chips .chip{{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 11px;border:1px solid var(--line-d);border-radius:10px;color:rgba(255,255,255,.85);background:transparent;cursor:default;transition:background .15s,color .15s}}
   .tally{{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;border-top:1px solid var(--line-d);padding-top:12px}}
   .tally b{{display:block;font-size:24px;font-weight:500;color:var(--accent);line-height:1.1}}
   .tally span{{opacity:.75}}
@@ -396,7 +403,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .light .korr .neu{{color:var(--petrol);border-color:var(--petrol)}}
   @keyframes strike{{to{{background-size:100% 2px}}}}
   @keyframes fade{{to{{opacity:1}}}}
-  @media (prefers-reduced-motion:reduce){{.korr .alt{{animation:none;background-size:100% 2px}}.korr .neu{{animation:none;opacity:1}}.blk.new{{animation:none}}}}
+  @media (prefers-reduced-motion:reduce){{.korr .alt{{animation:none;background-size:100% 2px}}.korr .neu{{animation:none;opacity:1}}.blk.new{{animation:none}}.js #plate .blk.stone{{opacity:1;animation:none}}}}
 
   /* Baukasten-Erklärung */
   .expl{{border:1px solid var(--line-d);padding:16px 18px;display:grid;gap:8px}}
@@ -649,6 +656,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div class="cfg" id="cfg">
         <div id="plate" style="color:var(--accent)"></div>
         <div class="chips" id="chips" aria-label="Die neun Handlungsfelder"></div>
+        <p class="bk-note" id="bk-note" aria-live="polite"></p>
       </div>
     </div>
   </div>
@@ -944,7 +952,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     var L=[iso(x,y+d,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
     var R=[iso(x+w,y,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x+w,y,z+h)];
     var sil=[T[0],T[1],R[0],R[1],L[0],T[3]], rad=h<.5?6:11, sp=rpath(sil,rad), k='bc'+(cid++);
-    var o='<g class="blk '+(cls||'')+'">'+(title?'<title>'+title+'</title>':'');
+    var o='<g class="blk '+(cls||'')+'"'+(id?' data-id="'+id+'"':'')+'>'+(title?'<title>'+title+'</title>':'');
     o+='<clipPath id="'+k+'"><path d="'+sp+'"/></clipPath><g clip-path="url(#'+k+')">';
     o+='<polygon points="'+P(L)+'" fill="#0B3236"/><polygon points="'+P(R)+'" fill="#0E393D"/><polygon points="'+P(T)+'" fill="#14474C"/>';
     for(var i=1;i<hatch;i++){{var t=i/hatch;var a=[R[0][0]+(R[1][0]-R[0][0])*t,R[0][1]+(R[1][1]-R[0][1])*t];var b=[R[3][0]+(R[2][0]-R[3][0])*t,R[3][1]+(R[2][1]-R[3][1])*t];
@@ -984,12 +992,13 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         parts.push('<path class="slot" d="'+rpath(q,8)+'" fill="none" stroke="currentColor" stroke-width="1"/>');}}
     }});
     items.sort(function(a,b){{return (a.x+a.y)-(b.x+b.y);}}).forEach(function(it){{
-      if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,fresh[it.f.id]?'new':'',it.f.n+' · '+PR[it.f.id],it.f.id));
+      if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,'stone',it.f.n+' · '+PR[it.f.id],it.f.id));
     }});
     var c=iso(px,py,0), l=iso(0,py,0), r=iso(px,0,0), t=iso(0,0,3.8);
     var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+14;
     plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+'</svg>';
     fresh={{}};
+    Array.prototype.forEach.call(plateEl.querySelectorAll('.blk.stone'),function(g,i){{g.style.animationDelay=(0.12+i*0.11)+'s';}});
   }}
   var NOTE={{strom:'Strom: erst den Lastgang, dann die Technik.',waerme:'Wärme: oft hilft schon ein Abgleich.',kaelte:'Kälte: läuft die Maschine nachts durch?',druckluft:'Druckluft: wir hören erst nach Leckagen.',speicher:'Speicher: nur, wenn die Lastspitze es hergibt.',material:'Material: im Verschnitt steckt oft mehr als im Strom.',wasser:'Wasser: geht das im Kreis?',reststoffe:'Reststoffe: Ausschuss ist bezahltes Material.',betriebsstoffe:'Betriebsstoffe: Öle und Gase zählen mit.'}};
   var hn=document.getElementById('hnote'), ht=document.getElementById('hnote-t');
@@ -997,8 +1006,22 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   var curG='';
   F.forEach(function(f){{
     if(f.g!==curG){{curG=f.g; var lb=document.createElement('span'); lb.className='grp'; lb.textContent=f.g; chips.appendChild(lb);}}
-    var b=document.createElement('span');b.className='chip';b.dataset.id=f.id;b.textContent=f.n;
+    var b=document.createElement('button');b.type='button';b.className='chip';b.dataset.id=f.id;b.textContent=f.n;
+    var on=function(){{hi(f.id);}};
+    b.addEventListener('mouseenter',on);b.addEventListener('focus',on);b.addEventListener('click',on);
     chips.appendChild(b);}});
+  var noteEl=document.getElementById('bk-note'), cur='';
+  function hi(id){{
+    cur=id; chips.classList.add('has');
+    Array.prototype.forEach.call(chips.querySelectorAll('.chip'),function(c){{c.classList.toggle('hi',c.dataset.id===id);}});
+    plateEl.classList.add('has');
+    Array.prototype.forEach.call(plateEl.querySelectorAll('.blk.stone'),function(g){{g.classList.toggle('hi',g.dataset.id===id);}});
+    if(noteEl) noteEl.textContent=NOTE[id]||'';
+  }}
+  if('IntersectionObserver' in window){{
+    var cio=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{plateEl.classList.add('on');cio.unobserve(en.target);}}}});}},{{threshold:.4}});
+    cio.observe(plateEl);
+  }} else plateEl.classList.add('on');
   render();
 
 }})();
