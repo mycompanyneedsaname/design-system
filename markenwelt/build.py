@@ -387,7 +387,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </div>
     <div class="hero grid2">
       <div>
-        <h1>Ihr Effizienz-Baukasten.<span class="l2">Gemessen, nachgerechnet, in Ihrer Reihenfolge umgesetzt.</span></h1>
+        <h1>Ihr Effizienz-Baukasten.<span class="l2">Gemessen. Nachgerechnet. Umgesetzt.</span></h1>
         <p class="sub">Zwei Ingenieure, ein Büro für Energie und Material. Wir kommen in Ihren Betrieb, messen jedes Handlungsfeld, rechnen jede Maßnahme durch und setzen sie mit Ihnen um, Stein für Stein. Wählen Sie rechts, wo es bei Ihnen hakt.</p>
         <div class="actions"><a class="cta" href="#kompass">Kostenfreies Erstgespräch</a><a class="cta ghost" href="#baukasten">Den Baukasten ansehen</a></div>
       </div>
