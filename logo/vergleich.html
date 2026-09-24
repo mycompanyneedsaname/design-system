@@ -1,0 +1,58 @@
+<title>Wendepunkt Kurvenvergleich</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F7F5F0;--fg:#1A1A18;--muted:#555A5A;--line:#D8D3C8;--card:#FFFFFF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111615;--fg:#EDEDEA;--muted:#A3A8A6;--line:#2E3634;--card:#18201F;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111615;--fg:#EDEDEA;--muted:#A3A8A6;--line:#2E3634;--card:#18201F;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:40px 64px}
+h1{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;line-height:1.1;margin:8px 0 12px;text-wrap:balance}
+.eb{font:500 12px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:62ch;margin:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.col{background:var(--card);border:1px solid var(--line);padding:22px}
+.col h2{font-size:18px;margin:0 0 14px}
+.box{display:flex;align-items:center;justify-content:center;min-height:150px;border:1px solid var(--line);margin-bottom:10px}
+.lock{display:flex;align-items:center;gap:14px;line-height:1.02}
+.w1{font-weight:600;font-size:24px;letter-spacing:-.015em}.w2{font-weight:400;font-size:24px}
+.favs{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin:14px 0}
+.fav{display:grid;place-items:center;border:1px solid var(--line)}.f32{width:32px;height:32px}.f16{width:16px;height:16px}
+.read{margin:0 0 10px}
+ul{margin:0;padding:0;list-style:none;font-size:14.5px;display:grid;gap:6px}
+li{padding-left:22px;position:relative}
+li::before{position:absolute;left:0;font:600 14px "IBM Plex Mono",monospace}
+.p::before{content:"+";color:#2F7A45}.c::before{content:"−";color:#B04A2E}
+.math{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.math figure{margin:0;background:var(--card);border:1px solid var(--line);padding:16px}
+.math svg{width:100%;height:auto;display:block}
+.math figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
+@media (max-width:760px){.grid,.math{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+  <div class="eb">Logo · Kurvenvergleich</div>
+  <h1>Zwei Kurven, beide echte Wendepunkte</h1>
+  <p class="lede">Beide Kurven wechseln am Punkt ihre Krümmung und sind damit mathematisch Wendepunkte. Der Unterschied liegt darin, wo die Kurve am Punkt steht: links ist sie dort am steilsten, rechts am flachsten.</p>
+  <div class="grid">
+    <article class="col">
+  <h2>Heute: steilste Stelle am Punkt</h2>
+  <div class="box" style="background:#FFFFFF"><div class="lock" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1">Wendepunkt</div><div class="w2">Ingenieure</div></div></div></div>
+  <div class="box" style="background:#0F3B3F"><div class="lock" style="color:#FFFFFF"><svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1">Wendepunkt</div><div class="w2">Ingenieure</div></div></div></div>
+  <div class="favs"><span class="fav f32" style="background:#0F3B3F"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><circle cx="32" cy="32" r="8" fill="#D9A441"/></svg></span><span class="fav f32" style="background:#FFFFFF"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="7" stroke-linecap="round"/><circle cx="32" cy="32" r="8" fill="#D9A441"/></svg></span><span class="fav f16" style="background:#0F3B3F"><svg viewBox="0 0 64 64" width="14" height="14" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/><circle cx="32" cy="32" r="10" fill="#D9A441"/></svg></span><span>32 px und 16 px</span></div>
+  <p class="read">Der Anstieg wird immer schneller, am Punkt wird er gebremst und läuft ruhig aus. Das heißt: Die Kosten laufen davon, mit uns kommt Ruhe hinein.</p>
+  <ul><li class="p">Mathematisch sauber, ruhig, kein Wachstumspfeil. Das Ende ist flach und liest sich als „stabil“.</li><li class="c">Wer „Wende = es geht aufwärts“ erwartet, sieht hier eher Beruhigung als Aufbruch.</li></ul>
+</article>
+    <article class="col">
+  <h2>Deine Skizze: flachste Stelle am Punkt</h2>
+  <div class="box" style="background:#FFFFFF"><div class="lock" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><path d="M6 60 C 8 42, 18 34, 32 32 C 46 30, 56 22, 58 4" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1">Wendepunkt</div><div class="w2">Ingenieure</div></div></div></div>
+  <div class="box" style="background:#0F3B3F"><div class="lock" style="color:#FFFFFF"><svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true"><path d="M6 60 C 8 42, 18 34, 32 32 C 46 30, 56 22, 58 4" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1">Wendepunkt</div><div class="w2">Ingenieure</div></div></div></div>
+  <div class="favs"><span class="fav f32" style="background:#0F3B3F"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true"><path d="M6 60 C 8 42, 18 34, 32 32 C 46 30, 56 22, 58 4" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><circle cx="32" cy="32" r="8" fill="#D9A441"/></svg></span><span class="fav f32" style="background:#FFFFFF"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true"><path d="M6 60 C 8 42, 18 34, 32 32 C 46 30, 56 22, 58 4" fill="none" stroke="#0F3B3F" stroke-width="7" stroke-linecap="round"/><circle cx="32" cy="32" r="8" fill="#D9A441"/></svg></span><span class="fav f16" style="background:#0F3B3F"><svg viewBox="0 0 64 64" width="14" height="14" aria-hidden="true"><path d="M6 60 C 8 42, 18 34, 32 32 C 46 30, 56 22, 58 4" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/><circle cx="32" cy="32" r="10" fill="#D9A441"/></svg></span><span>32 px und 16 px</span></div>
+  <p class="read">Der Schwung lässt nach, am Punkt steht die Kurve fast still, danach zieht sie wieder an. Das heißt: Es stockt, mit uns geht es wieder aufwärts.</p>
+  <ul><li class="p">Emotional stärker: erst Stillstand, dann Aufbruch. Ebenfalls ein echter Wendepunkt, sogar der Lehrbuchfall wie bei y = x³.</li><li class="c">Endet steil nach oben und liegt damit näher am Wachstumspfeil, den das Briefing vermeiden will. In 16 px wird die Form schnell zu einem schrägen Strich.</li></ul>
+</article>
+  </div>
+  <div class="math">
+    <figure><svg viewBox="0 0 240 150" aria-hidden="true"><path d="M20 130 H230 M20 130 V10" stroke="var(--line)" stroke-width="1.5" fill="none"/><path d="M24 126 C 110 126 130 24 226 24" stroke="var(--fg)" stroke-width="3" fill="none"/><circle cx="125" cy="75" r="5" fill="#D9A441"/><path d="M95 118 L155 32" stroke="#D9A441" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/></svg><figcaption>Heute: Die Tangente am Punkt ist am steilsten.</figcaption></figure>
+    <figure><svg viewBox="0 0 240 150" aria-hidden="true"><path d="M20 130 H230 M20 130 V10" stroke="var(--line)" stroke-width="1.5" fill="none"/><path d="M26 140 C 34 90, 70 78, 125 75 C 180 72, 216 60, 224 10" stroke="var(--fg)" stroke-width="3" fill="none"/><circle cx="125" cy="75" r="5" fill="#D9A441"/><path d="M75 77 L175 73" stroke="#D9A441" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/></svg><figcaption>Skizze: Die Tangente am Punkt ist fast waagerecht. Genau waagerecht wäre es ein Sattelpunkt.</figcaption></figure>
+  </div>
+</div>
