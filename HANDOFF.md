@@ -5,7 +5,7 @@
 Die Gründer arbeiten an der **Markenwelt**: Deliverable 1 aus dem Briefing, jetzt als ausgearbeitete Startseite plus Markensystem. Sie geben Feedback per Kommentar direkt im Artifact.
 
 **Live-Seite (Hauptarbeit):** https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP
-(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 18, privat. Die Freigabe macht der Nutzer über das Share-Menü.
+(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 25, privat. Die Freigabe macht der Nutzer über das Share-Menü.
 
 Weitere Artifacts:
 - Logo-Kurvenvergleich (abgeschlossen): https://claude.ai/artifact/UsjPbmEEpBYStt4gh1TZeu
@@ -15,7 +15,7 @@ Aus einer neuen Session ein Artifact **immer mit `url`** neu veröffentlichen un
 
 ## Aufbau der Markenwelt-Seite (von oben nach unten)
 
-1. **Hero** (Petrol): Logo, Navigation, Farbschalter „Marker“. Headline „Unser Versprechen: / Der Modulare Effizienz-Baukasten.“, Unterzeile, kurzer Text. Rechts ein **klickbarer isometrischer Baukasten** mit abgerundeten Steinen und neun Handlungsfeldern auf einer 3×3-Grundplatte in zwei Gruppen: Energie (Strom, Wärme, Kälte, Druckluft, Speicher), Ressourcen (Material, Wasser, Reststoffe, Betriebsstoffe). PV ist auf Wunsch gestrichen. Jeder Stein trägt oben ein Medien-Symbol, einige davon mit animiertem Fluss, und vorne den Prozess (Antriebe, Härteofen, Kältemaschine, Kompressor, Stanzlinie, Spülbad, Ausschuss, Kühlschmierstoff, Lastspitze). Unter der Zeichnung stehen nur die Auswahl-Buttons. **Persönliche Handschrift:** Über dem Baukasten steht eine handschriftliche Notiz mit Pfeil: „Wir kommen zu Ihnen, messen nach und setzen mit Ihnen um, was sich rechnet. Stück für Stück.“ Sie wechselt beim Hinzufügen eines Steins (z. B. „Druckluft: wir hören erst nach Leckagen.“). Derzeit ist das Kalam, später soll es echte Handschrift werden. Der getippte Einleitungstext und die Unterschrift „Micha & Tobias“ sind auf Wunsch gestrichen. Erklär-Box, Zahlenzeile, Beschriftung und Hero-Buttons wurden auf Wunsch gelöscht.
+1. **Hero** (Petrol): Logo, Navigation, Farbschalter „Marker“. Links nur „Unser Versprechen:“ / „Der Modulare Effizienz-Baukasten.“ / „Weniger Verbrauch, mehr Spielraum.“ Rechts ein **klickbarer isometrischer Baukasten** mit abgerundeten Steinen und neun Handlungsfeldern auf einer 3×3-Grundplatte in zwei Gruppen: Energie (Strom, Wärme, Kälte, Druckluft, Speicher), Ressourcen (Material, Wasser, Reststoffe, Betriebsstoffe). PV ist auf Wunsch gestrichen. Jeder Stein trägt oben ein Medien-Symbol, einige davon mit animiertem Fluss, und vorne den Prozess (Antriebe, Härteofen, Kältemaschine, Kompressor, Stanzlinie, Spülbad, Ausschuss, Kühlschmierstoff, Lastspitze). Unter der Zeichnung stehen nur die Auswahl-Buttons. **Persönliche Handschrift:** Über dem Baukasten steht eine handschriftliche Notiz mit Pfeil: „Wir kommen zu Ihnen, messen nach und setzen mit Ihnen um, was sich rechnet. Stück für Stück.“ Sie wechselt beim Hinzufügen eines Steins (z. B. „Druckluft: wir hören erst nach Leckagen.“). Derzeit ist das Kalam, später soll es echte Handschrift werden. Der getippte Einleitungstext und die Unterschrift „Micha & Tobias“ sind auf Wunsch gestrichen. Erklär-Box, Zahlenzeile, Beschriftung und Hero-Buttons wurden auf Wunsch gelöscht.
 2. **Wendepunkt-Sektion** (Sand): Satz, Kontakt-Button in Lime, große animierte Kurve mit Punkt und „hier.“. Von den Gründern ausdrücklich geliebt.
 3. **Signaturelement**: drei Beispiele mit Korrekturzeichen.
 4. **Baukasten-Übersicht**: zwölf isometrische Module.
@@ -27,10 +27,13 @@ Aus einer neuen Session ein Artifact **immer mit `url`** neu veröffentlichen un
 
 ## Offene Punkte
 
+- **Offener Kommentar-Thread** `b2ecf904-e9a3-4ddd-93d3-e3ef5e4e16fe` zur Unterzeile: gesetzt ist „Weniger Verbrauch, mehr Spielraum.“, angeboten wurden „Effizienz, die sich rechnet.“ und „Weniger Energie. Weniger Material. Mehr Luft.“ Antwort der Gründer abwarten, dann ggf. tauschen und den Thread auflösen.
+- **Offener Kommentar-Thread** `c4f123c5-264b-48ad-ad31-030e61e93764` zur Feld-Gruppierung: Frage, ob die Baukasten-Übersicht weiter unten nachgezogen werden soll. Gruppierung wurde seitdem weiter angepasst (Speicher zu Energie, PV gestrichen).
+
 - **Akzentfarbe:** Lime ist Favorit, aber noch nicht entschieden. Der Schalter bleibt, bis die Gründer festlegen. Danach Schalter entfernen und die Farbe fest setzen. Dabei prüfen: Ein Lime-Punkt im Logo auf hellem Grund hat wenig Kontrast. Eventuell bleibt der Punkt auf hellen Flächen petrol- oder ockerfarben.
-- **Baukasten-Übersicht weiter unten** (zwölf Module) mischt noch Leistungen (Messen, Nachrechnen …) und alte Medien (Abwärme, PV, Speicher einzeln). Sollte an die neue Gruppierung aus dem Hero angepasst werden.
+- **Baukasten-Übersicht weiter unten** (zwölf Module) mischt noch Leistungen (Messen, Nachrechnen …) und alte Medien (Abwärme, PV, Speicher einzeln). Auch Plakat 02 und die Handschrift-Notizen am Foto nennen teils noch alte Felder. Sollte an die neue Gruppierung aus dem Hero angepasst werden.
 - **Abschnitte 3 bis 9** haben noch kein direktes Feedback bekommen. Sie enthalten noch Texte, die zum neuen Stand passen sollten. Nach Tagen oder „Effizienz-Kompass“ ist bereits bereinigt.
-- **Handschrift:** Kalam ist Platzhalter. Angebot an die Gründer: echte Handschrift von Micha oder Tobias. Dafür braucht es ein Foto mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und einem Häkchen, mit Filzstift geschrieben.
+- **Handschrift:** Kalam ist Platzhalter und den Gründern besonders wichtig („die Leute haben keinen Bock mehr auf KI“). Angefragt: ein Foto mit der Standard-Notiz und den neun Feld-Notizen, mit dickem Filzstift auf weißem Papier. Dann als SVG-Pfade oder als eigene Schrift einbauen.
 - **Gründerfotos und echte Referenzen** fehlen noch. Alle Zahlen auf der Seite sind Beispielwerte.
 - **Pull Request:** Das Repo hat nur den Branch `claude/new-session-syvaun`. Einen PR gibt es erst, wenn ein Basis-Branch wie `main` existiert.
 

@@ -25,6 +25,7 @@ Sprache mit dem Nutzer: **Deutsch**. Commit-Messages: Englisch.
    const b = await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});
    ```
    Google Fonts sind in der Sandbox gesperrt, lokal rendern also Ersatzschriften. Auf der veröffentlichten Seite laden sie korrekt.
+   Screenshots immer unter **neuem Dateinamen** speichern: Das Read-Tool zeigt sonst ein zwischengespeichertes altes Bild.
 4. Committen und auf `claude/new-session-syvaun` pushen.
 5. Artifact neu veröffentlichen: Artifact-Tool, `file_path` = `markenwelt/index.html`. Aus einer neuen Session **mit `url`** veröffentlichen (siehe HANDOFF.md), sonst entsteht ein neues Artifact.
 
@@ -38,6 +39,10 @@ Die Gründer kommentieren direkt im Artifact („Send to Claude“). Ablauf pro 
 - **Produktname:** „Der Modulare Effizienz-Baukasten“. Nicht „Effizienz-Kompass“. **Keine Tagesangaben** (kein „2 + 2 Tage“, kein „vier Tage“).
 - **Hero-Headline:** „Unser Versprechen:“ (klein) / „Der Modulare Effizienz-Baukasten.“ / „Weniger Verbrauch, mehr Spielraum.“
 - **Wendepunkt-Sektion** direkt unter dem Hero: „Der Wendepunkt ist der Moment, ab dem es anders läuft.“ / „Wir suchen ihn gemeinsam mit Ihnen.“ / Button „Kostenfreies Erstgespräch“ (hellgrün #C8F04A, Petrol-Rahmen, ohne Icon). Der Kontakt-Button steht nur hier, nicht im Hero.
+- **Hero-Baukasten:** neun Handlungsfelder auf 3×3-Grundplatte, zwei Gruppen. Energie: Strom, Wärme, Kälte, Druckluft, Speicher. Ressourcen: Material, Wasser, Reststoffe, Betriebsstoffe. **Kein PV**, keine Gruppe „Eigenerzeugung“. Steine abgerundet, oben Medien-Symbol, vorne Prozessname (passt sich der Breite an). Unter der Zeichnung nur die Auswahl-Buttons, **keine** Erklär-Box, Zahlenzeile oder Beschriftung.
+- **Persönliche Handschrift:** Die Gründer wollen „keine KI-Anmutung, sondern unsere Handschrift“. Über dem Baukasten steht eine handschriftliche Notiz mit Pfeil (Standard: „Wir kommen zu Ihnen, messen nach und setzen mit Ihnen um, was sich rechnet. Stück für Stück.“), die beim Hinzufügen eines Steins zur Bemerkung für dieses Feld wechselt (`NOTE` im JS). Im Hero links steht **kein** getippter Einleitungstext und **keine** Unterschrift.
+- **Navigation:** Effizienz-Baukasten · Praxisbeispiele · Team (nicht „Büro“).
+- **Ecken:** Die Gründer wollen es „runder“. Buttons 10 bis 12 px Radius, Baukasten-Steine mit weicher Silhouette. Das überstimmt die Briefing-Regel gegen Rundungen, Schatten bleiben aber tabu.
 - **Signaturelement:** Korrekturzeichen nach DIN 16511 (feine 2-px-Streichung, nummeriertes Zeichen, korrigierter Wert in Mono am Rand). Kein dicker Marker-Strich, keine Marker-Schrift.
 - **Kein Punktraster** im Hintergrund.
 - **Farben:** Petrol #0F3B3F, Tiefe #071F22, Papier #F7F5F0, Sand #E9E1CF, Nebel #EEF0EC. Marker-/Akzentfarbe ist **noch offen**: Schalter mit Ocker #D9A441, Lime #C8F04A, Mint #5DE3A1, Terrakotta #E4744C. Die Gründer mögen Lime. Die Wendepunkt-Sektion ist fest auf Lime gesetzt.
@@ -45,7 +50,7 @@ Die Gründer kommentieren direkt im Artifact („Send to Claude“). Ablauf pro 
 
 ## Tabus aus dem Briefing
 
-Keine Verläufe, keine Pill-Buttons, keine abgerundeten Karten mit Schatten, kein zentrierter Hero mit zwei Buttons, keine Windräder, Glühbirnen, Blätter oder Weltkugeln, kein Inter, keine pauschale ROI-Zahl im Hero, kein Beratersprech. Kontrast mindestens WCAG AA. Ocker auf Weiß ist nie Schrift (2,3 : 1).
+Keine Verläufe, keine Pill-Buttons, keine Karten mit Schatten, kein zentrierter Hero mit zwei Buttons, keine Windräder, Glühbirnen, Blätter oder Weltkugeln, kein Inter, keine pauschale ROI-Zahl im Hero, kein Beratersprech. Kontrast mindestens WCAG AA. Ocker auf Weiß ist nie Schrift (2,3 : 1).
 
 ## Git
 
