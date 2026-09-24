@@ -402,7 +402,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .bc-head{{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}}
   .bc-rows{{list-style:none;margin:0;padding:0}}
   .bc-rows li{{display:grid;grid-template-columns:auto 1fr auto;gap:0 10px;padding:4px 0;border-bottom:1px dashed rgba(255,255,255,.22);align-items:baseline;transition:opacity .2s}}
-  .bc-rows li.off{{opacity:.38}}
+  .bc-rows li.ph{{visibility:hidden}}
   .bc-rows .bc-f{{color:#fff;font-weight:500}}
   .bc-rows .bc-m{{color:rgba(255,255,255,.7);font-family:var(--sans);font-size:13px}}
   .bc-rows b{{font-weight:500;color:#fff;text-align:right;font-variant-numeric:tabular-nums}}
@@ -703,7 +703,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="hero bk-stack">
       <div class="bk-l">
         <h2 class="ht"><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Weniger Verbrauch, mehr Spielraum.</span></h2>
-        <p class="bk-how">Für jede Maßnahme: <b>messen</b>, <b>nachrechnen</b>, <b>umsetzen</b>. Sie entscheiden, welche wir angehen.</p>
+        <p class="bk-how">Für jede Maßnahme: <b>messen</b>, <b>nachrechnen</b>, <b>umsetzen</b>. Wir entscheiden gemeinsam, welche wir angehen.</p>
         <div class="bk-cta" id="kontakt">
           <a class="wp-cta" href="mailto:kontakt@wendepunkt-ingenieure.de?subject=Kostenfreies%20Erstgespr%C3%A4ch">Kostenfreies Erstgespräch vereinbaren</a>
         </div>
@@ -1074,8 +1074,10 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   function calc(){{
     if(!rowsEl) return;
     var sum=0, h='';
-    F.forEach(function(f){{ if(!EX[f.id]) return; var on=!!sel[f.id]; if(on) sum+=EX[f.id][1];
-      h+='<li class="'+(on?'on':'off')+'"><span class="bc-f">'+f.n+'</span><span class="bc-m">'+EX[f.id][0]+'</span><b>'+(on?'−'+EX[f.id][1]+' %':'–')+'</b></li>'; }});
+    var n=0;
+    F.forEach(function(f){{ if(!EX[f.id]||!sel[f.id]) return; n++; sum+=EX[f.id][1];
+      h+='<li><span class="bc-f">'+f.n+'</span><span class="bc-m">'+EX[f.id][0]+'</span><b>−'+EX[f.id][1]+' %</b></li>'; }});
+    for(var k=n;k<F.length;k++) h+='<li class="ph" aria-hidden="true"><span class="bc-f">&nbsp;</span><span class="bc-m">&nbsp;</span><b>&nbsp;</b></li>';
     rowsEl.innerHTML=h;
     totEl.textContent='−'+sum+' %';
     totEl.classList.remove('tick'); void totEl.offsetWidth; totEl.classList.add('tick');
