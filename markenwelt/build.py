@@ -433,7 +433,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .pers-ph .ini{{font:500 34px/1 var(--mono);color:{PETROL};opacity:.35}}
   .pers-ph .ph-note{{position:absolute;right:8px;top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;background:rgba(247,245,240,.85);color:{PETROL};padding:3px 6px;border-radius:6px}}
   .pers-role{{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}}
-  .pers h3{{font-size:24px;margin-top:6px;color:{PETROL}}}
+  .pers h3{{font-size:24px;margin-top:0;color:{PETROL}}}
   .pers p{{margin-top:10px;font-size:15.5px;max-width:44ch}}
   .pers .pers-q{{font-family:var(--hand);font-weight:700;font-size:22px;line-height:1.2;color:{PETROL};transform:rotate(-2deg);transform-origin:left;margin-top:14px}}
   .hl{{color:inherit;background:linear-gradient(transparent 38%,#C8F04A 38%,#C8F04A 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .15em}}
@@ -504,18 +504,16 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <article class="pers">
         <div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div>
         <div>
-          <span class="pers-role">Ressourceneffizienz</span>
           <h3>Michael Schenk</h3>
-          <p>Michael war in rund 150 Betrieben. In den meisten hat er in der ersten Stunde die ersten Maßnahmen gefunden. Er übersetzt Technik und Wirtschaftlichkeit in Maßnahmen, die man versteht und nachvollziehen kann.</p>
+          <p>Michael kümmert sich bei uns um die Ressourceneffizienz. Er war in rund 150 Betrieben. In den meisten hat er in der ersten Stunde die ersten Maßnahmen gefunden. Er übersetzt Technik und Wirtschaftlichkeit in Maßnahmen, die man versteht und nachvollziehen kann.</p>
           <p class="pers-q"><span>„Der Blick von außen wirkt.“</span></p>
         </div>
       </article>
       <article class="pers">
         <div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div>
         <div>
-          <span class="pers-role">Energieeffizienz</span>
           <h3>Tobias Wintsche</h3>
-          <p>Tobias prüft Energiesysteme auf ihre Vor- und Nachteile und fügt sie zu einem Ganzen zusammen. Lieber einfach und ausgereift als übertechnisiert, damit es auch nach uns noch jeder im Betrieb versteht.</p>
+          <p>Tobias kümmert sich bei uns um die Energieeffizienz. Er prüft Energiesysteme auf ihre Vor- und Nachteile und fügt sie zu einem Ganzen zusammen. Lieber einfach und ausgereift als übertechnisiert, damit es auch nach uns noch jeder im Betrieb versteht.</p>
           <p class="pers-q"><span>„Gute Energiesysteme sind oft ganz simpel.“</span></p>
         </div>
       </article>
