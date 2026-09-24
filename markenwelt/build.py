@@ -122,10 +122,16 @@ def logo(curve, dot, text, size=64, w1=22, sub=True, mono=None):
 
 def portrait(v):
     # Platzhalter-Porträt als Duotone-Zeichnung (kein echtes Foto)
+    # v=1 Michael: Haare, Brille. v=2 Tobias: Glatze mit Brille (Wunsch 24.09.).
     hair = ('<path d="M38 64 C 36 40, 50 30, 62 31 C 76 31, 86 42, 83 64 C 80 52, 74 46, 62 46 C 50 46, 42 52, 38 64 Z" fill="#0A2C2F"/>' if v == 1 else
-            '<path d="M37 62 C 34 36, 52 26, 64 28 C 80 30, 88 44, 84 62 C 82 56, 78 50, 72 48 C 62 52, 48 50, 42 46 C 40 52, 38 56, 37 62 Z" fill="#0A2C2F"/>')
-    extra = ('<g fill="none" stroke="#E9E1CF" stroke-width="2"><rect x="44" y="62" width="14" height="10" rx="4"/><rect x="64" y="62" width="14" height="10" rx="4"/><path d="M58 66 h6"/></g>' if v == 1 else
-             '<path d="M44 84 C 50 98, 72 98, 78 84 C 76 92, 70 96, 61 96 C 52 96, 46 92, 44 84 Z" fill="#0A2C2F" opacity=".55"/>')
+            '<path d="M44 48 C 50 42, 72 42, 78 48" fill="none" stroke="#DCE8E9" stroke-width="2" stroke-linecap="round" opacity=".55"/>')
+    glasses = '<g fill="none" stroke="#E9E1CF" stroke-width="2"><rect x="44" y="62" width="14" height="10" rx="4"/><rect x="64" y="62" width="14" height="10" rx="4"/><path d="M58 66 h6"/></g>'
+    extra = glasses if v == 1 else (glasses + '<path d="M44 84 C 50 98, 72 98, 78 84 C 76 92, 70 96, 61 96 C 52 96, 46 92, 44 84 Z" fill="#0A2C2F" opacity=".55"/>')
+    # Fachgebiet-Symbol in der Ecke: Material (Ressourcen) bzw. Strom (Energie)
+    sym = ICONS["Material"] if v == 1 else ICONS["Strom"]
+    bx = 98 if v == 1 else 22
+    badge = (f'<g transform="translate({bx} 20)"><circle r="15" fill="#C8F04A"/>'
+             f'<g transform="translate(-11 -11) scale(.55)" fill="none" stroke="{PETROL}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">{sym}</g></g>')
     return (f'<svg class="pers-img" viewBox="0 0 120 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'
             f'<rect width="120" height="150" fill="#DCD2BC"/>'
             f'<rect x="{8 if v == 1 else 70}" y="14" width="42" height="56" rx="3" fill="#EFE9DB"/>'
@@ -134,7 +140,7 @@ def portrait(v):
             f'<path d="M50 108 L 61 124 L 72 108" fill="none" stroke="#C8F04A" stroke-width="3" stroke-linejoin="round"/>'
             f'<rect x="52" y="90" width="18" height="20" fill="#4F7478"/>'
             f'<ellipse cx="61" cy="66" rx="23" ry="28" fill="#6B8E91"/>'
-            f'{hair}{extra}</svg>')
+            f'{hair}{extra}{badge}</svg>')
 
 ICONS = {
  "Messen": '<path d="M7 30 A 13 13 0 1 1 33 30"/><path d="M20 27 l 7 -11"/><circle cx="20" cy="28" r="1.6" fill="currentColor" stroke="none"/><path d="M6 33 h28"/>',
