@@ -498,7 +498,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 <section class="light" id="team">
   <div class="wrap">
     <div class="sec-head">
-      <h2>Wir nehmen es persönlich.</h2>
+      <h2>Wir nehmen es <mark class="hl">persönlich</mark>.</h2>
     </div>
     <div class="team">
       <article class="pers">
