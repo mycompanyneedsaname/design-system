@@ -482,7 +482,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .bk-contact{{margin:18px 0 0;font-size:15px;color:rgba(255,255,255,.7)}}
   .bk-contact a{{color:#fff;text-decoration:underline;text-underline-offset:3px}}
   .site-foot{{padding-block:22px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.7)}}
-  .site-foot .wrap{{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}}
+  .site-foot .wrap{{display:flex;justify-content:flex-end;gap:12px 24px;flex-wrap:wrap}}
   .site-foot nav{{display:flex;gap:20px}}
   .site-foot .fsig{{display:inline-flex;align-items:center;gap:10px}}
   .site-foot a{{color:#fff;text-decoration:none}}
