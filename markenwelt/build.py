@@ -369,6 +369,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .chips button{{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;border:1px solid var(--line-d);border-radius:10px;background:transparent;color:#fff;cursor:pointer;display:inline-flex;gap:8px;align-items:center}}
   .chips button svg{{width:16px;height:16px}}
   .chips button[aria-pressed="true"]{{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}}
+  .chips .chip{{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 11px;border:1px solid var(--line-d);border-radius:10px;color:rgba(255,255,255,.85)}}
   .tally{{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;border-top:1px solid var(--line-d);padding-top:12px}}
   .tally b{{display:block;font-size:24px;font-weight:500;color:var(--accent);line-height:1.1}}
   .tally span{{opacity:.75}}
@@ -647,7 +648,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       </div>
       <div class="cfg" id="cfg">
         <div id="plate" style="color:var(--accent)"></div>
-        <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
+        <div class="chips" id="chips" aria-label="Die neun Handlungsfelder"></div>
       </div>
     </div>
   </div>
@@ -969,7 +970,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     {{g:'Ressourcen',id:'reststoffe',n:'Reststoffe',h:1.3,hatch:4}},{{g:'Ressourcen',id:'betriebsstoffe',n:'Betriebsstoffe',h:1.2,hatch:0}}];
   var last='strom', why=document.getElementById('why');
   function explain(){{}}
-  var sel={{strom:1,waerme:1,druckluft:1,material:1}}, fresh={{}};
+  var sel={{}}, fresh={{}}; F.forEach(function(f){{sel[f.id]=1;}});
   var slot=1.7, gap=.35, cols=3, rows=Math.ceil(F.length/cols), px=cols*slot+(cols+1)*gap, py=rows*slot+(rows+1)*gap, pz=.32;
   var plateEl=document.getElementById('plate'), chips=document.getElementById('chips');
   function render(){{
@@ -989,7 +990,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+14;
     plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+'</svg>';
     fresh={{}};
-    Array.prototype.forEach.call(chips.querySelectorAll('button'),function(b){{b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false');}});
   }}
   var NOTE={{strom:'Strom: erst den Lastgang, dann die Technik.',waerme:'Wärme: oft hilft schon ein Abgleich.',kaelte:'Kälte: läuft die Maschine nachts durch?',druckluft:'Druckluft: wir hören erst nach Leckagen.',speicher:'Speicher: nur, wenn die Lastspitze es hergibt.',material:'Material: im Verschnitt steckt oft mehr als im Strom.',wasser:'Wasser: geht das im Kreis?',reststoffe:'Reststoffe: Ausschuss ist bezahltes Material.',betriebsstoffe:'Betriebsstoffe: Öle und Gase zählen mit.'}};
   var hn=document.getElementById('hnote'), ht=document.getElementById('hnote-t');
@@ -997,9 +997,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   var curG='';
   F.forEach(function(f){{
     if(f.g!==curG){{curG=f.g; var lb=document.createElement('span'); lb.className='grp'; lb.textContent=f.g; chips.appendChild(lb);}}
-    var b=document.createElement('button');b.type='button';b.dataset.id=f.id;b.id='chip-'+f.id;
-    b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>'+f.n;
-    b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;note(f.id);}} last=f.id; render(); }});
+    var b=document.createElement('span');b.className='chip';b.dataset.id=f.id;b.textContent=f.n;
     chips.appendChild(b);}});
   render();
 
