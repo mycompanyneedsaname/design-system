@@ -502,6 +502,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   
   .bk-stack #plate{{max-width:none;margin:0}}
   .bk-cta .wp-cta{{border-color:#C8F04A}}
+  .cta-wrap{{position:relative;display:inline-block}}
+  .cta-arrow{{display:none;position:absolute;left:58%;top:-96px;width:120px;height:90px;overflow:visible;pointer-events:none}}
+  @media (min-width:981px){{.cta-arrow{{display:block}}}}
+  .js .cta-arrow .ca-line{{stroke-dasharray:1;stroke-dashoffset:1}}
+  .js .cta-arrow .ca-head{{opacity:0}}
+  .js .cta-arrow.on .ca-line{{stroke-dashoffset:0}}
+  .js .cta-arrow.on .ca-head{{opacity:1}}
+  @media (prefers-reduced-motion:no-preference){{.cta-arrow .ca-line{{transition:stroke-dashoffset .8s cubic-bezier(.6,0,.2,1) .2s}}.cta-arrow .ca-head{{transition:opacity .3s ease-out .9s}}}}
   .wp-act{{display:flex;justify-content:center;padding-left:14%;margin-top:6px}}
   @media (max-width:980px){{.wp-act{{padding-left:0}}}}
   .wp-curve{{stroke-dasharray:1;stroke-dashoffset:0}}
@@ -705,7 +713,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <h2 class="ht"><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Weniger Verbrauch, mehr Spielraum.</span></h2>
         <p class="bk-how">Für jede Maßnahme: <b>messen</b>, <b>nachrechnen</b>, <b>umsetzen</b>. Wir entscheiden gemeinsam, welche wir angehen.</p>
         <div class="bk-cta" id="kontakt">
-          <a class="wp-cta" href="mailto:kontakt@wendepunkt-ingenieure.de?subject=Kostenfreies%20Erstgespr%C3%A4ch">Kostenfreies Erstgespräch vereinbaren</a>
+          <span class="cta-wrap"><a class="wp-cta" href="mailto:kontakt@wendepunkt-ingenieure.de?subject=Kostenfreies%20Erstgespr%C3%A4ch">Kostenfreies Erstgespräch vereinbaren</a>
+          <svg class="cta-arrow" viewBox="0 0 120 90" aria-hidden="true"><path class="ca-line" pathLength="1" d="M112 6 C 108 44, 80 66, 30 78" fill="none" stroke="#C8F04A" stroke-width="3" stroke-linecap="round"/><path class="ca-head" d="M46 64 L 28 78 L 50 86" fill="none" stroke="#C8F04A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </div>
       <div class="cfg" id="cfg">
@@ -978,7 +987,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   var art=document.querySelector('.wp-art'), mq=window.matchMedia('(max-width:640px)');
   function crop(){{ if(art) art.setAttribute('viewBox', mq.matches ? '0 10 520 272' : '0 0 600 320'); }}
   crop(); if(mq.addEventListener) mq.addEventListener('change',crop);
-  var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link,.bk-link');
+  var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link,.bk-link,.cta-arrow');
   if(!('IntersectionObserver' in window)){{Array.prototype.forEach.call(els,function(e){{e.classList.add('on');}});return;}}
   var io=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{en.target.classList.add('on');io.unobserve(en.target);}}}});}},{{threshold:.6}});
   Array.prototype.forEach.call(els,function(e){{io.observe(e);}});
