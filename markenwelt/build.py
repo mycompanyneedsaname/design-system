@@ -390,6 +390,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   @keyframes wpdraw{{from{{stroke-dashoffset:1}}}}
   @keyframes wppop{{from{{transform:scale(0)}}}}
   @media (max-width:980px){{.wp-grid{{grid-template-columns:1fr}}.wp-band{{padding-block:56px}}}}
+  .wp-cta{{background:{PETROL};color:#fff}}
+  .wp-cta:hover{{background:{DEEP}}}
 </style>
 
 <!-- ============================ HERO ============================ -->
@@ -409,7 +411,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div>
         <h1><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Gemessen. Nachgerechnet. Umgesetzt.</span></h1>
         <p class="sub">Wir kommen in Ihren Betrieb, messen nach und setzen mit Ihnen um, was sich rechnet.</p>
-        <div class="actions"><a class="cta" href="#kompass">Kostenfreies Erstgespräch</a><a class="cta ghost" href="#baukasten">Den Baukasten ansehen</a></div>
       </div>
       <div class="cfg" id="cfg">
         <div id="plate" style="color:var(--accent)"></div>
@@ -425,6 +426,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div>
       <h2 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h2>
       <p class="wp-p">Wir suchen ihn gemeinsam mit Ihnen.</p>
+      <div class="actions"><a class="cta wp-cta" href="#kontakt">Kostenfreies Erstgespräch</a></div>
     </div>
     <svg class="wp-art" viewBox="0 0 520 300" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt und der Notiz hier">
       <path class="wp-curve" pathLength="1" d="M20 262 C 150 270, 190 200, 260 150 C 330 100, 360 36, 500 30" fill="none" stroke="{PETROL}" stroke-width="12" stroke-linecap="round"/>
