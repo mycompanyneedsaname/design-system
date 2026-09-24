@@ -330,7 +330,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   @keyframes rise{{from{{transform:translateY(-22px);opacity:0}}}}
   .slot{{stroke-dasharray:4 4;opacity:.45}}
   .chips{{display:flex;flex-wrap:wrap;gap:8px}}
-  .chips button{{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 11px;border:1px solid var(--line-d);background:transparent;color:#fff;cursor:pointer;display:inline-flex;gap:8px;align-items:center}}
+  .chips button{{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;border:1px solid var(--line-d);border-radius:10px;background:transparent;color:#fff;cursor:pointer;display:inline-flex;gap:8px;align-items:center}}
   .chips button svg{{width:16px;height:16px}}
   .chips button[aria-pressed="true"]{{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}}
   .tally{{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;border-top:1px solid var(--line-d);padding-top:12px}}
@@ -392,7 +392,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   @media (max-width:980px){{.wp-grid{{grid-template-columns:1fr}}.wp-band{{padding-block:56px}}}}
   .wp-band{{--accent:#C8F04A;--accent-ink:{PETROL}}}
   .wp-cta{{display:inline-flex;align-items:center;gap:14px;background:var(--accent);color:{PETROL};border:2px solid {PETROL};
-    font:600 16px/1 var(--sans);padding:16px 22px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}}
+    font:600 16px/1 var(--sans);padding:16px 24px;border-radius:12px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}}
   .wp-cta:hover,.wp-cta:focus-visible{{transform:translate(-3px,-3px);box-shadow:3px 3px 0 {PETROL}}}
   .chips .grp{{flex-basis:100%;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}}
   .chips .grp:first-child{{margin-top:0}}
@@ -705,7 +705,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     var T=[iso(x,y,z+h),iso(x+w,y,z+h),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
     var L=[iso(x,y+d,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
     var R=[iso(x+w,y,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x+w,y,z+h)];
-    var sil=[T[0],T[1],R[0],R[1],L[0],T[3]], rad=h<.5?3:7, sp=rpath(sil,rad), k='bc'+(cid++);
+    var sil=[T[0],T[1],R[0],R[1],L[0],T[3]], rad=h<.5?6:11, sp=rpath(sil,rad), k='bc'+(cid++);
     var o='<g class="blk '+(cls||'')+'">'+(title?'<title>'+title+'</title>':'');
     o+='<clipPath id="'+k+'"><path d="'+sp+'"/></clipPath><g clip-path="url(#'+k+')">';
     o+='<polygon points="'+P(L)+'" fill="#0B3236"/><polygon points="'+P(R)+'" fill="#0E393D"/><polygon points="'+P(T)+'" fill="#14474C"/>';
@@ -743,7 +743,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     F.forEach(function(f,i){{var gx=i%3, gy=Math.floor(i/3); var x=gap+gx*(slot+gap), y=gap+gy*(slot+gap); items.push({{f:f,x:x,y:y}});}});
     items.forEach(function(it){{
       if(!sel[it.f.id]){{var q=[iso(it.x,it.y,pz),iso(it.x+slot,it.y,pz),iso(it.x+slot,it.y+slot,pz),iso(it.x,it.y+slot,pz)];
-        parts.push('<path class="slot" d="'+rpath(q,5)+'" fill="none" stroke="currentColor" stroke-width="1"/>');}}
+        parts.push('<path class="slot" d="'+rpath(q,8)+'" fill="none" stroke="currentColor" stroke-width="1"/>');}}
     }});
     items.sort(function(a,b){{return (a.x+a.y)-(b.x+b.y);}}).forEach(function(it){{
       if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,fresh[it.f.id]?'new':'',it.f.n+' · '+PR[it.f.id],it.f.id));
@@ -758,7 +758,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   F.forEach(function(f){{
     if(f.g!==curG){{curG=f.g; var lb=document.createElement('span'); lb.className='grp'; lb.textContent=f.g; chips.appendChild(lb);}}
     var b=document.createElement('button');b.type='button';b.dataset.id=f.id;b.id='chip-'+f.id;
-    b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>'+f.n;
+    b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>'+f.n;
     b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;}} last=f.id; render(); }});
     chips.appendChild(b);}});
   render();
