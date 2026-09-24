@@ -781,13 +781,13 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sec-head">
       <span class="eyebrow">Das Produkt als Bild</span>
       <h2>Der modulare Effizienz-Baukasten</h2>
-      <p class="muted">Jedes Handlungsfeld ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Neun Felder in zwei Gruppen, genau wie im Baukasten auf der Startseite. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist.</p>
+      <p class="muted">Jedes Handlungsfeld ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Neun Felder in zwei Gruppen, genau wie im Baukasten auf der Startseite. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist. Auf der Startseite ist der Baukasten ein Rechner: Wer ein Feld wählt, setzt den Stein auf die Platte und sieht daneben eine Beispielmaßnahme mit Einsparung in Prozent; die Summe steht groß in Lime.</p>
     </div>
     <div class="modgroups">
       {modules_html()}
     </div>
     <div class="steps"><span class="k">Für jeden Stein</span>{steps_html()}</div>
-    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website sind sie der Konfigurator, im Bericht die Kapitelmarken.</p>
+    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website sind sie der Rechner, im Bericht die Kapitelmarken.</p>
   </div>
 </section>
 
@@ -797,7 +797,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div>
       <span class="eyebrow">Icon-Sprache</span>
       <h2 style="font-size:30px;margin-top:10px">Ein Strich, mit der Hand, in Lime.</h2>
-      <p class="muted" style="margin-top:12px;font-size:15px;max-width:48ch">Zwölf Icons: neun Handlungsfelder und drei Schritte. Bewusst nicht perfekt: leicht gewellte Linien, runde Enden, wie mit dem Filzstift auf den Schaltschrank gezeichnet. Auf hellem Grund werden sie Petrol.</p>
+      <p class="muted" style="margin-top:12px;font-size:15px;max-width:48ch">Zwölf Icons: neun Handlungsfelder und drei Schritte. Bewusst nicht perfekt: leicht gewellte Linien, runde Enden, wie mit dem Filzstift auf den Schaltschrank gezeichnet. Auf hellem Grund werden sie Petrol. Zwei davon stehen als Lime-Punkt in den Porträts: Material für Ressourceneffizienz, Strom für Energieeffizienz.</p>
       <div class="hicons" style="margin-top:22px">
         {icons_html()}
       </div>
@@ -946,9 +946,9 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </div>
     <div class="rules" style="margin-top:32px">
       <div><h4>Zwei Marker, zwei Aufgaben.</h4><p>Der Lime-Textmarker hebt hervor, was zählt: ein Wort, höchstens eine Zeile. Das Korrekturzeichen nach DIN 16511 widerlegt eine Behauptung mit der Zahl am Rand. Nie beides im selben Satz.</p></div>
-      <div><h4>Lime ist Fläche, nicht Schrift.</h4><p>Auf Petrol trägt Lime Handschrift, Icons und Linien (9,3 : 1). Auf Papier und Sand nur als Textmarker, Punkt oder Button-Fläche, immer mit Petrol-Schrift darauf.</p></div>
+      <div><h4>Lime ist Fläche, nicht Schrift.</h4><p>Auf Petrol trägt Lime Handschrift, Icons, Linien und die Summe im Rechner (9,3 : 1). Auf Papier und Sand nur als Textmarker, Punkt, Unterstrich oder Button-Fläche, immer mit Petrol-Schrift darauf.</p></div>
       <div><h4>Hell zum Kennenlernen, dunkel fürs Produkt.</h4><p>Einstieg und Team auf Sand und Papier. Baukasten, Plakat und LinkedIn auf Petrol. Bericht, Angebot und Brief auf Papier. Kein Punktraster, keine Schatten.</p></div>
-      <div><h4>Handschrift heißt: wir persönlich.</h4><p>Notizen, Zitate und Prüfvermerke in Handschrift, heute Kalam, später die echte von Michael und Tobias. Nie für Headlines oder Fließtext.</p></div>
+      <div><h4>Handschrift heißt: wir persönlich.</h4><p>Notizen an der Kurve, die Zeile „beides zusammen gedacht.“ und der Pfeil zum Erstgespräch in Handschrift, heute Kalam, später die echte von Michael und Tobias. Nie für Headlines oder Fließtext, keine Notiz am Baukasten.</p></div>
     </div>
   </div>
 </section>
@@ -1129,7 +1129,8 @@ observer = scripts[:scripts.index("</script>") + len("</script>")]
 
 landing_html = head + landing + scripts
 system_html = (head.replace("<title>Wendepunkt Markenwelt</title>", "<title>Wendepunkt Markensystem</title>")
-               .replace('<a href="#kontakt">Kontakt</a>', '<a href="index.html">Landingpage</a>')
+               .replace('href="#start"', 'href="index.html#start"').replace('href="#team"', 'href="index.html#team"')
+               .replace('href="#baukasten"', 'href="index.html#baukasten"').replace('href="#kontakt" class="mcta"', 'href="index.html#kontakt" class="mcta"')
                + system.replace("Ab hier: Markensystem", "Markensystem") + observer + "\n")
 
 d = "/home/user/design-system/markenwelt/"
