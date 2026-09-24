@@ -535,7 +535,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div>
           <h3>Michael Schenk</h3>
           <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat rund 150 Betriebe von innen gesehen und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu erklären, dass jeder im Betrieb versteht, warum sich eine Maßnahme lohnt.</p>
-          <p class="pers-q">„Der Blick von außen wirkt.“</p>
         </div>
       </article>
       <article class="pers">
@@ -543,7 +542,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div>
           <h3>Tobias Wintsche</h3>
           <p>Tobias verantwortet bei uns die Energieeffizienz. Er nimmt Energiesysteme auseinander, wägt ab, was sie wirklich leisten, und fügt sie zu einem stimmigen Ganzen zusammen. Sein Maßstab: lieber einfach und ausgereift als übertechnisiert, damit die Anlage auch nach uns noch jeder im Betrieb versteht.</p>
-          <p class="pers-q">„Gute Energiesysteme sind oft ganz simpel.“</p>
         </div>
       </article>
     </div>
