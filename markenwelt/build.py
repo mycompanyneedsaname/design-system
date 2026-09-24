@@ -475,6 +475,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: steigende Betriebskosten, CO₂-Ausstoß, Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität, Resilienz. Am Wendepunkt: hier.">
       <path class="wp-curve" pathLength="1" d="M20 262 C 150 270, 190 200, 260 150 C 330 100, 360 36, 500 30" fill="none" stroke="{PETROL}" stroke-width="12" stroke-linecap="round"/>
       <circle class="wp-dot" cx="260" cy="150" r="21" fill="currentColor" data-ak="f" stroke="{PETROL}" stroke-width="3"/>
+      <rect class="wp-note" x="295" y="289" width="80" height="17" fill="#C8F04A"/>
       <g class="wp-note" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="{PETROL}">
         <text x="24" y="44">steigende Betriebskosten,</text>
         <text x="24" y="78">CO₂-Ausstoß,</text>
