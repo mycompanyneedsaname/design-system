@@ -557,7 +557,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="pers-l"><div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div><p class="pers-n"><svg viewBox="0 0 40 34" aria-hidden="true"><path d="M30 30 C 26 18, 20 10, 12 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M11 15 L 11 4 L 21 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>baut es einfach.</span></p></div>
         <div>
           <h3>Tobias Wintsche</h3>
-          <p>Tobias verantwortet bei uns die Energieeffizienz. Für ihn ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung findet er die elegante, einfache Lösung, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
+          <p>Tobias verantwortet bei uns die Energieeffizienz. Für ihn ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <mark class="hl"><strong>findet er die elegante, einfache Lösung</strong></mark>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
         </div>
       </article>
     </div>
