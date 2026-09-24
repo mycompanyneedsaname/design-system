@@ -491,7 +491,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 <section class="light" id="team">
   <div class="wrap">
     <div class="sec-head">
-      <h2>Zwei Ingenieure. Wir kommen selbst.</h2>
+      <h2>Wir nehmen es persönlich.</h2>
       <p class="muted">Energie und Ressourcen gehören für uns zusammen. Deshalb schauen wir auf beides, aus Thüringen und Leipzig.</p>
     </div>
     <div class="team">
