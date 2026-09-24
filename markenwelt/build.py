@@ -154,14 +154,14 @@ def icons_html():
     return "\n".join(f'<div class="hic">{icon(n, "currentColor", 40)}<span>{n}</span></div>' for n, _, _ in MODULES)
 
 html = f'''<title>Wendepunkt Markenwelt</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Permanent+Marker&family=Kalam:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Kalam:wght@400;700&display=swap">
 <style>
   :root{{
     --petrol:{PETROL}; --deep:{DEEP}; --ocker:{OCKER}; --paper:{PAPER}; --sand:{SAND}; --ink:{INK}; --mist:{MIST};
     --line-l:#D8D3C8; --line-d:rgba(255,255,255,.14); --muted:#4E5A5B;
     --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    --hand:"Permanent Marker","Kalam","Segoe Print",cursive;
+    --hand:"Kalam","Segoe Print","Bradley Hand",cursive;
     --accent:#D9A441; --accent-ink:#071F22;
   }}
   *{{box-sizing:border-box}}
@@ -174,7 +174,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   section{{padding-block:72px}}
   .dark{{background:var(--petrol);color:#fff}}
   .deep{{background:var(--deep);color:#fff}}
-  .dots{{background-image:radial-gradient(rgba(217,164,65,.28) 1.1px,transparent 1.2px);background-size:22px 22px}}
   .sand{{background:var(--sand)}}
   .mist{{background:var(--mist)}}
   .eyebrow{{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}}
@@ -203,7 +202,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .top .meta{{font-family:var(--mono);font-size:12px;opacity:.7}}
 
   /* hero */
-  .hero{{padding-block:64px 80px}}
+  .hero{{padding-block:48px 72px}}
   .hero h1{{font-size:clamp(40px,5vw,64px);line-height:1.02;margin-top:22px}}
   .hero .sub{{margin-top:22px;font-size:19px;max-width:46ch}}
   .cta{{display:inline-block;background:var(--ocker);color:var(--deep);font:600 15px/1 var(--sans);padding:15px 20px;border:0;text-decoration:none;white-space:nowrap}}
@@ -212,19 +211,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .iso-hero{{width:100%;max-width:560px;height:auto;display:block;margin-inline:auto}}
 
   /* signature device: Behauptung → nachgerechnet */
-  .claim{{display:block}}
-  .claim .struck{{display:inline;color:rgba(255,255,255,.5);-webkit-box-decoration-break:clone;box-decoration-break:clone;
     background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%23D9A441' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% .5em}}
-  .claim .re{{display:block;font-family:var(--hand);font-weight:700;color:var(--ocker);font-size:.7em;line-height:1.05;margin-top:.18em;letter-spacing:0;transform:rotate(-1.5deg);transform-origin:left}}
-  .light .claim .struck{{color:rgba(26,26,24,.42);
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%230F3B3F' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}}
-  .light .claim .re{{color:var(--petrol)}}
   .ring{{position:absolute;left:-10%;top:-28%;width:120%;height:156%;pointer-events:none}}
   .ringed{{position:relative;display:inline-block;padding:0 .12em}}
 
   /* prinzip */
   .prinzip{{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-l);border:1px solid var(--line-l)}}
-  .prinzip > div{{background:var(--paper);padding:26px 24px 28px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}}
+  .prinzip > div{{background:var(--paper);padding:26px 24px 28px;display:flex;flex-direction:column;justify-content:flex-start;gap:22px}}
   .prinzip .big{{font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.15}}
   .prinzip .k{{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}}
   .prinzip .why{{font-size:14px;color:var(--muted)}}
@@ -318,21 +312,10 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   [data-ak="s"]{{stroke:var(--accent)}}
   [data-ak="f"]{{fill:var(--accent)}}
   .dark .tag,.deep .tag{{color:var(--accent)}}
-  .dots{{background-image:radial-gradient(color-mix(in srgb,var(--accent) 30%,transparent) 1.1px,transparent 1.2px)}}
   .cta{{background:var(--accent);color:var(--accent-ink)}}
-  .claim .re{{color:var(--accent);font-size:.82em;line-height:1.02;letter-spacing:.005em;transform:rotate(-2deg)}}
-  .claim .struck{{background-repeat:no-repeat;background-position:left center;background-size:0% .5em;animation:strike .9s .35s ease-out forwards}}
-  .claim .re{{opacity:0;animation:fade .5s 1.1s ease-out forwards}}
-  @keyframes strike{{to{{background-size:100% .5em}}}}
-  @keyframes fade{{to{{opacity:1}}}}
-  @media (prefers-reduced-motion:reduce){{.claim .struck{{animation:none;background-size:100% .5em}}.claim .re{{animation:none;opacity:1}}.blk.new{{animation:none}}}}
   :root[data-accent="lime"]{{--accent:#C8F04A;--accent-ink:#071F22}}
   :root[data-accent="mint"]{{--accent:#5DE3A1;--accent-ink:#071F22}}
   :root[data-accent="terra"]{{--accent:#E4744C;--accent-ink:#FFFFFF}}
-  :root[data-accent="lime"] .claim .struck{{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%23C8F04A' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}}
-  :root[data-accent="mint"] .claim .struck{{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%235DE3A1' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}}
-  :root[data-accent="terra"] .claim .struck{{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%23E4744C' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}}
-  :root[data-accent] .light .claim .struck{{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%230F3B3F' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}}
 
   /* accent switch */
   .aksw{{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.9}}
@@ -361,10 +344,36 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .poster{{transition:transform .25s ease}}
   .poster:hover{{transform:translateY(-6px)}}
   .prinzip .big{{font-size:30px}}
+
+  /* Korrektur nach DIN 16511: Behauptung gestrichen, Wert am Rand */
+  .korr{{display:block}}
+  .korr .alt{{color:rgba(255,255,255,.5);-webkit-box-decoration-break:clone;box-decoration-break:clone;
+    background:linear-gradient(var(--accent),var(--accent)) no-repeat 0 58% / 0% 2px;animation:strike .8s .3s cubic-bezier(.6,0,.2,1) forwards}}
+  .korr .km{{display:inline-grid;place-items:center;width:1.5em;height:1.5em;border:1.5px solid var(--accent);border-radius:50%;
+    font:500 11px/1 var(--mono);color:var(--accent);vertical-align:.9em;margin-left:.4em;letter-spacing:0}}
+  .korr .neu{{display:flex;gap:10px;align-items:baseline;margin-top:.55em;padding-top:.55em;border-top:1px solid var(--accent);
+    font-family:var(--mono);font-weight:500;font-size:max(13px,.42em);line-height:1.4;letter-spacing:0;color:var(--accent);opacity:0;animation:fade .5s .95s ease-out forwards}}
+  .korr .neu .km{{vertical-align:0;margin:0;flex:none;transform:translateY(-1px)}}
+  .light .korr .alt{{color:rgba(26,26,24,.42);background-image:linear-gradient(var(--petrol),var(--petrol))}}
+  .light .korr .km{{border-color:var(--petrol);color:var(--petrol)}}
+  .light .korr .neu{{color:var(--petrol);border-color:var(--petrol)}}
+  @keyframes strike{{to{{background-size:100% 2px}}}}
+  @keyframes fade{{to{{opacity:1}}}}
+  @media (prefers-reduced-motion:reduce){{.korr .alt{{animation:none;background-size:100% 2px}}.korr .neu{{animation:none;opacity:1}}.blk.new{{animation:none}}}}
+
+  /* Baukasten-Erklärung */
+  .expl{{border:1px solid var(--line-d);padding:16px 18px;display:grid;gap:8px}}
+  .expl .h{{display:flex;justify-content:space-between;gap:12px;align-items:baseline}}
+  .expl .h b{{font-size:17px;font-weight:600}}
+  .expl .h span{{font-family:var(--mono);font-size:12px;color:var(--accent)}}
+  .expl p{{font-size:14.5px;color:rgba(255,255,255,.85)}}
+  .expl ul{{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.75)}}
+  .expl li::before{{content:"+ ";color:var(--accent)}}
+  .hero h1 .l2{{display:block;font-weight:400;font-size:.46em;line-height:1.2;letter-spacing:-.01em;margin-top:.45em;color:rgba(255,255,255,.72);max-width:22ch}}
 </style>
 
 <!-- ============================ HERO ============================ -->
-<header class="dark dots">
+<header class="dark">
   <div class="wrap">
     <div class="top">
       {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=False)}
@@ -379,17 +388,16 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="hero grid2">
       <div>
         <span class="tag">Büro für Energie- und Ressourceneffizienz</span>
-        <h1 style="margin-top:22px">
-          <span class="claim"><span class="struck">Bis zu 40&nbsp;% Energie sparen!</span><span class="re">nachgerechnet: 18&nbsp;%, amortisiert in 2,1&nbsp;Jahren.</span></span>
-        </h1>
-        <p class="sub">Wir messen in Ihrem Betrieb, rechnen jede Behauptung nach und bauen daraus Ihren Effizienz-Baukasten: Stein für Stein, in Ihrer Reihenfolge, so dass Ihr Team ihn später selbst versteht.</p>
+        <h1 style="margin-top:22px">Ihr Effizienz-Baukasten.<span class="l2">Gemessen, nachgerechnet, in Ihrer Reihenfolge umgesetzt.</span></h1>
+        <p class="sub">Zwei Ingenieure, ein Büro für Energie und Material. Wir kommen in Ihren Betrieb, messen jedes Handlungsfeld, rechnen jede Maßnahme durch und setzen sie mit Ihnen um, Stein für Stein. Wählen Sie rechts, wo es bei Ihnen hakt.</p>
         <div class="actions"><a class="cta" href="#kompass">Kostenfreies Erstgespräch</a><a class="cta ghost" href="#baukasten">Den Baukasten ansehen</a></div>
       </div>
       <div class="cfg" id="cfg">
         <div id="plate" style="color:var(--accent)"></div>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
+        <div class="expl" id="why" aria-live="polite"></div>
         <div class="tally"><div><b id="t-n">4</b><span>Bausteine</span></div><div><b id="t-d">2 + 2</b><span>Tage vor Ort + Planung</span></div><div><b>≥ 10</b><span>Maßnahmen im Bericht</span></div><div><b id="t-m">18</b><span>Messpunkte, Beispiel</span></div></div>
-        <p class="muted" style="font-size:12.5px">Klicken Sie Ihre Handlungsfelder. Die Grundplatte ist immer der Effizienz-Kompass. Beispiel-Logik, keine Preisliste.</p>
+        <p class="muted" style="font-size:12.5px">Die Grundplatte ist immer der Effizienz-Kompass. Tage und Messpunkte sind Beispiel-Logik, keine Preisliste.</p>
       </div>
     </div>
   </div>
@@ -400,23 +408,23 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Das Signaturelement</span>
-      <h2>Behauptung gedruckt. Strich mit dem Marker. Ergebnis von Hand.</h2>
-      <p class="muted">Das ist die Marke in einem Bild: Jemand hat das Angebot der Branche gelesen, den Marker genommen und nachgerechnet. Der Strich hat die Marker-Farbe, die Handschrift ist Permanent Marker, die Zahl hat immer Einheit und Kontext. Oben rechts lässt sich die Marker-Farbe live umschalten. Das Element funktioniert in Headline, Anzeige, LinkedIn-Post und auf dem Berichtsdeckblatt.</p>
+      <h2>Behauptung gestrichen. Wert am Rand.</h2>
+      <p class="muted">Das Signaturelement ist ein Korrekturzeichen, wie es Lektoren und Prüfingenieure nach DIN 16511 setzen: Die Behauptung wird mit einer feinen Linie gestrichen, ein nummeriertes Zeichen verweist auf den Rand, dort steht der nachgerechnete Wert mit Einheit. Präzise statt laut. Es funktioniert in Anzeige, LinkedIn-Post und im Bericht.</p>
     </div>
     <div class="prinzip">
       <div>
         <span class="k">Beispiel 01 · Amortisation</span>
-        <div class="big"><span class="claim"><span class="struck">Rechnet sich sofort.</span><span class="re">Druckluft: 5 Monate. LED: 3,3 Jahre. Beides steht im Bericht.</span></span></div>
-        <p class="why">Keine pauschale ROI-Zahl, wie im Briefing verlangt. Die Handschrift liefert die Zahl mit Kontext.</p>
+        <div class="big"><span class="korr"><span class="alt">Rechnet sich</span> <span style="white-space:nowrap"><span class="alt">sofort.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>Druckluft 5 Monate · LED 3,3 Jahre · beides im Bericht</span></span></div>
+        <p class="why">Keine pauschale ROI-Zahl, wie im Briefing verlangt. Der Rand liefert die Zahl mit Kontext.</p>
       </div>
       <div>
         <span class="k">Beispiel 02 · Floskel</span>
-        <div class="big"><span class="claim"><span class="struck">Ganzheitlich nachhaltig.</span><span class="re">312 MWh Strom, 41 t Stahl, 19 t CO₂. Gemessen, nicht geschätzt.</span></span></div>
+        <div class="big"><span class="korr"><span class="alt">Ganzheitlich</span> <span style="white-space:nowrap"><span class="alt">nachhaltig.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>312 MWh Strom · 41 t Stahl · 19 t CO₂ · gemessen</span></span></div>
         <p class="why">Das Wortfeld aus dem Briefing wird wörtlich durchgestrichen. Was bleibt, hat eine Einheit.</p>
       </div>
       <div>
         <span class="k">Beispiel 03 · Beratersprech</span>
-        <div class="big"><span class="claim"><span class="struck">Transformation begleiten.</span><span class="re">12 Maßnahmen, priorisiert. Vier davon unter 6 Monaten.</span></span></div>
+        <div class="big"><span class="korr"><span class="alt">Transformation</span> <span style="white-space:nowrap"><span class="alt">begleiten.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>12 Maßnahmen · 4 davon unter 6 Monaten</span></span></div>
         <p class="why">So klingt der Satz, den ein Geschäftsführer nach dem ersten Gespräch weiterverwendet.</p>
       </div>
     </div>
@@ -424,7 +432,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 </section>
 
 <!-- ============================ BAUKASTEN ============================ -->
-<section class="deep dots" id="baukasten">
+<section class="deep" id="baukasten">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Das Produkt als Bild</span>
@@ -468,10 +476,10 @@ html = f'''<title>Wendepunkt Markenwelt</title>
           <path d="M330 140 C 320 100, 470 92, 486 150 C 500 200, 470 262, 400 268 C 330 274, 312 220, 322 170 C 326 150, 340 140, 356 136" fill="none" stroke="currentColor" data-ak="s" stroke-width="3.5" stroke-linecap="round"/>
           <path d="M200 70 Q 270 40 330 120" fill="none" stroke="currentColor" data-ak="s" stroke-width="2.5" stroke-linecap="round"/>
           <path d="M318 96 l 12 24 -26 -2" fill="none" stroke="currentColor" data-ak="s" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="44" y="62" font-family="Permanent Marker, Kalam, cursive" font-size="24" fill="currentColor" data-ak="f">Kompressor 2: Leckage</text>
-          <text x="44" y="92" font-family="Permanent Marker, Kalam, cursive" font-size="24" fill="currentColor" data-ak="f">11.200 € / Jahr · 5 Monate</text>
+          <text x="44" y="62" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="currentColor" data-ak="f">Kompressor 2: Leckage</text>
+          <text x="44" y="92" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="currentColor" data-ak="f">11.200 € / Jahr · 5 Monate</text>
           <path d="M60 330 q 12 8 18 22 q 10 -34 34 -50" fill="none" stroke="currentColor" data-ak="s" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="128" y="352" font-family="Permanent Marker, Kalam, cursive" font-size="22" fill="currentColor" data-ak="f">gemessen 12.09., 14:10</text>
+          <text x="128" y="352" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="currentColor" data-ak="f">gemessen 12.09., 14:10</text>
         </svg>
         <span class="cap">Platzhalter für Foto: Druckluftstation, Tageslicht, keine Freisteller.</span>
       </div>
@@ -490,7 +498,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="posters">
       <div class="poster sand" style="color:{PETROL}">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>01 · Kurve</span></div>
-        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M18 168 C 60 172, 66 130, 96 104 C 128 76, 128 30, 184 26" fill="none" stroke="{PETROL}" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="100" r="13" fill="currentColor" data-ak="f"/><path d="M118 112 q 30 24 52 6" fill="none" stroke="{PETROL}" stroke-width="2.4" stroke-linecap="round"/><text x="132" y="146" font-family="Permanent Marker, Kalam, cursive" font-size="17" fill="{PETROL}">hier.</text></svg></div>
+        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M18 168 C 60 172, 66 130, 96 104 C 128 76, 128 30, 184 26" fill="none" stroke="{PETROL}" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="100" r="13" fill="currentColor" data-ak="f"/><path d="M118 112 q 30 24 52 6" fill="none" stroke="{PETROL}" stroke-width="2.4" stroke-linecap="round"/><text x="132" y="146" font-family="Kalam, cursive" font-weight="700" font-size="17" fill="{PETROL}">hier.</text></svg></div>
         <p class="line">Der Wendepunkt ist der Moment, ab dem die Kurve anders läuft. Wir suchen ihn in Ihrem Betrieb.</p>
       </div>
       <div class="poster" style="background:{PETROL};color:#fff">
@@ -499,8 +507,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <p class="line">Zehn Maßnahmen in vier Tagen. Priorisiert, durchgerechnet, in Ihrer Reihenfolge gebaut.</p>
       </div>
       <div class="poster" style="background:var(--accent);color:var(--accent-ink)">
-        <div class="foot"><span>Wendepunkt Ingenieure</span><span>03 · Marker</span></div>
-        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><text x="18" y="86" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="27" fill="{DEEP}" fill-opacity=".45">behaupten.</text><path d="M12 78 Q 80 64 160 74" fill="none" stroke="{DEEP}" stroke-width="7" stroke-linecap="round"/><text x="16" y="146" font-family="Permanent Marker, Kalam, cursive" font-size="30" fill="{DEEP}">nachrechnen.</text><path d="M18 156 q 60 10 150 -4" fill="none" stroke="{DEEP}" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="foot"><span>Wendepunkt Ingenieure</span><span>03 · Korrektur</span></div>
+        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true">
+          <text x="14" y="84" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="30" fill="{DEEP}" fill-opacity=".5">behaupten.</text>
+          <line x1="12" y1="75" x2="164" y2="75" stroke="{DEEP}" stroke-width="2"/>
+          <circle cx="180" cy="62" r="9" fill="none" stroke="{DEEP}" stroke-width="1.6"/><text x="180" y="66" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="{DEEP}">1</text>
+          <line x1="12" y1="112" x2="190" y2="112" stroke="{DEEP}" stroke-width="1"/>
+          <circle cx="22" cy="140" r="9" fill="none" stroke="{DEEP}" stroke-width="1.6"/><text x="22" y="144" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="{DEEP}">1</text>
+          <text x="40" y="148" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="30" fill="{DEEP}">nachrechnen.</text></svg></div>
         <p class="line">Wir rechnen nach, statt zu behaupten. Jede Zahl im Bericht hat eine Einheit und ein Datum.</p>
       </div>
     </div>
@@ -538,7 +552,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div class="col">
         <div class="li">
           <div class="foot"><span>Praxisbeispiel · Folienhersteller</span><span>1080 × 1080</span></div>
-          <div class="q"><span class="claim"><span class="struck">„PV rechnet sich immer.“</span><span class="re">240 kWp, 31.000 € p. a.: 6,8 Jahre. Rechnet sich. Aber erst nach Druckluft und Abwärme.</span></span></div>
+          <div class="q"><span class="korr"><span class="alt">„PV rechnet sich</span> <span style="white-space:nowrap"><span class="alt">immer.“</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>240 kWp · 31.000 € p. a. · 6,8 Jahre · erst nach Druckluft und Abwärme</span></span></div>
           <div class="foot">{logo("#FFFFFF", OCKER, "#FFFFFF", size=26, w1=11, sub=False)}<span>wendepunkt-ingenieure.de</span></div>
         </div>
         <div class="grid2" style="gap:12px;align-items:stretch">
@@ -581,10 +595,11 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div class="row"><span class="k">Headline · Plex Sans 600</span><span style="font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1">Systeme, die Ihr Team noch versteht.</span></div>
       <div class="row"><span class="k">Fließtext · Plex Sans 400</span><span style="font-size:16px">Zwei Tage vor Ort, zwei Tage Planung. Danach liegen mindestens zehn Maßnahmen auf dem Tisch.</span></div>
       <div class="row"><span class="k">Zahl · Plex Mono 500</span><span style="font-family:var(--mono);font-size:30px;font-weight:500;color:{PETROL};line-height:1">312 MWh <span style="font-size:13px;color:var(--muted)">Strom p. a.</span></span></div>
-      <div class="row"><span class="k">Hand · Permanent Marker</span><span class="hand" style="font-size:28px;color:{PETROL}">nachgerechnet: 18 %, 2,1 Jahre</span></div>
+      <div class="row"><span class="k">Korrektur · Plex Mono</span><span class="light" style="font-size:26px;font-weight:600;letter-spacing:-.02em"><span class="korr"><span class="alt">Bis zu 40 %</span> <span style="white-space:nowrap"><span class="alt">sparen.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>18 % · amortisiert in 2,1 Jahren</span></span></span></div>
+      <div class="row"><span class="k">Notiz · Kalam 700</span><span class="hand" style="font-size:22px;color:{PETROL}">gemessen 12.09., 14:10</span></div>
     </div>
     <div class="rules" style="margin-top:32px">
-      <div><h4>Die Hand ist selten.</h4><p>Eine Annotation pro Bildschirm, ein Prüfvermerk pro Bericht. Handschrift ist nie Fließtext und nie Navigation. Sie ist der Marker des Ingenieurs, nicht eine zweite Schrift.</p></div>
+      <div><h4>Korrektur statt Marker.</h4><p>Gestrichen wird mit einer 2-px-Linie, korrigiert wird in Mono am Rand. Handschrift gibt es nur für kleine Notizen am Foto und den Prüfvermerk im Bericht.</p></div>
       <div><h4>Die Marker-Farbe ist Marker, nicht Text.</h4><p>Auf Petrol trägt sie Handschrift und Icons (Ocker 5,4 : 1, Lime 9,3 : 1, Mint 7,5 : 1, Terrakotta 4,0 : 1). Auf Papier ist es nur Strich, Punkt oder Fläche mit dunkler Schrift. Petrol übernimmt Buttons, Kennzahlen und Links.</p></div>
       <div><h4>Dunkel für die Bühne, hell für das Dokument.</h4><p>Hero, Plakat, LinkedIn und Baukasten auf Petrol oder Tiefe mit Punktraster. Bericht, Angebot, Brief und Formular auf Papier. Das Logo läuft auf beidem.</p></div>
     </div>
@@ -606,7 +621,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       </div>
       <div>
         <h4>The Academy for Climate Jobs</h4>
-        <ul><li>Durchstreichen und von Hand korrigieren</li><li>Marker-Kreis um das, was zählt</li><li>Handgezeichnete Icons auf dunklem Grund</li><li>Fotos mit Annotation darüber</li></ul>
+        <ul><li>Durchstreichen und korrigieren, bei uns als Korrekturzeichen nach DIN 16511</li><li>Marker-Kreis um das, was zählt</li><li>Handgezeichnete Icons auf dunklem Grund</li><li>Fotos mit Annotation darüber</li></ul>
         <p class="no"><b>Nicht übernommen:</b> Kreisel-Kritzeleien um Gesichter und die Textmarker-Farbe. Bei uns markiert die Hand Zahlen, nicht Menschen.</p>
       </div>
       <div>
@@ -615,7 +630,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <p class="no"><b>Zur Entscheidung:</b> Terrakotta liegt ebenfalls im Schalter. Mein Vorbehalt: Die Farbe gehört Anthropic. Ocker kommt aus dem Logo-Punkt.</p>
       </div>
     </div>
-    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Handschrift Permanent Marker bleibt oder durch die echte Handschrift von Micha oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
+    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Notiz-Handschrift Kalam bleibt oder durch die echte Handschrift von Micha oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
   </div>
 </section>
 
@@ -637,9 +652,18 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     return o+'</g>';
   }}
   var F=[
-    {{id:'druckluft',n:'Druckluft',h:2.6,hatch:5,mp:4}},{{id:'abwaerme',n:'Abwärme',h:3.4,hatch:6,mp:6}},{{id:'licht',n:'Beleuchtung',h:1.2,hatch:0,mp:3}},
-    {{id:'waerme',n:'Wärme',h:2.2,hatch:0,mp:5}},{{id:'strom',n:'Strom',h:2.0,hatch:4,mp:6}},{{id:'material',n:'Material',h:2.8,hatch:0,mp:4}},
-    {{id:'wasser',n:'Wasser',h:1.4,hatch:0,mp:3}},{{id:'pv',n:'PV',h:1.8,hatch:0,mp:2}},{{id:'speicher',n:'Speicher',h:1.5,hatch:4,mp:2}}];
+    {{id:'druckluft',n:'Druckluft',h:2.6,hatch:5,mp:4,k:'kWh je Nm³',t:'Wir messen Lastgang und Leckagen mit Ultraschall und prüfen Druckniveau und Steuerung der Kompressoren.',m:['Leckagen schließen','Druck absenken','Übergeordnete Steuerung']}},
+    {{id:'abwaerme',n:'Abwärme',h:3.4,hatch:6,mp:6,k:'MWh therm. p. a.',t:'Wir erfassen Temperaturen und Mengen an Öfen, Kompressoren und Kälte und suchen Abnehmer im eigenen Betrieb.',m:['Wärmerückgewinnung','Hallenheizung','Prozesswasser vorwärmen']}},
+    {{id:'licht',n:'Beleuchtung',h:1.2,hatch:0,mp:3,k:'W/m² · lx',t:'Wir messen Beleuchtungsstärken und Laufzeiten und rechnen Leuchtentausch gegen Steuerung.',m:['LED','Präsenz und Tageslicht','Zonen schalten']}},
+    {{id:'waerme',n:'Wärme',h:2.2,hatch:0,mp:5,k:'kWh/m²a',t:'Wir bilanzieren Erzeugung, Verteilung und Verbraucher, bevor über einen neuen Kessel gesprochen wird.',m:['Hydraulischer Abgleich','Vorlauf senken','Dämmung']}},
+    {{id:'strom',n:'Strom',h:2.0,hatch:4,mp:6,k:'kW Spitze · Grundlast',t:'Wir legen Lastgänge übereinander und finden Spitzen und Grundlast, die niemand bestellt hat.',m:['Lastspitzen kappen','Grundlast senken','Antriebe tauschen']}},
+    {{id:'material',n:'Material',h:2.8,hatch:0,mp:4,k:'t p. a. · € je Charge',t:'Wir verfolgen Material vom Wareneingang bis zum Ausschuss. Hier liegt oft mehr Geld als im Strom.',m:['Verschnitt senken','Ausschuss halbieren','Rückführung']}},
+    {{id:'wasser',n:'Wasser',h:1.4,hatch:0,mp:3,k:'m³ p. a.',t:'Wir messen Verbräuche je Anlage und prüfen, wo Wasser im Kreis geführt werden kann.',m:['Kreislaufführung','Kühlwasser','Leckagen']}},
+    {{id:'pv',n:'PV',h:1.8,hatch:0,mp:2,k:'kWp · Eigenverbrauch %',t:'Wir planen PV erst, wenn der Lastgang bekannt ist. Dann passt die Anlage zum Betrieb und nicht zum Prospekt.',m:['Eigenverbrauch','Dachstatik','Kombination mit Speicher']}},
+    {{id:'speicher',n:'Speicher',h:1.5,hatch:4,mp:2,k:'kWh · kW',t:'Wir dimensionieren Speicher aus dem gemessenen Lastgang und rechnen ihn gegen einfachere Maßnahmen.',m:['Lastspitzen','PV-Überschuss','Notstrom']}}];
+  var last='druckluft', why=document.getElementById('why');
+  function explain(){{ var f=F.filter(function(x){{return x.id===last;}})[0]; if(!f) return;
+    why.innerHTML='<div class="h"><b>'+f.n+'</b><span>'+f.k+'</span></div><p>'+f.t+'</p><ul>'+f.m.map(function(x){{return '<li>'+x+'</li>';}}).join('')+'</ul>'; }}
   var sel={{druckluft:1,abwaerme:1,licht:1,pv:1}}, fresh={{}};
   var slot=1.7, gap=.35, plate=3*slot+4*gap, pz=.32;
   var plateEl=document.getElementById('plate'), chips=document.getElementById('chips');
@@ -657,7 +681,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     }});
     var c=iso(plate,plate,0), l=iso(0,plate,0), r=iso(plate,0,0), t=iso(0,0,3.8);
     var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+44;
-    var lab='<text x="'+(x1-6).toFixed(0)+'" y="'+(y1-8).toFixed(0)+'" text-anchor="end" font-family="Permanent Marker, Kalam, cursive" font-size="17" fill="currentColor">Grundplatte: Effizienz-Kompass, 2 + 2 Tage</text>';
+    var lab='<text x="'+(x1-6).toFixed(0)+'" y="'+(y1-8).toFixed(0)+'" text-anchor="end" font-family="Kalam, cursive" font-weight="700" font-size="17" fill="currentColor">Grundplatte: Effizienz-Kompass, 2 + 2 Tage</text>';
     plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+lab+'</svg>';
     fresh={{}};
     var n=0,mp=0; F.forEach(function(f){{if(sel[f.id]){{n++;mp+=f.mp;}}}});
@@ -668,9 +692,9 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   }}
   F.forEach(function(f){{var b=document.createElement('button');b.type='button';b.dataset.id=f.id;b.id='chip-'+f.id;
     b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>'+f.n;
-    b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;}} render(); }});
+    b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;}} last=f.id; render(); explain(); }});
     chips.appendChild(b);}});
-  render();
+  render(); explain();
 
   var sw=document.querySelectorAll('.aksw button'), hex={{ocker:'#D9A441',lime:'#C8F04A',mint:'#5DE3A1',terra:'#E4744C'}};
   function setAk(k){{ if(k==='ocker'){{document.documentElement.removeAttribute('data-accent');}} else {{document.documentElement.setAttribute('data-accent',k);}}
