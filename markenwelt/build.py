@@ -534,7 +534,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div>
         <div>
           <h3>Michael Schenk</h3>
-          <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat rund 150 Betriebe von innen gesehen und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu erklären, dass jeder im Betrieb versteht, warum sich eine Maßnahme lohnt.</p>
+          <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat rund 150 Betriebe von innen gesehen und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <mark class="hl">erklären</mark>, dass jeder im Betrieb versteht, warum sich eine Maßnahme lohnt.</p>
         </div>
       </article>
       <article class="pers">
