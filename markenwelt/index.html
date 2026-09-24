@@ -259,7 +259,6 @@
       <div class="cfg" id="cfg">
         <div id="plate" style="color:var(--accent)"></div>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
-        <div class="tally"><div><b id="t-n">4</b><span>Bausteine</span></div><div><b>≥ 10</b><span>Maßnahmen</span></div><div><b id="t-m">18</b><span>Messpunkte, Beispiel</span></div></div>
       </div>
     </div>
   </div>
@@ -676,8 +675,6 @@
     plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+lab+'</svg>';
     fresh={};
     var n=0,mp=0; F.forEach(function(f){if(sel[f.id]){n++;mp+=f.mp;}});
-    document.getElementById('t-n').textContent=n;
-    document.getElementById('t-m').textContent=mp;
     Array.prototype.forEach.call(chips.querySelectorAll('button'),function(b){b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false');});
   }
   F.forEach(function(f){var b=document.createElement('button');b.type='button';b.dataset.id=f.id;b.id='chip-'+f.id;
