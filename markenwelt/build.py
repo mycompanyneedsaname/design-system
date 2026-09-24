@@ -172,6 +172,7 @@ def icons_html():
 
 html = f'''<title>Wendepunkt Markenwelt</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Kalam:wght@400;700&display=swap">
+<script>document.documentElement.classList.add("js")</script>
 <style>
   :root{{
     --petrol:{PETROL}; --deep:{DEEP}; --ocker:{OCKER}; --paper:{PAPER}; --sand:{SAND}; --ink:{INK}; --mist:{MIST};
@@ -436,8 +437,10 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .pers h3{{font-size:24px;margin-top:0;color:{PETROL}}}
   .pers p{{margin-top:10px;font-size:15.5px;max-width:44ch}}
   .pers .pers-q{{font-family:var(--hand);font-weight:700;font-size:22px;line-height:1.2;color:{PETROL};transform:rotate(-2deg);transform-origin:left;margin-top:14px}}
-  .hl{{color:inherit;background:linear-gradient(transparent 38%,#C8F04A 38%,#C8F04A 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .15em}}
-  .pers .pers-q span{{background:linear-gradient(transparent 38%,#C8F04A 38%,#C8F04A 90%,transparent 90%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .2em}}
+  /* Lime-Textmarker: wird gezogen, sobald die Stelle sichtbar ist */
+  .hl,.pers .pers-q span{{color:inherit;background:linear-gradient(#C8F04A,#C8F04A) no-repeat 0 80% / 100% 54%;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .15em}}
+  .js .hl:not(.on),.js .pers .pers-q span:not(.on){{background-size:0% 54%}}
+  @media (prefers-reduced-motion:no-preference){{.hl,.pers .pers-q span{{transition:background-size .9s cubic-bezier(.6,0,.2,1) .25s}}}}
   .ref-band{{padding-block:56px}}
   .ref-head{{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin-bottom:20px}}
   .ref-head h2{{font-size:clamp(22px,2.4vw,30px);color:{PETROL}}}
@@ -771,6 +774,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   </div>
 </section>
 
+<script>
+(function(){{
+  var els=document.querySelectorAll('.hl,.pers .pers-q span');
+  if(!('IntersectionObserver' in window)){{Array.prototype.forEach.call(els,function(e){{e.classList.add('on');}});return;}}
+  var io=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{en.target.classList.add('on');io.unobserve(en.target);}}}});}},{{threshold:.6}});
+  Array.prototype.forEach.call(els,function(e){{io.observe(e);}});
+}})();
+</script>
 <script>
 (function(){{
   var C30=Math.cos(Math.PI/6), S30=0.5, S=34;
