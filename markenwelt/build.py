@@ -418,6 +418,25 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .wp-p{{font-size:clamp(20px,2vw,26px);line-height:1.35;color:{PETROL};margin-top:22px;max-width:30ch}}
   .wp-art{{width:100%;height:auto;display:block}}
   .bk-cta{{margin-top:8px;padding-bottom:16px;text-align:center}}
+  .wp-proof{{display:flex;gap:14px;align-items:baseline;margin-top:26px;max-width:34ch;color:{PETROL};font-size:17px;line-height:1.4}}
+  .wp-proof .num{{font-family:var(--mono);font-weight:500;font-size:30px;line-height:1;letter-spacing:-.02em;flex:none}}
+  .wp-mnotes{{display:none;list-style:none;margin:14px 0 0;padding:0;font-family:var(--hand);font-weight:700;font-size:18px;line-height:1.3;color:{PETROL}}}
+  .wp-mnotes li{{display:grid;grid-template-columns:64px 1fr;gap:10px;padding-block:5px}}
+  .wp-mnotes .k{{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;padding-top:5px}}
+  .tl-m{{display:none;text-align:center;margin:36px 0 0;font-family:var(--hand);font-weight:700;font-size:22px;color:{PETROL}}}
+  .tl-m .lab{{display:block;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;opacity:.75}}
+  .bk-how{{text-align:center;max-width:44ch;margin:34px auto 26px;font-size:18px;line-height:1.45;color:rgba(255,255,255,.82)}}
+  .bk-how b{{color:#fff;font-weight:600}}
+  .bk-contact{{margin:18px 0 0;font-size:15px;color:rgba(255,255,255,.7)}}
+  .bk-contact a{{color:#fff;text-decoration:underline;text-underline-offset:3px}}
+  .site-foot{{padding-block:22px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.7)}}
+  .site-foot .wrap{{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}}
+  .site-foot nav{{display:flex;gap:20px}}
+  .site-foot a{{color:#fff;text-decoration:none}}
+  .site-foot a:hover{{text-decoration:underline}}
+  .bk-stack .ht{{font-size:clamp(36px,4.2vw,56px)}}
+  @media (max-width:640px){{.wp-art .wp-note{{display:none}}.wp-mnotes{{display:block}}}}
+  @media (max-width:980px){{.tl-m{{display:block}}.team-sec{{padding-bottom:48px}}}}
   .bk-stack{{display:block;text-align:center;padding-top:20px}}
   .bk-stack .ht{{margin-top:0}}
   .bk-stack .ht .l2{{max-width:none}}
@@ -425,7 +444,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .bk-stack .chips{{justify-content:center}}
   .bk-stack .hnote{{position:static;transform:rotate(-1.5deg);transform-origin:center;max-width:34ch;text-wrap:balance;text-align:center;font-size:21px;margin:0 auto 6px}}
   .bk-stack .hnote svg{{display:none}}
-  .bk-stack .cfg{{margin-top:32px}}
+  .bk-stack .cfg{{margin-top:32px;max-width:520px}}
   .bk-cta .wp-cta{{border-color:#C8F04A}}
   .wp-act{{display:flex;justify-content:center;padding-left:14%;margin-top:6px}}
   @media (max-width:980px){{.wp-act{{padding-left:0}}}}
@@ -537,6 +556,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div>
       <h1 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h1>
       <p class="wp-p">Wir sind ein Büro für <mark class="hl">Energie- und Ressourceneffizienz</mark> und suchen ihn gemeinsam mit Ihnen.</p>
+      <p class="wp-proof"><span class="num">150</span><span>Rund 150 Betriebe im verarbeitenden Gewerbe haben wir schon von innen gesehen.</span></p>
     </div>
     <div class="wp-right">
     <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: steigende Betriebskosten, CO₂-Ausstoß &amp; Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität &amp; Resilienz. Am Wendepunkt: hier.">
@@ -558,6 +578,11 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <path d="M272 176 C 276 214, 286 246, 298 272"/>
       </g>
     </svg>
+    <ul class="wp-mnotes" aria-hidden="true">
+      <li><span class="k">davor</span>steigende Betriebskosten, CO₂-Ausstoß &amp; Rohstoff-Knappheit</li>
+      <li><span class="k">hier</span><span><mark class="hl">der Wendepunkt.</mark></span></li>
+      <li><span class="k">danach</span>sinkende Betriebskosten, Flexibilität &amp; Resilienz</li>
+    </ul>
     </div>
   </div>
 </section>
@@ -573,14 +598,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="pers-l"><div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
           <h3>Michael Schenk</h3>
-          <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat rund 150 Betriebe von innen gesehen und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <strong>erklären</strong>, dass jeder im Betrieb versteht, <strong>warum sich eine Maßnahme lohnt</strong>.</p>
+          <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat die meisten dieser Betriebe selbst besucht und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <strong>erklären</strong>, dass jeder im Betrieb versteht, <strong>warum sich eine Maßnahme lohnt</strong>.</p>
         </div>
       </article>
       <article class="pers">
         <div class="pers-l"><div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
           <h3>Tobias Wintsche</h3>
-          <p>Tobias verantwortet bei uns die Energieeffizienz. Für ihn ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <strong>findet er die elegante, einfache Lösung</strong>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
+          <p>Tobias verantwortet bei uns die Energieeffizienz. Für ihn ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <strong>findet er die elegante, einfache Lösung</strong>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist. Meist heißt das: weniger Regelung, weniger Bauteile, und eine Anlage, die der Betrieb selbst im Griff hat.</p>
         </div>
       </article>
     </div>
@@ -593,6 +618,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <text x="516" y="186" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="{PETROL}">beides zusammen gedacht.</text>
       </g>
     </svg>
+    <p class="tl-m"><span class="lab">Ressourcen + Energie</span>beides zusammen gedacht.</p>
   </div>
 </section>
 
@@ -612,9 +638,20 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
       </div>
     </div>
-    <div class="bk-cta" id="kontakt"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch vereinbaren</a></div>
+    <p class="bk-how">Für jeden Stein: <b>messen</b>, <b>nachrechnen</b>, <b>umsetzen</b>. Sie entscheiden, welche Steine auf die Platte kommen.</p>
+    <div class="bk-cta" id="kontakt">
+      <a class="wp-cta" href="mailto:kontakt@wendepunkt-ingenieure.de?subject=Kostenfreies%20Erstgespr%C3%A4ch">Kostenfreies Erstgespräch vereinbaren</a>
+      <p class="bk-contact">oder direkt: <a href="mailto:kontakt@wendepunkt-ingenieure.de">kontakt@wendepunkt-ingenieure.de</a> · <a href="tel:+49000000000">+49 000 000000</a></p>
+    </div>
   </div>
 </section>
+
+<footer class="deep site-foot">
+  <div class="wrap">
+    <span>Wendepunkt Ingenieure GbR · Büro für Energie- und Ressourceneffizienz · Thüringen / Leipzig</span>
+    <nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav>
+  </div>
+</footer>
 
 <!-- ============================ MARKENSYSTEM ============================ -->
 <div class="sys-div"><div class="wrap"><span>Ab hier: Markensystem</span><span>Signaturelement · Bausteine · Icons · Plakate · Anwendung · Farben und Schriften</span></div></div>
