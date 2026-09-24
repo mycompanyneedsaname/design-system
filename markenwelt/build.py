@@ -673,7 +673,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </div>
     <div class="team">
       <article class="pers">
-        <div class="pers-l"><div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div></div>
+        <div class="pers-l"><div class="pers-ph">{portrait(1)}</div></div>
         <div>
           <div class="pers-role">Ressourceneffizienz</div>
           <h3>Michael Schenk</h3>
@@ -681,7 +681,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         </div>
       </article>
       <article class="pers">
-        <div class="pers-l"><div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div></div>
+        <div class="pers-l"><div class="pers-ph">{portrait(2)}</div></div>
         <div>
           <div class="pers-role">Energieeffizienz</div>
           <h3>Tobias Wintsche</h3>
