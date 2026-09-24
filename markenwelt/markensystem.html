@@ -194,12 +194,12 @@
   .bk-calc{font-family:var(--mono);font-size:12.5px;line-height:1.35;border-top:1px solid rgba(255,255,255,.35);padding-top:10px}
   .bc-head{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
   .bc-rows{list-style:none;margin:0;padding:0}
-  .bc-rows li{display:grid;grid-template-columns:auto 1fr auto;gap:0 10px;padding:5px 0;border-bottom:1px dashed rgba(255,255,255,.22);align-items:baseline}
+  .bc-rows li{display:grid;grid-template-columns:auto 1fr auto;gap:0 10px;padding:4px 0;border-bottom:1px dashed rgba(255,255,255,.22);align-items:baseline;transition:opacity .2s}
+  .bc-rows li.off{opacity:.38}
   .bc-rows .bc-f{color:#fff;font-weight:500}
   .bc-rows .bc-m{color:rgba(255,255,255,.7);font-family:var(--sans);font-size:13px}
   .bc-rows b{font-weight:500;color:#fff;text-align:right;font-variant-numeric:tabular-nums}
-  .bc-rows .bc-empty{display:block;color:rgba(255,255,255,.6);font-family:var(--sans);font-size:13px;border:0}
-  .bc-sum{display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;color:#fff;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+    .bc-sum{display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;color:#fff;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
   .bc-sum b{font-family:var(--sans);font-weight:600;font-size:34px;line-height:1;color:var(--accent);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
   .bc-sum b.tick{animation:pop .35s cubic-bezier(.2,.9,.3,1.3)}
   @keyframes pop{from{transform:translateY(4px);opacity:.4}}
