@@ -16,7 +16,7 @@ Das Logo bleibt wie es ist: Kurve mit der steilsten Stelle am Wendepunkt, „Wen
 
 ## Entwurf 4: Markenwelt nach Moodboard (aktuell)
 
-`markenwelt/index.html`, erzeugt durch `markenwelt/build.py` (isometrische Bausteine werden berechnet, nicht von Hand gezeichnet).
+`markenwelt/index.html` (Landingpage) und `markenwelt/markensystem.html` (Markensystem, seit 24.09. getrennt), beide erzeugt durch `markenwelt/build.py` (isometrische Bausteine werden berechnet, nicht von Hand gezeichnet).
 
 - **Signaturelement:** gedruckte Behauptung, Marker-Strich in Ocker, Ergebnis in Handschrift (Kalam 700) mit Einheit und Kontext.
 - **Produktbild:** der modulare Effizienz-Baukasten als isometrische Bausteine auf der Grundplatte „Effizienz-Kompass“.

@@ -960,8 +960,22 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 </script>
 '''
 
-out = "/home/user/design-system/markenwelt/index.html"
+# Aufteilen: Landingpage (index.html) und Markensystem (markensystem.html).
 import os
-os.makedirs(os.path.dirname(out), exist_ok=True)
-open(out, "w").write(html)
-print("written", len(html))
+M_SYS = "<!-- ============================ MARKENSYSTEM ============================ -->"
+M_END = "\n<script>\n(function(){\n  var els="
+M_HEAD = "<!-- ============================ 1 · WENDEPUNKT (Start) ============================ -->"
+i_sys, i_end, i_head = html.index(M_SYS), html.index(M_END), html.index(M_HEAD)
+head, landing, system, scripts = html[:i_head], html[i_head:i_sys], html[i_sys:i_end], html[i_end:]
+observer = scripts[:scripts.index("</script>") + len("</script>")]
+
+landing_html = head + landing + scripts
+system_html = (head.replace("<title>Wendepunkt Markenwelt</title>", "<title>Wendepunkt Markensystem</title>")
+               .replace('<a href="#kontakt">Kontakt</a>', '<a href="index.html">Landingpage</a>')
+               + system.replace("Ab hier: Markensystem", "Markensystem") + observer + "\n")
+
+d = "/home/user/design-system/markenwelt/"
+os.makedirs(d, exist_ok=True)
+for name, doc in (("index.html", landing_html), ("markensystem.html", system_html)):
+    open(d + name, "w").write(doc)
+    print("written", name, len(doc))

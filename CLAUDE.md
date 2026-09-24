@@ -8,8 +8,9 @@ Sprache mit dem Nutzer: **Deutsch**. Commit-Messages: Englisch.
 
 | Pfad | Inhalt | Status |
 |---|---|---|
-| `markenwelt/build.py` | **Quelle** der aktuellen Markenwelt. Erzeugt `markenwelt/index.html`. | aktiv |
-| `markenwelt/index.html` | Generiert. Nie direkt bearbeiten, immer `build.py` ändern und neu bauen. | aktiv |
+| `markenwelt/build.py` | **Quelle** der aktuellen Markenwelt. Erzeugt `markenwelt/index.html` und `markenwelt/markensystem.html`. | aktiv |
+| `markenwelt/index.html` | Generiert: **Landingpage** (Wendepunkt, Team, Baukasten). Das ist das veröffentlichte Artifact. Nie direkt bearbeiten. | aktiv, Fokus |
+| `markenwelt/markensystem.html` | Generiert: Markensystem (Signaturelement, Bausteine, Icons, Plakate, Anwendung, Farben/Schriften). Seit 24.09. ausgelagert, derzeit nicht im Fokus. | ruht |
 | `logo/vergleich.html` | Vergleich zweier Logo-Kurven. Entscheidung gefallen, nur Beleg. | abgeschlossen |
 | `richtungen/index.html` | Frühere drei Richtungen (Nachgerechnet, Werkbank, Kernig) plus Kombination. | historisch |
 | `README.md` | Chronik der Entwürfe und Entscheidungen. | pflegen |
@@ -18,7 +19,7 @@ Sprache mit dem Nutzer: **Deutsch**. Commit-Messages: Englisch.
 ## Arbeitsablauf für Änderungen an der Markenwelt
 
 1. `markenwelt/build.py` bearbeiten. Es ist ein Python-f-String-Template: geschweifte Klammern in CSS/JS **verdoppeln** (`{{ }}`). Keine Backslashes und keine gleichartigen Anführungszeichen innerhalb von `{...}`-Ausdrücken, sonst SyntaxError. Hilfswerte vorher in Variablen legen.
-2. Bauen: `python3 markenwelt/build.py` schreibt `markenwelt/index.html` (das Skript hat den Zielpfad `/home/user/design-system/markenwelt/index.html` fest eingetragen).
+2. Bauen: `python3 markenwelt/build.py` schreibt `markenwelt/index.html` und `markenwelt/markensystem.html` (Pfade fest eingetragen). Die Aufteilung geschieht am Ende von `build.py` über den HTML-Kommentar `MARKENSYSTEM`: Alles davor ist Landingpage, alles danach Markensystem.
 3. Einmal rendern und ansehen (Playwright ist global installiert):
    ```js
    import { chromium } from '/opt/node22/lib/node_modules/playwright/index.mjs';
@@ -37,7 +38,7 @@ Die Gründer kommentieren direkt im Artifact („Send to Claude“). Ablauf pro 
 
 - **Logo:** Kurve mit genau einem Wendepunkt, **steilste Stelle am Punkt**: SVG-Pfad `M6 52 C 30 52 34 12 58 12`, Punkt `cx=32 cy=32 r=5.5`. Wortmarke IBM Plex Sans, „Wendepunkt“ 600, „Ingenieure“ 400, gleich groß. Die x³-Variante mit flachster Stelle am Punkt ist verworfen.
 - **Produktname:** „Der Modulare Effizienz-Baukasten“. Nicht „Effizienz-Kompass“. **Keine Tagesangaben** (kein „2 + 2 Tage“, kein „vier Tage“).
-- **Reihenfolge der Startseite** (Wunsch Tobias, 24.09.): 1. Wendepunkt als Einstieg, 2. Team, 3. Modularer Effizienz-Baukasten. Den Referenzen-Abschnitt haben die Gründer wieder entfernt (kommt erst mit echten Projekten). Danach Trennband „Ab hier: Markensystem“ mit den Systemseiten.
+- **Reihenfolge der Startseite** (Wunsch Tobias, 24.09.): 1. Wendepunkt als Einstieg, 2. Team, 3. Modularer Effizienz-Baukasten. Den Referenzen-Abschnitt haben die Gründer wieder entfernt (kommt erst mit echten Projekten). Das Markensystem steht seit 24.09. in einer eigenen Datei (`markensystem.html`), die Gründer konzentrieren sich erst auf die Landingpage.
 - **1 · Wendepunkt (Einstieg, Sand, `#start`):** H1 „Der Wendepunkt ist der Moment, ab dem es anders läuft.“ / „Wir sind ein Büro für Energie- und Ressourceneffizienz und suchen ihn gemeinsam mit Ihnen.“, dabei „Energie- und Ressourceneffizienz“ mit Lime-Textmarker (Klasse `.hl`). (Kleine Zeile und Schild darüber wurden als „geht unter“ bzw. „deplatziert“ verworfen.) / Button „Kostenfreies Erstgespräch vereinbaren“ (hellgrün #C8F04A, Petrol-Rahmen, ohne Icon). Der Kontakt-Button steht **nicht** im Einstieg, sondern ganz unten im Baukasten-Abschnitt (`#kontakt`, Wunsch 24.09.). Kurve mit handschriftlichen Notizen: davor „steigende Betriebskosten, CO₂-Ausstoß & Rohstoff-Knappheit“, danach „sinkende Betriebskosten, Flexibilität & Resilienz“, am Punkt „hier.“ mit Lime-Textmarker.
 - **Ruhe (Wunsch 24.09., „zu wirr“):** Kein Übergang 1 → 2 (Linie/Pfeil „wer „wir“ sind:“ entfernt). Höchstens eine Lime-Markierung pro Block: Einstieg „Energie- und Ressourceneffizienz“ + „hier.“, Team nur „persönlich“. In den Porträttexten nur Fett, kein Grün.
 - **2 · Team (`#team`):** Überschrift „Wir nehmen es persönlich.“ („persönlich“ mit Lime-Textmarker; alle Textmarker `.hl` und die Zitate werden beim Hereinscrollen animiert gezogen), Porträts von Michael Schenk (Ressourceneffizienz) und Tobias Wintsche (Energieeffizienz), das Fachgebiet steht im Fließtext („verantwortet bei uns …“, bei beiden), nicht als Label. Texte aus Notion „3.5.1 Fragen an Tobias und Michael“. Fotos fehlen noch: gezeichnete Duotone-Platzhalter mit Label „Platzhalter“. Keine Zitate mehr (auf Wunsch gelöscht, 24.09.). Keine Notizen unter den Fotos (auf Wunsch gelöscht). Darunter (`.team-link`, nur Desktop) laufen zwei symmetrische Linien, „Ressourcen“ (links) und „Energie“ (rechts), in der Mitte zusammen („beides zusammen gedacht.“) und führen über die Sektionsgrenze in den Baukasten: Dort (`.bk-link`) wird die Linie Lime und endet mit einem Punkt über „Unser Versprechen:“ (die separate Platte „Ihr Betrieb“ ist wieder entfernt). **Die Wendepunkt-Kurve nicht als Verbindung zwischen Energie und Ressourcen verwenden**: Sie steht für vorher/nachher, nicht für zwei gleichwertige Felder. Nie Lime als Schriftfarbe auf hell.
