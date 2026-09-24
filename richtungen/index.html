@@ -200,15 +200,59 @@
   .d3-band b::before{content:"";width:10px;height:10px;background:#111111;flex:none}
   .d3-band > div:first-child b::before{background:#F2B705;outline:1px solid #111111}
   .d3-band small{display:block;margin-top:6px;font-size:13.5px}
+
+  /* KOMBINATION · Logo 1 + Farben 2 · #FFFFFF #0F3B3F #D9A441 #EEF0EC · IBM Plex Sans + Mono */
+  .kombi{margin-top:56px;scroll-margin-top:24px;border:2px solid var(--fg);padding:28px 24px 24px;background:var(--card)}
+  .kombi .dir-head{margin-bottom:20px}
+  .kombi .dir-grid .cell{border-color:var(--line)}
+  .badge{display:inline-block;font-family:var(--uimono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--fg);color:var(--bg);padding:3px 8px}
+  .k .spec,.k .ic{background:#FFFFFF;color:#0F3B3F}
+  .k .spec{border:1px solid #EEF0EC}
+  .kl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .kl-box{min-height:150px;display:flex;align-items:center;justify-content:center;padding:18px 14px;border:1px solid var(--line)}
+  .kl-cap{font-size:12px;color:var(--muted);margin-top:6px}
+  .kl-mark{display:flex;align-items:center;gap:14px;font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.02}
+  .kl-mark .w1{font-size:21px;font-weight:600;letter-spacing:-.015em}
+  .kl-mark .w2{font-size:21px;font-weight:400;letter-spacing:-.01em}
+  .kl-mark .zs{font-family:"IBM Plex Mono",monospace;font-size:8px;letter-spacing:.03em;margin-top:6px}
+  .card85{aspect-ratio:85/55;max-width:100%;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line)}
+  .k-hero{background:#FFFFFF;color:#0F3B3F;min-width:960px;font-family:"IBM Plex Sans",system-ui,sans-serif}
+  .k-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid #EEF0EC}
+  .k-nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px}
+  .k-cta{background:#0F3B3F;color:#fff;font:600 14px/1 "IBM Plex Sans",system-ui,sans-serif;padding:13px 18px;border:0;white-space:nowrap}
+  .k-body{display:grid;grid-template-columns:.92fr 1.08fr;gap:48px;padding:52px 40px 28px;align-items:start}
+  .k-body h1{font-size:50px;font-weight:600;letter-spacing:-.025em;line-height:1.05}
+  .k-body .sub{margin-top:18px;font-size:18px;max-width:44ch;color:#1E2B2C}
+  .k-body .actions{margin-top:26px;display:flex;gap:18px;align-items:center}
+  .k-body .ghost{font-size:14px;font-weight:600;text-decoration:underline;text-decoration-color:#D9A441;text-decoration-thickness:2px;text-underline-offset:5px}
+  .k-kpis{margin-top:36px;display:flex;border-top:1px solid #EEF0EC}
+  .k-kpis div{padding:14px 24px 0 0;margin-right:24px;border-right:1px solid #EEF0EC}
+  .k-kpis div:last-child{border-right:0}
+  .k-kpis b{display:block;font-family:"IBM Plex Mono",monospace;font-size:28px;font-weight:500;white-space:nowrap;line-height:1.1}
+  .k-kpis span{font-size:12.5px;color:#1E2B2C}
+  .k-chart{background:#EEF0EC;margin:0}
+  .k-chart .cap{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid #D6DBD5;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase}
+  .k-chart svg{display:block;width:100%;height:auto}
+  .k-chart .foot{padding:10px 16px;border-top:1px solid #D6DBD5;font-size:12px}
+  .k-chart .pt:hover circle.m{r:7}
+  .k-steps{padding:0 40px 26px}
+  .k-steps svg{display:block;width:100%;height:40px}
+  .k-steps .row{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+  .k-steps b{display:block;font-weight:600;font-size:15px}
+  .k-steps small{font-size:13px;color:#3D5557}
+  .k-steps .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:#3D5557}
+  @media (max-width:900px){ .kl-grid{grid-template-columns:1fr 1fr} .kombi{padding:20px 16px} }
+  @media (max-width:520px){ .kl-grid{grid-template-columns:1fr} }
 </style>
 
 <div class="wrap">
   <header class="intro">
     <div>
-      <div class="eyebrow">Deliverable 1 · Auswahlrunde · Version 2</div>
+      <div class="eyebrow">Deliverable 1 · Auswahlrunde · Version 3</div>
       <h1>Drei Richtungen für Wendepunkt Ingenieure</h1>
       <p class="lede">Moodboard, Mini-Design-System, Logo-Skizze und Hero-Ausschnitt je Richtung. Farben und Schriften sind jetzt exakt die verbindlichen Vorgaben aus dem Briefing. Tobias und Micha wählen eine Richtung, danach wird nur diese zum Design System ausgebaut.</p>
       <nav class="toc" aria-label="Richtungen">
+        <a href="#kombi"><span class="dot" style="background:#0F3B3F;box-shadow:inset -5px 0 #D9A441"></span>Kombination 1 + 2</a>
         <a href="#r1"><span class="dot" style="background:#B85C38"></span>1 · Nachgerechnet</a>
         <a href="#r2"><span class="dot" style="background:#0F3B3F"></span>2 · Werkbank</a>
         <a href="#r3"><span class="dot" style="background:#F2B705;outline:1px solid #111"></span>3 · Kernig</a>
@@ -228,6 +272,144 @@
     <div><h3>Verbotsliste umgesetzt</h3><p>Keine Verläufe, keine Pill-Buttons, keine abgerundeten Karten mit Schatten, kein zentrierter Hero, keine drei gleichen Icon-Kacheln.</p></div>
     <div><h3>Kurvenwende über das Logo hinaus</h3><p>Das Signaturelement taucht in jeder Richtung zusätzlich in Diagramm, Trenner, Icon oder Headline auf, wie im Kritik-Prompt verlangt.</p></div>
     <div><h3>Selbstprüfung je Richtung</h3><p>Die drei Fragen aus dem Kritik-Prompt sind für jede Richtung beantwortet, inklusive Logo-Tausch-Test gegen c-ober.de.</p></div>
+  </section>
+
+
+  <!-- ============================ KOMBINATION ============================ -->
+  <section class="kombi" id="kombi">
+    <div class="dir-head">
+      <div class="dir-num">1+2</div>
+      <div>
+        <span class="badge">Arbeitsstand · Wunsch der Gründer</span>
+        <h2 style="margin-top:10px">Logo aus 1, Farben aus 2</h2>
+        <p class="idea"><strong>Michas Logo aus Version 1, gesetzt in den Werkbank-Farben.</strong> Die Kurve mit Punkt, „Wendepunkt“ fett und „Ingenieure“ normal in IBM Plex Sans. Dazu weißer Grund, Petrol als Markenfarbe, Ocker für den Wendepunkt. Die Typografie bleibt bei Plex, weil das Logo aus ihr gebaut ist.</p>
+      </div>
+    </div>
+
+    <div class="dir-grid k">
+      <div class="cell c12">
+        <h3>Logo · Michas Variante in Petrol und Ocker</h3>
+        <div class="kl-grid">
+          <div><div class="kl-box" style="background:#FFFFFF"><div class="kl-mark" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="54" height="54" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1">Wendepunkt</div><div class="w2">Ingenieure</div><div class="zs">Büro für Energie- und<br>Ressourceneffizienz</div></div></div></div><div class="kl-cap">Positiv auf Weiß · Hauptversion</div></div>
+          <div><div class="kl-box" style="background:#0F3B3F"><div class="kl-mark" style="color:#FFFFFF"><svg viewBox="0 0 64 64" width="54" height="54" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1">Wendepunkt</div><div class="w2">Ingenieure</div><div class="zs">Büro für Energie- und<br>Ressourceneffizienz</div></div></div></div><div class="kl-cap">Negativ auf Petrol</div></div>
+          <div><div class="kl-box" style="background:#EEF0EC"><div class="kl-mark" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="54" height="54" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1">Wendepunkt</div><div class="w2">Ingenieure</div></div></div></div><div class="kl-cap">Kurzversion auf Fläche</div></div>
+          <div><div class="kl-box" style="background:#FFFFFF"><div class="kl-mark" style="color:#111111"><svg viewBox="0 0 64 64" width="54" height="54" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#111111" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#111111"/></svg><div><div class="w1">Wendepunkt</div><div class="w2">Ingenieure</div></div></div></div><div class="kl-cap">Einfarbig schwarz · Stempel, Fax, SW-Druck</div></div>
+        </div>
+        <div class="logo-small" style="margin-top:16px">
+          <span class="fav" style="background:#0F3B3F;"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><circle cx="32" cy="32" r="8" fill="#D9A441"/></svg></span>
+          <span class="fav" style="background:#FFFFFF;border:1px solid #D6DBD5"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="7" stroke-linecap="round"/><circle cx="32" cy="32" r="8" fill="#D9A441"/></svg></span>
+          <span class="fav tiny" style="background:#0F3B3F;"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/><circle cx="32" cy="32" r="10" fill="#D9A441"/></svg></span>
+          <span>Favicon und Avatar: Petrol-Fläche, weiße Kurve, Ocker-Punkt. Auf Petrol erreicht Ocker 5,4 : 1 und bleibt auch in 16 px sichtbar.</span>
+        </div>
+        <p class="note"><b>Warum der Punkt ocker ist:</b> Er ist das eine Element, das man nach fünf Sekunden wiedererkennt, und er markiert genau den Wendepunkt. Kupfer aus Richtung 1 entfällt, damit es bei genau einer Akzentfarbe bleibt. Auf Weiß wirkt der Punkt durch die Petrol-Kurve, die durch ihn läuft. Einfarbig wird er schwarz wie die Kurve.</p>
+      </div>
+
+      <div class="cell c5">
+        <h3>Farbwelt · aus Richtung 2</h3>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#FFFFFF"></div><div class="lbl"><b>Grund</b><code>#FFFFFF</code></div></div>
+          <div class="sw"><div class="chip" style="background:#0F3B3F"></div><div class="lbl"><b>Petrol</b><code>#0F3B3F</code><small>12,2 : 1 auf Weiß</small></div></div>
+          <div class="sw"><div class="chip" style="background:#D9A441"></div><div class="lbl"><b>Ocker</b><code>#D9A441</code><small>5,4 : 1 auf Petrol</small></div></div>
+          <div class="sw"><div class="chip" style="background:#EEF0EC"></div><div class="lbl"><b>Fläche</b><code>#EEF0EC</code></div></div>
+        </div>
+        <p class="note"><b>Petrol übernimmt alles, was in Richtung 1 Kupfer war:</b> Kennzahlen, Button, Priorität A. Ocker ist nie Schrift auf Weiß, weil es dort nur 2,3 : 1 erreicht. Es bleibt der Punkt im Logo, eine Unterstreichung und die Markierung im Diagramm.</p>
+      </div>
+
+      <div class="cell c7">
+        <h3>Typo · IBM Plex Sans 600 / 400 + IBM Plex Mono</h3>
+        <div class="spec">
+          <div class="row"><span class="k">Headline</span><span class="p1" style="font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1">Wir rechnen nach, statt zu behaupten.</span></div>
+          <div class="row"><span class="k">Fließtext</span><span class="p1" style="font-size:16px;color:#1E2B2C">Zwei Tage vor Ort, zwei Tage Planung. Danach liegen mindestens zehn Maßnahmen auf dem Tisch, priorisiert und durchgerechnet.</span></div>
+          <div class="row"><span class="k">Kennzahl</span><span class="m1" style="font-size:30px;font-weight:500;line-height:1">312 MWh<span style="font-size:13px;margin-left:10px;border-bottom:2px solid #D9A441">Strom p. a.</span></span></div>
+          <div class="row"><span class="k">Label</span><span class="m1" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Maßnahme 03 · Abwärme Härteofen · Priorität A</span></div>
+        </div>
+      </div>
+
+      <div class="frame">
+        <div class="frame-bar"><i></i><i></i><i></i><span>wendepunkt-ingenieure.de · Startseite, Hero-Ausschnitt · Desktop 1440</span></div>
+        <div class="hero-scroll">
+          <div class="k-hero">
+            <div class="k-nav">
+              <div class="kl-mark" style="gap:10px" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1" style="font-size:16px">Wendepunkt</div><div class="w2" style="font-size:16px">Ingenieure</div></div></div>
+              <ul><li>Effizienz-Kompass</li><li>Leistungen</li><li>Praxisbeispiele</li><li>Büro</li></ul>
+              <button class="k-cta" type="button">Kostenfreies Erstgespräch</button>
+            </div>
+            <div class="k-body">
+              <div>
+                <div class="m1" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Büro für Energie- und Ressourceneffizienz</div>
+                <h1 style="margin-top:14px">Wir rechnen nach, statt zu behaupten.</h1>
+                <p class="sub">Für Betriebe im verarbeitenden Gewerbe: Energie und Material messen, jede Maßnahme durchrechnen, in der richtigen Reihenfolge umsetzen. Nur Systeme, die Ihr Team noch versteht, wenn wir weg sind.</p>
+                <div class="actions"><button class="k-cta" type="button">Kostenfreies Erstgespräch</button><a class="ghost" href="#kombi">Der Effizienz-Kompass</a></div>
+                <div class="k-kpis">
+                  <div><b>2 + 2</b><span>Tage vor Ort und Planung</span></div>
+                  <div><b>≥ 10</b><span>Maßnahmen, priorisiert</span></div>
+                  <div><b>12–24</b><span>Monate typische Begleitung</span></div>
+                </div>
+              </div>
+              <figure class="k-chart">
+                <figcaption class="cap"><span>Effizienz-Kompass · Wirtschaftlichkeitskurve</span><span>Beispielwerte</span></figcaption>
+                <svg viewBox="0 0 520 300" role="img" aria-label="Kumulierte Einsparung pro Jahr über kumuliertem Invest, sechs Maßnahmen nach Wirtschaftlichkeit sortiert. Beispielwerte.">
+                  <g font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11" fill="#0F3B3F">
+                    <g stroke="#D6DBD5" stroke-width="1">
+                      <line x1="56" y1="250" x2="500" y2="250"/><line x1="56" y1="176.7" x2="500" y2="176.7"/><line x1="56" y1="103.3" x2="500" y2="103.3"/><line x1="56" y1="30" x2="500" y2="30"/>
+                    </g>
+                    <text x="48" y="254" text-anchor="end">0</text><text x="48" y="180.7" text-anchor="end">30</text><text x="48" y="107.3" text-anchor="end">60</text><text x="48" y="34" text-anchor="end">90</text>
+                    <text x="56" y="270" text-anchor="middle">0</text><text x="193.3" y="270" text-anchor="middle">100</text><text x="330.7" y="270" text-anchor="middle">200</text><text x="468" y="270" text-anchor="middle">300</text>
+                    <text x="500" y="290" text-anchor="end">kumuliertes Invest in Tsd. €</text>
+                    <text x="56" y="18">Einsparung p. a. in Tsd. €</text>
+                    <polyline points="56,250 62.6,222.6 79.8,198.7 132,151 144.3,142.2 181.4,122.4 469.9,46.6" fill="none" stroke="#0F3B3F" stroke-width="2" stroke-linejoin="round"/>
+                    <line x1="144.3" y1="142.2" x2="144.3" y2="250" stroke="#0F3B3F" stroke-width="1" stroke-dasharray="3 3"/>
+                    <g class="pt"><title>Druckluft-Leckagen · 4.800 € · 11.200 € p. a. · 5 Monate</title><circle cx="62.6" cy="222.6" r="12" fill="#EEF0EC" fill-opacity="0"/><circle class="m" cx="62.6" cy="222.6" r="5.5" fill="#D9A441" stroke="#0F3B3F" stroke-width="1.5"/></g>
+                    <g class="pt"><title>Verschnitt Stanzlinie 3 · 12.500 € · 9.800 € p. a. · 1,3 Jahre</title><circle cx="79.8" cy="198.7" r="12" fill="#EEF0EC" fill-opacity="0"/><circle class="m" cx="79.8" cy="198.7" r="5.5" fill="#D9A441" stroke="#0F3B3F" stroke-width="1.5"/></g>
+                    <g class="pt"><title>Abwärme Härteofen · 38.000 € · 19.500 € p. a. · 2,0 Jahre</title><circle cx="132" cy="151" r="12" fill="#EEF0EC" fill-opacity="0"/><circle class="m" cx="132" cy="151" r="5.5" fill="#D9A441" stroke="#0F3B3F" stroke-width="1.5"/></g>
+                    <g class="pt"><title>Pumpen mit Frequenzumrichter · 9.000 € · 3.600 € p. a. · 2,5 Jahre</title><circle cx="144.3" cy="142.2" r="12" fill="#EEF0EC" fill-opacity="0"/><circle class="m" cx="144.3" cy="142.2" r="5.5" fill="#D9A441" stroke="#0F3B3F" stroke-width="1.5"/></g>
+                    <g class="pt"><title>Hallenbeleuchtung LED · 27.000 € · 8.100 € p. a. · 3,3 Jahre</title><circle cx="181.4" cy="122.4" r="12" fill="#EEF0EC" fill-opacity="0"/><circle class="m" cx="181.4" cy="122.4" r="5" fill="#0F3B3F" stroke="#EEF0EC" stroke-width="2"/></g>
+                    <g class="pt"><title>PV-Dach 240 kWp · 210.000 € · 31.000 € p. a. · 6,8 Jahre</title><circle cx="469.9" cy="46.6" r="12" fill="#EEF0EC" fill-opacity="0"/><circle class="m" cx="469.9" cy="46.6" r="5" fill="#0F3B3F" stroke="#EEF0EC" stroke-width="2"/></g>
+                    <text x="154" y="214">4 Maßnahmen</text><text x="154" y="229">64.300 € Invest</text><text x="154" y="244">≤ 2,5 Jahre Amortisation</text>
+                    <text x="468" y="114" text-anchor="end">PV-Dach im Kontext · 6,8 J.</text>
+                  </g>
+                </svg>
+                <div class="foot">Ocker mit Petrol-Rand markiert Priorität A, wie der Punkt im Logo. Hover zeigt die Werte je Maßnahme.</div>
+              </figure>
+            </div>
+            <div class="k-steps">
+              <svg viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 H420 C 470 34 490 8 540 8 H1000" fill="none" stroke="#0F3B3F" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+              <div class="row">
+                <div><span class="n">01</span><b>Messen</b><small>Strom, Wärme, Material, Wasser</small></div>
+                <div><span class="n">02</span><b>Nachrechnen</b><small>mit Ihren Zahlen</small></div>
+                <div><span class="n">03</span><b>Priorisieren</b><small>geringinvestiv zuerst</small></div>
+                <div><span class="n">04</span><b>Umsetzen</b><small>Umsetzungs- und Baubegleitung</small></div>
+                <div><span class="n">05</span><b>Handwerk</b><small>qualifizierte Betriebe vermitteln</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cell c6">
+        <h3>Visitenkarte · 85 × 55 mm, Vorder- und Rückseite</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="card85" style="background:#FFFFFF;color:#0F3B3F">
+            <div class="kl-mark" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1" style="font-size:11px">Wendepunkt</div><div class="w2" style="font-size:11px">Ingenieure</div></div></div>
+            <div class="p1" style="font-size:9px;line-height:1.35"><b style="font-size:10px">Michael Schenk</b><br>Ressourceneffizienz<br><span class="m1" style="font-size:8px">+49 000 000000 · ms@wendepunkt-ingenieure.de</span></div>
+          </div>
+          <div class="card85" style="background:#0F3B3F;align-items:center;justify-content:center">
+            <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg>
+          </div>
+        </div>
+        <p class="note">Platzhalter für Telefon und E-Mail. Rückseite nur Signet auf Petrol, das trägt auch als LinkedIn-Avatar.</p>
+      </div>
+
+      <div class="cell c6">
+        <h3>Was aus welcher Richtung kommt</h3>
+        <div class="spec" style="background:transparent;color:var(--fg);border:0;padding:0">
+          <div class="row" style="border-color:var(--line)"><span class="k">Aus 1</span><span style="font-size:14px">Logo mit Michas Gewichtung, IBM Plex Sans und Mono, Zahlen in Mono, Wirtschaftlichkeitskurve im Hero, keine Gründer im Hero.</span></div>
+          <div class="row" style="border-color:var(--line)"><span class="k">Aus 2</span><span style="font-size:14px">Weiß, Petrol, Ocker, Fläche. Ocker-Unterstreichung, Prozesslinie mit Kurvenwende über den fünf Schritten.</span></div>
+          <div class="row" style="border-color:var(--line)"><span class="k">Entfällt</span><span style="font-size:14px">Kupfer und Papierton aus 1, Space Grotesk und Source Sans, das Quadrat-Signet und die kleingeschriebene Wortmarke aus 2.</span></div>
+          <div class="row" style="border-color:var(--line)"><span class="k">Offen</span><span style="font-size:14px">Ob die Gründer in den Hero kommen, wie in Richtung 2, oder eine eigene Sektion bekommen, wie in Richtung 1.</span></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ============================ 1 ============================ -->
@@ -364,7 +546,7 @@
                     <text x="154" y="214">4 Maßnahmen</text>
                     <text x="154" y="229">64.300 € Invest</text>
                     <text x="154" y="244">≤ 2,5 Jahre Amortisation</text>
-                    <text x="468" y="96" text-anchor="end">PV-Dach im Kontext · 6,8 J.</text>
+                    <text x="468" y="114" text-anchor="end">PV-Dach im Kontext · 6,8 J.</text>
                   </g>
                 </svg>
                 <div class="foot">Sechs von zwölf Maßnahmen, sortiert nach Einsparung je Euro. Kupfer markiert Priorität A. Hover zeigt die Werte je Maßnahme.</div>

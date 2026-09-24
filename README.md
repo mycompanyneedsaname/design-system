@@ -6,9 +6,13 @@ Marke: **Wendepunkt Ingenieure – Büro für Energie- und Ressourceneffizienz**
 
 | # | Deliverable | Ort | Status |
 |---|---|---|---|
-| 1 | Drei Richtungen (Moodboard, Mini-System, Logo-Skizze, Hero) | `richtungen/index.html` | Zur Auswahl |
+| 1 | Drei Richtungen (Moodboard, Mini-System, Logo-Skizze, Hero) | `richtungen/index.html` | Arbeitsstand: Kombination Logo 1 + Farben 2 |
 | 2 | Design System (Tokens, Typo, Spacing, Icons, Komponenten) | folgt nach Auswahl | offen |
 | 3–7 | Logo final, Website, Vorlagen, Briefkopf, Visitenkarte, LinkedIn | folgt | offen |
+
+## Arbeitsstand: Kombination Logo 1 + Farben 2
+
+Logo aus Richtung 1 in Michas Gewichtung (IBM Plex Sans, „Wendepunkt“ 600, „Ingenieure“ 400), Bildmarke Kurve mit Punkt. Farben aus Richtung 2: Weiß #FFFFFF, Petrol #0F3B3F, Ocker #D9A441, Fläche #EEF0EC. Der Punkt im Logo ist ocker, Petrol übernimmt Kennzahlen, Button und Priorität A. Typografie bleibt IBM Plex Sans + IBM Plex Mono.
 
 ## Richtungen (Version 2, verbindliche Werte laut Briefing)
 
