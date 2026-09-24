@@ -387,6 +387,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .bc-sum b{{font-family:var(--sans);font-weight:600;font-size:34px;line-height:1;color:var(--accent);letter-spacing:-.02em;font-variant-numeric:tabular-nums}}
   .bc-sum b.tick{{animation:pop .35s cubic-bezier(.2,.9,.3,1.3)}}
   @keyframes pop{{from{{transform:translateY(4px);opacity:.4}}}}
+  .bc-foot sup,.bc-sum sup{{font-size:.7em;vertical-align:top;margin-right:2px}}
   .bc-foot{{margin-top:10px;font-family:var(--sans);font-size:12px;line-height:1.45;color:rgba(255,255,255,.6)}}
   @keyframes rise{{from{{transform:translateY(-22px);opacity:0}}}}
   .slot{{stroke-dasharray:4 4;opacity:.45}}
@@ -675,7 +676,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="bk-calc" id="bk-calc" aria-live="polite">
           <div class="bc-head">Beispielmaßnahmen</div>
           <ul class="bc-rows" id="bc-rows"></ul>
-          <div class="bc-sum"><span>Zusammen</span><b id="bc-total">−0 %</b></div>
+          <div class="bc-sum"><span>Zusammen<sup>*</sup></span><b id="bc-total">−0 %</b></div>
+          <div class="bc-foot"><sup>*</sup>Richtwerte aus unseren Projekten in rund 150 Betrieben, bezogen auf die jährlichen Energie- und Materialkosten. Ihr Wert steht erst nach der Messung fest.</div>
         </div>
         <div class="chips" id="chips" aria-label="Maßnahmen wählen"></div>
       </div>
