@@ -378,7 +378,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
   .wp-band{{padding-block:88px}}
   .wp-grid{{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}}
-  .wp-h{{font-size:clamp(30px,3.6vw,48px);color:{PETROL};margin-top:14px;max-width:18ch}}
+  .wp-h{{font-size:clamp(30px,3.6vw,48px);color:{PETROL};margin-top:0;max-width:18ch}}
   .wp-p{{font-size:clamp(20px,2vw,26px);color:{PETROL};margin-top:18px}}
   .wp-art{{width:100%;height:auto;display:block}}
   .wp-curve{{stroke-dasharray:1;stroke-dashoffset:0}}
@@ -425,7 +425,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 <section class="sand wp-band" aria-label="Der Wendepunkt">
   <div class="wrap wp-grid">
     <div>
-      <span class="eyebrow" style="color:{PETROL}">Warum Wendepunkt</span>
       <h2 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h2>
       <p class="wp-p">Wir suchen ihn gemeinsam mit Ihnen.</p>
     </div>
