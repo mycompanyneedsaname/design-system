@@ -5,7 +5,7 @@
 Die Gründer arbeiten an der **Markenwelt**: Deliverable 1 aus dem Briefing, jetzt als ausgearbeitete Startseite plus Markensystem. Sie geben Feedback per Kommentar direkt im Artifact.
 
 **Live-Seite (Hauptarbeit):** https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP
-(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 28, privat. Die Freigabe macht der Nutzer über das Share-Menü.
+(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 30, privat. Die Freigabe macht der Nutzer über das Share-Menü.
 
 Weitere Artifacts:
 - Logo-Kurvenvergleich (abgeschlossen): https://claude.ai/artifact/UsjPbmEEpBYStt4gh1TZeu
@@ -15,10 +15,17 @@ Aus einer neuen Session ein Artifact **immer mit `url`** neu veröffentlichen un
 
 ## Aufbau der Markenwelt-Seite (von oben nach unten)
 
-1. **Hero** (Petrol): Logo mit Untertitel „Büro für Energie- und Ressourceneffizienz“, Navigation, Farbschalter „Marker“. Links nur „Unser Versprechen:“ / „Der Modulare Effizienz-Baukasten.“ / „Weniger Verbrauch, mehr Spielraum.“ Rechts ein **klickbarer isometrischer Baukasten** mit abgerundeten Steinen und neun Handlungsfeldern auf einer 3×3-Grundplatte in zwei Gruppen: Energie (Strom, Wärme, Kälte, Druckluft, Speicher), Ressourcen (Material, Wasser, Reststoffe, Betriebsstoffe). PV ist auf Wunsch gestrichen. Jeder Stein trägt oben ein Medien-Symbol, einige davon mit animiertem Fluss, und vorne den Prozess (Antriebe, Härteofen, Kältemaschine, Kompressor, Stanzlinie, Spülbad, Ausschuss, Kühlschmierstoff, Lastspitze). Unter der Zeichnung stehen nur die Auswahl-Buttons. **Persönliche Handschrift:** Über dem Baukasten steht eine handschriftliche Notiz mit Pfeil: „Wir kommen zu Ihnen, messen nach und setzen mit Ihnen um, was sich rechnet. Stück für Stück.“ Sie wechselt beim Hinzufügen eines Steins (z. B. „Druckluft: wir hören erst nach Leckagen.“). Derzeit ist das Kalam, später soll es echte Handschrift werden. Der getippte Einleitungstext und die Unterschrift „Micha & Tobias“ sind auf Wunsch gestrichen. Erklär-Box, Zahlenzeile, Beschriftung und Hero-Buttons wurden auf Wunsch gelöscht.
-2. **Wendepunkt-Sektion** (Sand): Satz, Kontakt-Button in Lime, große animierte Kurve mit Punkt und „hier.“. Handschriftlich davor (links oben): „Energiekostensteigerung, CO₂-Ausstoß, Rohstoff-Knappheit“, danach (rechts): „sinkende Betriebskosten, Flexibilität, Resilienz“. Von den Gründern ausdrücklich geliebt.
+Kopfleiste (Petrol): Logo mit Untertitel, Navigation als Sprunglinks (#baukasten, #praxis, #team), Farbschalter „Marker“.
+
+**Startseite (Reihenfolge seit Version 30):**
+1. **Wendepunkt** (Sand, `#start`): „Wir sind ein Büro für Energie- und Ressourceneffizienz.“, H1, Satz, Lime-Button, animierte Kurve mit Handschrift davor/danach und „hier.“. Von den Gründern ausdrücklich geliebt.
+2. **Team** (`#team`): Micha und Tobias mit Rolle, zwei Sätzen und einem handschriftlichen Zitat. Foto-Platzhalter.
+3. **Referenzen** (`#praxis`, Nebel): drei knappe Zeilen, Beispielwerte.
+4. **Baukasten** (Petrol, `#baukasten`): Versprechen-Headline plus klickbarer isometrischer Baukasten, neun Felder (Energie: Strom, Wärme, Kälte, Druckluft, Speicher; Ressourcen: Material, Wasser, Reststoffe, Betriebsstoffe), Handschrift-Notiz, die je Stein wechselt.
+
+**Trennband „Ab hier: Markensystem“**, danach:
 3. **Signaturelement**: drei Beispiele mit Korrekturzeichen.
-4. **Baukasten-Übersicht**: zwölf isometrische Module.
+4. **Baukasten-Übersicht** (`#bausteine`): zwölf isometrische Module.
 5. **Icons und Fotografie**: Hand-Icons, Foto mit Annotation.
 6. **Plakatserie**: Kurve, Baukasten, Korrektur.
 7. **Anwendung**: Bericht, LinkedIn-Post, Visitenkarte, E-Mail-Signatur.
@@ -34,7 +41,7 @@ Aus einer neuen Session ein Artifact **immer mit `url`** neu veröffentlichen un
 - **Baukasten-Übersicht weiter unten** (zwölf Module) mischt noch Leistungen (Messen, Nachrechnen …) und alte Medien (Abwärme, PV, Speicher einzeln). Auch Plakat 02 und die Handschrift-Notizen am Foto nennen teils noch alte Felder. Sollte an die neue Gruppierung aus dem Hero angepasst werden.
 - **Abschnitte 3 bis 9** haben noch kein direktes Feedback bekommen. Sie enthalten noch Texte, die zum neuen Stand passen sollten. Nach Tagen oder „Effizienz-Kompass“ ist bereits bereinigt.
 - **Handschrift:** Kalam ist Platzhalter und den Gründern besonders wichtig („die Leute haben keinen Bock mehr auf KI“). Angefragt: ein Foto mit der Standard-Notiz und den neun Feld-Notizen, mit dickem Filzstift auf weißem Papier. Dann als SVG-Pfade oder als eigene Schrift einbauen.
-- **Gründerfotos und echte Referenzen** fehlen noch. Alle Zahlen auf der Seite sind Beispielwerte.
+- **Gründerfotos und echte Referenzen** fehlen noch. Die Team-Texte stammen aus den Notion-Antworten und sollten von den Gründern gegengelesen werden. Alle Zahlen auf der Seite sind Beispielwerte.
 - **Pull Request:** Das Repo hat nur den Branch `claude/new-session-syvaun`. Einen PR gibt es erst, wenn ein Basis-Branch wie `main` existiert.
 
 ## Nächste Deliverables laut Briefing (nach Freigabe der Markenwelt)
