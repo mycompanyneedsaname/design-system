@@ -492,7 +492,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap">
     <div class="sec-head">
       <h2>Wir nehmen es persönlich.</h2>
-      <p class="muted">Energie und Ressourcen gehören für uns zusammen. Deshalb schauen wir auf beides, aus Thüringen und Leipzig.</p>
     </div>
     <div class="team">
       <article class="pers">
