@@ -442,7 +442,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div>
       <h2 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h2>
       <p class="wp-p">Wir suchen ihn gemeinsam mit Ihnen.</p>
-      <div class="actions"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch</a></div>
+      <div class="actions"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch vereinbaren</a></div>
     </div>
     <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: Energiekostensteigerung, CO₂-Ausstoß, Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität, Resilienz. Am Wendepunkt: hier.">
       <path class="wp-curve" pathLength="1" d="M20 262 C 150 270, 190 200, 260 150 C 330 100, 360 36, 500 30" fill="none" stroke="{PETROL}" stroke-width="12" stroke-linecap="round"/>
