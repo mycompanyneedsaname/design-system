@@ -375,6 +375,21 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   @keyframes flow{{to{{stroke-dashoffset:-.34}}}}
   @media (prefers-reduced-motion:reduce){{.glyph .flow{{animation:none}}}}
   .hero h1 .pre{{display:block;font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.9em}}
+
+  .wp-band{{padding-block:88px}}
+  .wp-grid{{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}}
+  .wp-h{{font-size:clamp(30px,3.6vw,48px);color:{PETROL};margin-top:14px;max-width:18ch}}
+  .wp-p{{font-size:clamp(20px,2vw,26px);color:{PETROL};margin-top:18px}}
+  .wp-art{{width:100%;height:auto;display:block}}
+  .wp-curve{{stroke-dasharray:1;stroke-dashoffset:0}}
+  @media (prefers-reduced-motion:no-preference){{
+    .wp-curve{{animation:wpdraw 1.6s .2s cubic-bezier(.6,0,.2,1) both}}
+    .wp-dot{{transform-box:fill-box;transform-origin:center;animation:wppop .5s 1.1s cubic-bezier(.2,.9,.3,1.4) both}}
+    .wp-note{{animation:fade .5s 1.6s ease-out both}}
+  }}
+  @keyframes wpdraw{{from{{stroke-dashoffset:1}}}}
+  @keyframes wppop{{from{{transform:scale(0)}}}}
+  @media (max-width:980px){{.wp-grid{{grid-template-columns:1fr}}.wp-band{{padding-block:56px}}}}
 </style>
 
 <!-- ============================ HERO ============================ -->
@@ -405,6 +420,23 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </div>
   </div>
 </header>
+
+<!-- ============================ WENDEPUNKT ============================ -->
+<section class="sand wp-band" aria-label="Der Wendepunkt">
+  <div class="wrap wp-grid">
+    <div>
+      <span class="eyebrow" style="color:{PETROL}">Warum Wendepunkt</span>
+      <h2 class="wp-h">Der Wendepunkt ist der Moment, ab dem die Kurve anders läuft.</h2>
+      <p class="wp-p">Wir suchen ihn in Ihrem Betrieb.</p>
+    </div>
+    <svg class="wp-art" viewBox="0 0 520 300" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt und der Notiz hier">
+      <path class="wp-curve" pathLength="1" d="M20 262 C 150 270, 190 200, 260 150 C 330 100, 360 36, 500 30" fill="none" stroke="{PETROL}" stroke-width="12" stroke-linecap="round"/>
+      <circle class="wp-dot" cx="260" cy="150" r="21" fill="currentColor" data-ak="f" stroke="{PETROL}" stroke-width="3"/>
+      <path class="wp-note" d="M292 176 q 60 50 118 14" fill="none" stroke="{PETROL}" stroke-width="3" stroke-linecap="round"/>
+      <text class="wp-note" x="352" y="238" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="{PETROL}">hier.</text>
+    </svg>
+  </div>
+</section>
 
 <!-- ============================ PRINZIP ============================ -->
 <section class="light" id="kompass">
