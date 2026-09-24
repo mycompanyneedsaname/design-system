@@ -469,20 +469,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     .team-link .tl-dot{{transition:transform .5s cubic-bezier(.2,.9,.3,1.4) .9s}}
     .team-link .tl-fade{{transition:opacity .5s ease-out 1.3s}}
   }}
-  .team-sec{{padding-bottom:0;padding-top:0}}
-  #start.wp-band{{padding-bottom:0}}
-  .sec-link{{display:block;width:100%;height:auto;overflow:visible}}
-  .st-link{{margin-top:8px}}
-  .tm-link{{margin-bottom:-58px}}
-  .js .sec-link .tl-curve{{stroke-dasharray:1;stroke-dashoffset:1}}
-  .js .sec-link .tl-fade{{opacity:0}}
-  .js .sec-link.on .tl-curve{{stroke-dashoffset:0}}
-  .js .sec-link.on .tl-fade{{opacity:1}}
-  @media (prefers-reduced-motion:no-preference){{
-    .st-link .tl-curve{{transition:stroke-dashoffset .4s linear}}
-    .tm-link .tl-curve{{transition:stroke-dashoffset .8s cubic-bezier(.4,0,.2,1) .35s}}
-    .tm-link .tl-fade{{transition:opacity .4s ease-out 1.1s}}
-  }}
+  .team-sec{{padding-bottom:0}}
   #baukasten{{padding-top:0}}
   .bk-link{{display:block;width:100%;height:auto;overflow:visible}}
   .js .bk-link .tl-curve{{stroke-dasharray:1;stroke-dashoffset:1}}
@@ -496,7 +483,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     .bk-link .tl-dot{{transition:transform .6s cubic-bezier(.2,.9,.3,1.2) .4s,opacity .4s ease-out .4s}}
     .bk-link .tl-fade{{transition:opacity .5s ease-out .9s}}
   }}
-  @media (max-width:980px){{.team-link,.bk-link,.sec-link{{display:none}}.team-sec{{padding-bottom:56px;padding-top:56px}}#baukasten{{padding-top:56px}}#start.wp-band{{padding-bottom:56px}}}}
+  @media (max-width:980px){{.team-link,.bk-link{{display:none}}.team-sec{{padding-bottom:56px}}#baukasten{{padding-top:56px}}}}
   .pers{{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start}}
   .pers-ph{{aspect-ratio:4/5;background:var(--sand);border-radius:12px;position:relative;overflow:hidden}}
   .pers-img{{width:100%;height:100%;display:block}}
@@ -565,17 +552,11 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </svg>
     </div>
   </div>
-  <div class="wrap"><svg class="st-link sec-link" viewBox="0 0 1000 70" aria-hidden="true"><path class="tl-curve" pathLength="1" d="M786 0 L 786 70" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/></svg></div>
 </section>
 
 <!-- ============================ 2 · TEAM ============================ -->
 <section class="light team-sec" id="team">
   <div class="wrap">
-    <svg class="tm-link sec-link" viewBox="0 0 1000 140" role="img" aria-label="Wer wir sind:">
-      <path class="tl-curve" pathLength="1" d="M786 0 C 786 96, 736 126, 596 128" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
-      <path class="tl-fade" d="M612 116 L 594 128 L 612 140" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <text class="tl-fade" x="804" y="64" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="{PETROL}">wer „wir“ sind:</text>
-    </svg>
     <div class="sec-head">
       <h2>Wir nehmen es <mark class="hl">persönlich</mark>.</h2>
     </div>
@@ -584,14 +565,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="pers-l"><div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
           <h3>Michael Schenk</h3>
-          <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat rund 150 Betriebe von innen gesehen und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <mark class="hl"><strong>erklären</strong></mark>, dass jeder im Betrieb versteht, <mark class="hl"><strong>warum sich eine Maßnahme lohnt</strong></mark>.</p>
+          <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat rund 150 Betriebe von innen gesehen und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <strong>erklären</strong>, dass jeder im Betrieb versteht, <strong>warum sich eine Maßnahme lohnt</strong>.</p>
         </div>
       </article>
       <article class="pers">
         <div class="pers-l"><div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
           <h3>Tobias Wintsche</h3>
-          <p>Tobias verantwortet bei uns die Energieeffizienz. Für ihn ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <mark class="hl"><strong>findet er die elegante, einfache Lösung</strong></mark>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
+          <p>Tobias verantwortet bei uns die Energieeffizienz. Für ihn ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <strong>findet er die elegante, einfache Lösung</strong>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
         </div>
       </article>
     </div>
@@ -876,7 +857,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
 <script>
 (function(){{
-  var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link,.bk-link,.sec-link');
+  var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link,.bk-link');
   if(!('IntersectionObserver' in window)){{Array.prototype.forEach.call(els,function(e){{e.classList.add('on');}});return;}}
   var io=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{en.target.classList.add('on');io.unobserve(en.target);}}}});}},{{threshold:.6}});
   Array.prototype.forEach.call(els,function(e){{io.observe(e);}});
