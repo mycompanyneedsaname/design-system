@@ -15,7 +15,7 @@ Aus einer neuen Session ein Artifact **immer mit `url`** neu veröffentlichen un
 
 ## Aufbau der Markenwelt-Seite (von oben nach unten)
 
-1. **Hero** (Petrol): Logo, Navigation, Farbschalter „Marker“. Headline „Unser Versprechen: / Der Modulare Effizienz-Baukasten.“, Unterzeile, kurzer Text. Rechts ein **klickbarer isometrischer Baukasten** mit neun Handlungsfeldern (Druckluft, Abwärme, Beleuchtung, Wärme, Strom, Material, Wasser, PV, Speicher). Jeder Stein trägt oben ein Medien-Symbol, einige davon mit animiertem Fluss, und vorne den Prozess (Kompressor, Härteofen …). Unter der Zeichnung stehen nur die Auswahl-Buttons. Erklär-Box, Zahlenzeile, Beschriftung und Hero-Buttons wurden auf Wunsch gelöscht.
+1. **Hero** (Petrol): Logo, Navigation, Farbschalter „Marker“. Headline „Unser Versprechen: / Der Modulare Effizienz-Baukasten.“, Unterzeile, kurzer Text. Rechts ein **klickbarer isometrischer Baukasten** mit abgerundeten Steinen und neun Handlungsfeldern in drei Gruppen: Energie (Strom, Wärme, Kälte, Druckluft), Ressourcen (Material, Wasser, Reststoffe, Betriebsstoffe), Eigenerzeugung (PV und Speicher). Jeder Stein trägt oben ein Medien-Symbol, einige davon mit animiertem Fluss, und vorne den Prozess (Antriebe, Härteofen, Kältemaschine, Kompressor, Stanzlinie, Spülbad, Ausschuss, Kühlschmierstoff, PV · Speicher). Unter der Zeichnung stehen nur die Auswahl-Buttons. Erklär-Box, Zahlenzeile, Beschriftung und Hero-Buttons wurden auf Wunsch gelöscht.
 2. **Wendepunkt-Sektion** (Sand): Satz, Kontakt-Button in Lime, große animierte Kurve mit Punkt und „hier.“. Von den Gründern ausdrücklich geliebt.
 3. **Signaturelement**: drei Beispiele mit Korrekturzeichen.
 4. **Baukasten-Übersicht**: zwölf isometrische Module.
@@ -28,6 +28,7 @@ Aus einer neuen Session ein Artifact **immer mit `url`** neu veröffentlichen un
 ## Offene Punkte
 
 - **Akzentfarbe:** Lime ist Favorit, aber noch nicht entschieden. Der Schalter bleibt, bis die Gründer festlegen. Danach Schalter entfernen und die Farbe fest setzen. Dabei prüfen: Ein Lime-Punkt im Logo auf hellem Grund hat wenig Kontrast. Eventuell bleibt der Punkt auf hellen Flächen petrol- oder ockerfarben.
+- **Baukasten-Übersicht weiter unten** (zwölf Module) mischt noch Leistungen (Messen, Nachrechnen …) und alte Medien (Abwärme, PV, Speicher einzeln). Sollte an die neue Gruppierung aus dem Hero angepasst werden.
 - **Abschnitte 3 bis 9** haben noch kein direktes Feedback bekommen. Sie enthalten noch Texte, die zum neuen Stand passen sollten. Nach Tagen oder „Effizienz-Kompass“ ist bereits bereinigt.
 - **Handschrift:** Kalam ist Platzhalter. Angebot an die Gründer: echte Handschrift von Micha oder Tobias. Dafür braucht es ein Foto mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und einem Häkchen, mit Filzstift geschrieben.
 - **Gründerfotos und echte Referenzen** fehlen noch. Alle Zahlen auf der Seite sind Beispielwerte.

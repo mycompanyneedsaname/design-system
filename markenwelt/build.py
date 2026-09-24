@@ -394,6 +394,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .wp-cta{{display:inline-flex;align-items:center;gap:14px;background:var(--accent);color:{PETROL};border:2px solid {PETROL};
     font:600 16px/1 var(--sans);padding:16px 22px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}}
   .wp-cta:hover,.wp-cta:focus-visible{{transform:translate(-3px,-3px);box-shadow:3px 3px 0 {PETROL}}}
+  .chips .grp{{flex-basis:100%;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}}
+  .chips .grp:first-child{{margin-top:0}}
 </style>
 
 <!-- ============================ HERO ============================ -->
@@ -676,79 +678,90 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   function iso(x,y,z){{return [(x-y)*C30*S,(x+y)*S30*S-z*S];}}
   function P(pts){{return pts.map(function(p){{return p[0].toFixed(1)+','+p[1].toFixed(1)}}).join(' ');}}
   var G={{
-    druckluft:'<ellipse cx=".36" cy=".5" rx=".2" ry=".2"/><circle cx=".36" cy=".5" r=".07"/><path class="flow" pathLength="1" d="M.56 .5 H.92"/>',
-    abwaerme:'<path class="flow" pathLength="1" d="M.2 .85 C.35 .65 .05 .45 .2 .15 M.5 .85 C.65 .65 .35 .45 .5 .15 M.8 .85 C.95 .65 .65 .45 .8 .15"/>',
-    licht:'<circle cx=".5" cy=".5" r=".15"/><path d="M.5 .12V.24M.5 .76V.88M.12 .5H.24M.76 .5H.88M.23 .23L.31 .31M.69 .69L.77 .77M.77 .23L.69 .31M.31 .69L.23 .77"/>',
-    waerme:'<path class="flow" pathLength="1" d="M.12 .22 H.88 V.42 H.12 V.62 H.88 V.82 H.12"/>',
     strom:'<path d="M.56 .1 L.28 .56 H.5 L.42 .9 L.74 .42 H.52 Z"/>',
+    waerme:'<path class="flow" pathLength="1" d="M.2 .85 C.35 .65 .05 .45 .2 .15 M.5 .85 C.65 .65 .35 .45 .5 .15 M.8 .85 C.95 .65 .65 .45 .8 .15"/>',
+    kaelte:'<path d="M.5 .12 V.88 M.17 .31 L.83 .69 M.17 .69 L.83 .31 M.42 .18 L.5 .26 L.58 .18 M.42 .82 L.5 .74 L.58 .82"/>',
+    druckluft:'<ellipse cx=".36" cy=".5" rx=".2" ry=".2"/><circle cx=".36" cy=".5" r=".07"/><path class="flow" pathLength="1" d="M.56 .5 H.92"/>',
     material:'<path d="M.14 .2 H.66 V.5 H.14 Z M.28 .36 H.8 V.66 H.28 Z"/><path class="flow" pathLength="1" d="M.1 .86 H.9"/>',
     wasser:'<path d="M.5 .12 C.63 .32 .72 .44 .72 .56 A .22 .22 0 0 1 .28 .56 C.28 .44 .37 .32 .5 .12 Z"/><path class="flow" pathLength="1" d="M.08 .9 C.3 .8 .7 1 .92 .9"/>',
-    pv:'<path d="M.12 .14 H.88 V.86 H.12 Z M.12 .38 H.88 M.12 .62 H.88 M.37 .14 V.86 M.63 .14 V.86"/>',
-    speicher:'<path d="M.14 .3 H.8 V.7 H.14 Z M.8 .42 H.9 V.58 H.8"/><path d="M.28 .38 V.62 M.41 .38 V.62 M.54 .38 V.62"/>'
+    reststoffe:'<path d="M.2 .3 H.8 L.72 .86 H.28 Z M.14 .3 H.86"/><path class="flow" pathLength="1" d="M.62 .12 C.9 .12 .9 .3 .8 .3"/>',
+    betriebsstoffe:'<ellipse cx=".5" cy=".24" rx=".26" ry=".1"/><path d="M.24 .24 V.78 A .26 .1 0 0 0 .76 .78 V.24 M.24 .44 A .26 .1 0 0 0 .76 .44 M.24 .62 A .26 .1 0 0 0 .76 .62"/>',
+    eigen:'<path d="M.1 .14 H.66 V.62 H.1 Z M.1 .38 H.66 M.38 .14 V.62"/><path d="M.6 .74 H.9 V.9 H.6 Z M.9 .79 H.94 V.85 H.9"/>'
   }};
-  var PR={{druckluft:'Kompressor',abwaerme:'Härteofen',licht:'Hallenlicht',waerme:'Heizkreis',strom:'Lastgang',material:'Stanzlinie',wasser:'Kühlkreis',pv:'Dachfläche',speicher:'Lastspitze'}};
+  var PR={{strom:'Antriebe',waerme:'Härteofen',kaelte:'Kältemaschine',druckluft:'Kompressor',material:'Stanzlinie',wasser:'Spülbad',reststoffe:'Ausschuss',betriebsstoffe:'Kühlschmierstoff',eigen:'PV · Speicher'}};
   function unit(a,b){{var dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy);return [dx/l,dy/l];}}
+  function rpath(pts,r){{
+    var n=pts.length, A=[], B=[];
+    for(var i=0;i<n;i++){{var p=pts[i],pr=pts[(i+n-1)%n],nx=pts[(i+1)%n];
+      var u1=unit(p,pr),u2=unit(p,nx),l1=Math.hypot(pr[0]-p[0],pr[1]-p[1]),l2=Math.hypot(nx[0]-p[0],nx[1]-p[1]),rr=Math.min(r,l1*.35,l2*.35);
+      A.push([p[0]+u1[0]*rr,p[1]+u1[1]*rr]); B.push([p[0]+u2[0]*rr,p[1]+u2[1]*rr]);}}
+    var f=function(q){{return q[0].toFixed(1)+' '+q[1].toFixed(1);}};
+    var d='M'+f(B[0]);
+    for(var j=1;j<=n;j++){{var k=j%n; d+=' L'+f(A[k])+' Q'+f(pts[k])+' '+f(B[k]);}}
+    return d+' Z';
+  }}
+  var cid=0;
   function block(x,y,z,w,d,h,hatch,cls,title,id){{
     var T=[iso(x,y,z+h),iso(x+w,y,z+h),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
     var L=[iso(x,y+d,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
     var R=[iso(x+w,y,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x+w,y,z+h)];
+    var sil=[T[0],T[1],R[0],R[1],L[0],T[3]], rad=h<.5?3:7, sp=rpath(sil,rad), k='bc'+(cid++);
     var o='<g class="blk '+(cls||'')+'">'+(title?'<title>'+title+'</title>':'');
-    o+='<polygon points="'+P(L)+'" fill="#0B3236" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
-    o+='<polygon points="'+P(R)+'" fill="#0E393D" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
-    o+='<polygon points="'+P(T)+'" fill="#14474C" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
+    o+='<clipPath id="'+k+'"><path d="'+sp+'"/></clipPath><g clip-path="url(#'+k+')">';
+    o+='<polygon points="'+P(L)+'" fill="#0B3236"/><polygon points="'+P(R)+'" fill="#0E393D"/><polygon points="'+P(T)+'" fill="#14474C"/>';
     for(var i=1;i<hatch;i++){{var t=i/hatch;var a=[R[0][0]+(R[1][0]-R[0][0])*t,R[0][1]+(R[1][1]-R[0][1])*t];var b=[R[3][0]+(R[2][0]-R[3][0])*t,R[3][1]+(R[2][1]-R[3][1])*t];
-      o+='<line x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b[0].toFixed(1)+'" y2="'+b[1].toFixed(1)+'" stroke="currentColor" stroke-width="1" stroke-opacity=".45"/>';}}
+      o+='<line x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b[0].toFixed(1)+'" y2="'+b[1].toFixed(1)+'" stroke="currentColor" stroke-width="1" stroke-opacity=".4"/>';}}
+    var c=T[2], e1=T[1], e2=T[3], e3=R[1];
+    var sh=function(p,q){{var u=unit(p,q);return [p[0]+u[0]*2,p[1]+u[1]*2];}};
+    o+='<path d="M'+P([sh(c,e1)])+' L'+P([sh(e1,c)])+' M'+P([sh(c,e2)])+' L'+P([sh(e2,c)])+' M'+P([sh(c,e3)])+' L'+P([sh(e3,c)])+'" fill="none" stroke="currentColor" stroke-width="1.4" stroke-opacity=".75" stroke-linecap="round"/>';
     if(id&&G[id]){{
       var ax=T[1][0]-T[0][0], ay=T[1][1]-T[0][1], cx=T[3][0]-T[0][0], cy=T[3][1]-T[0][1];
-      o+='<g transform="matrix('+[ax,ay,cx,cy,T[0][0],T[0][1]].map(function(v){{return v.toFixed(2);}}).join(' ')+')" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" class="glyph">'+G[id].replace(/<(path|circle|ellipse)/g,'<$1 vector-effect="non-scaling-stroke"')+'</g>';
+      o+='<g transform="matrix('+[ax,ay,cx,cy,T[0][0],T[0][1]].map(function(v){{return v.toFixed(2);}}).join(' ')+')" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="glyph">'+G[id].replace(/<(path|circle|ellipse)/g,'<$1 vector-effect="non-scaling-stroke"')+'</g>';
     }}
     if(id&&PR[id]){{
-      var u=unit(L[0],L[1]), v=unit(L[3],L[0]);
-      o+='<g transform="matrix('+[u[0],u[1],v[0],v[1],L[0][0],L[0][1]].map(function(n){{return n.toFixed(3);}}).join(' ')+')"><text x="6" y="-7" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".4" fill="currentColor" fill-opacity=".9">'+PR[id].toUpperCase()+'</text></g>';
+      var u=unit(L[0],L[1]), v=unit(L[3],L[0]), len=Math.hypot(L[1][0]-L[0][0],L[1][1]-L[0][1]), fs=7.5, lab=PR[id].toUpperCase();
+      var est=lab.length*(fs*.6+.3), room=len-14, fit=est>room?' textLength="'+room.toFixed(1)+'" lengthAdjust="spacingAndGlyphs"':'';
+      o+='<g transform="matrix('+[u[0],u[1],v[0],v[1],L[0][0],L[0][1]].map(function(n){{return n.toFixed(3);}}).join(' ')+')"><text x="'+(len/2).toFixed(1)+'" y="-8" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="'+fs+'" letter-spacing=".3" fill="currentColor" fill-opacity=".9"'+fit+'>'+lab+'</text></g>';
     }}
+    o+='</g><path d="'+sp+'" fill="none" stroke="currentColor" stroke-width="1.6"/>';
     return o+'</g>';
   }}
   var F=[
-    {{id:'druckluft',n:'Druckluft',h:2.6,hatch:5,mp:4,k:'kWh je Nm³',t:'Wir messen Lastgang und Leckagen mit Ultraschall und prüfen Druckniveau und Steuerung der Kompressoren.',m:['Leckagen schließen','Druck absenken','Übergeordnete Steuerung']}},
-    {{id:'abwaerme',n:'Abwärme',h:3.4,hatch:6,mp:6,k:'MWh therm. p. a.',t:'Wir erfassen Temperaturen und Mengen an Öfen, Kompressoren und Kälte und suchen Abnehmer im eigenen Betrieb.',m:['Wärmerückgewinnung','Hallenheizung','Prozesswasser vorwärmen']}},
-    {{id:'licht',n:'Beleuchtung',h:1.2,hatch:0,mp:3,k:'W/m² · lx',t:'Wir messen Beleuchtungsstärken und Laufzeiten und rechnen Leuchtentausch gegen Steuerung.',m:['LED','Präsenz und Tageslicht','Zonen schalten']}},
-    {{id:'waerme',n:'Wärme',h:2.2,hatch:0,mp:5,k:'kWh/m²a',t:'Wir bilanzieren Erzeugung, Verteilung und Verbraucher, bevor über einen neuen Kessel gesprochen wird.',m:['Hydraulischer Abgleich','Vorlauf senken','Dämmung']}},
-    {{id:'strom',n:'Strom',h:2.0,hatch:4,mp:6,k:'kW Spitze · Grundlast',t:'Wir legen Lastgänge übereinander und finden Spitzen und Grundlast, die niemand bestellt hat.',m:['Lastspitzen kappen','Grundlast senken','Antriebe tauschen']}},
-    {{id:'material',n:'Material',h:2.8,hatch:0,mp:4,k:'t p. a. · € je Charge',t:'Wir verfolgen Material vom Wareneingang bis zum Ausschuss. Hier liegt oft mehr Geld als im Strom.',m:['Verschnitt senken','Ausschuss halbieren','Rückführung']}},
-    {{id:'wasser',n:'Wasser',h:1.4,hatch:0,mp:3,k:'m³ p. a.',t:'Wir messen Verbräuche je Anlage und prüfen, wo Wasser im Kreis geführt werden kann.',m:['Kreislaufführung','Kühlwasser','Leckagen']}},
-    {{id:'pv',n:'PV',h:1.8,hatch:0,mp:2,k:'kWp · Eigenverbrauch %',t:'Wir planen PV erst, wenn der Lastgang bekannt ist. Dann passt die Anlage zum Betrieb und nicht zum Prospekt.',m:['Eigenverbrauch','Dachstatik','Kombination mit Speicher']}},
-    {{id:'speicher',n:'Speicher',h:1.5,hatch:4,mp:2,k:'kWh · kW',t:'Wir dimensionieren Speicher aus dem gemessenen Lastgang und rechnen ihn gegen einfachere Maßnahmen.',m:['Lastspitzen','PV-Überschuss','Notstrom']}}];
-  var last='druckluft', why=document.getElementById('why');
-  function explain(){{ if(!why) return; var f=F.filter(function(x){{return x.id===last;}})[0]; if(!f) return;
-    why.innerHTML='<div class="h"><b>'+f.n+'</b><span>'+f.k+'</span></div><p>'+f.t+'</p><ul>'+f.m.map(function(x){{return '<li>'+x+'</li>';}}).join('')+'</ul>'; }}
-  var sel={{druckluft:1,abwaerme:1,licht:1,pv:1}}, fresh={{}};
+    {{g:'Energie',id:'strom',n:'Strom',h:2.4,hatch:4}},{{g:'Energie',id:'waerme',n:'Wärme',h:3.2,hatch:6}},{{g:'Energie',id:'kaelte',n:'Kälte',h:1.8,hatch:0}},
+    {{g:'Energie',id:'druckluft',n:'Druckluft',h:2.6,hatch:5}},{{g:'Ressourcen',id:'material',n:'Material',h:2.9,hatch:0}},{{g:'Ressourcen',id:'wasser',n:'Wasser',h:1.5,hatch:0}},
+    {{g:'Ressourcen',id:'reststoffe',n:'Reststoffe',h:1.3,hatch:4}},{{g:'Ressourcen',id:'betriebsstoffe',n:'Betriebsstoffe',h:1.2,hatch:0}},{{g:'Eigenerzeugung',id:'eigen',n:'PV und Speicher',h:1.7,hatch:0}}];
+  var last='strom', why=document.getElementById('why');
+  function explain(){{}}
+  var sel={{strom:1,waerme:1,druckluft:1,material:1}}, fresh={{}};
   var slot=1.7, gap=.35, plate=3*slot+4*gap, pz=.32;
   var plateEl=document.getElementById('plate'), chips=document.getElementById('chips');
   function render(){{
-    var parts=[], ix=0;
+    cid=0;
+    var parts=[];
     parts.push(block(0,0,0,plate,plate,pz,0,'','Modularer Effizienz-Baukasten'));
     var items=[];
     F.forEach(function(f,i){{var gx=i%3, gy=Math.floor(i/3); var x=gap+gx*(slot+gap), y=gap+gy*(slot+gap); items.push({{f:f,x:x,y:y}});}});
     items.forEach(function(it){{
       if(!sel[it.f.id]){{var q=[iso(it.x,it.y,pz),iso(it.x+slot,it.y,pz),iso(it.x+slot,it.y+slot,pz),iso(it.x,it.y+slot,pz)];
-        parts.push('<polygon class="slot" points="'+P(q)+'" fill="none" stroke="currentColor" stroke-width="1"/>');}}
+        parts.push('<path class="slot" d="'+rpath(q,5)+'" fill="none" stroke="currentColor" stroke-width="1"/>');}}
     }});
     items.sort(function(a,b){{return (a.x+a.y)-(b.x+b.y);}}).forEach(function(it){{
       if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,fresh[it.f.id]?'new':'',it.f.n+' · '+PR[it.f.id],it.f.id));
     }});
     var c=iso(plate,plate,0), l=iso(0,plate,0), r=iso(plate,0,0), t=iso(0,0,3.8);
     var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+14;
-    var lab='';
-    plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+lab+'</svg>';
+    plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+'</svg>';
     fresh={{}};
-    var n=0,mp=0; F.forEach(function(f){{if(sel[f.id]){{n++;mp+=f.mp;}}}});
     Array.prototype.forEach.call(chips.querySelectorAll('button'),function(b){{b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false');}});
   }}
-  F.forEach(function(f){{var b=document.createElement('button');b.type='button';b.dataset.id=f.id;b.id='chip-'+f.id;
-    b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>'+f.n;
-    b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;}} last=f.id; render(); explain(); }});
+  var curG='';
+  F.forEach(function(f){{
+    if(f.g!==curG){{curG=f.g; var lb=document.createElement('span'); lb.className='grp'; lb.textContent=f.g; chips.appendChild(lb);}}
+    var b=document.createElement('button');b.type='button';b.dataset.id=f.id;b.id='chip-'+f.id;
+    b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>'+f.n;
+    b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;}} last=f.id; render(); }});
     chips.appendChild(b);}});
-  render(); explain();
+  render();
 
   var sw=document.querySelectorAll('.aksw button'), hex={{ocker:'#D9A441',lime:'#C8F04A',mint:'#5DE3A1',terra:'#E4744C'}};
   function setAk(k){{ if(k==='ocker'){{document.documentElement.removeAttribute('data-accent');}} else {{document.documentElement.setAttribute('data-accent',k);}}
