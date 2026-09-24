@@ -444,7 +444,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 <header class="dark">
   <div class="wrap">
     <div class="top">
-      {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=True)}
+      {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=False)}
       <ul><li><a href="#baukasten">Effizienz-Baukasten</a></li><li><a href="#praxis">Praxisbeispiele</a></li><li><a href="#team">Team</a></li></ul>
       <div class="aksw"><span>Marker</span>
         <button type="button" data-set="ocker" style="--c:#D9A441" aria-label="Ocker" aria-pressed="true"></button>
