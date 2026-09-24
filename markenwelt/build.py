@@ -446,7 +446,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap">
     <div class="top">
       {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=False)}
-      <ul><li><a href="#baukasten">Effizienz-Baukasten</a></li><li><a href="#praxis">Praxisbeispiele</a></li><li><a href="#team">Team</a></li></ul>
+      <ul><li><a href="#baukasten">Effizienz-Baukasten</a></li><li>Praxisbeispiele</li><li><a href="#team">Team</a></li></ul>
       <div class="aksw"><span>Marker</span>
         <button type="button" data-set="ocker" style="--c:#D9A441" aria-label="Ocker" aria-pressed="true"></button>
         <button type="button" data-set="lime" style="--c:#C8F04A" aria-label="Lime" aria-pressed="false"></button>
@@ -513,22 +513,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         </div>
       </article>
     </div>
-  </div>
-</section>
-
-<!-- ============================ 3 · REFERENZEN ============================ -->
-<section class="mist ref-band" id="praxis">
-  <div class="wrap">
-    <div class="ref-head">
-      <span class="eyebrow">Praxisbeispiele</span>
-      <h2>Was sich gerechnet hat.</h2>
-    </div>
-    <ul class="refs">
-      <li><span class="r-who">Metallverarbeitung · 80 Mitarbeitende</span><span class="r-f">Druckluft</span><span class="r-what">Leckagen geschlossen</span><span class="r-num">−18 % Strom am Kompressor</span></li>
-      <li><span class="r-who">Kunststoff-Spritzguss · 45 Mitarbeitende</span><span class="r-f">Kälte</span><span class="r-what">Nachtbetrieb abgeschaltet</span><span class="r-num">−31 MWh Strom im Jahr</span></li>
-      <li><span class="r-who">Stanzerei · 120 Mitarbeitende</span><span class="r-f">Material</span><span class="r-what">Verschnitt reduziert</span><span class="r-num">−9 t Stahl im Jahr</span></li>
-    </ul>
-    <p class="ref-note">Beispielwerte. Hier stehen bald die ersten freigegebenen Projekte.</p>
   </div>
 </section>
 
