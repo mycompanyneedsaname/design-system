@@ -417,7 +417,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .wp-h{{font-size:clamp(30px,3.6vw,48px);color:{PETROL};margin-top:0;max-width:18ch}}
   .wp-p{{font-size:clamp(20px,2vw,26px);line-height:1.35;color:{PETROL};margin-top:22px;max-width:30ch}}
   .wp-art{{width:100%;height:auto;display:block}}
-  .bk-cta{{margin-top:8px;padding-bottom:16px}}
+  .bk-cta{{margin-top:8px;padding-bottom:16px;text-align:center}}
+  .bk-stack{{display:block;text-align:center;padding-top:20px}}
+  .bk-stack .ht{{margin-top:0}}
+  .bk-stack .ht .l2{{max-width:none}}
+  .bk-stack .cfg{{max-width:640px;margin:40px auto 0}}
+  .bk-stack .chips{{justify-content:center}}
+  .bk-stack .hnote{{left:auto;right:100%;top:70px;width:250px;margin-right:4px;text-align:left}}
+  .bk-stack .hnote svg{{margin-left:auto;margin-right:0}}
   .bk-cta .wp-cta{{border-color:#C8F04A}}
   .wp-act{{display:flex;justify-content:center;padding-left:14%;margin-top:6px}}
   @media (max-width:980px){{.wp-act{{padding-left:0}}}}
@@ -591,20 +598,11 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 <!-- ============================ 3 · BAUKASTEN ============================ -->
 <section class="dark" id="baukasten">
   <div class="wrap">
-    <svg class="bk-link" viewBox="0 0 1000 190" role="img" aria-label="Ihr Betrieb als Grundplatte: darauf setzen wir die Bausteine.">
-      <path class="tl-curve" pathLength="1" d="M500 0 L 500 36" fill="none" stroke="#C8F04A" stroke-width="3.5" stroke-linecap="round"/>
-      <g class="tl-dot">
-        <path d="M500 40 L 620 100 L 500 160 L 380 100 Z" fill="#15474C" stroke="#C8F04A" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M380 100 L 500 160 L 500 172 L 380 112 Z" fill="#0B3033" stroke="#C8F04A" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M500 160 L 620 100 L 620 112 L 500 172 Z" fill="#092629" stroke="#C8F04A" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M500 40 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M460 60 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M420 80 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M540 60 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M500 80 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M460 100 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M580 80 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M540 100 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/><path d="M500 120 l 40 20 l -40 20 l -40 -20 z" fill="none" stroke="#C8F04A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".55"/>
-      </g>
-      <g class="tl-fade">
-        <text x="640" y="104" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="#FFFFFF" fill-opacity=".8">IHR BETRIEB</text>
-        <text x="640" y="134" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="#C8F04A">darauf bauen wir auf.</text>
-      </g>
+    <svg class="bk-link" viewBox="0 0 1000 64" aria-hidden="true">
+      <path class="tl-curve" pathLength="1" d="M500 0 L 500 50" fill="none" stroke="#C8F04A" stroke-width="3.5" stroke-linecap="round"/>
+      <circle class="tl-dot" cx="500" cy="56" r="7" fill="#C8F04A"/>
     </svg>
-    <div class="hero grid2">
+    <div class="hero bk-stack">
       <div>
         <h2 class="ht"><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Weniger Verbrauch, mehr Spielraum.</span></h2>
       </div>
