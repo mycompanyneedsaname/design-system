@@ -78,10 +78,10 @@ def hero_iso():
         lab_svg.append(f'<path d="M{ex:.0f} {ey:.0f} Q {(ex+cx)/2:.0f} {(ey+cy)/2 - 10:.0f} {cx:.0f} {cy:.0f}" fill="none" stroke="currentColor" data-ak="s" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 3"/>')
         lab_svg.append(f'<circle cx="{cx:.0f}" cy="{cy:.0f}" r="3" fill="currentColor" data-ak="f"/>')
         lab_svg.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anc}" font-family="Kalam, cursive" font-size="19" font-weight="700" fill="currentColor" data-ak="f">{lab}</text>')
-    base_lab = f'<text x="{x1-4:.0f}" y="{y1+30:.0f}" text-anchor="end" font-family="Kalam, cursive" font-size="18" font-weight="700" fill="currentColor" data-ak="f">Grundplatte: Effizienz-Kompass, 2 + 2 Tage</text>'
+    base_lab = f'<text x="{x1-4:.0f}" y="{y1+30:.0f}" text-anchor="end" font-family="Kalam, cursive" font-size="18" font-weight="700" fill="currentColor" data-ak="f">Modularer Effizienz-Baukasten</text>'
     base_arrow = ''
     vb = f"{x0-pad:.0f} {y0-pad:.0f} {x1-x0+2*pad:.0f} {y1-y0+2*pad+10:.0f}"
-    return f'<svg viewBox="{vb}" class="iso-hero" role="img" aria-label="Isometrische Bausteine Druckluft, LED, Abwärme und PV auf einer Grundplatte Effizienz-Kompass">{body}\n{"".join(lab_svg)}{base_lab}{base_arrow}</svg>'
+    return f'<svg viewBox="{vb}" class="iso-hero" role="img" aria-label="Isometrische Bausteine Druckluft, LED, Abwärme und PV auf der Grundplatte des Modularen Effizienz-Baukastens">{body}\n{"".join(lab_svg)}{base_lab}{base_arrow}</svg>'
 
 def module_iso(label, h, hatch, size=30, tone="dark"):
     s = size
@@ -370,6 +370,11 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .expl ul{{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.75)}}
   .expl li::before{{content:"+ ";color:var(--accent)}}
   .hero h1 .l2{{display:block;font-weight:400;font-size:.46em;line-height:1.2;letter-spacing:-.01em;margin-top:.45em;color:rgba(255,255,255,.72);max-width:22ch}}
+
+  .glyph .flow{{stroke-dasharray:.1 .07;animation:flow 1.6s linear infinite}}
+  @keyframes flow{{to{{stroke-dashoffset:-.34}}}}
+  @media (prefers-reduced-motion:reduce){{.glyph .flow{{animation:none}}}}
+  .hero h1 .pre{{display:block;font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.9em}}
 </style>
 
 <!-- ============================ HERO ============================ -->
@@ -377,7 +382,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap">
     <div class="top">
       {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=False)}
-      <ul><li>Effizienz-Kompass</li><li>Baukasten</li><li>Praxisbeispiele</li><li>Büro</li></ul>
+      <ul><li>Effizienz-Baukasten</li><li>Praxisbeispiele</li><li>Büro</li></ul>
       <div class="aksw"><span>Marker</span>
         <button type="button" data-set="ocker" style="--c:#D9A441" aria-label="Ocker" aria-pressed="true"></button>
         <button type="button" data-set="lime" style="--c:#C8F04A" aria-label="Lime" aria-pressed="false"></button>
@@ -387,7 +392,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </div>
     <div class="hero grid2">
       <div>
-        <h1>Ihr Effizienz-Baukasten.<span class="l2">Gemessen. Nachgerechnet. Umgesetzt.</span></h1>
+        <h1><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Gemessen. Nachgerechnet. Umgesetzt.</span></h1>
         <p class="sub">Wir kommen in Ihren Betrieb, messen nach und setzen mit Ihnen um, was sich rechnet. Wo hakt es bei Ihnen? Klicken Sie rechts.</p>
         <div class="actions"><a class="cta" href="#kompass">Kostenfreies Erstgespräch</a><a class="cta ghost" href="#baukasten">Den Baukasten ansehen</a></div>
       </div>
@@ -395,8 +400,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div id="plate" style="color:var(--accent)"></div>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
         <div class="expl" id="why" aria-live="polite"></div>
-        <div class="tally"><div><b id="t-n">4</b><span>Bausteine</span></div><div><b id="t-d">2 + 2</b><span>Tage vor Ort + Planung</span></div><div><b>≥ 10</b><span>Maßnahmen im Bericht</span></div><div><b id="t-m">18</b><span>Messpunkte, Beispiel</span></div></div>
-        <p class="muted" style="font-size:12.5px">Die Grundplatte ist immer der Effizienz-Kompass. Tage und Messpunkte sind Beispiel-Logik, keine Preisliste.</p>
+        <div class="tally"><div><b id="t-n">4</b><span>Bausteine</span></div><div><b>≥ 10</b><span>Maßnahmen</span></div><div><b id="t-m">18</b><span>Messpunkte, Beispiel</span></div></div>
       </div>
     </div>
   </div>
@@ -436,12 +440,12 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sec-head">
       <span class="eyebrow">Das Produkt als Bild</span>
       <h2>Der modulare Effizienz-Baukasten</h2>
-      <p class="muted">Jede Leistung und jede Maßnahme ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Der Effizienz-Kompass ist die Grundplatte: zwei Tage vor Ort, zwei Tage Planung, danach setzt der Kunde die Steine in seiner Reihenfolge. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist.</p>
+      <p class="muted">Jede Leistung und jede Maßnahme ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Die Grundplatte ist die gemeinsame Aufnahme im Betrieb, danach setzt der Kunde die Steine in seiner Reihenfolge. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist.</p>
     </div>
     <div class="mods">
       {modules_html()}
     </div>
-    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website werden sie zur Konfiguration: Der Kunde klickt seine Steine, die Grundplatte zeigt Tage und Umfang. Im Bericht sind sie die Kapitelmarken.</p>
+    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website werden sie zur Konfiguration: Der Kunde klickt seine Steine, die Grundplatte zeigt den Umfang. Im Bericht sind sie die Kapitelmarken.</p>
   </div>
 </section>
 
@@ -503,7 +507,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div class="poster" style="background:{PETROL};color:#fff">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>02 · Baukasten</span></div>
         <div class="art">{poster_iso()}</div>
-        <p class="line">Zehn Maßnahmen in vier Tagen. Priorisiert, durchgerechnet, in Ihrer Reihenfolge gebaut.</p>
+        <p class="line">Der Modulare Effizienz-Baukasten. Priorisiert, durchgerechnet, in Ihrer Reihenfolge gebaut.</p>
       </div>
       <div class="poster" style="background:var(--accent);color:var(--accent-ink)">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>03 · Korrektur</span></div>
@@ -532,7 +536,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div class="report">
         <div>
           {logo(PETROL, OCKER, PETROL, size=44, w1=15)}
-          <span class="eyebrow" style="display:block;margin-top:34px;color:var(--muted)">Effizienz-Kompass · Bericht Nr. 2026-014</span>
+          <span class="eyebrow" style="display:block;margin-top:34px;color:var(--muted)">Modularer Effizienz-Baukasten · Bericht Nr. 2026-014</span>
           <h3>Gießerei Musterwerk GmbH, Saalfeld</h3>
           <div class="num" style="margin-top:22px">12 Maßnahmen</div>
           <p class="muted" style="font-size:13px;margin-top:6px">64.300 € Invest für die ersten vier · Amortisation ≤ 2,5 Jahre · 19 t CO₂ p. a.</p>
@@ -592,7 +596,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </div>
     <div class="type" style="margin-top:24px">
       <div class="row"><span class="k">Headline · Plex Sans 600</span><span style="font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1">Systeme, die Ihr Team noch versteht.</span></div>
-      <div class="row"><span class="k">Fließtext · Plex Sans 400</span><span style="font-size:16px">Zwei Tage vor Ort, zwei Tage Planung. Danach liegen mindestens zehn Maßnahmen auf dem Tisch.</span></div>
+      <div class="row"><span class="k">Fließtext · Plex Sans 400</span><span style="font-size:16px">Wir messen im Betrieb und legen danach mindestens zehn Maßnahmen auf den Tisch.</span></div>
       <div class="row"><span class="k">Zahl · Plex Mono 500</span><span style="font-family:var(--mono);font-size:30px;font-weight:500;color:{PETROL};line-height:1">312 MWh <span style="font-size:13px;color:var(--muted)">Strom p. a.</span></span></div>
       <div class="row"><span class="k">Korrektur · Plex Mono</span><span class="light" style="font-size:26px;font-weight:600;letter-spacing:-.02em"><span class="korr"><span class="alt">Bis zu 40 %</span> <span style="white-space:nowrap"><span class="alt">sparen.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>18 % · amortisiert in 2,1 Jahren</span></span></span></div>
       <div class="row"><span class="k">Notiz · Kalam 700</span><span class="hand" style="font-size:22px;color:{PETROL}">gemessen 12.09., 14:10</span></div>
@@ -638,7 +642,20 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   var C30=Math.cos(Math.PI/6), S30=0.5, S=34;
   function iso(x,y,z){{return [(x-y)*C30*S,(x+y)*S30*S-z*S];}}
   function P(pts){{return pts.map(function(p){{return p[0].toFixed(1)+','+p[1].toFixed(1)}}).join(' ');}}
-  function block(x,y,z,w,d,h,hatch,cls,title){{
+  var G={{
+    druckluft:'<ellipse cx=".36" cy=".5" rx=".2" ry=".2"/><circle cx=".36" cy=".5" r=".07"/><path class="flow" pathLength="1" d="M.56 .5 H.92"/>',
+    abwaerme:'<path class="flow" pathLength="1" d="M.2 .85 C.35 .65 .05 .45 .2 .15 M.5 .85 C.65 .65 .35 .45 .5 .15 M.8 .85 C.95 .65 .65 .45 .8 .15"/>',
+    licht:'<circle cx=".5" cy=".5" r=".15"/><path d="M.5 .12V.24M.5 .76V.88M.12 .5H.24M.76 .5H.88M.23 .23L.31 .31M.69 .69L.77 .77M.77 .23L.69 .31M.31 .69L.23 .77"/>',
+    waerme:'<path class="flow" pathLength="1" d="M.12 .22 H.88 V.42 H.12 V.62 H.88 V.82 H.12"/>',
+    strom:'<path d="M.56 .1 L.28 .56 H.5 L.42 .9 L.74 .42 H.52 Z"/>',
+    material:'<path d="M.14 .2 H.66 V.5 H.14 Z M.28 .36 H.8 V.66 H.28 Z"/><path class="flow" pathLength="1" d="M.1 .86 H.9"/>',
+    wasser:'<path d="M.5 .12 C.63 .32 .72 .44 .72 .56 A .22 .22 0 0 1 .28 .56 C.28 .44 .37 .32 .5 .12 Z"/><path class="flow" pathLength="1" d="M.08 .9 C.3 .8 .7 1 .92 .9"/>',
+    pv:'<path d="M.12 .14 H.88 V.86 H.12 Z M.12 .38 H.88 M.12 .62 H.88 M.37 .14 V.86 M.63 .14 V.86"/>',
+    speicher:'<path d="M.14 .3 H.8 V.7 H.14 Z M.8 .42 H.9 V.58 H.8"/><path d="M.28 .38 V.62 M.41 .38 V.62 M.54 .38 V.62"/>'
+  }};
+  var PR={{druckluft:'Kompressor',abwaerme:'Härteofen',licht:'Hallenlicht',waerme:'Heizkreis',strom:'Lastgang',material:'Stanzlinie',wasser:'Kühlkreis',pv:'Dachfläche',speicher:'Lastspitze'}};
+  function unit(a,b){{var dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy);return [dx/l,dy/l];}}
+  function block(x,y,z,w,d,h,hatch,cls,title,id){{
     var T=[iso(x,y,z+h),iso(x+w,y,z+h),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
     var L=[iso(x,y+d,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
     var R=[iso(x+w,y,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x+w,y,z+h)];
@@ -648,6 +665,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     o+='<polygon points="'+P(T)+'" fill="#14474C" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
     for(var i=1;i<hatch;i++){{var t=i/hatch;var a=[R[0][0]+(R[1][0]-R[0][0])*t,R[0][1]+(R[1][1]-R[0][1])*t];var b=[R[3][0]+(R[2][0]-R[3][0])*t,R[3][1]+(R[2][1]-R[3][1])*t];
       o+='<line x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b[0].toFixed(1)+'" y2="'+b[1].toFixed(1)+'" stroke="currentColor" stroke-width="1" stroke-opacity=".45"/>';}}
+    if(id&&G[id]){{
+      var ax=T[1][0]-T[0][0], ay=T[1][1]-T[0][1], cx=T[3][0]-T[0][0], cy=T[3][1]-T[0][1];
+      o+='<g transform="matrix('+[ax,ay,cx,cy,T[0][0],T[0][1]].map(function(v){{return v.toFixed(2);}}).join(' ')+')" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" class="glyph">'+G[id].replace(/<(path|circle|ellipse)/g,'<$1 vector-effect="non-scaling-stroke"')+'</g>';
+    }}
+    if(id&&PR[id]){{
+      var u=unit(L[0],L[1]), v=unit(L[3],L[0]);
+      o+='<g transform="matrix('+[u[0],u[1],v[0],v[1],L[0][0],L[0][1]].map(function(n){{return n.toFixed(3);}}).join(' ')+')"><text x="6" y="-7" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing=".4" fill="currentColor" fill-opacity=".9">'+PR[id].toUpperCase()+'</text></g>';
+    }}
     return o+'</g>';
   }}
   var F=[
@@ -668,7 +693,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   var plateEl=document.getElementById('plate'), chips=document.getElementById('chips');
   function render(){{
     var parts=[], ix=0;
-    parts.push(block(0,0,0,plate,plate,pz,0,'','Grundplatte: Effizienz-Kompass'));
+    parts.push(block(0,0,0,plate,plate,pz,0,'','Modularer Effizienz-Baukasten'));
     var items=[];
     F.forEach(function(f,i){{var gx=i%3, gy=Math.floor(i/3); var x=gap+gx*(slot+gap), y=gap+gy*(slot+gap); items.push({{f:f,x:x,y:y}});}});
     items.forEach(function(it){{
@@ -676,16 +701,15 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         parts.push('<polygon class="slot" points="'+P(q)+'" fill="none" stroke="currentColor" stroke-width="1"/>');}}
     }});
     items.sort(function(a,b){{return (a.x+a.y)-(b.x+b.y);}}).forEach(function(it){{
-      if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,fresh[it.f.id]?'new':'',it.f.n));
+      if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,fresh[it.f.id]?'new':'',it.f.n+' · '+PR[it.f.id],it.f.id));
     }});
     var c=iso(plate,plate,0), l=iso(0,plate,0), r=iso(plate,0,0), t=iso(0,0,3.8);
     var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+44;
-    var lab='<text x="'+(x1-6).toFixed(0)+'" y="'+(y1-8).toFixed(0)+'" text-anchor="end" font-family="Kalam, cursive" font-weight="700" font-size="17" fill="currentColor">Grundplatte: Effizienz-Kompass, 2 + 2 Tage</text>';
+    var lab='<text x="'+(x1-6).toFixed(0)+'" y="'+(y1-8).toFixed(0)+'" text-anchor="end" font-family="Kalam, cursive" font-weight="700" font-size="17" fill="currentColor">Modularer Effizienz-Baukasten</text>';
     plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+lab+'</svg>';
     fresh={{}};
     var n=0,mp=0; F.forEach(function(f){{if(sel[f.id]){{n++;mp+=f.mp;}}}});
     document.getElementById('t-n').textContent=n;
-    document.getElementById('t-d').textContent=(n<=4?'2 + 2':n<=7?'3 + 2':'4 + 3');
     document.getElementById('t-m').textContent=mp;
     Array.prototype.forEach.call(chips.querySelectorAll('button'),function(b){{b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false');}});
   }}
