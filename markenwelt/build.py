@@ -388,7 +388,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
 
   /* configurator */
-  .cfg{{display:grid;gap:14px 20px;grid-template-columns:1fr 1fr;align-items:center}}
+  .cfg{{display:grid;gap:14px 20px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}}
   .cfg .chips{{grid-column:1/-1}}
   @media (max-width:640px){{.cfg{{grid-template-columns:1fr}}}}
   .cfg svg{{width:100%;height:auto;display:block}}
@@ -417,7 +417,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .bc-sum b.tick{{animation:pop .35s cubic-bezier(.2,.9,.3,1.3)}}
   @keyframes pop{{from{{transform:translateY(4px);opacity:.4}}}}
   .bc-foot sup,.bc-sum sup{{font-size:.7em;vertical-align:top;margin-right:2px}}
-  .bc-foot{{margin-top:10px;font-family:var(--sans);font-size:12px;line-height:1.45;color:rgba(255,255,255,.6)}}
+  .bc-foot{{grid-column:1/-1;margin:-4px 0 4px;font-family:var(--sans);font-size:12px;line-height:1.4;color:rgba(255,255,255,.6)}}
+  .bk-calc{{min-width:0}}
   @keyframes rise{{from{{transform:translateY(-22px);opacity:0}}}}
   .slot{{stroke-dasharray:4 4;opacity:.45}}
   .chips{{display:flex;flex-wrap:wrap;gap:8px}}
@@ -729,8 +730,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
           <div class="bc-head">Beispielmaßnahmen</div>
           <ul class="bc-rows" id="bc-rows"></ul>
           <div class="bc-sum"><span>Zusammen<sup>*</sup></span><b id="bc-total">−0 %</b></div>
-          <div class="bc-foot"><sup>*</sup>Richtwerte aus unseren Projekten, bezogen auf die jährlichen Energie- und Materialkosten.</div>
         </div>
+        <div class="bc-foot"><sup>*</sup>Richtwerte aus unseren Projekten, bezogen auf die Energie- und Materialkosten pro Jahr.</div>
         <div class="chips" id="chips" aria-label="Maßnahmen wählen"></div>
       </div>
     </div>
