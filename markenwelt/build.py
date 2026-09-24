@@ -526,6 +526,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .pers-ph .ph-note{{position:absolute;right:8px;top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;background:rgba(247,245,240,.85);color:{PETROL};padding:3px 6px;border-radius:6px}}
   .pers-role{{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}}
   .pers h3{{font-size:24px;margin-top:0;color:{PETROL}}}
+  .pers h3 .role{{font-weight:400;font-size:17px;color:var(--muted);white-space:nowrap}}
+  .pers h3 .role::before{{content:"· ";}}
   .pers p{{margin-top:10px;font-size:15.5px;max-width:44ch}}
   .pers .pers-q{{font-family:var(--hand);font-weight:700;font-size:22px;line-height:1.2;color:{PETROL};transform:rotate(-2deg);transform-origin:left;margin-top:14px}}
   /* Lime-Textmarker: wird gezogen, sobald die Stelle sichtbar ist */
@@ -563,7 +565,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap wp-grid">
     <div>
       <h1 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h1>
-      <p class="wp-p">Wir sind ein Büro für <mark class="hl">Energie- und Ressourceneffizienz</mark> und suchen ihn gemeinsam mit Ihnen. In rund 150 Betrieben des verarbeitenden Gewerbes haben wir das schon getan.</p>
+      <p class="wp-p">Wir sind ein Büro für <mark class="hl">Energie- und Ressourceneffizienz</mark> und suchen ihn gemeinsam mit Ihnen. In rund <strong>150 Betrieben</strong> des verarbeitenden Gewerbes haben wir das schon getan.</p>
     </div>
     <div class="wp-right">
     <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: steigende Betriebskosten, CO₂-Ausstoß &amp; Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität &amp; Resilienz. Am Wendepunkt: hier.">
@@ -604,15 +606,15 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <article class="pers">
         <div class="pers-l"><div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
-          <h3>Michael Schenk</h3>
-          <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat die meisten dieser Betriebe selbst besucht und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <strong>erklären</strong>, dass jeder im Betrieb versteht, <strong>warum sich eine Maßnahme lohnt</strong>.</p>
+          <h3>Michael Schenk <span class="role">Ressourceneffizienz</span></h3>
+          <p>Michael hat die meisten dieser Betriebe selbst besucht und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <strong>erklären</strong>, dass jeder im Betrieb versteht, <strong>warum sich eine Maßnahme lohnt</strong>.</p>
         </div>
       </article>
       <article class="pers">
         <div class="pers-l"><div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
-          <h3>Tobias Wintsche</h3>
-          <p>Tobias verantwortet bei uns die Energieeffizienz. Für ihn ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <strong>findet er die elegante, einfache Lösung</strong>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
+          <h3>Tobias Wintsche <span class="role">Energieeffizienz</span></h3>
+          <p>Für Tobias ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <strong>findet er die elegante, einfache Lösung</strong>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
         </div>
       </article>
     </div>
