@@ -423,8 +423,9 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .bk-stack .ht .l2{{max-width:none}}
   .bk-stack .cfg{{max-width:640px;margin:40px auto 0}}
   .bk-stack .chips{{justify-content:center}}
-  .bk-stack .hnote{{left:auto;right:100%;top:70px;width:250px;margin-right:4px;text-align:left}}
-  .bk-stack .hnote svg{{margin-left:auto;margin-right:0}}
+  .bk-stack .hnote{{position:static;transform:rotate(-1.5deg);transform-origin:center;max-width:34ch;text-wrap:balance;text-align:center;font-size:21px;margin:0 auto 6px}}
+  .bk-stack .hnote svg{{display:none}}
+  .bk-stack .cfg{{margin-top:32px}}
   .bk-cta .wp-cta{{border-color:#C8F04A}}
   .wp-act{{display:flex;justify-content:center;padding-left:14%;margin-top:6px}}
   @media (max-width:980px){{.wp-act{{padding-left:0}}}}
