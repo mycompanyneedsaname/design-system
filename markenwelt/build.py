@@ -397,10 +397,10 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .chips .grp{{flex-basis:100%;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}}
   .chips .grp:first-child{{margin-top:0}}
   .cfg{{position:relative}}
-  .hnote{{position:absolute;left:0;top:0;max-width:230px;color:var(--accent);font-family:var(--hand);font-weight:700;font-size:21px;line-height:1.18;transform:rotate(-3deg);transform-origin:left top;pointer-events:none;z-index:1}}
+  .hnote{{position:absolute;left:0;top:-6px;max-width:300px;color:var(--accent);font-family:var(--hand);font-weight:700;font-size:20px;line-height:1.18;transform:rotate(-3deg);transform-origin:left top;pointer-events:none;z-index:1}}
   .hnote svg{{display:block;width:78px;height:auto;margin:6px 0 0 36px}}
   .hnote.pop{{animation:fade .45s ease-out both}}
-  .sig-hand{{margin-top:22px;color:var(--accent);display:grid;gap:2px;max-width:260px}}
+  .sig-hand{{margin-top:28px;color:var(--accent);display:grid;gap:2px;max-width:260px}}
   .hand-name{{font-family:var(--hand);font-weight:700;font-size:30px;line-height:1;transform:rotate(-2deg);transform-origin:left}}
   .sig-hand svg{{width:210px;height:12px;display:block}}
   .sig-cap{{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.7);margin-top:6px}}
@@ -423,11 +423,9 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="hero grid2">
       <div>
         <h1><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Gemessen. Nachgerechnet. Umgesetzt.</span></h1>
-        <p class="sub">Wir kommen in Ihren Betrieb, messen nach und setzen mit Ihnen um, was sich rechnet.</p>
-        <div class="sig-hand"><span class="hand-name">Micha &amp; Tobias</span><svg viewBox="0 0 220 16" aria-hidden="true"><path d="M3 10 C 40 4, 80 14, 120 8 S 190 6, 216 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sig-cap">Michael Schenk · Tobias Wintsche · wir kommen selbst</span></div>
       </div>
       <div class="cfg" id="cfg">
-        <div class="hnote" id="hnote" aria-live="polite"><span id="hnote-t">Stein für Stein. Wir kommen persönlich vorbei.</span><svg viewBox="0 0 90 70" aria-hidden="true"><path d="M8 6 C 14 30, 36 48, 76 56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M62 46 L 78 57 L 62 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="hnote" id="hnote" aria-live="polite"><span id="hnote-t">Wir kommen zu Ihnen, messen nach und setzen mit Ihnen um, was sich rechnet. Stück für Stück.</span><svg viewBox="0 0 90 70" aria-hidden="true"><path d="M8 6 C 14 30, 36 48, 76 56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M62 46 L 78 57 L 62 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div id="plate" style="color:var(--accent)"></div>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
       </div>
