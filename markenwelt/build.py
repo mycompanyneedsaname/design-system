@@ -733,8 +733,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,fresh[it.f.id]?'new':'',it.f.n+' · '+PR[it.f.id],it.f.id));
     }});
     var c=iso(plate,plate,0), l=iso(0,plate,0), r=iso(plate,0,0), t=iso(0,0,3.8);
-    var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+44;
-    var lab='<text x="'+(x1-6).toFixed(0)+'" y="'+(y1-8).toFixed(0)+'" text-anchor="end" font-family="Kalam, cursive" font-weight="700" font-size="17" fill="currentColor">Modularer Effizienz-Baukasten</text>';
+    var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+14;
+    var lab='';
     plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+lab+'</svg>';
     fresh={{}};
     var n=0,mp=0; F.forEach(function(f){{if(sel[f.id]){{n++;mp+=f.mp;}}}});
