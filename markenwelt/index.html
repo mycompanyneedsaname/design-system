@@ -263,13 +263,15 @@
   .top ul a:hover{text-decoration:underline;text-underline-offset:4px}
   .team{display:grid;grid-template-columns:1fr 1fr;gap:40px}
   .pers{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start}
-  .pers-ph{aspect-ratio:4/5;background:var(--sand);border-radius:12px;position:relative;display:grid;place-items:center}
+  .pers-ph{aspect-ratio:4/5;background:var(--sand);border-radius:12px;position:relative;overflow:hidden}
+  .pers-img{width:100%;height:100%;display:block}
   .pers-ph .ini{font:500 34px/1 var(--mono);color:#0F3B3F;opacity:.35}
-  .pers-ph .ph-note{position:absolute;left:10px;bottom:8px;font-family:var(--hand);font-weight:700;font-size:15px;color:#0F3B3F;transform:rotate(-4deg)}
+  .pers-ph .ph-note{position:absolute;right:8px;top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;background:rgba(247,245,240,.85);color:#0F3B3F;padding:3px 6px;border-radius:6px}
   .pers-role{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
   .pers h3{font-size:24px;margin-top:6px;color:#0F3B3F}
   .pers p{margin-top:10px;font-size:15.5px;max-width:44ch}
   .pers .pers-q{font-family:var(--hand);font-weight:700;font-size:22px;line-height:1.2;color:#0F3B3F;transform:rotate(-2deg);transform-origin:left;margin-top:14px}
+  .pers .pers-q span{background:linear-gradient(transparent 38%,#C8F04A 38%,#C8F04A 90%,transparent 90%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .2em}
   .ref-band{padding-block:56px}
   .ref-head{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin-bottom:20px}
   .ref-head h2{font-size:clamp(22px,2.4vw,30px);color:#0F3B3F}
@@ -340,21 +342,21 @@
     </div>
     <div class="team">
       <article class="pers">
-        <div class="pers-ph" aria-hidden="true"><span class="ini">MS</span><span class="ph-note">Foto folgt</span></div>
+        <div class="pers-ph"><svg class="pers-img" viewBox="0 0 120 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="120" height="150" fill="#DCD2BC"/><rect x="8" y="14" width="42" height="56" rx="3" fill="#EFE9DB"/><path d="M0 112 H120" stroke="#C9BDA2" stroke-width="2"/><path d="M4 150 C 8 120, 30 108, 61 108 C 92 108, 114 120, 118 150 Z" fill="#0F3B3F"/><path d="M50 108 L 61 124 L 72 108" fill="none" stroke="#C8F04A" stroke-width="3" stroke-linejoin="round"/><rect x="52" y="90" width="18" height="20" fill="#4F7478"/><ellipse cx="61" cy="66" rx="23" ry="28" fill="#6B8E91"/><path d="M38 64 C 36 40, 50 30, 62 31 C 76 31, 86 42, 83 64 C 80 52, 74 46, 62 46 C 50 46, 42 52, 38 64 Z" fill="#0A2C2F"/><g fill="none" stroke="#E9E1CF" stroke-width="2"><rect x="44" y="62" width="14" height="10" rx="4"/><rect x="64" y="62" width="14" height="10" rx="4"/><path d="M58 66 h6"/></g></svg><span class="ph-note">Platzhalter</span></div>
         <div>
           <span class="pers-role">Ressourceneffizienz</span>
           <h3>Michael Schenk</h3>
           <p>Michael war in rund 150 Betrieben. In den meisten hat er in der ersten Stunde die ersten Maßnahmen gefunden. Er übersetzt Technik und Wirtschaftlichkeit in Maßnahmen, die man versteht und nachvollziehen kann.</p>
-          <p class="pers-q">„Der Blick von außen wirkt.“</p>
+          <p class="pers-q"><span>„Der Blick von außen wirkt.“</span></p>
         </div>
       </article>
       <article class="pers">
-        <div class="pers-ph" aria-hidden="true"><span class="ini">TW</span><span class="ph-note">Foto folgt</span></div>
+        <div class="pers-ph"><svg class="pers-img" viewBox="0 0 120 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="120" height="150" fill="#DCD2BC"/><rect x="70" y="14" width="42" height="56" rx="3" fill="#EFE9DB"/><path d="M0 112 H120" stroke="#C9BDA2" stroke-width="2"/><path d="M4 150 C 8 120, 30 108, 61 108 C 92 108, 114 120, 118 150 Z" fill="#0F3B3F"/><path d="M50 108 L 61 124 L 72 108" fill="none" stroke="#C8F04A" stroke-width="3" stroke-linejoin="round"/><rect x="52" y="90" width="18" height="20" fill="#4F7478"/><ellipse cx="61" cy="66" rx="23" ry="28" fill="#6B8E91"/><path d="M37 62 C 34 36, 52 26, 64 28 C 80 30, 88 44, 84 62 C 82 56, 78 50, 72 48 C 62 52, 48 50, 42 46 C 40 52, 38 56, 37 62 Z" fill="#0A2C2F"/><path d="M44 84 C 50 98, 72 98, 78 84 C 76 92, 70 96, 61 96 C 52 96, 46 92, 44 84 Z" fill="#0A2C2F" opacity=".55"/></svg><span class="ph-note">Platzhalter</span></div>
         <div>
           <span class="pers-role">Energietechnik</span>
           <h3>Tobias Wintsche</h3>
           <p>Tobias prüft Energiesysteme auf ihre Vor- und Nachteile und fügt sie zu einem Ganzen zusammen. Lieber einfach und ausgereift als übertechnisiert, damit es auch nach uns noch jeder im Betrieb versteht.</p>
-          <p class="pers-q">„Gute Energiesysteme sind oft ganz simpel.“</p>
+          <p class="pers-q"><span>„Gute Energiesysteme sind oft ganz simpel.“</span></p>
         </div>
       </article>
     </div>
