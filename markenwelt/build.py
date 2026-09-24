@@ -425,7 +425,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .wp-mnotes .k{{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;padding-top:5px}}
   .tl-m{{display:none;text-align:center;margin:36px 0 0;font-family:var(--hand);font-weight:700;font-size:22px;color:{PETROL}}}
   .tl-m .lab{{display:block;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;opacity:.75}}
-  .bk-how{{text-align:center;max-width:44ch;margin:34px auto 26px;font-size:18px;line-height:1.45;color:rgba(255,255,255,.82)}}
+  .bk-how{{text-align:center;max-width:44ch;margin:18px auto 26px;font-size:18px;line-height:1.45;color:rgba(255,255,255,.82)}}
   .bk-how b{{color:#fff;font-weight:600}}
   .bk-contact{{margin:18px 0 0;font-size:15px;color:rgba(255,255,255,.7)}}
   .bk-contact a{{color:#fff;text-decoration:underline;text-underline-offset:3px}}
@@ -444,7 +444,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .bk-stack .chips{{justify-content:center}}
   .bk-stack .hnote{{position:static;transform:rotate(-1.5deg);transform-origin:center;max-width:34ch;text-wrap:balance;text-align:center;font-size:21px;margin:0 auto 6px}}
   .bk-stack .hnote svg{{display:none}}
-  .bk-stack .cfg{{margin-top:32px;max-width:520px}}
+  .bk-stack .cfg{{margin-top:12px}}
+  .bk-stack #plate{{max-width:580px;margin:0 auto}}
   .bk-cta .wp-cta{{border-color:#C8F04A}}
   .wp-act{{display:flex;justify-content:center;padding-left:14%;margin-top:6px}}
   @media (max-width:980px){{.wp-act{{padding-left:0}}}}
@@ -892,6 +893,9 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
 <script>
 (function(){{
+  var art=document.querySelector('.wp-art'), mq=window.matchMedia('(max-width:640px)');
+  function crop(){{ if(art) art.setAttribute('viewBox', mq.matches ? '0 10 520 272' : '0 0 600 320'); }}
+  crop(); if(mq.addEventListener) mq.addEventListener('change',crop);
   var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link,.bk-link');
   if(!('IntersectionObserver' in window)){{Array.prototype.forEach.call(els,function(e){{e.classList.add('on');}});return;}}
   var io=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{en.target.classList.add('on');io.unobserve(en.target);}}}});}},{{threshold:.6}});
@@ -1000,7 +1004,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 # Aufteilen: Landingpage (index.html) und Markensystem (markensystem.html).
 import os
 M_SYS = "<!-- ============================ MARKENSYSTEM ============================ -->"
-M_END = "\n<script>\n(function(){\n  var els="
+M_END = "\n<script>\n(function(){\n  var art="
 M_HEAD = "<!-- ============================ 1 · WENDEPUNKT (Start) ============================ -->"
 i_sys, i_end, i_head = html.index(M_SYS), html.index(M_END), html.index(M_HEAD)
 head, landing, system, scripts = html[:i_head], html[i_head:i_sys], html[i_sys:i_end], html[i_end:]
