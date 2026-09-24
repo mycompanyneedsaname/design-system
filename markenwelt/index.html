@@ -1,12 +1,13 @@
 <title>Wendepunkt Markenwelt</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Kalam:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Permanent+Marker&family=Kalam:wght@700&display=swap">
 <style>
   :root{
     --petrol:#0F3B3F; --deep:#071F22; --ocker:#D9A441; --paper:#F7F5F0; --sand:#E9E1CF; --ink:#1A1A18; --mist:#EEF0EC;
     --line-l:#D8D3C8; --line-d:rgba(255,255,255,.14); --muted:#4E5A5B;
     --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    --hand:"Kalam","Segoe Print","Bradley Hand",cursive;
+    --hand:"Permanent Marker","Kalam","Segoe Print",cursive;
+    --accent:#D9A441; --accent-ink:#071F22;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -158,53 +159,83 @@
     .sw{grid-template-columns:repeat(2,1fr)}
     .type .row{grid-template-columns:1fr}
   }
+
+  [data-ak="s"]{stroke:var(--accent)}
+  [data-ak="f"]{fill:var(--accent)}
+  .dark .tag,.deep .tag{color:var(--accent)}
+  .dots{background-image:radial-gradient(color-mix(in srgb,var(--accent) 30%,transparent) 1.1px,transparent 1.2px)}
+  .cta{background:var(--accent);color:var(--accent-ink)}
+  .claim .re{color:var(--accent);font-size:.82em;line-height:1.02;letter-spacing:.005em;transform:rotate(-2deg)}
+  .claim .struck{background-repeat:no-repeat;background-position:left center;background-size:0% .5em;animation:strike .9s .35s ease-out forwards}
+  .claim .re{opacity:0;animation:fade .5s 1.1s ease-out forwards}
+  @keyframes strike{to{background-size:100% .5em}}
+  @keyframes fade{to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.claim .struck{animation:none;background-size:100% .5em}.claim .re{animation:none;opacity:1}.blk.new{animation:none}}
+  :root[data-accent="lime"]{--accent:#C8F04A;--accent-ink:#071F22}
+  :root[data-accent="mint"]{--accent:#5DE3A1;--accent-ink:#071F22}
+  :root[data-accent="terra"]{--accent:#E4744C;--accent-ink:#FFFFFF}
+  :root[data-accent="lime"] .claim .struck{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%23C8F04A' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}
+  :root[data-accent="mint"] .claim .struck{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%235DE3A1' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}
+  :root[data-accent="terra"] .claim .struck{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%23E4744C' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}
+  :root[data-accent] .light .claim .struck{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%230F3B3F' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}
+
+  /* accent switch */
+  .aksw{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.9}
+  .aksw button{width:22px;height:22px;border:2px solid transparent;padding:0;cursor:pointer;background:var(--c)}
+  .aksw button[aria-pressed="true"]{border-color:#fff;outline:2px solid var(--c)}
+
+  /* configurator */
+  .cfg{display:grid;gap:14px}
+  .cfg svg{width:100%;height:auto;display:block}
+  .blk{transform-box:fill-box;transform-origin:center}
+  .blk.new{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes rise{from{transform:translateY(-22px);opacity:0}}
+  .slot{stroke-dasharray:4 4;opacity:.45}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips button{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 11px;border:1px solid var(--line-d);background:transparent;color:#fff;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+  .chips button svg{width:16px;height:16px}
+  .chips button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .tally{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;border-top:1px solid var(--line-d);padding-top:12px}
+  .tally b{display:block;font-size:24px;font-weight:500;color:var(--accent);line-height:1.1}
+  .tally span{opacity:.75}
+  .hero h1{font-size:clamp(44px,5.4vw,72px);line-height:.98}
+  .hero .grid2{grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .hic svg path,.hic svg circle{stroke-dasharray:1;stroke-dashoffset:0}
+  .hic:hover svg path,.hic:hover svg circle{animation:draw .8s ease-out both}
+  @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+  .poster{transition:transform .25s ease}
+  .poster:hover{transform:translateY(-6px)}
+  .prinzip .big{font-size:30px}
 </style>
 
 <!-- ============================ HERO ============================ -->
 <header class="dark dots">
   <div class="wrap">
     <div class="top">
-      <div class="logo" style="color:#FFFFFF"><svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1" style="font-size:15px">Wendepunkt</div><div class="w2" style="font-size:15px">Ingenieure</div></div></div>
+      <div class="logo" style="color:#FFFFFF"><svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441" data-ak="f"/></svg><div><div class="w1" style="font-size:15px">Wendepunkt</div><div class="w2" style="font-size:15px">Ingenieure</div></div></div>
       <ul><li>Effizienz-Kompass</li><li>Baukasten</li><li>Praxisbeispiele</li><li>Büro</li></ul>
-      <span class="meta">Markenwelt · Entwurf 4 · nach Moodboard 24.09.</span>
+      <div class="aksw"><span>Marker</span>
+        <button type="button" data-set="ocker" style="--c:#D9A441" aria-label="Ocker" aria-pressed="true"></button>
+        <button type="button" data-set="lime" style="--c:#C8F04A" aria-label="Lime" aria-pressed="false"></button>
+        <button type="button" data-set="mint" style="--c:#5DE3A1" aria-label="Mint" aria-pressed="false"></button>
+        <button type="button" data-set="terra" style="--c:#E4744C" aria-label="Terrakotta" aria-pressed="false"></button>
+      </div>
     </div>
     <div class="hero grid2">
       <div>
         <span class="tag">Büro für Energie- und Ressourceneffizienz</span>
-        <h1>
-          <span class="claim"><span class="struck">Bis zu 40 % Energie sparen!</span><span class="re">nachgerechnet: 18 %, amortisiert in 2,1 Jahren.</span></span>
+        <h1 style="margin-top:22px">
+          <span class="claim"><span class="struck">Bis zu 40&nbsp;% Energie sparen!</span><span class="re">nachgerechnet: 18&nbsp;%, amortisiert in 2,1&nbsp;Jahren.</span></span>
         </h1>
-        <p class="sub">Wir messen in Ihrem Betrieb, rechnen jede Behauptung nach und bauen daraus einen Maßnahmen-Baukasten, den Ihr Team selbst versteht. Energie und Material, nicht nur Strom.</p>
+        <p class="sub">Wir messen in Ihrem Betrieb, rechnen jede Behauptung nach und bauen daraus Ihren Effizienz-Baukasten: Stein für Stein, in Ihrer Reihenfolge, so dass Ihr Team ihn später selbst versteht.</p>
         <div class="actions"><a class="cta" href="#kompass">Kostenfreies Erstgespräch</a><a class="cta ghost" href="#baukasten">Den Baukasten ansehen</a></div>
       </div>
-      <div><svg viewBox="-276 -150 552 468" class="iso-hero" role="img" aria-label="Isometrische Bausteine Druckluft, LED, Abwärme und PV auf einer Grundplatte Effizienz-Kompass"><polygon points="-206.1,119.0 0.0,238.0 0.0,226.1 -206.1,107.1" fill="#0B3236" stroke="#D9A441" stroke-width="1.4" stroke-linejoin="round"/>
-<polygon points="206.1,119.0 0.0,238.0 0.0,226.1 206.1,107.1" fill="#0E393D" stroke="#D9A441" stroke-width="1.4" stroke-linejoin="round"/>
-<polygon points="0.0,-11.9 206.1,107.1 0.0,226.1 -206.1,107.1" fill="#14474C" stroke="#D9A441" stroke-width="1.4" stroke-linejoin="round"/>
-<polygon points="-64.8,45.9 0.0,83.3 0.0,-5.1 -64.8,-42.5" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="64.8,45.9 0.0,83.3 0.0,-5.1 64.8,-42.5" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="0.0,-79.9 64.8,-42.5 0.0,-5.1 -64.8,-42.5" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<line x1="51.8" y1="53.4" x2="51.8" y2="-35.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="38.9" y1="60.9" x2="38.9" y2="-27.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="25.9" y1="68.3" x2="25.9" y2="-20.1" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="13.0" y1="75.8" x2="13.0" y2="-12.6" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<polygon points="23.6,96.9 94.2,137.7 94.2,96.9 23.6,56.1" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="159.0,100.3 94.2,137.7 94.2,96.9 159.0,59.5" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="88.3,18.7 159.0,59.5 94.2,96.9 23.6,56.1" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="-159.0,100.3 -94.2,137.7 -94.2,15.3 -159.0,-22.1" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="-23.6,96.9 -94.2,137.7 -94.2,15.3 -23.6,-25.5" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="-88.3,-62.9 -23.6,-25.5 -94.2,15.3 -159.0,-22.1" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<line x1="-35.3" y1="103.7" x2="-35.3" y2="-18.7" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="-47.1" y1="110.5" x2="-47.1" y2="-11.9" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="-58.9" y1="117.3" x2="-58.9" y2="-5.1" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="-70.7" y1="124.1" x2="-70.7" y2="1.7" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="-82.4" y1="130.9" x2="-82.4" y2="8.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<polygon points="-70.7,151.3 0.0,192.1 0.0,127.5 -70.7,86.7" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="70.7,151.3 0.0,192.1 0.0,127.5 70.7,86.7" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="0.0,45.9 70.7,86.7 0.0,127.5 -70.7,86.7" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="-32.4,64.6 0.0,83.3 0.0,52.7 -32.4,34.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="32.4,64.6 0.0,83.3 0.0,52.7 32.4,34.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="0.0,15.3 32.4,34.0 0.0,52.7 -32.4,34.0" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<path d="M0 -95 Q 0 -79 0 -43" fill="none" stroke="#D9A441" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 3"/><circle cx="0" cy="-43" r="3" fill="#D9A441"/><text x="0" y="-101" text-anchor="middle" font-family="Kalam, cursive" font-size="19" font-weight="700" fill="#D9A441">Druckluft</text><path d="M155 28 Q 123 33 91 58" fill="none" stroke="#D9A441" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 3"/><circle cx="91" cy="58" r="3" fill="#D9A441"/><text x="161" y="22" text-anchor="start" font-family="Kalam, cursive" font-size="19" font-weight="700" fill="#D9A441">LED</text><path d="M-163 -48 Q -127 -46 -91 -24" fill="none" stroke="#D9A441" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 3"/><circle cx="-91" cy="-24" r="3" fill="#D9A441"/><text x="-169" y="-54" text-anchor="end" font-family="Kalam, cursive" font-size="19" font-weight="700" fill="#D9A441">Abwärme</text><path d="M90 103 Q 45 85 0 87" fill="none" stroke="#D9A441" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 3"/><circle cx="0" cy="87" r="3" fill="#D9A441"/><text x="96" y="117" text-anchor="start" font-family="Kalam, cursive" font-size="19" font-weight="700" fill="#D9A441">PV</text><text x="202" y="268" text-anchor="end" font-family="Kalam, cursive" font-size="18" font-weight="700" fill="#D9A441">Grundplatte: Effizienz-Kompass, 2 + 2 Tage</text></svg></div>
+      <div class="cfg" id="cfg">
+        <div id="plate" style="color:var(--accent)"></div>
+        <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
+        <div class="tally"><div><b id="t-n">4</b><span>Bausteine</span></div><div><b id="t-d">2 + 2</b><span>Tage vor Ort + Planung</span></div><div><b>≥ 10</b><span>Maßnahmen im Bericht</span></div><div><b id="t-m">18</b><span>Messpunkte, Beispiel</span></div></div>
+        <p class="muted" style="font-size:12.5px">Klicken Sie Ihre Handlungsfelder. Die Grundplatte ist immer der Effizienz-Kompass. Beispiel-Logik, keine Preisliste.</p>
+      </div>
     </div>
   </div>
 </header>
@@ -215,7 +246,7 @@
     <div class="sec-head">
       <span class="eyebrow">Das Signaturelement</span>
       <h2>Behauptung gedruckt. Strich mit dem Marker. Ergebnis von Hand.</h2>
-      <p class="muted">Das ist die Marke in einem Bild: Jemand hat das Angebot der Branche gelesen, den Marker genommen und nachgerechnet. Der Strich ist Ocker, die Handschrift ist Kalam, die Zahl hat immer Einheit und Kontext. Das Element funktioniert in Headline, Anzeige, LinkedIn-Post und auf dem Berichtsdeckblatt.</p>
+      <p class="muted">Das ist die Marke in einem Bild: Jemand hat das Angebot der Branche gelesen, den Marker genommen und nachgerechnet. Der Strich hat die Marker-Farbe, die Handschrift ist Permanent Marker, die Zahl hat immer Einheit und Kontext. Oben rechts lässt sich die Marker-Farbe live umschalten. Das Element funktioniert in Headline, Anzeige, LinkedIn-Post und auf dem Berichtsdeckblatt.</p>
     </div>
     <div class="prinzip">
       <div>
@@ -246,62 +277,62 @@
       <p class="muted">Jede Leistung und jede Maßnahme ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Der Effizienz-Kompass ist die Grundplatte: zwei Tage vor Ort, zwei Tage Planung, danach setzt der Kunde die Steine in seiner Reihenfolge. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist.</p>
     </div>
     <div class="mods">
-      <div class="mod"><div class="mod-iso"><svg viewBox="-58 -36 116 102" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,30.0 -52.0,-0.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,30.0 52.0,-0.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-30.0 52.0,-0.0 0.0,30.0 -52.0,-0.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 30 A 13 13 0 1 1 33 30"/><path d="M20 27 l 7 -11"/><circle cx="20" cy="28" r="1.6" fill="currentColor" stroke="none"/><path d="M6 33 h28"/></svg></div><b>Messen</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -48 116 114" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,18.0 -52.0,-12.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,18.0 52.0,-12.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-42.0 52.0,-12.0 0.0,18.0 -52.0,-12.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="39.0" y1="37.5" x2="39.0" y2="-4.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="26.0" y1="45.0" x2="26.0" y2="3.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="13.0" y1="52.5" x2="13.0" y2="10.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5 l 21 1 -1 29 -21 -1 z"/><path d="M15 13 h11 M15 19 h7 M15 25 h11"/><path d="M27 21 q -2 4 1 7" /></svg></div><b>Nachrechnen</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -60 116 126" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,6.0 -52.0,-24.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,6.0 52.0,-24.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-54.0 52.0,-24.0 0.0,6.0 -52.0,-24.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12 h20 M9 20 h13 M9 28 h7"/><path d="M6 9 C 4 4, 32 3, 33 9 C 35 14, 24 17, 8 15 C 3 14, 2 11, 6 9" stroke-opacity=".9"/></svg></div><b>Priorisieren</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -72 116 138" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-6.0 -52.0,-36.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,-6.0 52.0,-36.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-66.0 52.0,-36.0 0.0,-6.0 -52.0,-36.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="41.6" y1="36.0" x2="41.6" y2="-30.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="31.2" y1="42.0" x2="31.2" y2="-24.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="20.8" y1="48.0" x2="20.8" y2="-18.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="10.4" y1="54.0" x2="10.4" y2="-12.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 32 L 18 20"/><path d="M16 15 l 9 -9 8 8 -9 9 z"/><path d="M25 6 l 5 -3 M33 14 l 3 -5"/></svg></div><b>Umsetzen</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -42 116 108" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,24.0 -52.0,-6.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,24.0 52.0,-6.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-36.0 52.0,-6.0 0.0,24.0 -52.0,-6.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 33 L 20 21"/><path d="M17 12 l 10 -6 6 6 -6 10"/><path d="M14 16 l 8 8"/></svg></div><b>Handwerk</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -66 116 132" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-0.0 -52.0,-30.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,-0.0 52.0,-30.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-60.0 52.0,-30.0 0.0,-0.0 -52.0,-30.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="39.0" y1="37.5" x2="39.0" y2="-22.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="26.0" y1="45.0" x2="26.0" y2="-15.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="13.0" y1="52.5" x2="13.0" y2="-7.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 4 l -11 18 h 9 l -4 15 l 13 -20 h -9 z"/></svg></div><b>Strom</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -54 116 120" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,12.0 -52.0,-18.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,12.0 52.0,-18.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-48.0 52.0,-18.0 0.0,12.0 -52.0,-18.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/><path d="M22 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/></svg></div><b>Wärme</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -45 116 111" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,21.0 -52.0,-9.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,21.0 52.0,-9.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-39.0 52.0,-9.0 0.0,21.0 -52.0,-9.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="39.0" y1="37.5" x2="39.0" y2="-1.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="26.0" y1="45.0" x2="26.0" y2="6.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="13.0" y1="52.5" x2="13.0" y2="13.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 24 l 13 7 13 -7 -13 -7 z"/><path d="M7 16 l 13 7 13 -7"/><path d="M7 8 l 13 7 13 -7 -13 -7 z"/></svg></div><b>Material</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -39 116 105" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,27.0 -52.0,-3.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,27.0 52.0,-3.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-33.0 52.0,-3.0 0.0,27.0 -52.0,-3.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 5 c 6 9 10 14 10 19 a 10 10 0 0 1 -20 0 c 0 -5 4 -10 10 -19 z"/><path d="M15 24 q 0 5 5 6"/></svg></div><b>Wasser</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -78 116 144" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-12.0 -52.0,-42.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,-12.0 52.0,-42.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-72.0 52.0,-42.0 0.0,-12.0 -52.0,-42.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="41.6" y1="36.0" x2="41.6" y2="-36.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="31.2" y1="42.0" x2="31.2" y2="-30.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="20.8" y1="48.0" x2="20.8" y2="-24.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="10.4" y1="54.0" x2="10.4" y2="-18.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 34 v -16 h 8 v 16"/><path d="M8 34 h 26"/><path d="M24 12 c 4 -3 4 -6 0 -9 M30 16 c 4 -3 4 -6 0 -9"/></svg></div><b>Abwärme</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -33 116 99" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,33.0 -52.0,3.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,33.0 52.0,3.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-27.0 52.0,3.0 0.0,33.0 -52.0,3.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 30 l 6 -16 h 22 l -6 16 z"/><path d="M11 22 h 20 M14 14 l -3 8 M23 14 l -3 16"/><path d="M6 34 h 28"/></svg></div><b>PV</b></div>
-<div class="mod"><div class="mod-iso"><svg viewBox="-58 -57 116 123" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,9.0 -52.0,-21.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="52.0,30.0 0.0,60.0 0.0,9.0 52.0,-21.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="0.0,-51.0 52.0,-21.0 0.0,9.0 -52.0,-21.0" fill="#14474C" stroke="#D9A441" stroke-width="1.5" stroke-linejoin="round"/>
-<line x1="39.0" y1="37.5" x2="39.0" y2="-13.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="26.0" y1="45.0" x2="26.0" y2="-6.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="13.0" y1="52.5" x2="13.0" y2="1.5" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12 h 24 v 18 h -24 z"/><path d="M31 17 h 4 v 8 h -4"/><path d="M12 17 v 8 M18 17 v 8"/></svg></div><b>Speicher</b></div>
+      <div class="mod"><div class="mod-iso"><svg viewBox="-58 -36 116 102" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,30.0 -52.0,-0.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,30.0 52.0,-0.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-30.0 52.0,-0.0 0.0,30.0 -52.0,-0.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 30 A 13 13 0 1 1 33 30"/><path pathLength="1" d="M20 27 l 7 -11"/><circle pathLength="1" cx="20" cy="28" r="1.6" fill="currentColor" stroke="none"/><path pathLength="1" d="M6 33 h28"/></svg></div><b>Messen</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -48 116 114" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,18.0 -52.0,-12.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,18.0 52.0,-12.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-42.0 52.0,-12.0 0.0,18.0 -52.0,-12.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="39.0" y1="37.5" x2="39.0" y2="-4.5" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="26.0" y1="45.0" x2="26.0" y2="3.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="13.0" y1="52.5" x2="13.0" y2="10.5" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M10 5 l 21 1 -1 29 -21 -1 z"/><path pathLength="1" d="M15 13 h11 M15 19 h7 M15 25 h11"/><path pathLength="1" d="M27 21 q -2 4 1 7" /></svg></div><b>Nachrechnen</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -60 116 126" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,6.0 -52.0,-24.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,6.0 52.0,-24.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-54.0 52.0,-24.0 0.0,6.0 -52.0,-24.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M9 12 h20 M9 20 h13 M9 28 h7"/><path pathLength="1" d="M6 9 C 4 4, 32 3, 33 9 C 35 14, 24 17, 8 15 C 3 14, 2 11, 6 9" stroke-opacity=".9"/></svg></div><b>Priorisieren</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -72 116 138" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-6.0 -52.0,-36.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,-6.0 52.0,-36.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-66.0 52.0,-36.0 0.0,-6.0 -52.0,-36.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="41.6" y1="36.0" x2="41.6" y2="-30.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="31.2" y1="42.0" x2="31.2" y2="-24.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="20.8" y1="48.0" x2="20.8" y2="-18.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="10.4" y1="54.0" x2="10.4" y2="-12.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 32 L 18 20"/><path pathLength="1" d="M16 15 l 9 -9 8 8 -9 9 z"/><path pathLength="1" d="M25 6 l 5 -3 M33 14 l 3 -5"/></svg></div><b>Umsetzen</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -42 116 108" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,24.0 -52.0,-6.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,24.0 52.0,-6.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-36.0 52.0,-6.0 0.0,24.0 -52.0,-6.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M8 33 L 20 21"/><path pathLength="1" d="M17 12 l 10 -6 6 6 -6 10"/><path pathLength="1" d="M14 16 l 8 8"/></svg></div><b>Handwerk</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -66 116 132" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-0.0 -52.0,-30.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,-0.0 52.0,-30.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-60.0 52.0,-30.0 0.0,-0.0 -52.0,-30.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="39.0" y1="37.5" x2="39.0" y2="-22.5" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="26.0" y1="45.0" x2="26.0" y2="-15.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="13.0" y1="52.5" x2="13.0" y2="-7.5" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M22 4 l -11 18 h 9 l -4 15 l 13 -20 h -9 z"/></svg></div><b>Strom</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -54 116 120" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,12.0 -52.0,-18.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,12.0 52.0,-18.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-48.0 52.0,-18.0 0.0,12.0 -52.0,-18.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/><path pathLength="1" d="M22 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/></svg></div><b>Wärme</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -45 116 111" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,21.0 -52.0,-9.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,21.0 52.0,-9.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-39.0 52.0,-9.0 0.0,21.0 -52.0,-9.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="39.0" y1="37.5" x2="39.0" y2="-1.5" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="26.0" y1="45.0" x2="26.0" y2="6.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="13.0" y1="52.5" x2="13.0" y2="13.5" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 24 l 13 7 13 -7 -13 -7 z"/><path pathLength="1" d="M7 16 l 13 7 13 -7"/><path pathLength="1" d="M7 8 l 13 7 13 -7 -13 -7 z"/></svg></div><b>Material</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -39 116 105" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,27.0 -52.0,-3.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,27.0 52.0,-3.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-33.0 52.0,-3.0 0.0,27.0 -52.0,-3.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M20 5 c 6 9 10 14 10 19 a 10 10 0 0 1 -20 0 c 0 -5 4 -10 10 -19 z"/><path pathLength="1" d="M15 24 q 0 5 5 6"/></svg></div><b>Wasser</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -78 116 144" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,-12.0 -52.0,-42.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,-12.0 52.0,-42.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-72.0 52.0,-42.0 0.0,-12.0 -52.0,-42.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="41.6" y1="36.0" x2="41.6" y2="-36.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="31.2" y1="42.0" x2="31.2" y2="-30.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="20.8" y1="48.0" x2="20.8" y2="-24.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="10.4" y1="54.0" x2="10.4" y2="-18.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 34 v -16 h 8 v 16"/><path pathLength="1" d="M8 34 h 26"/><path pathLength="1" d="M24 12 c 4 -3 4 -6 0 -9 M30 16 c 4 -3 4 -6 0 -9"/></svg></div><b>Abwärme</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -33 116 99" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,33.0 -52.0,3.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,33.0 52.0,3.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-27.0 52.0,3.0 0.0,33.0 -52.0,3.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 30 l 6 -16 h 22 l -6 16 z"/><path pathLength="1" d="M11 22 h 20 M14 14 l -3 8 M23 14 l -3 16"/><path pathLength="1" d="M6 34 h 28"/></svg></div><b>PV</b></div>
+<div class="mod"><div class="mod-iso"><svg viewBox="-58 -57 116 123" aria-hidden="true"><polygon points="-52.0,30.0 0.0,60.0 0.0,9.0 -52.0,-21.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="52.0,30.0 0.0,60.0 0.0,9.0 52.0,-21.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="0.0,-51.0 52.0,-21.0 0.0,9.0 -52.0,-21.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="39.0" y1="37.5" x2="39.0" y2="-13.5" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="26.0" y1="45.0" x2="26.0" y2="-6.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="13.0" y1="52.5" x2="13.0" y2="1.5" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div><div class="mod-ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 12 h 24 v 18 h -24 z"/><path pathLength="1" d="M31 17 h 4 v 8 h -4"/><path pathLength="1" d="M12 17 v 8 M18 17 v 8"/></svg></div><b>Speicher</b></div>
     </div>
     <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website werden sie zur Konfiguration: Der Kunde klickt seine Steine, die Grundplatte zeigt Tage und Umfang. Im Bericht sind sie die Kapitelmarken.</p>
   </div>
@@ -315,18 +346,18 @@
       <h2 style="font-size:30px;margin-top:10px">Ein Strich, mit der Hand, in Ocker.</h2>
       <p class="muted" style="margin-top:12px;font-size:15px;max-width:48ch">Zwölf Icons für Leistungen und Medien. Bewusst nicht perfekt: leicht gewellte Linien, runde Enden, wie mit dem Filzstift auf den Schaltschrank gezeichnet. Auf hellem Grund werden sie Petrol.</p>
       <div class="hicons" style="margin-top:22px">
-        <div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 30 A 13 13 0 1 1 33 30"/><path d="M20 27 l 7 -11"/><circle cx="20" cy="28" r="1.6" fill="currentColor" stroke="none"/><path d="M6 33 h28"/></svg><span>Messen</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5 l 21 1 -1 29 -21 -1 z"/><path d="M15 13 h11 M15 19 h7 M15 25 h11"/><path d="M27 21 q -2 4 1 7" /></svg><span>Nachrechnen</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12 h20 M9 20 h13 M9 28 h7"/><path d="M6 9 C 4 4, 32 3, 33 9 C 35 14, 24 17, 8 15 C 3 14, 2 11, 6 9" stroke-opacity=".9"/></svg><span>Priorisieren</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 32 L 18 20"/><path d="M16 15 l 9 -9 8 8 -9 9 z"/><path d="M25 6 l 5 -3 M33 14 l 3 -5"/></svg><span>Umsetzen</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 33 L 20 21"/><path d="M17 12 l 10 -6 6 6 -6 10"/><path d="M14 16 l 8 8"/></svg><span>Handwerk</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 4 l -11 18 h 9 l -4 15 l 13 -20 h -9 z"/></svg><span>Strom</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/><path d="M22 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/></svg><span>Wärme</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 24 l 13 7 13 -7 -13 -7 z"/><path d="M7 16 l 13 7 13 -7"/><path d="M7 8 l 13 7 13 -7 -13 -7 z"/></svg><span>Material</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 5 c 6 9 10 14 10 19 a 10 10 0 0 1 -20 0 c 0 -5 4 -10 10 -19 z"/><path d="M15 24 q 0 5 5 6"/></svg><span>Wasser</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 34 v -16 h 8 v 16"/><path d="M8 34 h 26"/><path d="M24 12 c 4 -3 4 -6 0 -9 M30 16 c 4 -3 4 -6 0 -9"/></svg><span>Abwärme</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 30 l 6 -16 h 22 l -6 16 z"/><path d="M11 22 h 20 M14 14 l -3 8 M23 14 l -3 16"/><path d="M6 34 h 28"/></svg><span>PV</span></div>
-<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#D9A441" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12 h 24 v 18 h -24 z"/><path d="M31 17 h 4 v 8 h -4"/><path d="M12 17 v 8 M18 17 v 8"/></svg><span>Speicher</span></div>
+        <div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 30 A 13 13 0 1 1 33 30"/><path pathLength="1" d="M20 27 l 7 -11"/><circle pathLength="1" cx="20" cy="28" r="1.6" fill="currentColor" stroke="none"/><path pathLength="1" d="M6 33 h28"/></svg><span>Messen</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M10 5 l 21 1 -1 29 -21 -1 z"/><path pathLength="1" d="M15 13 h11 M15 19 h7 M15 25 h11"/><path pathLength="1" d="M27 21 q -2 4 1 7" /></svg><span>Nachrechnen</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M9 12 h20 M9 20 h13 M9 28 h7"/><path pathLength="1" d="M6 9 C 4 4, 32 3, 33 9 C 35 14, 24 17, 8 15 C 3 14, 2 11, 6 9" stroke-opacity=".9"/></svg><span>Priorisieren</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 32 L 18 20"/><path pathLength="1" d="M16 15 l 9 -9 8 8 -9 9 z"/><path pathLength="1" d="M25 6 l 5 -3 M33 14 l 3 -5"/></svg><span>Umsetzen</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M8 33 L 20 21"/><path pathLength="1" d="M17 12 l 10 -6 6 6 -6 10"/><path pathLength="1" d="M14 16 l 8 8"/></svg><span>Handwerk</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M22 4 l -11 18 h 9 l -4 15 l 13 -20 h -9 z"/></svg><span>Strom</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/><path pathLength="1" d="M22 33 c 0 -7 6 -7 6 -13 s -6 -7 -6 -13"/></svg><span>Wärme</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 24 l 13 7 13 -7 -13 -7 z"/><path pathLength="1" d="M7 16 l 13 7 13 -7"/><path pathLength="1" d="M7 8 l 13 7 13 -7 -13 -7 z"/></svg><span>Material</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M20 5 c 6 9 10 14 10 19 a 10 10 0 0 1 -20 0 c 0 -5 4 -10 10 -19 z"/><path pathLength="1" d="M15 24 q 0 5 5 6"/></svg><span>Wasser</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 34 v -16 h 8 v 16"/><path pathLength="1" d="M8 34 h 26"/><path pathLength="1" d="M24 12 c 4 -3 4 -6 0 -9 M30 16 c 4 -3 4 -6 0 -9"/></svg><span>Abwärme</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M6 30 l 6 -16 h 22 l -6 16 z"/><path pathLength="1" d="M11 22 h 20 M14 14 l -3 8 M23 14 l -3 16"/><path pathLength="1" d="M6 34 h 28"/></svg><span>PV</span></div>
+<div class="hic"><svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M7 12 h 24 v 18 h -24 z"/><path pathLength="1" d="M31 17 h 4 v 8 h -4"/><path pathLength="1" d="M12 17 v 8 M18 17 v 8"/></svg><span>Speicher</span></div>
       </div>
     </div>
     <div>
@@ -345,13 +376,13 @@
           <rect width="600" height="420" fill="#0F3B3F" fill-opacity=".35"/>
         </svg>
         <svg class="ann" viewBox="0 0 600 420" aria-hidden="true">
-          <path d="M330 140 C 320 100, 470 92, 486 150 C 500 200, 470 262, 400 268 C 330 274, 312 220, 322 170 C 326 150, 340 140, 356 136" fill="none" stroke="#D9A441" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M200 70 Q 270 40 330 120" fill="none" stroke="#D9A441" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M318 96 l 12 24 -26 -2" fill="none" stroke="#D9A441" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="44" y="62" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="#D9A441">Kompressor 2: Leckage</text>
-          <text x="44" y="92" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="#D9A441">11.200 € / Jahr · 5 Monate</text>
-          <path d="M60 330 q 12 8 18 22 q 10 -34 34 -50" fill="none" stroke="#D9A441" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="128" y="352" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="#D9A441">gemessen 12.09., 14:10</text>
+          <path d="M330 140 C 320 100, 470 92, 486 150 C 500 200, 470 262, 400 268 C 330 274, 312 220, 322 170 C 326 150, 340 140, 356 136" fill="none" stroke="currentColor" data-ak="s" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M200 70 Q 270 40 330 120" fill="none" stroke="currentColor" data-ak="s" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M318 96 l 12 24 -26 -2" fill="none" stroke="currentColor" data-ak="s" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="62" font-family="Permanent Marker, Kalam, cursive" font-size="24" fill="currentColor" data-ak="f">Kompressor 2: Leckage</text>
+          <text x="44" y="92" font-family="Permanent Marker, Kalam, cursive" font-size="24" fill="currentColor" data-ak="f">11.200 € / Jahr · 5 Monate</text>
+          <path d="M60 330 q 12 8 18 22 q 10 -34 34 -50" fill="none" stroke="currentColor" data-ak="s" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="128" y="352" font-family="Permanent Marker, Kalam, cursive" font-size="22" fill="currentColor" data-ak="f">gemessen 12.09., 14:10</text>
         </svg>
         <span class="cap">Platzhalter für Foto: Druckluftstation, Tageslicht, keine Freisteller.</span>
       </div>
@@ -370,43 +401,43 @@
     <div class="posters">
       <div class="poster sand" style="color:#0F3B3F">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>01 · Kurve</span></div>
-        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M18 168 C 60 172, 66 130, 96 104 C 128 76, 128 30, 184 26" fill="none" stroke="#0F3B3F" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="100" r="13" fill="#D9A441"/><path d="M118 112 q 30 24 52 6" fill="none" stroke="#0F3B3F" stroke-width="2.4" stroke-linecap="round"/><text x="132" y="146" font-family="Kalam, cursive" font-weight="700" font-size="17" fill="#0F3B3F">hier.</text></svg></div>
+        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M18 168 C 60 172, 66 130, 96 104 C 128 76, 128 30, 184 26" fill="none" stroke="#0F3B3F" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="100" r="13" fill="currentColor" data-ak="f"/><path d="M118 112 q 30 24 52 6" fill="none" stroke="#0F3B3F" stroke-width="2.4" stroke-linecap="round"/><text x="132" y="146" font-family="Permanent Marker, Kalam, cursive" font-size="17" fill="#0F3B3F">hier.</text></svg></div>
         <p class="line">Der Wendepunkt ist der Moment, ab dem die Kurve anders läuft. Wir suchen ihn in Ihrem Betrieb.</p>
       </div>
       <div class="poster" style="background:#0F3B3F;color:#fff">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>02 · Baukasten</span></div>
-        <div class="art"><svg viewBox="-172 -96 345 292" aria-hidden="true"><polygon points="-69.3,40.0 0.0,80.0 0.0,32.0 -69.3,-8.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="69.3,40.0 0.0,80.0 0.0,32.0 69.3,-8.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="0.0,-48.0 69.3,-8.0 0.0,32.0 -69.3,-8.0" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<line x1="52.0" y1="50.0" x2="52.0" y2="2.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="34.6" y1="60.0" x2="34.6" y2="12.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="17.3" y1="70.0" x2="17.3" y2="22.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<polygon points="13.9,88.0 83.1,128.0 83.1,40.0 13.9,-0.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="152.4,88.0 83.1,128.0 83.1,40.0 152.4,-0.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="83.1,-40.0 152.4,-0.0 83.1,40.0 13.9,-0.0" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="-152.4,88.0 -83.1,128.0 -83.1,4.0 -152.4,-36.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="-13.9,88.0 -83.1,128.0 -83.1,4.0 -13.9,-36.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="-83.1,-76.0 -13.9,-36.0 -83.1,4.0 -152.4,-36.0" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<line x1="-25.4" y1="94.7" x2="-25.4" y2="-29.3" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="-37.0" y1="101.3" x2="-37.0" y2="-22.7" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="-48.5" y1="108.0" x2="-48.5" y2="-16.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="-60.0" y1="114.7" x2="-60.0" y2="-9.3" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="-71.6" y1="121.3" x2="-71.6" y2="-2.7" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<polygon points="-69.3,136.0 0.0,176.0 0.0,112.0 -69.3,72.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="69.3,136.0 0.0,176.0 0.0,112.0 69.3,72.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="0.0,32.0 69.3,72.0 0.0,112.0 -69.3,72.0" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="-69.3,72.0 0.0,112.0 0.0,56.0 -69.3,16.0" fill="#0B3236" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="69.3,72.0 0.0,112.0 0.0,56.0 69.3,16.0" fill="#0E393D" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<polygon points="0.0,-24.0 69.3,16.0 0.0,56.0 -69.3,16.0" fill="#14474C" stroke="#D9A441" stroke-width="1.6" stroke-linejoin="round"/>
-<line x1="55.4" y1="80.0" x2="55.4" y2="24.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="41.6" y1="88.0" x2="41.6" y2="32.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="27.7" y1="96.0" x2="27.7" y2="40.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/>
-<line x1="13.9" y1="104.0" x2="13.9" y2="48.0" stroke="#D9A441" stroke-width="1" stroke-opacity=".45"/></svg></div>
+        <div class="art"><svg viewBox="-172 -96 345 292" aria-hidden="true"><polygon points="-69.3,40.0 0.0,80.0 0.0,32.0 -69.3,-8.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="69.3,40.0 0.0,80.0 0.0,32.0 69.3,-8.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="0.0,-48.0 69.3,-8.0 0.0,32.0 -69.3,-8.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<line x1="52.0" y1="50.0" x2="52.0" y2="2.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="34.6" y1="60.0" x2="34.6" y2="12.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="17.3" y1="70.0" x2="17.3" y2="22.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<polygon points="13.9,88.0 83.1,128.0 83.1,40.0 13.9,-0.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="152.4,88.0 83.1,128.0 83.1,40.0 152.4,-0.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="83.1,-40.0 152.4,-0.0 83.1,40.0 13.9,-0.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="-152.4,88.0 -83.1,128.0 -83.1,4.0 -152.4,-36.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="-13.9,88.0 -83.1,128.0 -83.1,4.0 -13.9,-36.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="-83.1,-76.0 -13.9,-36.0 -83.1,4.0 -152.4,-36.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<line x1="-25.4" y1="94.7" x2="-25.4" y2="-29.3" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="-37.0" y1="101.3" x2="-37.0" y2="-22.7" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="-48.5" y1="108.0" x2="-48.5" y2="-16.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="-60.0" y1="114.7" x2="-60.0" y2="-9.3" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="-71.6" y1="121.3" x2="-71.6" y2="-2.7" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<polygon points="-69.3,136.0 0.0,176.0 0.0,112.0 -69.3,72.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="69.3,136.0 0.0,176.0 0.0,112.0 69.3,72.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="0.0,32.0 69.3,72.0 0.0,112.0 -69.3,72.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="-69.3,72.0 0.0,112.0 0.0,56.0 -69.3,16.0" fill="#0B3236" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="69.3,72.0 0.0,112.0 0.0,56.0 69.3,16.0" fill="#0E393D" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<polygon points="0.0,-24.0 69.3,16.0 0.0,56.0 -69.3,16.0" fill="#14474C" stroke="#D9A441" data-ak="s" stroke-width="1.6" stroke-linejoin="round"/>
+<line x1="55.4" y1="80.0" x2="55.4" y2="24.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="41.6" y1="88.0" x2="41.6" y2="32.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="27.7" y1="96.0" x2="27.7" y2="40.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/>
+<line x1="13.9" y1="104.0" x2="13.9" y2="48.0" stroke="#D9A441" data-ak="s" stroke-width="1" stroke-opacity=".45"/></svg></div>
         <p class="line">Zehn Maßnahmen in vier Tagen. Priorisiert, durchgerechnet, in Ihrer Reihenfolge gebaut.</p>
       </div>
-      <div class="poster" style="background:#D9A441;color:#071F22">
+      <div class="poster" style="background:var(--accent);color:var(--accent-ink)">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>03 · Marker</span></div>
-        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><text x="18" y="86" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="27" fill="#071F22" fill-opacity=".45">behaupten.</text><path d="M12 78 Q 80 64 160 74" fill="none" stroke="#071F22" stroke-width="7" stroke-linecap="round"/><text x="16" y="146" font-family="Kalam, cursive" font-weight="700" font-size="30" fill="#071F22">nachrechnen.</text><path d="M18 156 q 60 10 150 -4" fill="none" stroke="#071F22" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><text x="18" y="86" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="27" fill="#071F22" fill-opacity=".45">behaupten.</text><path d="M12 78 Q 80 64 160 74" fill="none" stroke="#071F22" stroke-width="7" stroke-linecap="round"/><text x="16" y="146" font-family="Permanent Marker, Kalam, cursive" font-size="30" fill="#071F22">nachrechnen.</text><path d="M18 156 q 60 10 150 -4" fill="none" stroke="#071F22" stroke-width="3" stroke-linecap="round"/></svg></div>
         <p class="line">Wir rechnen nach, statt zu behaupten. Jede Zahl im Bericht hat eine Einheit und ein Datum.</p>
       </div>
     </div>
@@ -424,7 +455,7 @@
     <div class="apps">
       <div class="report">
         <div>
-          <div class="logo" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1" style="font-size:15px">Wendepunkt</div><div class="w2" style="font-size:15px">Ingenieure</div><div class="zs" style="color:#0F3B3F">Büro für Energie- und<br>Ressourceneffizienz</div></div></div>
+          <div class="logo" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441" data-ak="f"/></svg><div><div class="w1" style="font-size:15px">Wendepunkt</div><div class="w2" style="font-size:15px">Ingenieure</div><div class="zs" style="color:#0F3B3F">Büro für Energie- und<br>Ressourceneffizienz</div></div></div>
           <span class="eyebrow" style="display:block;margin-top:34px;color:var(--muted)">Effizienz-Kompass · Bericht Nr. 2026-014</span>
           <h3>Gießerei Musterwerk GmbH, Saalfeld</h3>
           <div class="num" style="margin-top:22px">12 Maßnahmen</div>
@@ -445,16 +476,16 @@
         <div class="li">
           <div class="foot"><span>Praxisbeispiel · Folienhersteller</span><span>1080 × 1080</span></div>
           <div class="q"><span class="claim"><span class="struck">„PV rechnet sich immer.“</span><span class="re">240 kWp, 31.000 € p. a.: 6,8 Jahre. Rechnet sich. Aber erst nach Druckluft und Abwärme.</span></span></div>
-          <div class="foot"><div class="logo" style="color:#FFFFFF"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1" style="font-size:11px">Wendepunkt</div><div class="w2" style="font-size:11px">Ingenieure</div></div></div><span>wendepunkt-ingenieure.de</span></div>
+          <div class="foot"><div class="logo" style="color:#FFFFFF"><svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441" data-ak="f"/></svg><div><div class="w1" style="font-size:11px">Wendepunkt</div><div class="w2" style="font-size:11px">Ingenieure</div></div></div><span>wendepunkt-ingenieure.de</span></div>
         </div>
         <div class="grid2" style="gap:12px;align-items:stretch">
           <div class="card" style="background:#fff">
-            <div class="logo" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg><div><div class="w1" style="font-size:11px">Wendepunkt</div><div class="w2" style="font-size:11px">Ingenieure</div></div></div>
+            <div class="logo" style="color:#0F3B3F"><svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#0F3B3F" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441" data-ak="f"/></svg><div><div class="w1" style="font-size:11px">Wendepunkt</div><div class="w2" style="font-size:11px">Ingenieure</div></div></div>
             <div class="who"><b>Michael Schenk</b><br>Ressourceneffizienz<br><span class="m">+49 000 0000000 · ms@wendepunkt-ingenieure.de</span></div>
           </div>
           <div class="card" style="background:#0F3B3F;border-color:#0F3B3F;justify-content:center;align-items:center">
-            <svg viewBox="0 0 64 64" width="120" height="120" style="position:absolute;right:-22px;bottom:-30px" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441"/></svg>
-            <span class="hand" style="color:#D9A441;font-size:20px;position:absolute;left:18px;top:18px;transform:rotate(-4deg)">Ruf einfach an.</span>
+            <svg viewBox="0 0 64 64" width="120" height="120" style="position:absolute;right:-22px;bottom:-30px" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="currentColor" data-ak="f"/></svg>
+            <span class="hand" style="color:var(--accent);font-size:20px;position:absolute;left:18px;top:18px;transform:rotate(-4deg)">Ruf einfach an.</span>
           </div>
         </div>
         <div class="sig">
@@ -478,7 +509,7 @@
     <div class="sw">
       <div><div class="chip" style="background:#0F3B3F"></div><div class="lbl"><b>Petrol</b><code>#0F3B3F</code></div></div>
       <div><div class="chip" style="background:#071F22"></div><div class="lbl"><b>Tiefe</b><code>#071F22</code></div></div>
-      <div><div class="chip" style="background:#D9A441"></div><div class="lbl"><b>Ocker · Marker</b><code>#D9A441</code></div></div>
+      <div><div class="chip" style="background:var(--accent)"></div><div class="lbl"><b>Marker</b><code id="akhex">#D9A441</code></div></div>
       <div><div class="chip" style="background:#F7F5F0;border-bottom:1px solid var(--line-l)"></div><div class="lbl"><b>Papier</b><code>#F7F5F0</code></div></div>
       <div><div class="chip" style="background:#E9E1CF"></div><div class="lbl"><b>Sand</b><code>#E9E1CF</code></div></div>
       <div><div class="chip" style="background:#EEF0EC"></div><div class="lbl"><b>Nebel</b><code>#EEF0EC</code></div></div>
@@ -487,11 +518,11 @@
       <div class="row"><span class="k">Headline · Plex Sans 600</span><span style="font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1">Systeme, die Ihr Team noch versteht.</span></div>
       <div class="row"><span class="k">Fließtext · Plex Sans 400</span><span style="font-size:16px">Zwei Tage vor Ort, zwei Tage Planung. Danach liegen mindestens zehn Maßnahmen auf dem Tisch.</span></div>
       <div class="row"><span class="k">Zahl · Plex Mono 500</span><span style="font-family:var(--mono);font-size:30px;font-weight:500;color:#0F3B3F;line-height:1">312 MWh <span style="font-size:13px;color:var(--muted)">Strom p. a.</span></span></div>
-      <div class="row"><span class="k">Hand · Kalam 700</span><span class="hand" style="font-size:28px;color:#0F3B3F">nachgerechnet: 18 %, 2,1 Jahre</span></div>
+      <div class="row"><span class="k">Hand · Permanent Marker</span><span class="hand" style="font-size:28px;color:#0F3B3F">nachgerechnet: 18 %, 2,1 Jahre</span></div>
     </div>
     <div class="rules" style="margin-top:32px">
       <div><h4>Die Hand ist selten.</h4><p>Eine Annotation pro Bildschirm, ein Prüfvermerk pro Bericht. Handschrift ist nie Fließtext und nie Navigation. Sie ist der Marker des Ingenieurs, nicht eine zweite Schrift.</p></div>
-      <div><h4>Ocker ist Marker, nicht Text.</h4><p>Auf Petrol erreicht Ocker 5,4 : 1 und trägt Handschrift und Icons. Auf Papier ist es nur Strich, Punkt oder Fläche mit dunkler Schrift. Petrol übernimmt Buttons, Kennzahlen und Links.</p></div>
+      <div><h4>Die Marker-Farbe ist Marker, nicht Text.</h4><p>Auf Petrol trägt sie Handschrift und Icons (Ocker 5,4 : 1, Lime 9,3 : 1, Mint 7,5 : 1, Terrakotta 4,0 : 1). Auf Papier ist es nur Strich, Punkt oder Fläche mit dunkler Schrift. Petrol übernimmt Buttons, Kennzahlen und Links.</p></div>
       <div><h4>Dunkel für die Bühne, hell für das Dokument.</h4><p>Hero, Plakat, LinkedIn und Baukasten auf Petrol oder Tiefe mit Punktraster. Bericht, Angebot, Brief und Formular auf Papier. Das Logo läuft auf beidem.</p></div>
     </div>
   </div>
@@ -508,7 +539,7 @@
       <div>
         <h4>ecoworks</h4>
         <ul><li>Dunkler Petrol-Grund mit Punktraster</li><li>Isometrische Bausteine als Produktbild</li><li>Schraffuren als Zustand, nicht als Deko</li><li>Kleine Label in Mono</li></ul>
-        <p class="no"><b>Nicht übernommen:</b> das Neongrün. Es liegt zu nah am Energieberater-Grün und wäre eine Kopie.</p>
+        <p class="no"><b>Zur Entscheidung:</b> das Neongrün. Über den Schalter oben rechts lässt sich Lime oder Mint live gegen Ocker testen. Mein Vorbehalt: Nähe zum Energieberater-Grün.</p>
       </div>
       <div>
         <h4>The Academy for Climate Jobs</h4>
@@ -518,9 +549,72 @@
       <div>
         <h4>Claude / Anthropic</h4>
         <ul><li>Warmes Papier und Sand statt Reinweiß</li><li>Plakatserie mit einer Linie pro Motiv</li><li>Ruhige Grotesk, Mono für Zahlen</li><li>Geschäftsausstattung als Gegenstand gedacht</li></ul>
-        <p class="no"><b>Nicht übernommen:</b> Terrakotta. Die Farbe gehört Anthropic. Unser Ocker kommt aus dem Logo-Punkt.</p>
+        <p class="no"><b>Zur Entscheidung:</b> Terrakotta liegt ebenfalls im Schalter. Mein Vorbehalt: Die Farbe gehört Anthropic. Ocker kommt aus dem Logo-Punkt.</p>
       </div>
     </div>
-    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Handschrift Kalam bleibt oder durch die echte Handschrift von Micha oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
+    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Handschrift Permanent Marker bleibt oder durch die echte Handschrift von Micha oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
   </div>
 </section>
+
+<script>
+(function(){
+  var C30=Math.cos(Math.PI/6), S30=0.5, S=34;
+  function iso(x,y,z){return [(x-y)*C30*S,(x+y)*S30*S-z*S];}
+  function P(pts){return pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ');}
+  function block(x,y,z,w,d,h,hatch,cls,title){
+    var T=[iso(x,y,z+h),iso(x+w,y,z+h),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
+    var L=[iso(x,y+d,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
+    var R=[iso(x+w,y,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x+w,y,z+h)];
+    var o='<g class="blk '+(cls||'')+'">'+(title?'<title>'+title+'</title>':'');
+    o+='<polygon points="'+P(L)+'" fill="#0B3236" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
+    o+='<polygon points="'+P(R)+'" fill="#0E393D" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
+    o+='<polygon points="'+P(T)+'" fill="#14474C" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
+    for(var i=1;i<hatch;i++){var t=i/hatch;var a=[R[0][0]+(R[1][0]-R[0][0])*t,R[0][1]+(R[1][1]-R[0][1])*t];var b=[R[3][0]+(R[2][0]-R[3][0])*t,R[3][1]+(R[2][1]-R[3][1])*t];
+      o+='<line x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b[0].toFixed(1)+'" y2="'+b[1].toFixed(1)+'" stroke="currentColor" stroke-width="1" stroke-opacity=".45"/>';}
+    return o+'</g>';
+  }
+  var F=[
+    {id:'druckluft',n:'Druckluft',h:2.6,hatch:5,mp:4},{id:'abwaerme',n:'Abwärme',h:3.4,hatch:6,mp:6},{id:'licht',n:'Beleuchtung',h:1.2,hatch:0,mp:3},
+    {id:'waerme',n:'Wärme',h:2.2,hatch:0,mp:5},{id:'strom',n:'Strom',h:2.0,hatch:4,mp:6},{id:'material',n:'Material',h:2.8,hatch:0,mp:4},
+    {id:'wasser',n:'Wasser',h:1.4,hatch:0,mp:3},{id:'pv',n:'PV',h:1.8,hatch:0,mp:2},{id:'speicher',n:'Speicher',h:1.5,hatch:4,mp:2}];
+  var sel={druckluft:1,abwaerme:1,licht:1,pv:1}, fresh={};
+  var slot=1.7, gap=.35, plate=3*slot+4*gap, pz=.32;
+  var plateEl=document.getElementById('plate'), chips=document.getElementById('chips');
+  function render(){
+    var parts=[], ix=0;
+    parts.push(block(0,0,0,plate,plate,pz,0,'','Grundplatte: Effizienz-Kompass'));
+    var items=[];
+    F.forEach(function(f,i){var gx=i%3, gy=Math.floor(i/3); var x=gap+gx*(slot+gap), y=gap+gy*(slot+gap); items.push({f:f,x:x,y:y});});
+    items.forEach(function(it){
+      if(!sel[it.f.id]){var q=[iso(it.x,it.y,pz),iso(it.x+slot,it.y,pz),iso(it.x+slot,it.y+slot,pz),iso(it.x,it.y+slot,pz)];
+        parts.push('<polygon class="slot" points="'+P(q)+'" fill="none" stroke="currentColor" stroke-width="1"/>');}
+    });
+    items.sort(function(a,b){return (a.x+a.y)-(b.x+b.y);}).forEach(function(it){
+      if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,fresh[it.f.id]?'new':'',it.f.n));
+    });
+    var c=iso(plate,plate,0), l=iso(0,plate,0), r=iso(plate,0,0), t=iso(0,0,3.8);
+    var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+44;
+    var lab='<text x="'+(x1-6).toFixed(0)+'" y="'+(y1-8).toFixed(0)+'" text-anchor="end" font-family="Permanent Marker, Kalam, cursive" font-size="17" fill="currentColor">Grundplatte: Effizienz-Kompass, 2 + 2 Tage</text>';
+    plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+lab+'</svg>';
+    fresh={};
+    var n=0,mp=0; F.forEach(function(f){if(sel[f.id]){n++;mp+=f.mp;}});
+    document.getElementById('t-n').textContent=n;
+    document.getElementById('t-d').textContent=(n<=4?'2 + 2':n<=7?'3 + 2':'4 + 3');
+    document.getElementById('t-m').textContent=mp;
+    Array.prototype.forEach.call(chips.querySelectorAll('button'),function(b){b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false');});
+  }
+  F.forEach(function(f){var b=document.createElement('button');b.type='button';b.dataset.id=f.id;b.id='chip-'+f.id;
+    b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>'+f.n;
+    b.addEventListener('click',function(){ if(sel[f.id]){delete sel[f.id];} else {sel[f.id]=1;fresh[f.id]=1;} render(); });
+    chips.appendChild(b);});
+  render();
+
+  var sw=document.querySelectorAll('.aksw button'), hex={ocker:'#D9A441',lime:'#C8F04A',mint:'#5DE3A1',terra:'#E4744C'};
+  function setAk(k){ if(k==='ocker'){document.documentElement.removeAttribute('data-accent');} else {document.documentElement.setAttribute('data-accent',k);}
+    Array.prototype.forEach.call(sw,function(b){b.setAttribute('aria-pressed',b.dataset.set===k?'true':'false');});
+    var h=document.getElementById('akhex'); if(h) h.textContent=hex[k];
+    try{localStorage.setItem('wp-accent',k);}catch(e){} }
+  Array.prototype.forEach.call(sw,function(b){b.addEventListener('click',function(){setAk(b.dataset.set);});});
+  try{var k=localStorage.getItem('wp-accent'); if(k&&hex[k]) setAk(k);}catch(e){}
+})();
+</script>

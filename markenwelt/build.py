@@ -15,21 +15,22 @@ def lerp(p, q, t):
     return (p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t)
 
 def block(x, y, z, w, d, h, s, stroke, top, left, right, hatch=0, sw=1.6, hatch_face="right"):
+    ak = "s" if stroke == OCKER else ""
     P = lambda a, b, c: iso(a, b, c, s)
     T = [P(x, y, z + h), P(x + w, y, z + h), P(x + w, y + d, z + h), P(x, y + d, z + h)]
     L = [P(x, y + d, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x, y + d, z + h)]
     R = [P(x + w, y, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x + w, y, z + h)]
     out = []
-    out.append(f'<polygon points="{pts(L)}" fill="{left}" stroke="{stroke}" stroke-width="{sw}" stroke-linejoin="round"/>')
-    out.append(f'<polygon points="{pts(R)}" fill="{right}" stroke="{stroke}" stroke-width="{sw}" stroke-linejoin="round"/>')
-    out.append(f'<polygon points="{pts(T)}" fill="{top}" stroke="{stroke}" stroke-width="{sw}" stroke-linejoin="round"/>')
+    out.append(f'<polygon points="{pts(L)}" fill="{left}" stroke="{stroke}" data-ak="{ak}" stroke-width="{sw}" stroke-linejoin="round"/>')
+    out.append(f'<polygon points="{pts(R)}" fill="{right}" stroke="{stroke}" data-ak="{ak}" stroke-width="{sw}" stroke-linejoin="round"/>')
+    out.append(f'<polygon points="{pts(T)}" fill="{top}" stroke="{stroke}" data-ak="{ak}" stroke-width="{sw}" stroke-linejoin="round"/>')
     if hatch:
         face = R if hatch_face == "right" else L
         a0, a1, b1, b0 = face[0], face[1], face[2], face[3]
         for i in range(1, hatch):
             t = i / hatch
             p = lerp(a0, a1, t); q = lerp(b0, b1, t)
-            out.append(f'<line x1="{p[0]:.1f}" y1="{p[1]:.1f}" x2="{q[0]:.1f}" y2="{q[1]:.1f}" stroke="{stroke}" stroke-width="1" stroke-opacity=".45"/>')
+            out.append(f'<line x1="{p[0]:.1f}" y1="{p[1]:.1f}" x2="{q[0]:.1f}" y2="{q[1]:.1f}" stroke="{stroke}" data-ak="{ak}" stroke-width="1" stroke-opacity=".45"/>')
     return "\n".join(out), T
 
 def bbox(svg_parts):
@@ -74,10 +75,10 @@ def hero_iso():
         lx, ly = cx + dx, cy + dy
         ex = lx if anc == "middle" else (lx - 6 if anc == "start" else lx + 6)
         ey = ly + 6 if dy < 0 else ly - 14
-        lab_svg.append(f'<path d="M{ex:.0f} {ey:.0f} Q {(ex+cx)/2:.0f} {(ey+cy)/2 - 10:.0f} {cx:.0f} {cy:.0f}" fill="none" stroke="{OCKER}" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 3"/>')
-        lab_svg.append(f'<circle cx="{cx:.0f}" cy="{cy:.0f}" r="3" fill="{OCKER}"/>')
-        lab_svg.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anc}" font-family="Kalam, cursive" font-size="19" font-weight="700" fill="{OCKER}">{lab}</text>')
-    base_lab = f'<text x="{x1-4:.0f}" y="{y1+30:.0f}" text-anchor="end" font-family="Kalam, cursive" font-size="18" font-weight="700" fill="{OCKER}">Grundplatte: Effizienz-Kompass, 2 + 2 Tage</text>'
+        lab_svg.append(f'<path d="M{ex:.0f} {ey:.0f} Q {(ex+cx)/2:.0f} {(ey+cy)/2 - 10:.0f} {cx:.0f} {cy:.0f}" fill="none" stroke="currentColor" data-ak="s" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 3"/>')
+        lab_svg.append(f'<circle cx="{cx:.0f}" cy="{cy:.0f}" r="3" fill="currentColor" data-ak="f"/>')
+        lab_svg.append(f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anc}" font-family="Kalam, cursive" font-size="19" font-weight="700" fill="currentColor" data-ak="f">{lab}</text>')
+    base_lab = f'<text x="{x1-4:.0f}" y="{y1+30:.0f}" text-anchor="end" font-family="Kalam, cursive" font-size="18" font-weight="700" fill="currentColor" data-ak="f">Grundplatte: Effizienz-Kompass, 2 + 2 Tage</text>'
     base_arrow = ''
     vb = f"{x0-pad:.0f} {y0-pad:.0f} {x1-x0+2*pad:.0f} {y1-y0+2*pad+10:.0f}"
     return f'<svg viewBox="{vb}" class="iso-hero" role="img" aria-label="Isometrische Bausteine Druckluft, LED, Abwärme und PV auf einer Grundplatte Effizienz-Kompass">{body}\n{"".join(lab_svg)}{base_lab}{base_arrow}</svg>'
@@ -111,10 +112,11 @@ CHECK = '<svg viewBox="0 0 40 40" width="28" height="28" aria-hidden="true"><pat
 ARROW = '<svg viewBox="0 0 120 60" width="90" height="45" aria-hidden="true"><path d="M6 48 Q 40 6 106 22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M92 8 l16 14 -20 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
 def logo(curve, dot, text, size=64, w1=22, sub=True, mono=None):
+    dak = "f" if dot == OCKER else ""
     subhtml = f'<div class="zs" style="color:{mono or text}">Büro für Energie- und<br>Ressourceneffizienz</div>' if sub else ""
     return (f'<div class="logo" style="color:{text}"><svg viewBox="0 0 64 64" width="{size}" height="{size}" aria-hidden="true">'
             f'<path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="{curve}" stroke-width="4.5" stroke-linecap="round"/>'
-            f'<circle cx="32" cy="32" r="5.5" fill="{dot}"/></svg>'
+            f'<circle cx="32" cy="32" r="5.5" fill="{dot}" data-ak="{dak}"/></svg>'
             f'<div><div class="w1" style="font-size:{w1}px">Wendepunkt</div><div class="w2" style="font-size:{w1}px">Ingenieure</div>{subhtml}</div></div>')
 
 ICONS = {
@@ -132,9 +134,12 @@ ICONS = {
  "Speicher": '<path d="M7 12 h 24 v 18 h -24 z"/><path d="M31 17 h 4 v 8 h -4"/><path d="M12 17 v 8 M18 17 v 8"/>',
 }
 
+def pl(m):
+    return m.replace('<path ', '<path pathLength="1" ').replace('<circle ', '<circle pathLength="1" ')
+
 def icon(name, color="currentColor", size=44):
     return (f'<svg viewBox="0 0 40 40" width="{size}" height="{size}" fill="none" stroke="{color}" stroke-width="2.2" '
-            f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[name]}</svg>')
+            f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{pl(ICONS[name])}</svg>')
 
 MODULES = [("Messen", 1.0, 0), ("Nachrechnen", 1.4, 4), ("Priorisieren", 1.8, 0), ("Umsetzen", 2.2, 5), ("Handwerk", 1.2, 0), ("Strom", 2.0, 4),
            ("Wärme", 1.6, 0), ("Material", 1.3, 4), ("Wasser", 1.1, 0), ("Abwärme", 2.4, 5), ("PV", 0.9, 0), ("Speicher", 1.7, 4)]
@@ -142,21 +147,22 @@ MODULES = [("Messen", 1.0, 0), ("Nachrechnen", 1.4, 4), ("Priorisieren", 1.8, 0)
 def modules_html():
     out = []
     for name, h, hatch in MODULES:
-        out.append(f'<div class="mod"><div class="mod-iso">{module_iso(name, h, hatch)}</div><div class="mod-ic">{icon(name, OCKER, 30)}</div><b>{name}</b></div>')
+        out.append(f'<div class="mod"><div class="mod-iso">{module_iso(name, h, hatch)}</div><div class="mod-ic">{icon(name, "currentColor", 30)}</div><b>{name}</b></div>')
     return "\n".join(out)
 
 def icons_html():
-    return "\n".join(f'<div class="hic">{icon(n, OCKER, 40)}<span>{n}</span></div>' for n, _, _ in MODULES)
+    return "\n".join(f'<div class="hic">{icon(n, "currentColor", 40)}<span>{n}</span></div>' for n, _, _ in MODULES)
 
 html = f'''<title>Wendepunkt Markenwelt</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Kalam:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Permanent+Marker&family=Kalam:wght@700&display=swap">
 <style>
   :root{{
     --petrol:{PETROL}; --deep:{DEEP}; --ocker:{OCKER}; --paper:{PAPER}; --sand:{SAND}; --ink:{INK}; --mist:{MIST};
     --line-l:#D8D3C8; --line-d:rgba(255,255,255,.14); --muted:#4E5A5B;
     --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    --hand:"Kalam","Segoe Print","Bradley Hand",cursive;
+    --hand:"Permanent Marker","Kalam","Segoe Print",cursive;
+    --accent:#D9A441; --accent-ink:#071F22;
   }}
   *{{box-sizing:border-box}}
   body{{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}}
@@ -308,6 +314,53 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     .sw{{grid-template-columns:repeat(2,1fr)}}
     .type .row{{grid-template-columns:1fr}}
   }}
+
+  [data-ak="s"]{{stroke:var(--accent)}}
+  [data-ak="f"]{{fill:var(--accent)}}
+  .dark .tag,.deep .tag{{color:var(--accent)}}
+  .dots{{background-image:radial-gradient(color-mix(in srgb,var(--accent) 30%,transparent) 1.1px,transparent 1.2px)}}
+  .cta{{background:var(--accent);color:var(--accent-ink)}}
+  .claim .re{{color:var(--accent);font-size:.82em;line-height:1.02;letter-spacing:.005em;transform:rotate(-2deg)}}
+  .claim .struck{{background-repeat:no-repeat;background-position:left center;background-size:0% .5em;animation:strike .9s .35s ease-out forwards}}
+  .claim .re{{opacity:0;animation:fade .5s 1.1s ease-out forwards}}
+  @keyframes strike{{to{{background-size:100% .5em}}}}
+  @keyframes fade{{to{{opacity:1}}}}
+  @media (prefers-reduced-motion:reduce){{.claim .struck{{animation:none;background-size:100% .5em}}.claim .re{{animation:none;opacity:1}}.blk.new{{animation:none}}}}
+  :root[data-accent="lime"]{{--accent:#C8F04A;--accent-ink:#071F22}}
+  :root[data-accent="mint"]{{--accent:#5DE3A1;--accent-ink:#071F22}}
+  :root[data-accent="terra"]{{--accent:#E4744C;--accent-ink:#FFFFFF}}
+  :root[data-accent="lime"] .claim .struck{{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%23C8F04A' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}}
+  :root[data-accent="mint"] .claim .struck{{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%235DE3A1' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}}
+  :root[data-accent="terra"] .claim .struck{{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%23E4744C' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}}
+  :root[data-accent] .light .claim .struck{{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M2 12 Q 50 4 100 10 T 198 8' fill='none' stroke='%230F3B3F' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}}
+
+  /* accent switch */
+  .aksw{{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.9}}
+  .aksw button{{width:22px;height:22px;border:2px solid transparent;padding:0;cursor:pointer;background:var(--c)}}
+  .aksw button[aria-pressed="true"]{{border-color:#fff;outline:2px solid var(--c)}}
+
+  /* configurator */
+  .cfg{{display:grid;gap:14px}}
+  .cfg svg{{width:100%;height:auto;display:block}}
+  .blk{{transform-box:fill-box;transform-origin:center}}
+  .blk.new{{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}}
+  @keyframes rise{{from{{transform:translateY(-22px);opacity:0}}}}
+  .slot{{stroke-dasharray:4 4;opacity:.45}}
+  .chips{{display:flex;flex-wrap:wrap;gap:8px}}
+  .chips button{{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 11px;border:1px solid var(--line-d);background:transparent;color:#fff;cursor:pointer;display:inline-flex;gap:8px;align-items:center}}
+  .chips button svg{{width:16px;height:16px}}
+  .chips button[aria-pressed="true"]{{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}}
+  .tally{{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;border-top:1px solid var(--line-d);padding-top:12px}}
+  .tally b{{display:block;font-size:24px;font-weight:500;color:var(--accent);line-height:1.1}}
+  .tally span{{opacity:.75}}
+  .hero h1{{font-size:clamp(44px,5.4vw,72px);line-height:.98}}
+  .hero .grid2{{grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}}
+  .hic svg path,.hic svg circle{{stroke-dasharray:1;stroke-dashoffset:0}}
+  .hic:hover svg path,.hic:hover svg circle{{animation:draw .8s ease-out both}}
+  @keyframes draw{{from{{stroke-dashoffset:1}}to{{stroke-dashoffset:0}}}}
+  .poster{{transition:transform .25s ease}}
+  .poster:hover{{transform:translateY(-6px)}}
+  .prinzip .big{{font-size:30px}}
 </style>
 
 <!-- ============================ HERO ============================ -->
@@ -316,18 +369,28 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="top">
       {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=False)}
       <ul><li>Effizienz-Kompass</li><li>Baukasten</li><li>Praxisbeispiele</li><li>Büro</li></ul>
-      <span class="meta">Markenwelt · Entwurf 4 · nach Moodboard 24.09.</span>
+      <div class="aksw"><span>Marker</span>
+        <button type="button" data-set="ocker" style="--c:#D9A441" aria-label="Ocker" aria-pressed="true"></button>
+        <button type="button" data-set="lime" style="--c:#C8F04A" aria-label="Lime" aria-pressed="false"></button>
+        <button type="button" data-set="mint" style="--c:#5DE3A1" aria-label="Mint" aria-pressed="false"></button>
+        <button type="button" data-set="terra" style="--c:#E4744C" aria-label="Terrakotta" aria-pressed="false"></button>
+      </div>
     </div>
     <div class="hero grid2">
       <div>
         <span class="tag">Büro für Energie- und Ressourceneffizienz</span>
-        <h1>
-          <span class="claim"><span class="struck">Bis zu 40 % Energie sparen!</span><span class="re">nachgerechnet: 18 %, amortisiert in 2,1 Jahren.</span></span>
+        <h1 style="margin-top:22px">
+          <span class="claim"><span class="struck">Bis zu 40&nbsp;% Energie sparen!</span><span class="re">nachgerechnet: 18&nbsp;%, amortisiert in 2,1&nbsp;Jahren.</span></span>
         </h1>
-        <p class="sub">Wir messen in Ihrem Betrieb, rechnen jede Behauptung nach und bauen daraus einen Maßnahmen-Baukasten, den Ihr Team selbst versteht. Energie und Material, nicht nur Strom.</p>
+        <p class="sub">Wir messen in Ihrem Betrieb, rechnen jede Behauptung nach und bauen daraus Ihren Effizienz-Baukasten: Stein für Stein, in Ihrer Reihenfolge, so dass Ihr Team ihn später selbst versteht.</p>
         <div class="actions"><a class="cta" href="#kompass">Kostenfreies Erstgespräch</a><a class="cta ghost" href="#baukasten">Den Baukasten ansehen</a></div>
       </div>
-      <div>{hero_iso()}</div>
+      <div class="cfg" id="cfg">
+        <div id="plate" style="color:var(--accent)"></div>
+        <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
+        <div class="tally"><div><b id="t-n">4</b><span>Bausteine</span></div><div><b id="t-d">2 + 2</b><span>Tage vor Ort + Planung</span></div><div><b>≥ 10</b><span>Maßnahmen im Bericht</span></div><div><b id="t-m">18</b><span>Messpunkte, Beispiel</span></div></div>
+        <p class="muted" style="font-size:12.5px">Klicken Sie Ihre Handlungsfelder. Die Grundplatte ist immer der Effizienz-Kompass. Beispiel-Logik, keine Preisliste.</p>
+      </div>
     </div>
   </div>
 </header>
@@ -338,7 +401,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sec-head">
       <span class="eyebrow">Das Signaturelement</span>
       <h2>Behauptung gedruckt. Strich mit dem Marker. Ergebnis von Hand.</h2>
-      <p class="muted">Das ist die Marke in einem Bild: Jemand hat das Angebot der Branche gelesen, den Marker genommen und nachgerechnet. Der Strich ist Ocker, die Handschrift ist Kalam, die Zahl hat immer Einheit und Kontext. Das Element funktioniert in Headline, Anzeige, LinkedIn-Post und auf dem Berichtsdeckblatt.</p>
+      <p class="muted">Das ist die Marke in einem Bild: Jemand hat das Angebot der Branche gelesen, den Marker genommen und nachgerechnet. Der Strich hat die Marker-Farbe, die Handschrift ist Permanent Marker, die Zahl hat immer Einheit und Kontext. Oben rechts lässt sich die Marker-Farbe live umschalten. Das Element funktioniert in Headline, Anzeige, LinkedIn-Post und auf dem Berichtsdeckblatt.</p>
     </div>
     <div class="prinzip">
       <div>
@@ -402,13 +465,13 @@ html = f'''<title>Wendepunkt Markenwelt</title>
           <rect width="600" height="420" fill="{PETROL}" fill-opacity=".35"/>
         </svg>
         <svg class="ann" viewBox="0 0 600 420" aria-hidden="true">
-          <path d="M330 140 C 320 100, 470 92, 486 150 C 500 200, 470 262, 400 268 C 330 274, 312 220, 322 170 C 326 150, 340 140, 356 136" fill="none" stroke="{OCKER}" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M200 70 Q 270 40 330 120" fill="none" stroke="{OCKER}" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M318 96 l 12 24 -26 -2" fill="none" stroke="{OCKER}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="44" y="62" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="{OCKER}">Kompressor 2: Leckage</text>
-          <text x="44" y="92" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="{OCKER}">11.200 € / Jahr · 5 Monate</text>
-          <path d="M60 330 q 12 8 18 22 q 10 -34 34 -50" fill="none" stroke="{OCKER}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="128" y="352" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="{OCKER}">gemessen 12.09., 14:10</text>
+          <path d="M330 140 C 320 100, 470 92, 486 150 C 500 200, 470 262, 400 268 C 330 274, 312 220, 322 170 C 326 150, 340 140, 356 136" fill="none" stroke="currentColor" data-ak="s" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M200 70 Q 270 40 330 120" fill="none" stroke="currentColor" data-ak="s" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M318 96 l 12 24 -26 -2" fill="none" stroke="currentColor" data-ak="s" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="62" font-family="Permanent Marker, Kalam, cursive" font-size="24" fill="currentColor" data-ak="f">Kompressor 2: Leckage</text>
+          <text x="44" y="92" font-family="Permanent Marker, Kalam, cursive" font-size="24" fill="currentColor" data-ak="f">11.200 € / Jahr · 5 Monate</text>
+          <path d="M60 330 q 12 8 18 22 q 10 -34 34 -50" fill="none" stroke="currentColor" data-ak="s" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="128" y="352" font-family="Permanent Marker, Kalam, cursive" font-size="22" fill="currentColor" data-ak="f">gemessen 12.09., 14:10</text>
         </svg>
         <span class="cap">Platzhalter für Foto: Druckluftstation, Tageslicht, keine Freisteller.</span>
       </div>
@@ -427,7 +490,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="posters">
       <div class="poster sand" style="color:{PETROL}">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>01 · Kurve</span></div>
-        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M18 168 C 60 172, 66 130, 96 104 C 128 76, 128 30, 184 26" fill="none" stroke="{PETROL}" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="100" r="13" fill="{OCKER}"/><path d="M118 112 q 30 24 52 6" fill="none" stroke="{PETROL}" stroke-width="2.4" stroke-linecap="round"/><text x="132" y="146" font-family="Kalam, cursive" font-weight="700" font-size="17" fill="{PETROL}">hier.</text></svg></div>
+        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M18 168 C 60 172, 66 130, 96 104 C 128 76, 128 30, 184 26" fill="none" stroke="{PETROL}" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="100" r="13" fill="currentColor" data-ak="f"/><path d="M118 112 q 30 24 52 6" fill="none" stroke="{PETROL}" stroke-width="2.4" stroke-linecap="round"/><text x="132" y="146" font-family="Permanent Marker, Kalam, cursive" font-size="17" fill="{PETROL}">hier.</text></svg></div>
         <p class="line">Der Wendepunkt ist der Moment, ab dem die Kurve anders läuft. Wir suchen ihn in Ihrem Betrieb.</p>
       </div>
       <div class="poster" style="background:{PETROL};color:#fff">
@@ -435,9 +498,9 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="art">{poster_iso()}</div>
         <p class="line">Zehn Maßnahmen in vier Tagen. Priorisiert, durchgerechnet, in Ihrer Reihenfolge gebaut.</p>
       </div>
-      <div class="poster" style="background:{OCKER};color:{DEEP}">
+      <div class="poster" style="background:var(--accent);color:var(--accent-ink)">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>03 · Marker</span></div>
-        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><text x="18" y="86" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="27" fill="{DEEP}" fill-opacity=".45">behaupten.</text><path d="M12 78 Q 80 64 160 74" fill="none" stroke="{DEEP}" stroke-width="7" stroke-linecap="round"/><text x="16" y="146" font-family="Kalam, cursive" font-weight="700" font-size="30" fill="{DEEP}">nachrechnen.</text><path d="M18 156 q 60 10 150 -4" fill="none" stroke="{DEEP}" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><text x="18" y="86" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="27" fill="{DEEP}" fill-opacity=".45">behaupten.</text><path d="M12 78 Q 80 64 160 74" fill="none" stroke="{DEEP}" stroke-width="7" stroke-linecap="round"/><text x="16" y="146" font-family="Permanent Marker, Kalam, cursive" font-size="30" fill="{DEEP}">nachrechnen.</text><path d="M18 156 q 60 10 150 -4" fill="none" stroke="{DEEP}" stroke-width="3" stroke-linecap="round"/></svg></div>
         <p class="line">Wir rechnen nach, statt zu behaupten. Jede Zahl im Bericht hat eine Einheit und ein Datum.</p>
       </div>
     </div>
@@ -484,8 +547,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
             <div class="who"><b>Michael Schenk</b><br>Ressourceneffizienz<br><span class="m">+49 000 0000000 · ms@wendepunkt-ingenieure.de</span></div>
           </div>
           <div class="card" style="background:{PETROL};border-color:{PETROL};justify-content:center;align-items:center">
-            <svg viewBox="0 0 64 64" width="120" height="120" style="position:absolute;right:-22px;bottom:-30px" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="{OCKER}"/></svg>
-            <span class="hand" style="color:{OCKER};font-size:20px;position:absolute;left:18px;top:18px;transform:rotate(-4deg)">Ruf einfach an.</span>
+            <svg viewBox="0 0 64 64" width="120" height="120" style="position:absolute;right:-22px;bottom:-30px" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="currentColor" data-ak="f"/></svg>
+            <span class="hand" style="color:var(--accent);font-size:20px;position:absolute;left:18px;top:18px;transform:rotate(-4deg)">Ruf einfach an.</span>
           </div>
         </div>
         <div class="sig">
@@ -509,7 +572,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sw">
       <div><div class="chip" style="background:{PETROL}"></div><div class="lbl"><b>Petrol</b><code>{PETROL}</code></div></div>
       <div><div class="chip" style="background:{DEEP}"></div><div class="lbl"><b>Tiefe</b><code>{DEEP}</code></div></div>
-      <div><div class="chip" style="background:{OCKER}"></div><div class="lbl"><b>Ocker · Marker</b><code>{OCKER}</code></div></div>
+      <div><div class="chip" style="background:var(--accent)"></div><div class="lbl"><b>Marker</b><code id="akhex">{OCKER}</code></div></div>
       <div><div class="chip" style="background:{PAPER};border-bottom:1px solid var(--line-l)"></div><div class="lbl"><b>Papier</b><code>{PAPER}</code></div></div>
       <div><div class="chip" style="background:{SAND}"></div><div class="lbl"><b>Sand</b><code>{SAND}</code></div></div>
       <div><div class="chip" style="background:{MIST}"></div><div class="lbl"><b>Nebel</b><code>{MIST}</code></div></div>
@@ -518,11 +581,11 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div class="row"><span class="k">Headline · Plex Sans 600</span><span style="font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1">Systeme, die Ihr Team noch versteht.</span></div>
       <div class="row"><span class="k">Fließtext · Plex Sans 400</span><span style="font-size:16px">Zwei Tage vor Ort, zwei Tage Planung. Danach liegen mindestens zehn Maßnahmen auf dem Tisch.</span></div>
       <div class="row"><span class="k">Zahl · Plex Mono 500</span><span style="font-family:var(--mono);font-size:30px;font-weight:500;color:{PETROL};line-height:1">312 MWh <span style="font-size:13px;color:var(--muted)">Strom p. a.</span></span></div>
-      <div class="row"><span class="k">Hand · Kalam 700</span><span class="hand" style="font-size:28px;color:{PETROL}">nachgerechnet: 18 %, 2,1 Jahre</span></div>
+      <div class="row"><span class="k">Hand · Permanent Marker</span><span class="hand" style="font-size:28px;color:{PETROL}">nachgerechnet: 18 %, 2,1 Jahre</span></div>
     </div>
     <div class="rules" style="margin-top:32px">
       <div><h4>Die Hand ist selten.</h4><p>Eine Annotation pro Bildschirm, ein Prüfvermerk pro Bericht. Handschrift ist nie Fließtext und nie Navigation. Sie ist der Marker des Ingenieurs, nicht eine zweite Schrift.</p></div>
-      <div><h4>Ocker ist Marker, nicht Text.</h4><p>Auf Petrol erreicht Ocker 5,4 : 1 und trägt Handschrift und Icons. Auf Papier ist es nur Strich, Punkt oder Fläche mit dunkler Schrift. Petrol übernimmt Buttons, Kennzahlen und Links.</p></div>
+      <div><h4>Die Marker-Farbe ist Marker, nicht Text.</h4><p>Auf Petrol trägt sie Handschrift und Icons (Ocker 5,4 : 1, Lime 9,3 : 1, Mint 7,5 : 1, Terrakotta 4,0 : 1). Auf Papier ist es nur Strich, Punkt oder Fläche mit dunkler Schrift. Petrol übernimmt Buttons, Kennzahlen und Links.</p></div>
       <div><h4>Dunkel für die Bühne, hell für das Dokument.</h4><p>Hero, Plakat, LinkedIn und Baukasten auf Petrol oder Tiefe mit Punktraster. Bericht, Angebot, Brief und Formular auf Papier. Das Logo läuft auf beidem.</p></div>
     </div>
   </div>
@@ -539,7 +602,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div>
         <h4>ecoworks</h4>
         <ul><li>Dunkler Petrol-Grund mit Punktraster</li><li>Isometrische Bausteine als Produktbild</li><li>Schraffuren als Zustand, nicht als Deko</li><li>Kleine Label in Mono</li></ul>
-        <p class="no"><b>Nicht übernommen:</b> das Neongrün. Es liegt zu nah am Energieberater-Grün und wäre eine Kopie.</p>
+        <p class="no"><b>Zur Entscheidung:</b> das Neongrün. Über den Schalter oben rechts lässt sich Lime oder Mint live gegen Ocker testen. Mein Vorbehalt: Nähe zum Energieberater-Grün.</p>
       </div>
       <div>
         <h4>The Academy for Climate Jobs</h4>
@@ -549,12 +612,75 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div>
         <h4>Claude / Anthropic</h4>
         <ul><li>Warmes Papier und Sand statt Reinweiß</li><li>Plakatserie mit einer Linie pro Motiv</li><li>Ruhige Grotesk, Mono für Zahlen</li><li>Geschäftsausstattung als Gegenstand gedacht</li></ul>
-        <p class="no"><b>Nicht übernommen:</b> Terrakotta. Die Farbe gehört Anthropic. Unser Ocker kommt aus dem Logo-Punkt.</p>
+        <p class="no"><b>Zur Entscheidung:</b> Terrakotta liegt ebenfalls im Schalter. Mein Vorbehalt: Die Farbe gehört Anthropic. Ocker kommt aus dem Logo-Punkt.</p>
       </div>
     </div>
-    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Handschrift Kalam bleibt oder durch die echte Handschrift von Micha oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
+    <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Handschrift Permanent Marker bleibt oder durch die echte Handschrift von Micha oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
   </div>
 </section>
+
+<script>
+(function(){{
+  var C30=Math.cos(Math.PI/6), S30=0.5, S=34;
+  function iso(x,y,z){{return [(x-y)*C30*S,(x+y)*S30*S-z*S];}}
+  function P(pts){{return pts.map(function(p){{return p[0].toFixed(1)+','+p[1].toFixed(1)}}).join(' ');}}
+  function block(x,y,z,w,d,h,hatch,cls,title){{
+    var T=[iso(x,y,z+h),iso(x+w,y,z+h),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
+    var L=[iso(x,y+d,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x,y+d,z+h)];
+    var R=[iso(x+w,y,z),iso(x+w,y+d,z),iso(x+w,y+d,z+h),iso(x+w,y,z+h)];
+    var o='<g class="blk '+(cls||'')+'">'+(title?'<title>'+title+'</title>':'');
+    o+='<polygon points="'+P(L)+'" fill="#0B3236" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
+    o+='<polygon points="'+P(R)+'" fill="#0E393D" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
+    o+='<polygon points="'+P(T)+'" fill="#14474C" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
+    for(var i=1;i<hatch;i++){{var t=i/hatch;var a=[R[0][0]+(R[1][0]-R[0][0])*t,R[0][1]+(R[1][1]-R[0][1])*t];var b=[R[3][0]+(R[2][0]-R[3][0])*t,R[3][1]+(R[2][1]-R[3][1])*t];
+      o+='<line x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b[0].toFixed(1)+'" y2="'+b[1].toFixed(1)+'" stroke="currentColor" stroke-width="1" stroke-opacity=".45"/>';}}
+    return o+'</g>';
+  }}
+  var F=[
+    {{id:'druckluft',n:'Druckluft',h:2.6,hatch:5,mp:4}},{{id:'abwaerme',n:'Abwärme',h:3.4,hatch:6,mp:6}},{{id:'licht',n:'Beleuchtung',h:1.2,hatch:0,mp:3}},
+    {{id:'waerme',n:'Wärme',h:2.2,hatch:0,mp:5}},{{id:'strom',n:'Strom',h:2.0,hatch:4,mp:6}},{{id:'material',n:'Material',h:2.8,hatch:0,mp:4}},
+    {{id:'wasser',n:'Wasser',h:1.4,hatch:0,mp:3}},{{id:'pv',n:'PV',h:1.8,hatch:0,mp:2}},{{id:'speicher',n:'Speicher',h:1.5,hatch:4,mp:2}}];
+  var sel={{druckluft:1,abwaerme:1,licht:1,pv:1}}, fresh={{}};
+  var slot=1.7, gap=.35, plate=3*slot+4*gap, pz=.32;
+  var plateEl=document.getElementById('plate'), chips=document.getElementById('chips');
+  function render(){{
+    var parts=[], ix=0;
+    parts.push(block(0,0,0,plate,plate,pz,0,'','Grundplatte: Effizienz-Kompass'));
+    var items=[];
+    F.forEach(function(f,i){{var gx=i%3, gy=Math.floor(i/3); var x=gap+gx*(slot+gap), y=gap+gy*(slot+gap); items.push({{f:f,x:x,y:y}});}});
+    items.forEach(function(it){{
+      if(!sel[it.f.id]){{var q=[iso(it.x,it.y,pz),iso(it.x+slot,it.y,pz),iso(it.x+slot,it.y+slot,pz),iso(it.x,it.y+slot,pz)];
+        parts.push('<polygon class="slot" points="'+P(q)+'" fill="none" stroke="currentColor" stroke-width="1"/>');}}
+    }});
+    items.sort(function(a,b){{return (a.x+a.y)-(b.x+b.y);}}).forEach(function(it){{
+      if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,fresh[it.f.id]?'new':'',it.f.n));
+    }});
+    var c=iso(plate,plate,0), l=iso(0,plate,0), r=iso(plate,0,0), t=iso(0,0,3.8);
+    var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+44;
+    var lab='<text x="'+(x1-6).toFixed(0)+'" y="'+(y1-8).toFixed(0)+'" text-anchor="end" font-family="Permanent Marker, Kalam, cursive" font-size="17" fill="currentColor">Grundplatte: Effizienz-Kompass, 2 + 2 Tage</text>';
+    plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+lab+'</svg>';
+    fresh={{}};
+    var n=0,mp=0; F.forEach(function(f){{if(sel[f.id]){{n++;mp+=f.mp;}}}});
+    document.getElementById('t-n').textContent=n;
+    document.getElementById('t-d').textContent=(n<=4?'2 + 2':n<=7?'3 + 2':'4 + 3');
+    document.getElementById('t-m').textContent=mp;
+    Array.prototype.forEach.call(chips.querySelectorAll('button'),function(b){{b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false');}});
+  }}
+  F.forEach(function(f){{var b=document.createElement('button');b.type='button';b.dataset.id=f.id;b.id='chip-'+f.id;
+    b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>'+f.n;
+    b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;}} render(); }});
+    chips.appendChild(b);}});
+  render();
+
+  var sw=document.querySelectorAll('.aksw button'), hex={{ocker:'#D9A441',lime:'#C8F04A',mint:'#5DE3A1',terra:'#E4744C'}};
+  function setAk(k){{ if(k==='ocker'){{document.documentElement.removeAttribute('data-accent');}} else {{document.documentElement.setAttribute('data-accent',k);}}
+    Array.prototype.forEach.call(sw,function(b){{b.setAttribute('aria-pressed',b.dataset.set===k?'true':'false');}});
+    var h=document.getElementById('akhex'); if(h) h.textContent=hex[k];
+    try{{localStorage.setItem('wp-accent',k);}}catch(e){{}} }}
+  Array.prototype.forEach.call(sw,function(b){{b.addEventListener('click',function(){{setAk(b.dataset.set);}});}});
+  try{{var k=localStorage.getItem('wp-accent'); if(k&&hex[k]) setAk(k);}}catch(e){{}}
+}})();
+</script>
 '''
 
 out = "/home/user/design-system/markenwelt/index.html"
