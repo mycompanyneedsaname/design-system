@@ -499,7 +499,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div>
           <span class="pers-role">Ressourceneffizienz</span>
           <h3>Michael Schenk</h3>
-          <p>Michael war in rund 150 Betrieben. In den meisten hat er in der ersten Stunde die ersten Maßnahmen gefunden. Er übersetzt Technik und Wirtschaftlichkeit in Sätze, die man im Betrieb weitererzählt.</p>
+          <p>Michael war in rund 150 Betrieben. In den meisten hat er in der ersten Stunde die ersten Maßnahmen gefunden. Er übersetzt Technik und Wirtschaftlichkeit in Sätze, die man versteht und nachvollziehen kann.</p>
           <p class="pers-q">„Der Blick von außen wirkt.“</p>
         </div>
       </article>
