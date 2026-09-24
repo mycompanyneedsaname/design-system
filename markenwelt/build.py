@@ -14,6 +14,9 @@ def pts(lst):
 def lerp(p, q, t):
     return (p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t)
 
+# Veröffentlichte Landingpage; das Markensystem verlinkt dorthin.
+LANDING = "https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP"
+
 def block(x, y, z, w, d, h, s, stroke, top, left, right, hatch=0, sw=1.6, hatch_face="right"):
     ak = "s" if stroke == OCKER else ""
     P = lambda a, b, c: iso(a, b, c, s)
@@ -605,6 +608,15 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .refs .r-f{{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}}
   .refs .r-num{{font-family:var(--mono);font-weight:500;color:{PETROL};text-align:right}}
   .ref-note{{margin-top:12px;font-size:13px;color:var(--muted)}}
+  .comp{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}}
+  .comp-c{{background:#fff;border:1px solid var(--line-l);border-radius:12px;padding:18px;display:flex;flex-direction:column}}
+  .comp-s{{min-height:176px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}}
+  .comp-c .wp-cta{{white-space:normal;text-align:left;font-size:15px}}
+  .comp-c .bc-sum b{{white-space:nowrap}}
+  .comp-c h4{{margin:0 0 6px;font-size:16px;color:{PETROL}}}
+  .comp-c p{{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}}
+  @media (max-width:980px){{ .comp{{grid-template-columns:1fr 1fr}} }}
+  @media (max-width:560px){{ .comp{{grid-template-columns:1fr}} }}
   .sys-div{{background:var(--deep);color:rgba(255,255,255,.75);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-block:18px}}
   .sys-div .wrap{{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}}
   .sys-div span:first-child{{color:#fff}}
@@ -745,7 +757,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 </footer>
 
 <!-- ============================ MARKENSYSTEM ============================ -->
-<div class="sys-div"><div class="wrap"><span>Ab hier: Markensystem</span><span>Signaturelement · Bausteine · Icons · Plakate · Anwendung · Farben und Schriften</span></div></div>
+<div class="sys-div"><div class="wrap"><span>Ab hier: Markensystem</span><span>Signaturelement · Bausteine · Icons · Plakate · Anwendung · Farben und Schriften · Komponenten</span></div></div>
 
 <!-- ============================ PRINZIP ============================ -->
 <section class="light" id="kompass">
@@ -781,13 +793,13 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sec-head">
       <span class="eyebrow">Das Produkt als Bild</span>
       <h2>Der modulare Effizienz-Baukasten</h2>
-      <p class="muted">Jedes Handlungsfeld ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Neun Felder in zwei Gruppen, genau wie im Baukasten auf der Startseite. Die Höhe eines Steins zeigt, wie viel er bringt; die Schraffur zeigt, was schon umgesetzt ist. Auf der Startseite ist der Baukasten ein Rechner: Wer ein Feld wählt, setzt den Stein auf die Platte und sieht daneben eine Beispielmaßnahme mit Einsparung in Prozent; die Summe steht groß in Lime.</p>
+      <p class="muted">Jedes Handlungsfeld ist ein Baustein, gezeichnet wie auf einem Werkstattplan. Neun Felder in zwei Gruppen, genau wie im Baukasten auf der Landingpage: Energie mit Strom, Wärme, Kälte, Druckluft und Speicher, Ressourcen mit Material, Wasser, Reststoffen und Betriebsstoffen. Auf der Landingpage ist der Baukasten ein Rechner: Wer ein Feld wählt, setzt den Stein auf die Platte und sieht daneben eine Beispielmaßnahme mit Einsparung in Prozent; die Summe steht groß in Lime. Im Text heißt der Stein immer Maßnahme.</p>
     </div>
     <div class="modgroups">
       {modules_html()}
     </div>
-    <div class="steps"><span class="k">Für jeden Stein</span>{steps_html()}</div>
-    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Website sind sie der Rechner, im Bericht die Kapitelmarken.</p>
+    <div class="steps"><span class="k">Für jede Maßnahme</span>{steps_html()}</div>
+    <p class="muted" style="margin-top:22px;font-size:14px;max-width:70ch">Die Bausteine ersetzen die klassischen Leistungskacheln der Branche. Auf der Landingpage sind sie der Rechner, im Bericht die Kapitelmarken. Wir entscheiden gemeinsam, welche Maßnahmen wir angehen.</p>
   </div>
 </section>
 
@@ -844,12 +856,12 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div class="poster sand" style="color:{PETROL}">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>01 · Kurve</span></div>
         <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M18 168 C 60 172, 66 130, 96 104 C 128 76, 128 30, 184 26" fill="none" stroke="{PETROL}" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="100" r="13" fill="currentColor" data-ak="f"/><path d="M118 112 q 30 24 52 6" fill="none" stroke="{PETROL}" stroke-width="2.4" stroke-linecap="round"/><text x="132" y="146" font-family="Kalam, cursive" font-weight="700" font-size="17" fill="{PETROL}">hier.</text></svg></div>
-        <p class="line">Der Wendepunkt ist der Moment, ab dem es anders läuft. Wir suchen ihn gemeinsam mit Ihnen.</p>
+        <p class="line">Der Wendepunkt ist der Moment, ab dem es anders läuft. Wir sind ein Büro für Energie- und Ressourceneffizienz und suchen ihn gemeinsam mit Ihnen.</p>
       </div>
       <div class="poster" style="background:{PETROL};color:#fff">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>02 · Baukasten</span></div>
         <div class="art">{poster_iso()}</div>
-        <p class="line">Der Modulare Effizienz-Baukasten. Priorisiert, durchgerechnet, in Ihrer Reihenfolge gebaut.</p>
+        <p class="line">Der Modulare Effizienz-Baukasten. Weniger Verbrauch, mehr Spielraum.</p>
       </div>
       <div class="poster" style="background:var(--accent);color:var(--accent-ink)">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>03 · Korrektur</span></div>
@@ -913,7 +925,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="sig">
           <b>Tobias Wintsche</b> · Energieeffizienz<br>
           Wendepunkt Ingenieure GbR · Büro für Energie- und Ressourceneffizienz<br>
-          <span class="m">+49 000 0000000 · tw@wendepunkt-ingenieure.de · Leipzig / Thüringen</span><br>
+          <span class="m">+49 000 0000000 · tw@wendepunkt-ingenieure.de · Eisenach / Leipzig</span><br>
           <span class="hand" style="color:{PETROL};font-size:15px">Wir rechnen nach, statt zu behaupten.</span>
         </div>
       </div>
@@ -937,11 +949,12 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div><div class="chip" style="background:{MIST}"></div><div class="lbl"><b>Nebel</b><code>{MIST}</code></div></div>
     </div>
     <div class="type" style="margin-top:24px">
-      <div class="row"><span class="k">Headline · Plex Sans 600</span><span style="font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1">Systeme, die Ihr Team noch versteht.</span></div>
-      <div class="row"><span class="k">Fließtext · Plex Sans 400</span><span style="font-size:16px">Wir messen im Betrieb und legen danach mindestens zehn Maßnahmen auf den Tisch.</span></div>
+      <div class="row"><span class="k">Headline · Plex Sans 600</span><span style="font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.1">Der Wendepunkt ist der Moment, ab dem es anders läuft.</span></div>
+      <div class="row"><span class="k">Fließtext · Plex Sans 400</span><span style="font-size:16px">In rund <strong>150 Betrieben</strong> des verarbeitenden Gewerbes haben wir das schon getan.</span></div>
       <div class="row"><span class="k">Zahl · Plex Mono 500</span><span style="font-family:var(--mono);font-size:30px;font-weight:500;color:{PETROL};line-height:1">312 MWh <span style="font-size:13px;color:var(--muted)">Strom p. a.</span></span></div>
       <div class="row"><span class="k">Korrektur · Plex Mono</span><span class="light" style="font-size:26px;font-weight:600;letter-spacing:-.02em"><span class="korr"><span class="alt">Bis zu 40 %</span> <span style="white-space:nowrap"><span class="alt">sparen.</span><span class="km">1</span></span><span class="neu"><span class="km">1</span>18 % · amortisiert in 2,1 Jahren</span></span></span></div>
       <div class="row"><span class="k">Textmarker · Lime-Fläche</span><span style="font-size:26px;font-weight:600;letter-spacing:-.02em;color:{PETROL}">Wir nehmen es <mark class="hl">persönlich</mark>.</span></div>
+      <div class="row"><span class="k">Fachgebiet · Plex Sans 600</span><span><span class="pers-role">Ressourceneffizienz</span></span></div>
       <div class="row"><span class="k">Notiz · Kalam 700</span><span class="hand" style="font-size:22px;color:{PETROL}">gemessen 12.09., 14:10</span></div>
     </div>
     <div class="rules" style="margin-top:32px">
@@ -949,6 +962,39 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div><h4>Lime ist Fläche, nicht Schrift.</h4><p>Auf Petrol trägt Lime Handschrift, Icons, Linien und die Summe im Rechner (9,3 : 1). Auf Papier und Sand nur als Textmarker, Punkt, Unterstrich oder Button-Fläche, immer mit Petrol-Schrift darauf.</p></div>
       <div><h4>Hell zum Kennenlernen, dunkel fürs Produkt.</h4><p>Einstieg und Team auf Sand und Papier. Baukasten, Plakat und LinkedIn auf Petrol. Bericht, Angebot und Brief auf Papier. Kein Punktraster, keine Schatten.</p></div>
       <div><h4>Handschrift heißt: wir persönlich.</h4><p>Notizen an der Kurve, die Zeile „beides zusammen gedacht.“ und der Pfeil zum Erstgespräch in Handschrift, heute Kalam, später die echte von Michael und Tobias. Nie für Headlines oder Fließtext, keine Notiz am Baukasten.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ KOMPONENTEN ============================ -->
+<section class="mist">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Komponenten</span>
+      <h2>Vier Teile, die die Landingpage trägt.</h2>
+      <p class="muted">So wie sie auf der Landingpage stehen. Wer ein Angebot, einen Brief oder eine neue Seite baut, nimmt diese Teile und erfindet keine neuen.</p>
+    </div>
+    <div class="comp">
+      <div class="comp-c">
+        <div class="comp-s"><a class="wp-cta" href="{LANDING}" target="_top">Kostenfreies Erstgespräch vereinbaren</a></div>
+        <h4>Erstgespräch-Button</h4>
+        <p>Lime-Fläche, Petrol-Schrift, 2-px-Rahmen, 10 bis 12 px Radius, ohne Icon. Nur einer pro Seite, ganz unten im Baukasten. Dort zeigt ein handgezeichneter Lime-Pfeil darauf.</p>
+      </div>
+      <div class="comp-c">
+        <div class="comp-s" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:8px"><span class="pers-role">Energieeffizienz</span><span style="font-size:26px;font-weight:600;letter-spacing:-.02em;color:{PETROL}">Tobias Wintsche</span></div>
+        <h4>Fachgebiet über dem Namen</h4>
+        <p>Plex Sans 600 in Petrol mit 3-px-Lime-Unterstrich, direkt über dem Namen. Nicht klein in Mono, nicht mit Punkt neben dem Namen.</p>
+      </div>
+      <div class="comp-c">
+        <div class="comp-s"><div class="pers-ph" style="width:132px">{portrait(1)}</div></div>
+        <h4>Porträt mit Symbol</h4>
+        <p>Foto im Hochformat 4 : 5, 12 px Radius. In der Ecke ein Lime-Kreis mit dem Symbol des Fachgebiets: Material bei Michael, Strom bei Tobias. Bis die Fotos da sind, stehen gezeichnete Duotone-Porträts.</p>
+      </div>
+      <div class="comp-c">
+        <div class="comp-s" style="background:{PETROL};border-radius:12px;padding:18px 20px;flex-direction:column;align-items:stretch;justify-content:center"><div class="bc-sum" style="border-top:1px solid rgba(255,255,255,.25)"><span>Zusammen<sup>*</sup></span><b>−22 %</b></div><p style="margin:10px 0 0;font-size:11px;color:rgba(255,255,255,.7)"><sup>*</sup>Richtwerte aus unseren Projekten, bezogen auf Energie- und Materialkosten pro Jahr.</p></div>
+        <h4>Summe im Rechner</h4>
+        <p>Die einzige große Zahl der Seite, in Lime auf Petrol, mit Stern und Fußnote. Einzelwerte stehen pro Maßnahme darüber, die Summe wächst beim Auswählen.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1120,7 +1166,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
 # Aufteilen: Landingpage (index.html) und Markensystem (markensystem.html).
 # Veröffentlichte Landingpage; das Menü im Markensystem verlinkt dorthin.
-LANDING = "https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP"
 import os
 M_SYS = "<!-- ============================ MARKENSYSTEM ============================ -->"
 M_END = "\n<script>\n(function(){\n  var bg="

@@ -415,6 +415,15 @@
   .refs .r-f{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
   .refs .r-num{font-family:var(--mono);font-weight:500;color:#0F3B3F;text-align:right}
   .ref-note{margin-top:12px;font-size:13px;color:var(--muted)}
+  .comp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .comp-c{background:#fff;border:1px solid var(--line-l);border-radius:12px;padding:18px;display:flex;flex-direction:column}
+  .comp-s{min-height:176px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .comp-c .wp-cta{white-space:normal;text-align:left;font-size:15px}
+  .comp-c .bc-sum b{white-space:nowrap}
+  .comp-c h4{margin:0 0 6px;font-size:16px;color:#0F3B3F}
+  .comp-c p{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}
+  @media (max-width:980px){ .comp{grid-template-columns:1fr 1fr} }
+  @media (max-width:560px){ .comp{grid-template-columns:1fr} }
   .sys-div{background:var(--deep);color:rgba(255,255,255,.75);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-block:18px}
   .sys-div .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .sys-div span:first-child{color:#fff}
