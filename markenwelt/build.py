@@ -1119,6 +1119,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 '''
 
 # Aufteilen: Landingpage (index.html) und Markensystem (markensystem.html).
+# Veröffentlichte Landingpage; das Menü im Markensystem verlinkt dorthin.
+LANDING = "https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP"
 import os
 M_SYS = "<!-- ============================ MARKENSYSTEM ============================ -->"
 M_END = "\n<script>\n(function(){\n  var bg="
@@ -1127,10 +1129,10 @@ i_sys, i_end, i_head = html.index(M_SYS), html.index(M_END), html.index(M_HEAD)
 head, landing, system, scripts = html[:i_head], html[i_head:i_sys], html[i_sys:i_end], html[i_end:]
 observer = scripts[:scripts.index("</script>") + len("</script>")]
 
-landing_html = head + landing + scripts
+landing_html = head.replace('<title>Wendepunkt Markenwelt</title>', '<title>Wendepunkt Landingpage</title>') + landing + scripts
 system_html = (head.replace("<title>Wendepunkt Markenwelt</title>", "<title>Wendepunkt Markensystem</title>")
-               .replace('href="#start"', 'href="index.html#start"').replace('href="#team"', 'href="index.html#team"')
-               .replace('href="#baukasten"', 'href="index.html#baukasten"').replace('href="#kontakt" class="mcta"', 'href="index.html#kontakt" class="mcta"')
+               .replace('href="#start"', 'href="' + LANDING + '" target="_top"').replace('href="#team"', 'href="' + LANDING + '" target="_top"')
+               .replace('href="#baukasten"', 'href="' + LANDING + '" target="_top"').replace('href="#kontakt" class="mcta"', 'href="' + LANDING + '" target="_top" class="mcta"')
                + system.replace("Ab hier: Markensystem", "Markensystem") + observer + "\n")
 
 d = "/home/user/design-system/markenwelt/"

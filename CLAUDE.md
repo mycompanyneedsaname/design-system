@@ -9,8 +9,8 @@ Sprache mit dem Nutzer: **Deutsch**. Commit-Messages: Englisch.
 | Pfad | Inhalt | Status |
 |---|---|---|
 | `markenwelt/build.py` | **Quelle** der aktuellen Markenwelt. Erzeugt `markenwelt/index.html` und `markenwelt/markensystem.html`. | aktiv |
-| `markenwelt/index.html` | Generiert: **Landingpage** (Wendepunkt, Team, Baukasten). Das ist das veröffentlichte Artifact. Nie direkt bearbeiten. | aktiv, Fokus |
-| `markenwelt/markensystem.html` | Generiert: Markensystem (Signaturelement, Bausteine, Icons, Plakate, Anwendung, Farben/Schriften). Seit 24.09. ausgelagert. Texte am 24.09. an die Landingpage angeglichen (Rechner, Porträt-Symbole, Handschrift-Stellen). Menü-Links zeigen auf `index.html#…`. | ruht |
+| `markenwelt/index.html` | Generiert: **Landingpage** (Wendepunkt, Team, Baukasten), Titel „Wendepunkt Landingpage“. Artifact: https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP. Nie direkt bearbeiten. | aktiv, Fokus |
+| `markenwelt/markensystem.html` | Generiert: Markensystem (Signaturelement, Bausteine, Icons, Plakate, Anwendung, Farben/Schriften). Seit 24.09. ausgelagert. Texte am 24.09. an die Landingpage angeglichen (Rechner, Porträt-Symbole, Handschrift-Stellen). Menü-Links zeigen auf die veröffentlichte Landingpage (`LANDING` in build.py). Eigenes Artifact: https://claude.ai/artifact/TZpepV7TzazYMbttgogUzn | ruht |
 | `logo/vergleich.html` | Vergleich zweier Logo-Kurven. Entscheidung gefallen, nur Beleg. | abgeschlossen |
 | `richtungen/index.html` | Frühere drei Richtungen (Nachgerechnet, Werkbank, Kernig) plus Kombination. | historisch |
 | `README.md` | Chronik der Entwürfe und Entscheidungen. | pflegen |
