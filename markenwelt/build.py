@@ -534,7 +534,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div>
         <div>
           <h3>Michael Schenk</h3>
-          <p>Michael kümmert sich bei uns um die Ressourceneffizienz. Er war in rund 150 Betrieben. In den meisten hat er in der ersten Stunde die ersten Maßnahmen gefunden. Er übersetzt Technik und Wirtschaftlichkeit in Maßnahmen, die man versteht und nachvollziehen kann.</p>
+          <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat rund 150 Betriebe von innen gesehen und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu erklären, dass jeder im Betrieb versteht, warum sich eine Maßnahme lohnt.</p>
           <p class="pers-q">„Der Blick von außen wirkt.“</p>
         </div>
       </article>
@@ -543,7 +543,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div>
           <h3>Tobias Wintsche</h3>
           <p>Tobias kümmert sich bei uns um die Energieeffizienz. Er prüft Energiesysteme auf ihre Vor- und Nachteile und fügt sie zu einem Ganzen zusammen. Lieber einfach und ausgereift als übertechnisiert, damit es auch nach uns noch jeder im Betrieb versteht.</p>
-          <p class="pers-q"><span>„Gute Energiesysteme sind oft ganz simpel.“</span></p>
+          <p class="pers-q">„Gute Energiesysteme sind oft ganz simpel.“</p>
         </div>
       </article>
     </div>
