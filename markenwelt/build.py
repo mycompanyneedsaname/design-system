@@ -542,7 +542,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div>
         <div>
           <h3>Tobias Wintsche</h3>
-          <p>Tobias kümmert sich bei uns um die Energieeffizienz. Er prüft Energiesysteme auf ihre Vor- und Nachteile und fügt sie zu einem Ganzen zusammen. Lieber einfach und ausgereift als übertechnisiert, damit es auch nach uns noch jeder im Betrieb versteht.</p>
+          <p>Tobias verantwortet bei uns die Energieeffizienz. Er nimmt Energiesysteme auseinander, wägt ab, was sie wirklich leisten, und fügt sie zu einem stimmigen Ganzen zusammen. Sein Maßstab: lieber einfach und ausgereift als übertechnisiert, damit die Anlage auch nach uns noch jeder im Betrieb versteht.</p>
           <p class="pers-q">„Gute Energiesysteme sind oft ganz simpel.“</p>
         </div>
       </article>
