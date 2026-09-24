@@ -259,7 +259,6 @@
       <div class="cfg" id="cfg">
         <div id="plate" style="color:var(--accent)"></div>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
-        <div class="expl" id="why" aria-live="polite"></div>
         <div class="tally"><div><b id="t-n">4</b><span>Bausteine</span></div><div><b>≥ 10</b><span>Maßnahmen</span></div><div><b id="t-m">18</b><span>Messpunkte, Beispiel</span></div></div>
       </div>
     </div>
@@ -654,7 +653,7 @@
     {id:'pv',n:'PV',h:1.8,hatch:0,mp:2,k:'kWp · Eigenverbrauch %',t:'Wir planen PV erst, wenn der Lastgang bekannt ist. Dann passt die Anlage zum Betrieb und nicht zum Prospekt.',m:['Eigenverbrauch','Dachstatik','Kombination mit Speicher']},
     {id:'speicher',n:'Speicher',h:1.5,hatch:4,mp:2,k:'kWh · kW',t:'Wir dimensionieren Speicher aus dem gemessenen Lastgang und rechnen ihn gegen einfachere Maßnahmen.',m:['Lastspitzen','PV-Überschuss','Notstrom']}];
   var last='druckluft', why=document.getElementById('why');
-  function explain(){ var f=F.filter(function(x){return x.id===last;})[0]; if(!f) return;
+  function explain(){ if(!why) return; var f=F.filter(function(x){return x.id===last;})[0]; if(!f) return;
     why.innerHTML='<div class="h"><b>'+f.n+'</b><span>'+f.k+'</span></div><p>'+f.t+'</p><ul>'+f.m.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'; }
   var sel={druckluft:1,abwaerme:1,licht:1,pv:1}, fresh={};
   var slot=1.7, gap=.35, plate=3*slot+4*gap, pz=.32;
