@@ -10,7 +10,19 @@ Marke: **Wendepunkt Ingenieure – Büro für Energie- und Ressourceneffizienz**
 | 2 | Design System (Tokens, Typo, Spacing, Icons, Komponenten) | folgt nach Auswahl | offen |
 | 3–7 | Logo final, Website, Vorlagen, Briefkopf, Visitenkarte, LinkedIn | folgt | offen |
 
-## Arbeitsstand: Kombination Logo 1 + Farben 2
+## Entwurf 4: Markenwelt nach Moodboard (aktuell)
+
+`markenwelt/index.html`, erzeugt durch `markenwelt/build.py` (isometrische Bausteine werden berechnet, nicht von Hand gezeichnet).
+
+- **Signaturelement:** gedruckte Behauptung, Marker-Strich in Ocker, Ergebnis in Handschrift (Kalam 700) mit Einheit und Kontext.
+- **Produktbild:** der modulare Effizienz-Baukasten als isometrische Bausteine auf der Grundplatte „Effizienz-Kompass“.
+- **Hand-Icons:** zwölf Ein-Strich-Icons, leicht gewellt, Ocker auf Petrol, Petrol auf Papier.
+- **Flächen:** Petrol #0F3B3F und Tiefe #071F22 mit Punktraster für Bühne und Social; Papier #F7F5F0, Sand #E9E1CF, Nebel #EEF0EC für Dokumente.
+- **Logo:** unverändert Michas Variante, Punkt in Ocker.
+
+Herkunft: ecoworks (dunkler Grund, Isometrie, Schraffur), The Academy for Climate Jobs (Durchstreichen, Marker, Hand-Icons, Foto-Annotation), Anthropic (Papier, Sand, Plakatserie, ruhige Grotesk). Nicht übernommen: Neongrün, Terrakotta, Kritzeleien um Gesichter.
+
+## Vorher: Kombination Logo 1 + Farben 2
 
 Logo aus Richtung 1 in Michas Gewichtung (IBM Plex Sans, „Wendepunkt“ 600, „Ingenieure“ 400), Bildmarke Kurve mit Punkt. Farben aus Richtung 2: Weiß #FFFFFF, Petrol #0F3B3F, Ocker #D9A441, Fläche #EEF0EC. Der Punkt im Logo ist ocker, Petrol übernimmt Kennzahlen, Button und Priorität A. Typografie bleibt IBM Plex Sans + IBM Plex Mono.
 
