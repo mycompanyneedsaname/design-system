@@ -392,10 +392,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   @media (max-width:980px){{.wp-grid{{grid-template-columns:1fr}}.wp-band{{padding-block:56px}}}}
   .wp-band{{--accent:#C8F04A;--accent-ink:{PETROL}}}
   .wp-cta{{display:inline-flex;align-items:center;gap:14px;background:var(--accent);color:{PETROL};border:2px solid {PETROL};
-    font:600 16px/1 var(--sans);padding:12px 14px 12px 20px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}}
-  .wp-cta svg{{display:block}}
+    font:600 16px/1 var(--sans);padding:16px 22px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}}
   .wp-cta:hover,.wp-cta:focus-visible{{transform:translate(-3px,-3px);box-shadow:3px 3px 0 {PETROL}}}
-  .wp-cta:hover svg path{{stroke-dasharray:1;animation:wpdraw .6s ease-out both}}
 </style>
 
 <!-- ============================ HERO ============================ -->
@@ -430,7 +428,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div>
       <h2 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h2>
       <p class="wp-p">Wir suchen ihn gemeinsam mit Ihnen.</p>
-      <div class="actions"><a class="wp-cta" href="#kontakt"><span>Kostenfreies Erstgespräch</span><svg viewBox="0 0 64 64" width="30" height="30" aria-hidden="true"><path pathLength="1" d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="32" cy="32" r="7" fill="{PETROL}"/></svg></a></div>
+      <div class="actions"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch</a></div>
     </div>
     <svg class="wp-art" viewBox="0 0 520 300" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt und der Notiz hier">
       <path class="wp-curve" pathLength="1" d="M20 262 C 150 270, 190 200, 260 150 C 330 100, 360 36, 500 30" fill="none" stroke="{PETROL}" stroke-width="12" stroke-linecap="round"/>
