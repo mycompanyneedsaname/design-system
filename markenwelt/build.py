@@ -417,6 +417,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .wp-h{{font-size:clamp(30px,3.6vw,48px);color:{PETROL};margin-top:0;max-width:18ch}}
   .wp-p{{font-size:clamp(20px,2vw,26px);line-height:1.35;color:{PETROL};margin-top:22px;max-width:30ch}}
   .wp-art{{width:100%;height:auto;display:block}}
+  .bk-cta{{margin-top:8px;padding-bottom:16px}}
+  .bk-cta .wp-cta{{border-color:#C8F04A}}
   .wp-act{{display:flex;justify-content:center;padding-left:14%;margin-top:6px}}
   @media (max-width:980px){{.wp-act{{padding-left:0}}}}
   .wp-curve{{stroke-dasharray:1;stroke-dashoffset:0}}
@@ -542,16 +544,16 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <p class="wp-p">Wir sind ein Büro für <mark class="hl">Energie- und Ressourceneffizienz</mark> und suchen ihn gemeinsam mit Ihnen.</p>
     </div>
     <div class="wp-right">
-    <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: steigende Betriebskosten, CO₂-Ausstoß und Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität und Resilienz. Am Wendepunkt: hier.">
+    <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: steigende Betriebskosten, CO₂-Ausstoß &amp; Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität &amp; Resilienz. Am Wendepunkt: hier.">
       <path class="wp-curve" pathLength="1" d="M20 262 C 150 270, 190 200, 260 150 C 330 100, 360 36, 500 30" fill="none" stroke="{PETROL}" stroke-width="12" stroke-linecap="round"/>
       <circle class="wp-dot" cx="260" cy="150" r="21" fill="currentColor" data-ak="f" stroke="{PETROL}" stroke-width="3"/>
       <rect class="wp-note" x="295" y="289" width="80" height="17" fill="#C8F04A"/>
       <g class="wp-note" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="{PETROL}">
         <text x="24" y="44">steigende Betriebskosten,</text>
-        <text x="24" y="78">CO₂-Ausstoß und</text>
+        <text x="24" y="78">CO₂-Ausstoß &amp;</text>
         <text x="24" y="112">Rohstoff-Knappheit</text>
         <text x="592" y="156" text-anchor="end">sinkende Betriebskosten,</text>
-        <text x="592" y="190" text-anchor="end">Flexibilität und</text>
+        <text x="592" y="190" text-anchor="end">Flexibilität &amp;</text>
         <text x="592" y="224" text-anchor="end">Resilienz</text>
         <text x="300" y="306" font-size="34">hier.</text>
       </g>
@@ -561,19 +563,18 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <path d="M272 176 C 276 214, 286 246, 298 272"/>
       </g>
     </svg>
-      <div class="wp-act" id="kontakt"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch vereinbaren</a></div>
     </div>
   </div>
-  <div class="wrap"><svg class="st-link sec-link" viewBox="0 0 1000 70" aria-hidden="true"><path class="tl-curve" pathLength="1" d="M794 0 L 794 70" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+  <div class="wrap"><svg class="st-link sec-link" viewBox="0 0 1000 70" aria-hidden="true"><path class="tl-curve" pathLength="1" d="M786 0 L 786 70" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/></svg></div>
 </section>
 
 <!-- ============================ 2 · TEAM ============================ -->
 <section class="light team-sec" id="team">
   <div class="wrap">
     <svg class="tm-link sec-link" viewBox="0 0 1000 140" role="img" aria-label="Wer wir sind:">
-      <path class="tl-curve" pathLength="1" d="M794 0 C 794 96, 740 126, 596 128" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
+      <path class="tl-curve" pathLength="1" d="M786 0 C 786 96, 736 126, 596 128" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
       <path class="tl-fade" d="M612 116 L 594 128 L 612 140" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <text class="tl-fade" x="812" y="64" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="{PETROL}">wer „wir“ sind:</text>
+      <text class="tl-fade" x="804" y="64" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="{PETROL}">wer „wir“ sind:</text>
     </svg>
     <div class="sec-head">
       <h2>Wir nehmen es <mark class="hl">persönlich</mark>.</h2>
@@ -632,6 +633,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
       </div>
     </div>
+    <div class="bk-cta" id="kontakt"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch vereinbaren</a></div>
   </div>
 </section>
 
