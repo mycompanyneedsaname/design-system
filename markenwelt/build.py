@@ -437,6 +437,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .pers h3{{font-size:24px;margin-top:6px;color:{PETROL}}}
   .pers p{{margin-top:10px;font-size:15.5px;max-width:44ch}}
   .pers .pers-q{{font-family:var(--hand);font-weight:700;font-size:22px;line-height:1.2;color:{PETROL};transform:rotate(-2deg);transform-origin:left;margin-top:14px}}
+  .hl{{color:inherit;background:linear-gradient(transparent 38%,#C8F04A 38%,#C8F04A 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .15em}}
   .pers .pers-q span{{background:linear-gradient(transparent 38%,#C8F04A 38%,#C8F04A 90%,transparent 90%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .2em}}
   .ref-band{{padding-block:56px}}
   .ref-head{{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin-bottom:20px}}
@@ -469,7 +470,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap wp-grid">
     <div>
       <h1 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h1>
-      <p class="wp-p">Wir sind ein Büro für Energie- und Ressourceneffizienz und suchen ihn gemeinsam mit Ihnen.</p>
+      <p class="wp-p">Wir sind ein Büro für <mark class="hl">Energie- und Ressourceneffizienz</mark> und suchen ihn gemeinsam mit Ihnen.</p>
       <div class="actions"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch vereinbaren</a></div>
     </div>
     <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: Energiekostensteigerung, CO₂-Ausstoß, Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität, Resilienz. Am Wendepunkt: hier.">
