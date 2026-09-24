@@ -10,6 +10,10 @@ Marke: **Wendepunkt Ingenieure – Büro für Energie- und Ressourceneffizienz**
 | 2 | Design System (Tokens, Typo, Spacing, Icons, Komponenten) | folgt nach Auswahl | offen |
 | 3–7 | Logo final, Website, Vorlagen, Briefkopf, Visitenkarte, LinkedIn | folgt | offen |
 
+## Entscheidung Logo (24.09.2026)
+
+Das Logo bleibt wie es ist: Kurve mit der steilsten Stelle am Wendepunkt, „Wendepunkt“ 600, „Ingenieure“ 400. Die Variante mit flachster Stelle am Punkt (`logo/vergleich.html`) ist verworfen.
+
 ## Entwurf 4: Markenwelt nach Moodboard (aktuell)
 
 `markenwelt/index.html`, erzeugt durch `markenwelt/build.py` (isometrische Bausteine werden berechnet, nicht von Hand gezeichnet).
