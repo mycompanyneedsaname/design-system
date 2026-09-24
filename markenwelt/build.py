@@ -359,17 +359,35 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
 
   /* configurator */
-  .cfg{{display:grid;gap:14px}}
+  .cfg{{display:grid;gap:14px 20px;grid-template-columns:1fr 1fr;align-items:center}}
+  .cfg .chips{{grid-column:1/-1}}
+  @media (max-width:640px){{.cfg{{grid-template-columns:1fr}}}}
   .cfg svg{{width:100%;height:auto;display:block}}
   .blk{{transform-box:fill-box;transform-origin:center}}
   .blk.new{{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}}
   .js #plate .blk.stone{{opacity:0}}
-  .js #plate.on .blk.stone{{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}}
+  .js #plate.on .blk.stone{{animation:rise2 .5s cubic-bezier(.2,.8,.2,1) both}}
+  @keyframes rise2{{from{{transform:translateY(-22px);opacity:0}}to{{transform:none;opacity:1}}}}
   #plate .blk.stone{{transition:opacity .25s}}
-  #plate.has .blk.stone:not(.hi){{opacity:.42}}
-  #plate .blk.stone.hi path[stroke="currentColor"]{{stroke-width:2.4}}
-  .chips .chip.hi{{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}}
-  .bk-note{{margin:6px 0 0;min-height:1.5em;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.72);text-align:center}}
+  .js #plate.on .blk.stone.new{{animation:rise2 .45s cubic-bezier(.2,.8,.2,1) both}}
+  .chips .chip{{cursor:pointer}}
+  .chips .chip svg{{width:15px;height:15px;margin-right:7px;vertical-align:-3px}}
+  .chips .chip .ck{{opacity:0}}
+  .chips .chip[aria-pressed="true"]{{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}}
+  .chips .chip[aria-pressed="true"] .ck{{opacity:1}}
+  .bk-calc{{font-family:var(--mono);font-size:12.5px;line-height:1.35;border-top:1px solid rgba(255,255,255,.35);padding-top:10px}}
+  .bc-head{{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}}
+  .bc-rows{{list-style:none;margin:0;padding:0}}
+  .bc-rows li{{display:grid;grid-template-columns:auto 1fr auto;gap:0 10px;padding:5px 0;border-bottom:1px dashed rgba(255,255,255,.22);align-items:baseline}}
+  .bc-rows .bc-f{{color:#fff;font-weight:500}}
+  .bc-rows .bc-m{{color:rgba(255,255,255,.7);font-family:var(--sans);font-size:13px}}
+  .bc-rows b{{font-weight:500;color:#fff;text-align:right;font-variant-numeric:tabular-nums}}
+  .bc-rows .bc-empty{{display:block;color:rgba(255,255,255,.6);font-family:var(--sans);font-size:13px;border:0}}
+  .bc-sum{{display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;color:#fff;font-size:12px;letter-spacing:.06em;text-transform:uppercase}}
+  .bc-sum b{{font-family:var(--sans);font-weight:600;font-size:34px;line-height:1;color:var(--accent);letter-spacing:-.02em;font-variant-numeric:tabular-nums}}
+  .bc-sum b.tick{{animation:pop .35s cubic-bezier(.2,.9,.3,1.3)}}
+  @keyframes pop{{from{{transform:translateY(4px);opacity:.4}}}}
+  .bc-foot{{margin-top:10px;font-family:var(--sans);font-size:12px;line-height:1.45;color:rgba(255,255,255,.6)}}
   @keyframes rise{{from{{transform:translateY(-22px);opacity:0}}}}
   .slot{{stroke-dasharray:4 4;opacity:.45}}
   .chips{{display:flex;flex-wrap:wrap;gap:8px}}
@@ -448,18 +466,17 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .bk-stack .ht{{font-size:clamp(34px,3.6vw,48px);line-height:1.04}}
   @media (max-width:640px){{.wp-art .wp-note{{display:none}}.wp-mnotes{{display:block}}}}
   @media (max-width:980px){{.tl-m{{display:block}}.team-sec{{padding-bottom:48px}}}}
-  .bk-stack{{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch;text-align:left;padding-top:8px;padding-bottom:24px}}
+  .bk-stack{{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:stretch;text-align:left;padding-top:8px;padding-bottom:24px}}
   @media (max-width:980px){{.bk-stack{{grid-template-columns:1fr;gap:28px}}.bk-l{{display:contents}}.bk-stack .ht{{order:1}}.bk-stack .bk-how{{order:2;margin:0}}.bk-stack .cfg{{order:3}}.bk-stack .bk-cta{{order:4}}}}
   .bk-stack .ht{{margin-top:0}}
   .bk-stack .ht .l2{{max-width:26ch}}
   .bk-stack .ht{{max-width:22ch}}
   .bk-stack .cfg{{max-width:none;margin:0}}
-  .bk-stack .chips{{justify-content:center}}
-  .bk-stack .chips .grp{{text-align:center}}
+  .bk-stack .chips{{justify-content:flex-start}}
   .bk-stack .hnote{{position:static;transform:rotate(-1.5deg);transform-origin:center;max-width:34ch;text-wrap:balance;text-align:center;font-size:21px;margin:0 auto 6px}}
   .bk-stack .hnote svg{{display:none}}
   
-  .bk-stack #plate{{max-width:560px;margin:0 auto}}
+  .bk-stack #plate{{max-width:none;margin:0}}
   .bk-cta .wp-cta{{border-color:#C8F04A}}
   .wp-act{{display:flex;justify-content:center;padding-left:14%;margin-top:6px}}
   @media (max-width:980px){{.wp-act{{padding-left:0}}}}
@@ -655,8 +672,13 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       </div>
       <div class="cfg" id="cfg">
         <div id="plate" style="color:var(--accent)"></div>
-        <div class="chips" id="chips" aria-label="Die neun Handlungsfelder"></div>
-        <p class="bk-note" id="bk-note" aria-live="polite"></p>
+        <div class="bk-calc" id="bk-calc" aria-live="polite">
+          <div class="bc-head">Beispielmaßnahmen</div>
+          <ul class="bc-rows" id="bc-rows"></ul>
+          <div class="bc-sum"><span>Zusammen</span><b id="bc-total">−0 %</b></div>
+          <div class="bc-foot">Typische Werte aus vergleichbaren Betrieben, bezogen auf die Energie- und Materialkosten. Was bei Ihnen drin ist, rechnen wir nach.</div>
+        </div>
+        <div class="chips" id="chips" aria-label="Maßnahmen wählen"></div>
       </div>
     </div>
   </div>
@@ -978,7 +1000,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     {{g:'Ressourcen',id:'reststoffe',n:'Reststoffe',h:1.3,hatch:4}},{{g:'Ressourcen',id:'betriebsstoffe',n:'Betriebsstoffe',h:1.2,hatch:0}}];
   var last='strom', why=document.getElementById('why');
   function explain(){{}}
-  var sel={{}}, fresh={{}}; F.forEach(function(f){{sel[f.id]=1;}});
+  var sel={{strom:1,waerme:1,druckluft:1,material:1}}, fresh={{}};
+  var EX={{strom:['Antriebe richtig dimensionieren',6],waerme:['Abwärme aus dem Ofen nutzen',8],kaelte:['Kältemaschine nachts abschalten',3],druckluft:['Leckagen abdichten',4],speicher:['Lastspitzen kappen',3],material:['Verschnitt reduzieren',5],wasser:['Spülbad im Kreis führen',2],reststoffe:['Ausschuss senken',3],betriebsstoffe:['Kühlschmierstoff pflegen',2]}};
   var slot=1.7, gap=.35, cols=3, rows=Math.ceil(F.length/cols), px=cols*slot+(cols+1)*gap, py=rows*slot+(rows+1)*gap, pz=.32;
   var plateEl=document.getElementById('plate'), chips=document.getElementById('chips');
   function render(){{
@@ -992,13 +1015,24 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         parts.push('<path class="slot" d="'+rpath(q,8)+'" fill="none" stroke="currentColor" stroke-width="1"/>');}}
     }});
     items.sort(function(a,b){{return (a.x+a.y)-(b.x+b.y);}}).forEach(function(it){{
-      if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,'stone',it.f.n+' · '+PR[it.f.id],it.f.id));
+      if(sel[it.f.id]) parts.push(block(it.x,it.y,pz,slot,slot,it.f.h,it.f.hatch,'stone'+(fresh[it.f.id]?' new':''),it.f.n+' · '+PR[it.f.id],it.f.id));
     }});
     var c=iso(px,py,0), l=iso(0,py,0), r=iso(px,0,0), t=iso(0,0,3.8);
     var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+14;
     plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+'</svg>';
     fresh={{}};
-    Array.prototype.forEach.call(plateEl.querySelectorAll('.blk.stone'),function(g,i){{g.style.animationDelay=(0.12+i*0.11)+'s';}});
+    Array.prototype.forEach.call(plateEl.querySelectorAll('.blk.stone'),function(g,i){{g.style.animationDelay=g.classList.contains('new')?'0s':(0.12+i*0.11)+'s';}});
+    Array.prototype.forEach.call(chips.querySelectorAll('.chip'),function(b){{b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false');}});
+    calc();
+  }}
+  var rowsEl=document.getElementById('bc-rows'), totEl=document.getElementById('bc-total');
+  function calc(){{
+    if(!rowsEl) return;
+    var sum=0, h='';
+    F.forEach(function(f){{ if(sel[f.id]&&EX[f.id]){{ sum+=EX[f.id][1]; h+='<li><span class="bc-f">'+f.n+'</span><span class="bc-m">'+EX[f.id][0]+'</span><b>−'+EX[f.id][1]+' %</b></li>'; }} }});
+    rowsEl.innerHTML=h||'<li class="bc-empty">Wählen Sie unten Maßnahmen aus.</li>';
+    totEl.textContent='−'+sum+' %';
+    totEl.classList.remove('tick'); void totEl.offsetWidth; totEl.classList.add('tick');
   }}
   var NOTE={{strom:'Strom: erst den Lastgang, dann die Technik.',waerme:'Wärme: oft hilft schon ein Abgleich.',kaelte:'Kälte: läuft die Maschine nachts durch?',druckluft:'Druckluft: wir hören erst nach Leckagen.',speicher:'Speicher: nur, wenn die Lastspitze es hergibt.',material:'Material: im Verschnitt steckt oft mehr als im Strom.',wasser:'Wasser: geht das im Kreis?',reststoffe:'Reststoffe: Ausschuss ist bezahltes Material.',betriebsstoffe:'Betriebsstoffe: Öle und Gase zählen mit.'}};
   var hn=document.getElementById('hnote'), ht=document.getElementById('hnote-t');
@@ -1006,18 +1040,10 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   var curG='';
   F.forEach(function(f){{
     if(f.g!==curG){{curG=f.g; var lb=document.createElement('span'); lb.className='grp'; lb.textContent=f.g; chips.appendChild(lb);}}
-    var b=document.createElement('button');b.type='button';b.className='chip';b.dataset.id=f.id;b.textContent=f.n;
-    var on=function(){{hi(f.id);}};
-    b.addEventListener('mouseenter',on);b.addEventListener('focus',on);b.addEventListener('click',on);
+    var b=document.createElement('button');b.type='button';b.className='chip';b.dataset.id=f.id;
+    b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path class="ck" d="M4.5 8.5 L7 11 L11.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'+f.n;
+    b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;}} render(); }});
     chips.appendChild(b);}});
-  var noteEl=document.getElementById('bk-note'), cur='';
-  function hi(id){{
-    cur=id; chips.classList.add('has');
-    Array.prototype.forEach.call(chips.querySelectorAll('.chip'),function(c){{c.classList.toggle('hi',c.dataset.id===id);}});
-    plateEl.classList.add('has');
-    Array.prototype.forEach.call(plateEl.querySelectorAll('.blk.stone'),function(g){{g.classList.toggle('hi',g.dataset.id===id);}});
-    if(noteEl) noteEl.textContent=NOTE[id]||'';
-  }}
   if('IntersectionObserver' in window){{
     var cio=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{plateEl.classList.add('on');cio.unobserve(en.target);}}}});}},{{threshold:.4}});
     cio.observe(plateEl);
