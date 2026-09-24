@@ -499,7 +499,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <p class="wp-p">Wir sind ein Büro für <mark class="hl">Energie- und Ressourceneffizienz</mark> und suchen ihn gemeinsam mit Ihnen.</p>
     </div>
     <div class="wp-right">
-    <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: steigende Betriebskosten, CO₂-Ausstoß und Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität, Resilienz. Am Wendepunkt: hier.">
+    <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: steigende Betriebskosten, CO₂-Ausstoß und Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität und Resilienz. Am Wendepunkt: hier.">
       <path class="wp-curve" pathLength="1" d="M20 262 C 150 270, 190 200, 260 150 C 330 100, 360 36, 500 30" fill="none" stroke="{PETROL}" stroke-width="12" stroke-linecap="round"/>
       <circle class="wp-dot" cx="260" cy="150" r="21" fill="currentColor" data-ak="f" stroke="{PETROL}" stroke-width="3"/>
       <rect class="wp-note" x="295" y="289" width="80" height="17" fill="#C8F04A"/>
@@ -508,7 +508,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <text x="24" y="78">CO₂-Ausstoß und</text>
         <text x="24" y="112">Rohstoff-Knappheit</text>
         <text x="592" y="156" text-anchor="end">sinkende Betriebskosten,</text>
-        <text x="592" y="190" text-anchor="end">Flexibilität,</text>
+        <text x="592" y="190" text-anchor="end">Flexibilität und</text>
         <text x="592" y="224" text-anchor="end">Resilienz</text>
         <text x="300" y="306" font-size="34">hier.</text>
       </g>
