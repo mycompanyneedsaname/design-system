@@ -519,6 +519,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   }}
   @media (max-width:980px){{.team-link,.bk-link{{display:none}}.team-sec{{padding-bottom:56px}}#baukasten{{padding-top:56px}}}}
   .pers{{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start}}
+  @media (min-width:981px){{.team .pers:first-child{{grid-template-columns:1fr 150px}}.team .pers:first-child .pers-l{{order:2}}}}
   .pers-ph{{aspect-ratio:4/5;background:var(--sand);border-radius:12px;position:relative;overflow:hidden}}
   .pers-img{{width:100%;height:100%;display:block}}
   .pers-ph .ini{{font:500 34px/1 var(--mono);color:{PETROL};opacity:.35}}
