@@ -640,7 +640,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <p class="bk-how">Für jede Maßnahme: <b>messen</b>, <b>nachrechnen</b>, <b>umsetzen</b>. Sie entscheiden, welche wir angehen.</p>
         <div class="bk-cta" id="kontakt">
           <a class="wp-cta" href="mailto:kontakt@wendepunkt-ingenieure.de?subject=Kostenfreies%20Erstgespr%C3%A4ch">Kostenfreies Erstgespräch vereinbaren</a>
-          <p class="bk-contact">oder direkt: <a href="mailto:kontakt@wendepunkt-ingenieure.de">kontakt@wendepunkt-ingenieure.de</a> · <a href="tel:+49000000000">+49 000 000000</a></p>
         </div>
       </div>
       <div class="cfg" id="cfg">

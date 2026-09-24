@@ -5,7 +5,7 @@
 Die Gründer arbeiten an der **Markenwelt**: Deliverable 1 aus dem Briefing, jetzt als ausgearbeitete Startseite plus Markensystem. Sie geben Feedback per Kommentar direkt im Artifact.
 
 **Live-Seite (Hauptarbeit):** https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP
-(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 82 (nur noch die Landingpage), privat. Die Freigabe macht der Nutzer über das Share-Menü.
+(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 83 (nur noch die Landingpage), privat. Die Freigabe macht der Nutzer über das Share-Menü.
 
 Weitere Artifacts:
 - Logo-Kurvenvergleich (abgeschlossen): https://claude.ai/artifact/UsjPbmEEpBYStt4gh1TZeu
@@ -33,7 +33,7 @@ Kopfleiste (Petrol): Logo ohne Untertitel (steht jetzt im Einstieg), Navigation 
 
 ## Offene Punkte
 
-- **Platzhalter aus Version 76 ersetzen:** E-Mail-Adresse und Telefonnummer im Kontakt-Bereich, Ziele der Footer-Links Impressum/Datenschutz. Beweiszeile „rund 150 Betriebe“ von den Gründern bestätigen lassen.
+- **Platzhalter aus Version 76 ersetzen:** E-Mail-Adresse im mailto des Buttons, Ziele der Footer-Links Impressum/Datenschutz. Beweiszeile „rund 150 Betriebe“ von den Gründern bestätigen lassen.
 
 - **Offener Kommentar-Thread** `b2ecf904-e9a3-4ddd-93d3-e3ef5e4e16fe` zur Unterzeile: gesetzt ist „Weniger Verbrauch, mehr Spielraum.“, angeboten wurden „Effizienz, die sich rechnet.“ und „Weniger Energie. Weniger Material. Mehr Luft.“ Antwort der Gründer abwarten, dann ggf. tauschen und den Thread auflösen.
 - **Offener Kommentar-Thread** `c4f123c5-264b-48ad-ad31-030e61e93764` zur Feld-Gruppierung: Frage, ob die Baukasten-Übersicht weiter unten nachgezogen werden soll. Gruppierung wurde seitdem weiter angepasst (Speicher zu Energie, PV gestrichen).
