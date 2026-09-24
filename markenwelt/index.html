@@ -204,11 +204,11 @@
   .cfg svg{width:100%;height:auto;display:block}
   .blk{transform-box:fill-box;transform-origin:center}
   .blk.new{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
-  .js #plate .blk.stone{opacity:0}
-  .js #plate.on .blk.stone{animation:rise2 .5s cubic-bezier(.2,.8,.2,1) both}
+  .js #plate:not(.built) .blk.stone{opacity:0}
+  .js #plate.on:not(.built) .blk.stone{animation:rise2 .5s cubic-bezier(.2,.8,.2,1) both}
   @keyframes rise2{from{transform:translateY(-22px);opacity:0}to{transform:none;opacity:1}}
   #plate .blk.stone{transition:opacity .25s}
-  .js #plate.on .blk.stone.new{animation:rise2 .45s cubic-bezier(.2,.8,.2,1) both}
+  .js #plate.built .blk.stone.new{animation:rise2 .45s cubic-bezier(.2,.8,.2,1) both}
   .chips .chip{cursor:pointer}
   .chips .chip svg{width:15px;height:15px;margin-right:7px;vertical-align:-3px}
   .chips .chip .ck{opacity:0}
@@ -655,7 +655,7 @@
     var x0=l[0]-30, x1=r[0]+30, y0=t[1]-20, y1=c[1]+14;
     plateEl.innerHTML='<svg viewBox="'+x0.toFixed(0)+' '+y0.toFixed(0)+' '+(x1-x0).toFixed(0)+' '+(y1-y0).toFixed(0)+'" role="img" aria-label="Isometrischer Effizienz-Baukasten">'+parts.join('')+'</svg>';
     fresh={};
-    Array.prototype.forEach.call(plateEl.querySelectorAll('.blk.stone'),function(g,i){g.style.animationDelay=g.classList.contains('new')?'0s':(0.12+i*0.11)+'s';});
+    Array.prototype.forEach.call(plateEl.querySelectorAll('.blk.stone'),function(g,i){g.style.animationDelay=plateEl.classList.contains('built')?'0s':(0.12+i*0.11)+'s';});
     Array.prototype.forEach.call(chips.querySelectorAll('.chip'),function(b){b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false');});
     calc();
   }
@@ -679,12 +679,12 @@
     if(f.g!==curG){curG=f.g; var lb=document.createElement('span'); lb.className='grp'; lb.textContent=f.g; chips.appendChild(lb);}
     var b=document.createElement('button');b.type='button';b.className='chip';b.dataset.id=f.id;
     b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path class="ck" d="M4.5 8.5 L7 11 L11.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'+f.n;
-    b.addEventListener('click',function(){ if(sel[f.id]){delete sel[f.id];} else {sel[f.id]=1;fresh[f.id]=1;} render(); });
+    b.addEventListener('click',function(){ plateEl.classList.add('on'); plateEl.classList.add('built'); if(sel[f.id]){delete sel[f.id];} else {sel[f.id]=1;fresh[f.id]=1;} render(); });
     chips.appendChild(b);});
   if('IntersectionObserver' in window){
-    var cio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){plateEl.classList.add('on');cio.unobserve(en.target);}});},{threshold:.4});
+    var cio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){plateEl.classList.add('on');cio.unobserve(en.target);setTimeout(function(){plateEl.classList.add('built');},1800);}});},{threshold:.4});
     cio.observe(plateEl);
-  } else plateEl.classList.add('on');
+  } else {plateEl.classList.add('on');plateEl.classList.add('built');}
   render();
 
 })();

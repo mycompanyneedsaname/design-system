@@ -204,11 +204,11 @@
   .cfg svg{width:100%;height:auto;display:block}
   .blk{transform-box:fill-box;transform-origin:center}
   .blk.new{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
-  .js #plate .blk.stone{opacity:0}
-  .js #plate.on .blk.stone{animation:rise2 .5s cubic-bezier(.2,.8,.2,1) both}
+  .js #plate:not(.built) .blk.stone{opacity:0}
+  .js #plate.on:not(.built) .blk.stone{animation:rise2 .5s cubic-bezier(.2,.8,.2,1) both}
   @keyframes rise2{from{transform:translateY(-22px);opacity:0}to{transform:none;opacity:1}}
   #plate .blk.stone{transition:opacity .25s}
-  .js #plate.on .blk.stone.new{animation:rise2 .45s cubic-bezier(.2,.8,.2,1) both}
+  .js #plate.built .blk.stone.new{animation:rise2 .45s cubic-bezier(.2,.8,.2,1) both}
   .chips .chip{cursor:pointer}
   .chips .chip svg{width:15px;height:15px;margin-right:7px;vertical-align:-3px}
   .chips .chip .ck{opacity:0}
