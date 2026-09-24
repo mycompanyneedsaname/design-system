@@ -283,7 +283,20 @@
     .team-link .tl-dot{transition:transform .5s cubic-bezier(.2,.9,.3,1.4) .9s}
     .team-link .tl-fade{transition:opacity .5s ease-out 1.3s}
   }
-  .team-sec{padding-bottom:0}
+  .team-sec{padding-bottom:0;padding-top:0}
+  #start.wp-band{padding-bottom:0}
+  .sec-link{display:block;width:100%;height:auto;overflow:visible}
+  .st-link{margin-top:8px}
+  .tm-link{margin-bottom:-58px}
+  .js .sec-link .tl-curve{stroke-dasharray:1;stroke-dashoffset:1}
+  .js .sec-link .tl-fade{opacity:0}
+  .js .sec-link.on .tl-curve{stroke-dashoffset:0}
+  .js .sec-link.on .tl-fade{opacity:1}
+  @media (prefers-reduced-motion:no-preference){
+    .st-link .tl-curve{transition:stroke-dashoffset .4s linear}
+    .tm-link .tl-curve{transition:stroke-dashoffset .8s cubic-bezier(.4,0,.2,1) .35s}
+    .tm-link .tl-fade{transition:opacity .4s ease-out 1.1s}
+  }
   #baukasten{padding-top:0}
   .bk-link{display:block;width:100%;height:auto;overflow:visible}
   .js .bk-link .tl-curve{stroke-dasharray:1;stroke-dashoffset:1}
@@ -297,7 +310,7 @@
     .bk-link .tl-dot{transition:transform .6s cubic-bezier(.2,.9,.3,1.2) .4s,opacity .4s ease-out .4s}
     .bk-link .tl-fade{transition:opacity .5s ease-out .9s}
   }
-  @media (max-width:980px){.team-link,.bk-link{display:none}.team-sec{padding-bottom:56px}#baukasten{padding-top:56px}}
+  @media (max-width:980px){.team-link,.bk-link,.sec-link{display:none}.team-sec{padding-bottom:56px;padding-top:56px}#baukasten{padding-top:56px}#start.wp-band{padding-bottom:56px}}
   .pers{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start}
   .pers-ph{aspect-ratio:4/5;background:var(--sand);border-radius:12px;position:relative;overflow:hidden}
   .pers-img{width:100%;height:100%;display:block}
@@ -367,11 +380,17 @@
       <div class="wp-act" id="kontakt"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch vereinbaren</a></div>
     </div>
   </div>
+  <div class="wrap"><svg class="st-link sec-link" viewBox="0 0 1000 70" aria-hidden="true"><path class="tl-curve" pathLength="1" d="M794 0 L 794 70" fill="none" stroke="#0F3B3F" stroke-width="3.5" stroke-linecap="round"/></svg></div>
 </section>
 
 <!-- ============================ 2 · TEAM ============================ -->
 <section class="light team-sec" id="team">
   <div class="wrap">
+    <svg class="tm-link sec-link" viewBox="0 0 1000 140" role="img" aria-label="Wer wir sind:">
+      <path class="tl-curve" pathLength="1" d="M794 0 C 794 96, 740 126, 596 128" fill="none" stroke="#0F3B3F" stroke-width="3.5" stroke-linecap="round"/>
+      <path class="tl-fade" d="M612 116 L 594 128 L 612 140" fill="none" stroke="#0F3B3F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="tl-fade" x="812" y="64" font-family="Kalam, cursive" font-weight="700" font-size="24" fill="#0F3B3F">wer „wir“ sind:</text>
+    </svg>
     <div class="sec-head">
       <h2>Wir nehmen es <mark class="hl">persönlich</mark>.</h2>
     </div>
@@ -749,7 +768,7 @@
 
 <script>
 (function(){
-  var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link,.bk-link');
+  var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link,.bk-link,.sec-link');
   if(!('IntersectionObserver' in window)){Array.prototype.forEach.call(els,function(e){e.classList.add('on');});return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target);}});},{threshold:.6});
   Array.prototype.forEach.call(els,function(e){io.observe(e);});
