@@ -513,7 +513,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <article class="pers">
         <div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div>
         <div>
-          <span class="pers-role">Energietechnik</span>
+          <span class="pers-role">Energieeffizienz</span>
           <h3>Tobias Wintsche</h3>
           <p>Tobias prüft Energiesysteme auf ihre Vor- und Nachteile und fügt sie zu einem Ganzen zusammen. Lieber einfach und ausgereift als übertechnisiert, damit es auch nach uns noch jeder im Betrieb versteht.</p>
           <p class="pers-q"><span>„Gute Energiesysteme sind oft ganz simpel.“</span></p>
@@ -705,7 +705,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
           </div>
         </div>
         <div class="sig">
-          <b>Tobias Wintsche</b> · Energietechnik<br>
+          <b>Tobias Wintsche</b> · Energieeffizienz<br>
           Wendepunkt Ingenieure GbR · Büro für Energie- und Ressourceneffizienz<br>
           <span class="m">+49 000 0000000 · tw@wendepunkt-ingenieure.de · Leipzig / Thüringen</span><br>
           <span class="hand" style="color:{PETROL};font-size:15px">Wir rechnen nach, statt zu behaupten.</span>
