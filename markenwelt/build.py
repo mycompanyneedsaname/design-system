@@ -409,7 +409,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .sig-cap{{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.7);margin-top:6px}}
   @media (max-width:980px){{.hnote{{position:static;transform:rotate(-2deg);margin-bottom:6px}}.hnote svg{{display:none}}}}
   /* Startseite: Wendepunkt als Einstieg, Team, Referenzen */
-  .wp-pre{{display:block;font-family:var(--mono);font-weight:500;font-size:14px;letter-spacing:.04em;color:{PETROL};margin-bottom:18px}}
+  .wp-pre{{display:inline-block;position:relative;background:{PETROL};color:#fff;font:500 clamp(16px,1.5vw,19px)/1.3 var(--sans);padding:12px 20px 12px 44px;border-radius:12px;margin-bottom:26px}}
+  .wp-pre::before{{content:"";position:absolute;left:20px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:#C8F04A}}
   .wp-band .wp-h{{font-size:clamp(34px,4.2vw,56px);line-height:1.04;max-width:15ch}}
   #start .wp-grid{{grid-template-columns:1fr 1fr}}
   @media (max-width:980px){{#start .wp-grid{{grid-template-columns:1fr}}}}
@@ -460,7 +461,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 <section class="sand wp-band" id="start" aria-label="Der Wendepunkt">
   <div class="wrap wp-grid">
     <div>
-      <span class="wp-pre">Wir sind ein Büro für Energie- und Ressourceneffizienz.</span>
+      <span class="wp-pre">Wir sind ein Büro für<br>Energie- und Ressourceneffizienz.</span>
       <h1 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h1>
       <p class="wp-p">Wir suchen ihn gemeinsam mit Ihnen.</p>
       <div class="actions"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch vereinbaren</a></div>
@@ -490,7 +491,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 <section class="light" id="team">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Wer wir sind</span>
       <h2>Zwei Ingenieure. Wir kommen selbst.</h2>
       <p class="muted">Energie und Ressourcen gehören für uns zusammen. Deshalb schauen wir auf beides, aus Thüringen und Leipzig.</p>
     </div>

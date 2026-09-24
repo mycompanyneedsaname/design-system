@@ -5,7 +5,7 @@
 Die Gründer arbeiten an der **Markenwelt**: Deliverable 1 aus dem Briefing, jetzt als ausgearbeitete Startseite plus Markensystem. Sie geben Feedback per Kommentar direkt im Artifact.
 
 **Live-Seite (Hauptarbeit):** https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP
-(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 31, privat. Die Freigabe macht der Nutzer über das Share-Menü.
+(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 32, privat. Die Freigabe macht der Nutzer über das Share-Menü.
 
 Weitere Artifacts:
 - Logo-Kurvenvergleich (abgeschlossen): https://claude.ai/artifact/UsjPbmEEpBYStt4gh1TZeu
@@ -18,8 +18,8 @@ Aus einer neuen Session ein Artifact **immer mit `url`** neu veröffentlichen un
 Kopfleiste (Petrol): Logo ohne Untertitel (steht jetzt im Einstieg), Navigation als Sprunglinks (#baukasten, #praxis, #team), Farbschalter „Marker“.
 
 **Startseite (Reihenfolge seit Version 30):**
-1. **Wendepunkt** (Sand, `#start`): „Wir sind ein Büro für Energie- und Ressourceneffizienz.“, H1, Satz, Lime-Button, animierte Kurve mit Handschrift davor/danach und „hier.“. Von den Gründern ausdrücklich geliebt.
-2. **Team** (`#team`): Micha und Tobias mit Rolle, zwei Sätzen und einem handschriftlichen Zitat. Foto-Platzhalter.
+1. **Wendepunkt** (Sand, `#start`): Petrol-Schild „Wir sind ein Büro für Energie- und Ressourceneffizienz.“, H1, Satz, Lime-Button, animierte Kurve mit Handschrift davor/danach und „hier.“. Von den Gründern ausdrücklich geliebt.
+2. **Team** (`#team`, ohne Eyebrow): Micha und Tobias mit Rolle, zwei Sätzen und einem handschriftlichen Zitat. Foto-Platzhalter.
 3. **Referenzen** (`#praxis`, Nebel): drei knappe Zeilen, Beispielwerte.
 4. **Baukasten** (Petrol, `#baukasten`): Versprechen-Headline plus klickbarer isometrischer Baukasten, neun Felder (Energie: Strom, Wärme, Kälte, Druckluft, Speicher; Ressourcen: Material, Wasser, Reststoffe, Betriebsstoffe), Handschrift-Notiz, die je Stein wechselt.
 
