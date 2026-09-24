@@ -452,6 +452,22 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .top ul a{{color:inherit;text-decoration:none}}
   .top ul a:hover{{text-decoration:underline;text-underline-offset:4px}}
   .team{{display:grid;grid-template-columns:1fr 1fr;gap:40px}}
+  .pers-l{{display:grid;gap:10px}}
+  .pers-n{{margin:0;display:flex;gap:6px;align-items:flex-start;color:{PETROL};font-family:var(--hand);font-weight:700;font-size:18px;line-height:1.15;transform:rotate(-3deg);transform-origin:left top}}
+  .pers-n svg{{flex:none;width:30px;height:auto;margin-top:-4px}}
+  .team-link{{display:block;width:100%;height:auto;margin-top:4px;overflow:visible}}
+  .js .team-link .tl-curve{{stroke-dasharray:1;stroke-dashoffset:1}}
+  .js .team-link .tl-dot{{transform:scale(0);transform-box:fill-box;transform-origin:center}}
+  .js .team-link .tl-fade{{opacity:0}}
+  .js .team-link.on .tl-curve{{stroke-dashoffset:0}}
+  .js .team-link.on .tl-dot{{transform:scale(1)}}
+  .js .team-link.on .tl-fade{{opacity:1}}
+  @media (prefers-reduced-motion:no-preference){{
+    .team-link .tl-curve{{transition:stroke-dashoffset 1.4s cubic-bezier(.6,0,.2,1)}}
+    .team-link .tl-dot{{transition:transform .5s cubic-bezier(.2,.9,.3,1.4) .9s}}
+    .team-link .tl-fade{{transition:opacity .5s ease-out 1.3s}}
+  }}
+  @media (max-width:980px){{.team-link{{display:none}}}}
   .pers{{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start}}
   .pers-ph{{aspect-ratio:4/5;background:var(--sand);border-radius:12px;position:relative;overflow:hidden}}
   .pers-img{{width:100%;height:100%;display:block}}
@@ -531,24 +547,35 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </div>
     <div class="team">
       <article class="pers">
-        <div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div>
+        <div class="pers-l"><div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div><p class="pers-n"><svg viewBox="0 0 40 34" aria-hidden="true"><path d="M30 30 C 26 18, 20 10, 12 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M11 15 L 11 4 L 21 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>findet es in der ersten Stunde.</span></p></div>
         <div>
           <h3>Michael Schenk</h3>
           <p>Michael verantwortet bei uns die Ressourceneffizienz. Er hat rund 150 Betriebe von innen gesehen und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <mark class="hl">erklären</mark>, dass jeder im Betrieb versteht, <mark class="hl">warum sich eine Maßnahme lohnt</mark>.</p>
         </div>
       </article>
       <article class="pers">
-        <div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div>
+        <div class="pers-l"><div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div><p class="pers-n"><svg viewBox="0 0 40 34" aria-hidden="true"><path d="M30 30 C 26 18, 20 10, 12 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M11 15 L 11 4 L 21 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>baut es einfach.</span></p></div>
         <div>
           <h3>Tobias Wintsche</h3>
           <p>Tobias verantwortet bei uns die Energieeffizienz. Er nimmt Energiesysteme auseinander, wägt ab, was sie wirklich leisten, und fügt sie zu einem stimmigen Ganzen zusammen. Das Ganze ist nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung findet Tobias die elegante, einfache Lösung, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
         </div>
       </article>
     </div>
+    <svg class="team-link" viewBox="0 0 1000 170" role="img" aria-label="Eine Wendepunkt-Kurve verbindet Ressourceneffizienz und Energieeffizienz: gehört zusammen.">
+      <path class="tl-curve" pathLength="1" d="M65 140 C 270 140, 376 20, 582 20" fill="none" stroke="{PETROL}" stroke-width="3.5" stroke-linecap="round"/>
+      <circle class="tl-fade" cx="65" cy="140" r="4.5" fill="{PETROL}"/><circle class="tl-fade" cx="582" cy="20" r="4.5" fill="{PETROL}"/>
+      <circle class="tl-dot" cx="323" cy="80" r="10" fill="#C8F04A" stroke="{PETROL}" stroke-width="2"/>
+      <g class="tl-fade">
+        <text x="65" y="164" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="{PETROL}">RESSOURCEN</text>
+        <text x="598" y="25" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="{PETROL}">ENERGIE</text>
+        <path d="M340 94 q 16 22 46 20" fill="none" stroke="{PETROL}" stroke-width="2" stroke-linecap="round"/>
+        <text x="394" y="122" font-family="Kalam, cursive" font-weight="700" font-size="22" fill="{PETROL}">gehört zusammen.</text>
+      </g>
+    </svg>
   </div>
 </section>
 
-<!-- ============================ 4 · BAUKASTEN ============================ -->
+<!-- ============================ 3 · BAUKASTEN ============================ -->
 <section class="dark" id="baukasten">
   <div class="wrap">
     <div class="hero grid2">
@@ -803,7 +830,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
 <script>
 (function(){{
-  var els=document.querySelectorAll('.hl,.pers .pers-q span');
+  var els=document.querySelectorAll('.hl,.pers .pers-q span,.team-link');
   if(!('IntersectionObserver' in window)){{Array.prototype.forEach.call(els,function(e){{e.classList.add('on');}});return;}}
   var io=new IntersectionObserver(function(es){{es.forEach(function(en){{if(en.isIntersecting){{en.target.classList.add('on');io.unobserve(en.target);}}}});}},{{threshold:.6}});
   Array.prototype.forEach.call(els,function(e){{io.observe(e);}});
