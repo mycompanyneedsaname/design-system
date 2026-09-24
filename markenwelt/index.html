@@ -51,7 +51,7 @@
 
   /* hero */
   .hero{padding-block:48px 72px}
-  .hero h1{font-size:clamp(40px,5vw,64px);line-height:1.02;margin-top:22px}
+  .hero .ht{font-size:clamp(40px,5vw,64px);line-height:1.02;margin-top:22px}
   .hero .sub{margin-top:22px;font-size:19px;max-width:46ch}
   .cta{display:inline-block;background:var(--ocker);color:var(--deep);font:600 15px/1 var(--sans);padding:15px 20px;border:0;text-decoration:none;white-space:nowrap}
   .cta.ghost{background:transparent;color:#fff;border:1px solid var(--line-d)}
@@ -184,7 +184,7 @@
   .tally{display:flex;gap:26px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;border-top:1px solid var(--line-d);padding-top:12px}
   .tally b{display:block;font-size:24px;font-weight:500;color:var(--accent);line-height:1.1}
   .tally span{opacity:.75}
-  .hero h1{font-size:clamp(44px,5.4vw,72px);line-height:.98}
+  .hero .ht{font-size:clamp(44px,5.4vw,72px);line-height:.98}
   .hero .grid2{grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
   .hic svg path,.hic svg circle{stroke-dasharray:1;stroke-dashoffset:0}
   .hic:hover svg path,.hic:hover svg circle{animation:draw .8s ease-out both}
@@ -217,12 +217,12 @@
   .expl p{font-size:14.5px;color:rgba(255,255,255,.85)}
   .expl ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.75)}
   .expl li::before{content:"+ ";color:var(--accent)}
-  .hero h1 .l2{display:block;font-weight:400;font-size:.46em;line-height:1.2;letter-spacing:-.01em;margin-top:.45em;color:rgba(255,255,255,.72);max-width:22ch}
+  .hero .ht .l2{display:block;font-weight:400;font-size:.46em;line-height:1.2;letter-spacing:-.01em;margin-top:.45em;color:rgba(255,255,255,.72);max-width:22ch}
 
   .glyph .flow{stroke-dasharray:.1 .07;animation:flow 1.6s linear infinite}
   @keyframes flow{to{stroke-dashoffset:-.34}}
   @media (prefers-reduced-motion:reduce){.glyph .flow{animation:none}}
-  .hero h1 .pre{display:block;font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.9em}
+  .hero .ht .pre{display:block;font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.9em}
 
   .wp-band{padding-block:88px}
   .wp-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
@@ -253,14 +253,44 @@
   .sig-hand svg{width:210px;height:12px;display:block}
   .sig-cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.7);margin-top:6px}
   @media (max-width:980px){.hnote{position:static;transform:rotate(-2deg);margin-bottom:6px}.hnote svg{display:none}}
+  /* Startseite: Wendepunkt als Einstieg, Team, Referenzen */
+  .wp-pre{display:block;font-family:var(--mono);font-weight:500;font-size:14px;letter-spacing:.04em;color:#0F3B3F;margin-bottom:18px}
+  .wp-band .wp-h{font-size:clamp(34px,4.2vw,56px);line-height:1.04;max-width:15ch}
+  #start .wp-grid{grid-template-columns:1fr 1fr}
+  @media (max-width:980px){#start .wp-grid{grid-template-columns:1fr}}
+  .top ul a{color:inherit;text-decoration:none}
+  .top ul a:hover{text-decoration:underline;text-underline-offset:4px}
+  .team{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .pers{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start}
+  .pers-ph{aspect-ratio:4/5;background:var(--sand);border-radius:12px;position:relative;display:grid;place-items:center}
+  .pers-ph .ini{font:500 34px/1 var(--mono);color:#0F3B3F;opacity:.35}
+  .pers-ph .ph-note{position:absolute;left:10px;bottom:8px;font-family:var(--hand);font-weight:700;font-size:15px;color:#0F3B3F;transform:rotate(-4deg)}
+  .pers-role{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .pers h3{font-size:24px;margin-top:6px;color:#0F3B3F}
+  .pers p{margin-top:10px;font-size:15.5px;max-width:44ch}
+  .pers .pers-q{font-family:var(--hand);font-weight:700;font-size:22px;line-height:1.2;color:#0F3B3F;transform:rotate(-2deg);transform-origin:left;margin-top:14px}
+  .ref-band{padding-block:56px}
+  .ref-head{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;margin-bottom:20px}
+  .ref-head h2{font-size:clamp(22px,2.4vw,30px);color:#0F3B3F}
+  .refs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-l)}
+  .refs li{display:grid;grid-template-columns:1.3fr .6fr 1fr 1fr;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line-l);font-size:15px}
+  .refs .r-who{font-weight:600;color:#0F3B3F}
+  .refs .r-f{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .refs .r-num{font-family:var(--mono);font-weight:500;color:#0F3B3F;text-align:right}
+  .ref-note{margin-top:12px;font-size:13px;color:var(--muted)}
+  .sys-div{background:var(--deep);color:rgba(255,255,255,.75);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-block:18px}
+  .sys-div .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .sys-div span:first-child{color:#fff}
+  @media (max-width:980px){.team{grid-template-columns:1fr}.refs li{grid-template-columns:1fr 1fr;gap:4px 16px}.refs .r-num{text-align:left}}
+  @media (max-width:520px){.pers{grid-template-columns:96px 1fr;gap:16px}}
 </style>
 
-<!-- ============================ HERO ============================ -->
+<!-- ============================ KOPF ============================ -->
 <header class="dark">
   <div class="wrap">
     <div class="top">
       <div class="logo" style="color:#FFFFFF"><svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#D9A441" data-ak="f"/></svg><div><div class="w1" style="font-size:15px">Wendepunkt</div><div class="w2" style="font-size:15px">Ingenieure</div><div class="zs" style="color:#FFFFFF">Büro für Energie- und <br>Ressourceneffizienz</div></div></div>
-      <ul><li>Effizienz-Baukasten</li><li>Praxisbeispiele</li><li>Team</li></ul>
+      <ul><li><a href="#baukasten">Effizienz-Baukasten</a></li><li><a href="#praxis">Praxisbeispiele</a></li><li><a href="#team">Team</a></li></ul>
       <div class="aksw"><span>Marker</span>
         <button type="button" data-set="ocker" style="--c:#D9A441" aria-label="Ocker" aria-pressed="true"></button>
         <button type="button" data-set="lime" style="--c:#C8F04A" aria-label="Lime" aria-pressed="false"></button>
@@ -268,24 +298,15 @@
         <button type="button" data-set="terra" style="--c:#E4744C" aria-label="Terrakotta" aria-pressed="false"></button>
       </div>
     </div>
-    <div class="hero grid2">
-      <div>
-        <h1><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Weniger Verbrauch, mehr Spielraum.</span></h1>
-      </div>
-      <div class="cfg" id="cfg">
-        <div class="hnote" id="hnote" aria-live="polite"><span id="hnote-t">Wir kommen zu Ihnen, messen nach und setzen mit Ihnen um, was sich rechnet. Stück für Stück.</span><svg viewBox="0 0 90 70" aria-hidden="true"><path d="M8 6 C 14 30, 36 48, 76 56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M62 46 L 78 57 L 62 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div id="plate" style="color:var(--accent)"></div>
-        <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
-      </div>
-    </div>
   </div>
 </header>
 
-<!-- ============================ WENDEPUNKT ============================ -->
-<section class="sand wp-band" aria-label="Der Wendepunkt">
+<!-- ============================ 1 · WENDEPUNKT (Start) ============================ -->
+<section class="sand wp-band" id="start" aria-label="Der Wendepunkt">
   <div class="wrap wp-grid">
     <div>
-      <h2 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h2>
+      <span class="wp-pre">Wir sind ein Büro für Energie- und Ressourceneffizienz.</span>
+      <h1 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h1>
       <p class="wp-p">Wir suchen ihn gemeinsam mit Ihnen.</p>
       <div class="actions"><a class="wp-cta" href="#kontakt">Kostenfreies Erstgespräch vereinbaren</a></div>
     </div>
@@ -309,6 +330,72 @@
     </svg>
   </div>
 </section>
+
+<!-- ============================ 2 · TEAM ============================ -->
+<section class="light" id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Wer wir sind</span>
+      <h2>Zwei Ingenieure. Wir kommen selbst.</h2>
+      <p class="muted">Energie und Ressourcen gehören für uns zusammen. Deshalb schauen wir auf beides, aus Thüringen und Leipzig.</p>
+    </div>
+    <div class="team">
+      <article class="pers">
+        <div class="pers-ph" aria-hidden="true"><span class="ini">MS</span><span class="ph-note">Foto folgt</span></div>
+        <div>
+          <span class="pers-role">Ressourceneffizienz</span>
+          <h3>Michael Schenk</h3>
+          <p>Micha war in rund 150 Betrieben. In den meisten hat er in der ersten Stunde die ersten Maßnahmen gefunden. Er übersetzt Technik und Wirtschaftlichkeit in Sätze, die man im Betrieb weitererzählt.</p>
+          <p class="pers-q">„Der Blick von außen wirkt.“</p>
+        </div>
+      </article>
+      <article class="pers">
+        <div class="pers-ph" aria-hidden="true"><span class="ini">TW</span><span class="ph-note">Foto folgt</span></div>
+        <div>
+          <span class="pers-role">Energietechnik</span>
+          <h3>Tobias Wintsche</h3>
+          <p>Tobias prüft Energiesysteme auf ihre Vor- und Nachteile und fügt sie zu einem Ganzen zusammen. Lieber einfach und ausgereift als übertechnisiert, damit es auch nach uns noch jeder im Betrieb versteht.</p>
+          <p class="pers-q">„Gute Energiesysteme sind oft ganz simpel.“</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 3 · REFERENZEN ============================ -->
+<section class="mist ref-band" id="praxis">
+  <div class="wrap">
+    <div class="ref-head">
+      <span class="eyebrow">Praxisbeispiele</span>
+      <h2>Was sich gerechnet hat.</h2>
+    </div>
+    <ul class="refs">
+      <li><span class="r-who">Metallverarbeitung · 80 Mitarbeitende</span><span class="r-f">Druckluft</span><span class="r-what">Leckagen geschlossen</span><span class="r-num">−18 % Strom am Kompressor</span></li>
+      <li><span class="r-who">Kunststoff-Spritzguss · 45 Mitarbeitende</span><span class="r-f">Kälte</span><span class="r-what">Nachtbetrieb abgeschaltet</span><span class="r-num">−31 MWh Strom im Jahr</span></li>
+      <li><span class="r-who">Stanzerei · 120 Mitarbeitende</span><span class="r-f">Material</span><span class="r-what">Verschnitt reduziert</span><span class="r-num">−9 t Stahl im Jahr</span></li>
+    </ul>
+    <p class="ref-note">Beispielwerte. Hier stehen bald die ersten freigegebenen Projekte.</p>
+  </div>
+</section>
+
+<!-- ============================ 4 · BAUKASTEN ============================ -->
+<section class="dark" id="baukasten">
+  <div class="wrap">
+    <div class="hero grid2">
+      <div>
+        <h2 class="ht"><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Weniger Verbrauch, mehr Spielraum.</span></h2>
+      </div>
+      <div class="cfg" id="cfg">
+        <div class="hnote" id="hnote" aria-live="polite"><span id="hnote-t">Wir kommen zu Ihnen, messen nach und setzen mit Ihnen um, was sich rechnet. Stück für Stück.</span><svg viewBox="0 0 90 70" aria-hidden="true"><path d="M8 6 C 14 30, 36 48, 76 56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M62 46 L 78 57 L 62 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div id="plate" style="color:var(--accent)"></div>
+        <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MARKENSYSTEM ============================ -->
+<div class="sys-div"><div class="wrap"><span>Ab hier: Markensystem</span><span>Signaturelement · Bausteine · Icons · Plakate · Anwendung · Farben und Schriften</span></div></div>
 
 <!-- ============================ PRINZIP ============================ -->
 <section class="light" id="kompass">
@@ -339,7 +426,7 @@
 </section>
 
 <!-- ============================ BAUKASTEN ============================ -->
-<section class="deep" id="baukasten">
+<section class="deep" id="bausteine">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Das Produkt als Bild</span>
