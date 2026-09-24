@@ -403,7 +403,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap">
     <div class="top">
       {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=False)}
-      <ul><li>Effizienz-Baukasten</li><li>Praxisbeispiele</li><li>Büro</li></ul>
+      <ul><li>Effizienz-Baukasten</li><li>Praxisbeispiele</li><li>Team</li></ul>
       <div class="aksw"><span>Marker</span>
         <button type="button" data-set="ocker" style="--c:#D9A441" aria-label="Ocker" aria-pressed="true"></button>
         <button type="button" data-set="lime" style="--c:#C8F04A" aria-label="Lime" aria-pressed="false"></button>
