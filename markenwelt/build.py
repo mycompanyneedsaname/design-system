@@ -417,7 +417,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .wp-h{{font-size:clamp(30px,3.6vw,48px);color:{PETROL};margin-top:0;max-width:18ch}}
   .wp-p{{font-size:clamp(20px,2vw,26px);line-height:1.35;color:{PETROL};margin-top:22px;max-width:30ch}}
   .wp-art{{width:100%;height:auto;display:block}}
-  @media (min-width:981px){{.wp-right{{padding-top:40px}}}}
+  @media (min-width:981px){{.wp-right{{padding-top:24px}}}}
   .bk-cta{{margin-top:8px;padding-bottom:16px;text-align:left}}
   .wp-proof{{display:flex;gap:12px;align-items:baseline;margin-top:24px;max-width:none;color:{PETROL};font-size:16px;line-height:1.4;opacity:.9}}
   .wp-proof .num{{font-family:var(--mono);font-weight:500;font-size:21px;line-height:1;letter-spacing:-.02em;flex:none}}
@@ -561,8 +561,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap wp-grid">
     <div>
       <h1 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h1>
-      <p class="wp-p">Wir sind ein Büro für <mark class="hl">Energie- und Ressourceneffizienz</mark> und suchen ihn gemeinsam mit Ihnen.</p>
-      <p class="wp-proof"><span class="num">150</span><span>Betriebe im verarbeitenden Gewerbe haben wir schon von innen gesehen.</span></p>
+      <p class="wp-p">Wir sind ein Büro für <mark class="hl">Energie- und Ressourceneffizienz</mark> und suchen ihn gemeinsam mit Ihnen. In rund 150 Betrieben des verarbeitenden Gewerbes haben wir das schon getan.</p>
     </div>
     <div class="wp-right">
     <svg class="wp-art" viewBox="0 0 600 320" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt. Davor: steigende Betriebskosten, CO₂-Ausstoß &amp; Rohstoff-Knappheit. Danach: sinkende Betriebskosten, Flexibilität &amp; Resilienz. Am Wendepunkt: hier.">
@@ -611,7 +610,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div class="pers-l"><div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
           <h3>Tobias Wintsche</h3>
-          <p>Tobias verantwortet bei uns die Energieeffizienz. Für ihn ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <strong>findet er die elegante, einfache Lösung</strong>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist. Meist heißt das: weniger Regelung, weniger Bauteile, und eine Anlage, die der Betrieb selbst im Griff hat.</p>
+          <p>Tobias verantwortet bei uns die Energieeffizienz. Für ihn ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <strong>findet er die elegante, einfache Lösung</strong>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
         </div>
       </article>
     </div>
