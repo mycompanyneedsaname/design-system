@@ -1055,7 +1055,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   var last='strom', why=document.getElementById('why');
   function explain(){{}}
   var sel={{strom:1,waerme:1,druckluft:1,material:1}}, fresh={{}};
-  var EX={{strom:['Antriebe richtig dimensionieren',6],waerme:['Abwärme aus dem Ofen nutzen',8],kaelte:['Kältemaschinen bedarfsgerecht nutzen',3],druckluft:['Leckagen abdichten',4],speicher:['Lastspitzen kappen',3],material:['Verschnitt reduzieren',5],wasser:['Spülbad im Kreis führen',2],reststoffe:['Ausschuss senken',3],betriebsstoffe:['Kühlschmierstoff pflegen',2]}};
+  var EX={{strom:['Eigenbedarf erneuerbar decken',6],waerme:['Abwärme aus dem Ofen nutzen',8],kaelte:['Kältemaschinen bedarfsgerecht nutzen',3],druckluft:['Leckagen abdichten',4],speicher:['Lastspitzen kappen',3],material:['Verschnitt reduzieren',5],wasser:['Spülbad im Kreis führen',2],reststoffe:['Ausschuss senken',3],betriebsstoffe:['Kühlschmierstoff pflegen',2]}};
   var slot=1.7, gap=.35, cols=3, rows=Math.ceil(F.length/cols), px=cols*slot+(cols+1)*gap, py=rows*slot+(rows+1)*gap, pz=.32;
   var plateEl=document.getElementById('plate'), chips=document.getElementById('chips');
   function render(){{
