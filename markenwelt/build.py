@@ -427,7 +427,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div>
       <span class="eyebrow" style="color:{PETROL}">Warum Wendepunkt</span>
       <h2 class="wp-h">Der Wendepunkt ist der Moment, ab dem es anders läuft.</h2>
-      <p class="wp-p">Wir suchen ihn in Ihrem Betrieb.</p>
+      <p class="wp-p">Wir suchen ihn gemeinsam mit Ihnen.</p>
     </div>
     <svg class="wp-art" viewBox="0 0 520 300" role="img" aria-label="Eine Kurve mit markiertem Wendepunkt und der Notiz hier">
       <path class="wp-curve" pathLength="1" d="M20 262 C 150 270, 190 200, 260 150 C 330 100, 360 36, 500 30" fill="none" stroke="{PETROL}" stroke-width="12" stroke-linecap="round"/>
@@ -534,7 +534,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div class="poster sand" style="color:{PETROL}">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>01 · Kurve</span></div>
         <div class="art"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M18 168 C 60 172, 66 130, 96 104 C 128 76, 128 30, 184 26" fill="none" stroke="{PETROL}" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="100" r="13" fill="currentColor" data-ak="f"/><path d="M118 112 q 30 24 52 6" fill="none" stroke="{PETROL}" stroke-width="2.4" stroke-linecap="round"/><text x="132" y="146" font-family="Kalam, cursive" font-weight="700" font-size="17" fill="{PETROL}">hier.</text></svg></div>
-        <p class="line">Der Wendepunkt ist der Moment, ab dem es anders läuft. Wir suchen ihn in Ihrem Betrieb.</p>
+        <p class="line">Der Wendepunkt ist der Moment, ab dem es anders läuft. Wir suchen ihn gemeinsam mit Ihnen.</p>
       </div>
       <div class="poster" style="background:{PETROL};color:#fff">
         <div class="foot"><span>Wendepunkt Ingenieure</span><span>02 · Baukasten</span></div>
