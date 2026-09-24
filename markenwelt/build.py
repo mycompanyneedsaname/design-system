@@ -396,6 +396,15 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .wp-cta:hover,.wp-cta:focus-visible{{transform:translate(-3px,-3px);box-shadow:3px 3px 0 {PETROL}}}
   .chips .grp{{flex-basis:100%;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}}
   .chips .grp:first-child{{margin-top:0}}
+  .cfg{{position:relative}}
+  .hnote{{position:absolute;left:0;top:0;max-width:230px;color:var(--accent);font-family:var(--hand);font-weight:700;font-size:21px;line-height:1.18;transform:rotate(-3deg);transform-origin:left top;pointer-events:none;z-index:1}}
+  .hnote svg{{display:block;width:78px;height:auto;margin:6px 0 0 36px}}
+  .hnote.pop{{animation:fade .45s ease-out both}}
+  .sig-hand{{margin-top:22px;color:var(--accent);display:grid;gap:2px;max-width:260px}}
+  .hand-name{{font-family:var(--hand);font-weight:700;font-size:30px;line-height:1;transform:rotate(-2deg);transform-origin:left}}
+  .sig-hand svg{{width:210px;height:12px;display:block}}
+  .sig-cap{{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.7);margin-top:6px}}
+  @media (max-width:980px){{.hnote{{position:static;transform:rotate(-2deg);margin-bottom:6px}}.hnote svg{{display:none}}}}
 </style>
 
 <!-- ============================ HERO ============================ -->
@@ -415,8 +424,10 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div>
         <h1><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Gemessen. Nachgerechnet. Umgesetzt.</span></h1>
         <p class="sub">Wir kommen in Ihren Betrieb, messen nach und setzen mit Ihnen um, was sich rechnet.</p>
+        <div class="sig-hand"><span class="hand-name">Micha &amp; Tobias</span><svg viewBox="0 0 220 16" aria-hidden="true"><path d="M3 10 C 40 4, 80 14, 120 8 S 190 6, 216 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sig-cap">Michael Schenk · Tobias Wintsche · wir kommen selbst</span></div>
       </div>
       <div class="cfg" id="cfg">
+        <div class="hnote" id="hnote" aria-live="polite"><span id="hnote-t">Stein für Stein. Wir kommen persönlich vorbei.</span><svg viewBox="0 0 90 70" aria-hidden="true"><path d="M8 6 C 14 30, 36 48, 76 56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M62 46 L 78 57 L 62 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div id="plate" style="color:var(--accent)"></div>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
       </div>
@@ -730,11 +741,11 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   var F=[
     {{g:'Energie',id:'strom',n:'Strom',h:2.4,hatch:4}},{{g:'Energie',id:'waerme',n:'Wärme',h:3.2,hatch:6}},{{g:'Energie',id:'kaelte',n:'Kälte',h:1.8,hatch:0}},
     {{g:'Energie',id:'druckluft',n:'Druckluft',h:2.6,hatch:5}},{{g:'Energie',id:'speicher',n:'Speicher',h:1.6,hatch:4}},{{g:'Ressourcen',id:'material',n:'Material',h:2.9,hatch:0}},{{g:'Ressourcen',id:'wasser',n:'Wasser',h:1.5,hatch:0}},
-    {{g:'Ressourcen',id:'reststoffe',n:'Reststoffe',h:1.3,hatch:4}},{{g:'Ressourcen',id:'betriebsstoffe',n:'Betriebsstoffe',h:1.2,hatch:0}},{{g:'Eigenerzeugung',id:'pv',n:'PV',h:1.4,hatch:0}}];
+    {{g:'Ressourcen',id:'reststoffe',n:'Reststoffe',h:1.3,hatch:4}},{{g:'Ressourcen',id:'betriebsstoffe',n:'Betriebsstoffe',h:1.2,hatch:0}}];
   var last='strom', why=document.getElementById('why');
   function explain(){{}}
   var sel={{strom:1,waerme:1,druckluft:1,material:1}}, fresh={{}};
-  var slot=1.55, gap=.32, cols=4, rows=Math.ceil(F.length/cols), px=cols*slot+(cols+1)*gap, py=rows*slot+(rows+1)*gap, pz=.32;
+  var slot=1.7, gap=.35, cols=3, rows=Math.ceil(F.length/cols), px=cols*slot+(cols+1)*gap, py=rows*slot+(rows+1)*gap, pz=.32;
   var plateEl=document.getElementById('plate'), chips=document.getElementById('chips');
   function render(){{
     cid=0;
@@ -755,12 +766,15 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     fresh={{}};
     Array.prototype.forEach.call(chips.querySelectorAll('button'),function(b){{b.setAttribute('aria-pressed',sel[b.dataset.id]?'true':'false');}});
   }}
+  var NOTE={{strom:'Strom: erst den Lastgang, dann die Technik.',waerme:'Wärme: oft hilft schon ein Abgleich.',kaelte:'Kälte: läuft die Maschine nachts durch?',druckluft:'Druckluft: wir hören erst nach Leckagen.',speicher:'Speicher: nur, wenn die Lastspitze es hergibt.',material:'Material: im Verschnitt steckt oft mehr als im Strom.',wasser:'Wasser: geht das im Kreis?',reststoffe:'Reststoffe: Ausschuss ist bezahltes Material.',betriebsstoffe:'Betriebsstoffe: Öle und Gase zählen mit.'}};
+  var hn=document.getElementById('hnote'), ht=document.getElementById('hnote-t');
+  function note(id){{ if(!ht||!NOTE[id]) return; ht.textContent=NOTE[id]; hn.classList.remove('pop'); void hn.offsetWidth; hn.classList.add('pop'); }}
   var curG='';
   F.forEach(function(f){{
     if(f.g!==curG){{curG=f.g; var lb=document.createElement('span'); lb.className='grp'; lb.textContent=f.g; chips.appendChild(lb);}}
     var b=document.createElement('button');b.type='button';b.dataset.id=f.id;b.id='chip-'+f.id;
     b.innerHTML='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>'+f.n;
-    b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;}} last=f.id; render(); }});
+    b.addEventListener('click',function(){{ if(sel[f.id]){{delete sel[f.id];}} else {{sel[f.id]=1;fresh[f.id]=1;note(f.id);}} last=f.id; render(); }});
     chips.appendChild(b);}});
   render();
 
