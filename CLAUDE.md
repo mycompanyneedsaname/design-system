@@ -36,7 +36,7 @@ Die Gründer kommentieren direkt im Artifact („Send to Claude“). Ablauf pro 
 
 - **Logo:** Kurve mit genau einem Wendepunkt, **steilste Stelle am Punkt**: SVG-Pfad `M6 52 C 30 52 34 12 58 12`, Punkt `cx=32 cy=32 r=5.5`. Wortmarke IBM Plex Sans, „Wendepunkt“ 600, „Ingenieure“ 400, gleich groß. Die x³-Variante mit flachster Stelle am Punkt ist verworfen.
 - **Produktname:** „Der Modulare Effizienz-Baukasten“. Nicht „Effizienz-Kompass“. **Keine Tagesangaben** (kein „2 + 2 Tage“, kein „vier Tage“).
-- **Hero-Headline:** „Unser Versprechen:“ (klein) / „Der Modulare Effizienz-Baukasten.“ / „Gemessen. Nachgerechnet. Umgesetzt.“
+- **Hero-Headline:** „Unser Versprechen:“ (klein) / „Der Modulare Effizienz-Baukasten.“ / „Weniger Verbrauch, mehr Spielraum.“
 - **Wendepunkt-Sektion** direkt unter dem Hero: „Der Wendepunkt ist der Moment, ab dem es anders läuft.“ / „Wir suchen ihn gemeinsam mit Ihnen.“ / Button „Kostenfreies Erstgespräch“ (hellgrün #C8F04A, Petrol-Rahmen, ohne Icon). Der Kontakt-Button steht nur hier, nicht im Hero.
 - **Signaturelement:** Korrekturzeichen nach DIN 16511 (feine 2-px-Streichung, nummeriertes Zeichen, korrigierter Wert in Mono am Rand). Kein dicker Marker-Strich, keine Marker-Schrift.
 - **Kein Punktraster** im Hintergrund.
