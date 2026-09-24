@@ -5,7 +5,7 @@
 Die Gründer arbeiten an der **Markenwelt**: Deliverable 1 aus dem Briefing, jetzt als ausgearbeitete Startseite plus Markensystem. Sie geben Feedback per Kommentar direkt im Artifact.
 
 **Live-Seite (Hauptarbeit):** https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP
-(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 40, privat. Die Freigabe macht der Nutzer über das Share-Menü.
+(UUID-Form in Kommentar-Benachrichtigungen: `https://claude.ai/code/artifact/ad826d4f-3948-4412-b55c-7b5bc7f6ae10`). Aktuell Version 41, privat. Die Freigabe macht der Nutzer über das Share-Menü.
 
 Weitere Artifacts:
 - Logo-Kurvenvergleich (abgeschlossen): https://claude.ai/artifact/UsjPbmEEpBYStt4gh1TZeu
@@ -15,7 +15,7 @@ Aus einer neuen Session ein Artifact **immer mit `url`** neu veröffentlichen un
 
 ## Aufbau der Markenwelt-Seite (von oben nach unten)
 
-Kopfleiste (Petrol): Logo ohne Untertitel (steht jetzt im Einstieg), Navigation als Sprunglinks (#baukasten, #team; „Praxisbeispiele“ ohne Ziel, bis es Referenzen gibt), Farbschalter „Marker“.
+Kopfleiste (Petrol): Logo ohne Untertitel (steht jetzt im Einstieg), Navigation als Sprunglinks (#baukasten, #team; „Praxisbeispiele“ ohne Ziel, bis es Referenzen gibt). Der Farbschalter ist entfernt, Akzent fest Lime.
 
 **Startseite (Reihenfolge seit Version 30):**
 1. **Wendepunkt** (Sand, `#start`): H1, Satz „Wir sind ein Büro für Energie- und Ressourceneffizienz und suchen ihn gemeinsam mit Ihnen.“, Lime-Button, animierte Kurve mit Handschrift davor/danach und „hier.“. Von den Gründern ausdrücklich geliebt.
@@ -36,7 +36,7 @@ Kopfleiste (Petrol): Logo ohne Untertitel (steht jetzt im Einstieg), Navigation 
 - **Offener Kommentar-Thread** `b2ecf904-e9a3-4ddd-93d3-e3ef5e4e16fe` zur Unterzeile: gesetzt ist „Weniger Verbrauch, mehr Spielraum.“, angeboten wurden „Effizienz, die sich rechnet.“ und „Weniger Energie. Weniger Material. Mehr Luft.“ Antwort der Gründer abwarten, dann ggf. tauschen und den Thread auflösen.
 - **Offener Kommentar-Thread** `c4f123c5-264b-48ad-ad31-030e61e93764` zur Feld-Gruppierung: Frage, ob die Baukasten-Übersicht weiter unten nachgezogen werden soll. Gruppierung wurde seitdem weiter angepasst (Speicher zu Energie, PV gestrichen).
 
-- **Akzentfarbe:** Lime ist Favorit, aber noch nicht entschieden. Der Schalter bleibt, bis die Gründer festlegen. Danach Schalter entfernen und die Farbe fest setzen. Dabei prüfen: Ein Lime-Punkt im Logo auf hellem Grund hat wenig Kontrast. Eventuell bleibt der Punkt auf hellen Flächen petrol- oder ockerfarben.
+- **Akzentfarbe entschieden:** Lime #C8F04A (24.09.). Schalter entfernt, Texte im Markensystem angepasst, Logo-Punkt auf hellem Grund mit feinem Ring.
 - **Baukasten-Übersicht weiter unten** (zwölf Module) mischt noch Leistungen (Messen, Nachrechnen …) und alte Medien (Abwärme, PV, Speicher einzeln). Auch Plakat 02 und die Handschrift-Notizen am Foto nennen teils noch alte Felder. Sollte an die neue Gruppierung aus dem Hero angepasst werden.
 - **Abschnitte 3 bis 9** haben noch kein direktes Feedback bekommen. Sie enthalten noch Texte, die zum neuen Stand passen sollten. Nach Tagen oder „Effizienz-Kompass“ ist bereits bereinigt.
 - **Handschrift:** Kalam ist Platzhalter und den Gründern besonders wichtig („die Leute haben keinen Bock mehr auf KI“). Angefragt: ein Foto mit der Standard-Notiz und den neun Feld-Notizen, mit dickem Filzstift auf weißem Papier. Dann als SVG-Pfade oder als eigene Schrift einbauen.

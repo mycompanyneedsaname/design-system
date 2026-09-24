@@ -43,3 +43,5 @@ Die Seite `richtungen/index.html` ist eigenständig (nur Google Fonts als extern
 ## Nächster Schritt
 
 Nach der Auswahl einer Richtung wird sie hier als Code-Paket (Tokens + React-Komponenten + Preview-HTML) ausgebaut, sodass `/design-sync` das System nach Claude Design hochladen kann.
+
+- **24.09.2026:** Akzentfarbe festgelegt auf Lime #C8F04A („nur die zweite Farbvariante weiterverfolgen“). Ocker, Mint und Terrakotta verworfen, Farbschalter entfernt.

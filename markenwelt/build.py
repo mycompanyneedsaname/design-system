@@ -45,7 +45,7 @@ def top_center(T):
     return ((T[0][0] + T[2][0]) / 2, (T[0][1] + T[2][1]) / 2)
 
 # ---------- palette ----------
-PETROL = "#0F3B3F"; DEEP = "#071F22"; OCKER = "#D9A441"; PAPER = "#F7F5F0"; SAND = "#E9E1CF"; INK = "#1A1A18"; MIST = "#EEF0EC"
+PETROL = "#0F3B3F"; DEEP = "#071F22"; OCKER = "#C8F04A"; PAPER = "#F7F5F0"; SAND = "#E9E1CF"; INK = "#1A1A18"; MIST = "#EEF0EC"
 FACE_T = "#14474C"; FACE_L = "#0B3236"; FACE_R = "#0E393D"
 
 def hero_iso():
@@ -113,10 +113,11 @@ ARROW = '<svg viewBox="0 0 120 60" width="90" height="45" aria-hidden="true"><pa
 
 def logo(curve, dot, text, size=64, w1=22, sub=True, mono=None):
     dak = "f" if dot == OCKER else ""
+    ring = f' stroke="{curve}" stroke-width="1.6"' if curve != "#FFFFFF" else ""
     subhtml = f'<div class="zs" style="color:{mono or text}">Büro für Energie- und <br>Ressourceneffizienz</div>' if sub else ""
     return (f'<div class="logo" style="color:{text}"><svg viewBox="0 0 64 64" width="{size}" height="{size}" aria-hidden="true">'
             f'<path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="{curve}" stroke-width="4.5" stroke-linecap="round"/>'
-            f'<circle cx="32" cy="32" r="5.5" fill="{dot}" data-ak="{dak}"/></svg>'
+            f'<circle cx="32" cy="32" r="5.5" fill="{dot}" data-ak="{dak}"{ring}/></svg>'
             f'<div><div class="w1" style="font-size:{w1}px">Wendepunkt</div><div class="w2" style="font-size:{w1}px">Ingenieure</div>{subhtml}</div></div>')
 
 def portrait(v):
@@ -178,14 +179,15 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
     --hand:"Kalam","Segoe Print","Bradley Hand",cursive;
-    --accent:#D9A441; --accent-ink:#071F22;
+    --accent:#C8F04A; --accent-ink:#071F22;
   }}
   *{{box-sizing:border-box}}
   body{{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}}
   h1,h2,h3,h4{{margin:0;line-height:1.1;text-wrap:balance;font-weight:600;letter-spacing:-.02em}}
   p{{margin:0}}
   a{{color:inherit}}
-  a:focus-visible,button:focus-visible{{outline:2px solid var(--ocker);outline-offset:3px}}
+  a:focus-visible,button:focus-visible{{outline:2px solid var(--petrol);outline-offset:3px}}
+  .dark a:focus-visible,.dark button:focus-visible,.deep a:focus-visible,.deep button:focus-visible{{outline-color:var(--accent)}}
   .wrap{{max-width:1200px;margin:0 auto;padding-inline:24px}}
   section{{padding-block:72px}}
   .dark{{background:var(--petrol);color:#fff}}
@@ -332,14 +334,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   [data-ak="f"]{{fill:var(--accent)}}
   .dark .tag,.deep .tag{{color:var(--accent)}}
   .cta{{background:var(--accent);color:var(--accent-ink)}}
-  :root[data-accent="lime"]{{--accent:#C8F04A;--accent-ink:#071F22}}
-  :root[data-accent="mint"]{{--accent:#5DE3A1;--accent-ink:#071F22}}
-  :root[data-accent="terra"]{{--accent:#E4744C;--accent-ink:#FFFFFF}}
 
-  /* accent switch */
-  .aksw{{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.9}}
-  .aksw button{{width:22px;height:22px;border:2px solid transparent;padding:0;cursor:pointer;background:var(--c)}}
-  .aksw button[aria-pressed="true"]{{border-color:#fff;outline:2px solid var(--c)}}
 
   /* configurator */
   .cfg{{display:grid;gap:14px}}
@@ -465,12 +460,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="top">
       {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=False)}
       <ul><li><a href="#baukasten">Effizienz-Baukasten</a></li><li>Praxisbeispiele</li><li><a href="#team">Team</a></li></ul>
-      <div class="aksw"><span>Marker</span>
-        <button type="button" data-set="ocker" style="--c:#D9A441" aria-label="Ocker" aria-pressed="true"></button>
-        <button type="button" data-set="lime" style="--c:#C8F04A" aria-label="Lime" aria-pressed="false"></button>
-        <button type="button" data-set="mint" style="--c:#5DE3A1" aria-label="Mint" aria-pressed="false"></button>
-        <button type="button" data-set="terra" style="--c:#E4744C" aria-label="Terrakotta" aria-pressed="false"></button>
-      </div>
     </div>
   </div>
 </header>
@@ -600,7 +589,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap grid2" style="align-items:start">
     <div>
       <span class="eyebrow">Icon-Sprache</span>
-      <h2 style="font-size:30px;margin-top:10px">Ein Strich, mit der Hand, in Ocker.</h2>
+      <h2 style="font-size:30px;margin-top:10px">Ein Strich, mit der Hand, in Lime.</h2>
       <p class="muted" style="margin-top:12px;font-size:15px;max-width:48ch">Zwölf Icons für Leistungen und Medien. Bewusst nicht perfekt: leicht gewellte Linien, runde Enden, wie mit dem Filzstift auf den Schaltschrank gezeichnet. Auf hellem Grund werden sie Petrol.</p>
       <div class="hicons" style="margin-top:22px">
         {icons_html()}
@@ -642,7 +631,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sec-head">
       <span class="eyebrow">Plakatserie</span>
       <h2>Drei Motive, die auch ohne Text erkannt werden.</h2>
-      <p class="muted">Für Büro, Messe und LinkedIn. Sand, Petrol und Ocker im Wechsel, jedes Motiv mit einer handgezeichneten Linie. Kein Foto, kein Windrad, keine Glühbirne.</p>
+      <p class="muted">Für Büro, Messe und LinkedIn. Sand, Petrol und Lime im Wechsel, jedes Motiv mit einer handgezeichneten Linie. Kein Foto, kein Windrad, keine Glühbirne.</p>
     </div>
     <div class="posters">
       <div class="poster sand" style="color:{PETROL}">
@@ -663,7 +652,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
           <circle cx="180" cy="62" r="9" fill="none" stroke="{DEEP}" stroke-width="1.6"/><text x="180" y="66" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="{DEEP}">1</text>
           <line x1="12" y1="112" x2="190" y2="112" stroke="{DEEP}" stroke-width="1"/>
           <circle cx="22" cy="140" r="9" fill="none" stroke="{DEEP}" stroke-width="1.6"/><text x="22" y="144" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="{DEEP}">1</text>
-          <text x="40" y="148" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="30" fill="{DEEP}">nachrechnen.</text></svg></div>
+          <text x="40" y="148" font-family="IBM Plex Sans, sans-serif" font-weight="600" font-size="27" fill="{DEEP}" textLength="152" lengthAdjust="spacingAndGlyphs">nachrechnen.</text></svg></div>
         <p class="line">Wir rechnen nach, statt zu behaupten. Jede Zahl im Bericht hat eine Einheit und ein Datum.</p>
       </div>
     </div>
@@ -735,7 +724,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     <div class="sw">
       <div><div class="chip" style="background:{PETROL}"></div><div class="lbl"><b>Petrol</b><code>{PETROL}</code></div></div>
       <div><div class="chip" style="background:{DEEP}"></div><div class="lbl"><b>Tiefe</b><code>{DEEP}</code></div></div>
-      <div><div class="chip" style="background:var(--accent)"></div><div class="lbl"><b>Marker</b><code id="akhex">{OCKER}</code></div></div>
+      <div><div class="chip" style="background:var(--accent)"></div><div class="lbl"><b>Lime</b><code>{OCKER}</code></div></div>
       <div><div class="chip" style="background:{PAPER};border-bottom:1px solid var(--line-l)"></div><div class="lbl"><b>Papier</b><code>{PAPER}</code></div></div>
       <div><div class="chip" style="background:{SAND}"></div><div class="lbl"><b>Sand</b><code>{SAND}</code></div></div>
       <div><div class="chip" style="background:{MIST}"></div><div class="lbl"><b>Nebel</b><code>{MIST}</code></div></div>
@@ -749,8 +738,8 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     </div>
     <div class="rules" style="margin-top:32px">
       <div><h4>Korrektur statt Marker.</h4><p>Gestrichen wird mit einer 2-px-Linie, korrigiert wird in Mono am Rand. Handschrift gibt es nur für kleine Notizen am Foto und den Prüfvermerk im Bericht.</p></div>
-      <div><h4>Die Marker-Farbe ist Marker, nicht Text.</h4><p>Auf Petrol trägt sie Handschrift und Icons (Ocker 5,4 : 1, Lime 9,3 : 1, Mint 7,5 : 1, Terrakotta 4,0 : 1). Auf Papier ist es nur Strich, Punkt oder Fläche mit dunkler Schrift. Petrol übernimmt Buttons, Kennzahlen und Links.</p></div>
-      <div><h4>Dunkel für die Bühne, hell für das Dokument.</h4><p>Hero, Plakat, LinkedIn und Baukasten auf Petrol oder Tiefe mit Punktraster. Bericht, Angebot, Brief und Formular auf Papier. Das Logo läuft auf beidem.</p></div>
+      <div><h4>Die Marker-Farbe ist Marker, nicht Text.</h4><p>Auf Petrol trägt sie Handschrift und Icons (Lime auf Petrol 9,3 : 1). Auf Papier ist es nur Strich, Punkt oder Fläche mit dunkler Schrift. Petrol übernimmt Buttons, Kennzahlen und Links.</p></div>
+      <div><h4>Dunkel für die Bühne, hell für das Dokument.</h4><p>Hero, Plakat, LinkedIn und Baukasten auf Petrol oder Tiefe ohne Punktraster. Bericht, Angebot, Brief und Formular auf Papier. Das Logo läuft auf beidem.</p></div>
     </div>
   </div>
 </section>
@@ -766,7 +755,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div>
         <h4>ecoworks</h4>
         <ul><li>Dunkler Petrol-Grund mit Punktraster</li><li>Isometrische Bausteine als Produktbild</li><li>Schraffuren als Zustand, nicht als Deko</li><li>Kleine Label in Mono</li></ul>
-        <p class="no"><b>Zur Entscheidung:</b> das Neongrün. Über den Schalter oben rechts lässt sich Lime oder Mint live gegen Ocker testen. Mein Vorbehalt: Nähe zum Energieberater-Grün.</p>
+        <p class="no"><b>Entschieden:</b> das Neongrün, bei uns als Lime #C8F04A. Nur als Marker und Fläche, nie als Schrift auf hellem Grund.</p>
       </div>
       <div>
         <h4>The Academy for Climate Jobs</h4>
@@ -776,7 +765,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <div>
         <h4>Claude / Anthropic</h4>
         <ul><li>Warmes Papier und Sand statt Reinweiß</li><li>Plakatserie mit einer Linie pro Motiv</li><li>Ruhige Grotesk, Mono für Zahlen</li><li>Geschäftsausstattung als Gegenstand gedacht</li></ul>
-        <p class="no"><b>Zur Entscheidung:</b> Terrakotta liegt ebenfalls im Schalter. Mein Vorbehalt: Die Farbe gehört Anthropic. Ocker kommt aus dem Logo-Punkt.</p>
+        <p class="no"><b>Nicht übernommen:</b> Terrakotta. Die Farbe gehört Anthropic.</p>
       </div>
     </div>
     <p class="muted" style="margin-top:28px;font-size:14px;max-width:72ch">Offen zur Entscheidung: Ob die Notiz-Handschrift Kalam bleibt oder durch die echte Handschrift von Micha oder Tobias ersetzt wird. Das wäre der ehrlichste Marker und rechtlich sauber. Dafür brauche ich eine Seite mit den Ziffern 0 bis 9, dem Prozentzeichen, „Jahre“, „Monate“ und ein Häkchen, mit dickem Filzstift geschrieben und fotografiert.</p>
@@ -878,13 +867,6 @@ html = f'''<title>Wendepunkt Markenwelt</title>
     chips.appendChild(b);}});
   render();
 
-  var sw=document.querySelectorAll('.aksw button'), hex={{ocker:'#D9A441',lime:'#C8F04A',mint:'#5DE3A1',terra:'#E4744C'}};
-  function setAk(k){{ if(k==='ocker'){{document.documentElement.removeAttribute('data-accent');}} else {{document.documentElement.setAttribute('data-accent',k);}}
-    Array.prototype.forEach.call(sw,function(b){{b.setAttribute('aria-pressed',b.dataset.set===k?'true':'false');}});
-    var h=document.getElementById('akhex'); if(h) h.textContent=hex[k];
-    try{{localStorage.setItem('wp-accent',k);}}catch(e){{}} }}
-  Array.prototype.forEach.call(sw,function(b){{b.addEventListener('click',function(){{setAk(b.dataset.set);}});}});
-  try{{var k=localStorage.getItem('wp-accent'); if(k&&hex[k]) setAk(k);}}catch(e){{}}
 }})();
 </script>
 '''

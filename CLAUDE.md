@@ -47,12 +47,12 @@ Die Gründer kommentieren direkt im Artifact („Send to Claude“). Ablauf pro 
 - **Ecken:** Die Gründer wollen es „runder“. Buttons 10 bis 12 px Radius, Baukasten-Steine mit weicher Silhouette. Das überstimmt die Briefing-Regel gegen Rundungen, Schatten bleiben aber tabu.
 - **Signaturelement:** Korrekturzeichen nach DIN 16511 (feine 2-px-Streichung, nummeriertes Zeichen, korrigierter Wert in Mono am Rand). Kein dicker Marker-Strich, keine Marker-Schrift.
 - **Kein Punktraster** im Hintergrund.
-- **Farben:** Petrol #0F3B3F, Tiefe #071F22, Papier #F7F5F0, Sand #E9E1CF, Nebel #EEF0EC. Marker-/Akzentfarbe ist **noch offen**: Schalter mit Ocker #D9A441, Lime #C8F04A, Mint #5DE3A1, Terrakotta #E4744C. Die Gründer mögen Lime. Die Wendepunkt-Sektion ist fest auf Lime gesetzt.
+- **Farben:** Petrol #0F3B3F, Tiefe #071F22, Papier #F7F5F0, Sand #E9E1CF, Nebel #EEF0EC. Akzentfarbe ist **Lime #C8F04A** (entschieden 24.09., „nur die zweite Farbvariante weiterverfolgen“). Ocker, Mint und Terrakotta sind verworfen, der Farbschalter ist entfernt. Lime nur als Marker, Punkt oder Fläche; auf hellem Grund nie als Schrift. Der Logo-Punkt bekommt auf hellem Grund einen feinen Ring in der Kurvenfarbe. In `build.py` heißt die Konstante aus historischen Gründen noch `OCKER`, sie enthält aber Lime.
 - **Schriften:** IBM Plex Sans (Text/Headlines), IBM Plex Mono (Zahlen/Labels), Kalam nur für kleine Notizen.
 
 ## Tabus aus dem Briefing
 
-Keine Verläufe, keine Pill-Buttons, keine Karten mit Schatten, kein zentrierter Hero mit zwei Buttons, keine Windräder, Glühbirnen, Blätter oder Weltkugeln, kein Inter, keine pauschale ROI-Zahl im Hero, kein Beratersprech. Kontrast mindestens WCAG AA. Ocker auf Weiß ist nie Schrift (2,3 : 1).
+Keine Verläufe, keine Pill-Buttons, keine Karten mit Schatten, kein zentrierter Hero mit zwei Buttons, keine Windräder, Glühbirnen, Blätter oder Weltkugeln, kein Inter, keine pauschale ROI-Zahl im Hero, kein Beratersprech. Kontrast mindestens WCAG AA. Lime auf Papier/Weiß ist nie Schrift (ca. 1,2 : 1).
 
 ## Git
 
