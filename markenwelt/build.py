@@ -113,7 +113,7 @@ ARROW = '<svg viewBox="0 0 120 60" width="90" height="45" aria-hidden="true"><pa
 
 def logo(curve, dot, text, size=64, w1=22, sub=True, mono=None):
     dak = "f" if dot == OCKER else ""
-    subhtml = f'<div class="zs" style="color:{mono or text}">Büro für Energie- und<br>Ressourceneffizienz</div>' if sub else ""
+    subhtml = f'<div class="zs" style="color:{mono or text}">Büro für Energie- und <br>Ressourceneffizienz</div>' if sub else ""
     return (f'<div class="logo" style="color:{text}"><svg viewBox="0 0 64 64" width="{size}" height="{size}" aria-hidden="true">'
             f'<path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="{curve}" stroke-width="4.5" stroke-linecap="round"/>'
             f'<circle cx="32" cy="32" r="5.5" fill="{dot}" data-ak="{dak}"/></svg>'
@@ -198,6 +198,9 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
   /* top bar */
   .top{{display:flex;justify-content:space-between;align-items:center;padding-block:20px;border-bottom:1px solid var(--line-d)}}
+  .top .logo .zs{{font-size:11px;letter-spacing:.03em;margin-top:5px;opacity:.78;white-space:nowrap}}
+  .top .logo .zs br{{display:none}}
+  @media (max-width:640px){{.top .logo .zs{{white-space:normal;font-size:10px;min-width:max-content}}.top .logo .zs br{{display:inline}}}}
   .top ul{{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px}}
   .top .meta{{font-family:var(--mono);font-size:12px;opacity:.7}}
 
@@ -411,7 +414,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 <header class="dark">
   <div class="wrap">
     <div class="top">
-      {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=False)}
+      {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=True)}
       <ul><li>Effizienz-Baukasten</li><li>Praxisbeispiele</li><li>Team</li></ul>
       <div class="aksw"><span>Marker</span>
         <button type="button" data-set="ocker" style="--c:#D9A441" aria-label="Ocker" aria-pressed="true"></button>
