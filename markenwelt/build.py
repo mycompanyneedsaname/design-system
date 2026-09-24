@@ -234,6 +234,29 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   @media (max-width:640px){{.top .logo .zs{{white-space:normal;font-size:10px;min-width:max-content}}.top .logo .zs br{{display:inline}}}}
   .top ul{{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px}}
   .top .meta{{font-family:var(--mono);font-size:12px;opacity:.7}}
+  header.dark{{position:relative;z-index:20}}
+  .burger{{width:44px;height:44px;margin-right:-10px;background:transparent;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0}}
+  .burger span{{display:block;width:26px;height:2px;background:#fff;border-radius:2px;transition:transform .3s cubic-bezier(.6,0,.2,1),opacity .2s;transform-origin:50% 50%;transform-box:border-box}}
+  .burger span+span{{margin-top:6px}}
+  .burger[aria-expanded="true"] span:nth-child(1){{transform:translateY(8px) rotate(45deg)}}
+  .burger[aria-expanded="true"] span:nth-child(2){{opacity:0;transform:scaleX(.2)}}
+  .burger[aria-expanded="true"] span:nth-child(3){{transform:translateY(-8px) rotate(-45deg)}}
+  .menu{{position:absolute;left:0;right:0;top:100%;background:var(--deep);color:#fff;border-bottom:1px solid var(--line-d)}}
+  .menu[hidden]{{display:none}}
+  .menu .wrap{{padding-block:22px 26px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}}
+  .menu ul{{list-style:none;margin:0;padding:0}}
+  .menu li{{opacity:0;transform:translateY(-8px)}}
+  .menu.open li{{animation:menuin .38s cubic-bezier(.2,.8,.2,1) both}}
+  .menu.open li:nth-child(2){{animation-delay:.07s}}.menu.open li:nth-child(3){{animation-delay:.14s}}.menu.open li:nth-child(4){{animation-delay:.21s}}
+  .menu.open .legal li{{animation-delay:.28s}}
+  @keyframes menuin{{to{{opacity:1;transform:none}}}}
+  .menu a{{display:flex;align-items:baseline;gap:14px;color:#fff;text-decoration:none;font-size:clamp(20px,2.2vw,26px);font-weight:500;padding:8px 0;letter-spacing:-.01em}}
+  .menu a .n{{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--accent);min-width:2.2em}}
+  .menu a:hover,.menu a:focus-visible{{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px;text-decoration-color:var(--accent)}}
+  .menu a.mcta{{color:var(--accent)}}
+  .menu .legal{{display:flex;gap:20px}}
+  .menu .legal a{{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:400;color:rgba(255,255,255,.7);padding:0}}
+  @media (prefers-reduced-motion:reduce){{.menu li{{opacity:1;transform:none}}.menu.open li{{animation:none}}.burger span{{transition:none}}}}
 
   /* hero */
   .hero{{padding-block:48px 72px}}
@@ -551,9 +574,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .pers-ph .ini{{font:500 34px/1 var(--mono);color:{PETROL};opacity:.35}}
   .pers-ph .ph-note{{position:absolute;right:8px;top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;background:rgba(247,245,240,.85);color:{PETROL};padding:3px 6px;border-radius:6px}}
   .pers-role{{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}}
-  .pers h3{{font-size:24px;margin-top:0;color:{PETROL}}}
-  .pers h3 .role{{font-weight:400;font-size:17px;color:var(--muted);white-space:nowrap}}
-  .pers h3 .role::before{{content:"· ";}}
+  .pers h3{{font-size:24px;margin-top:4px;color:{PETROL}}}
   .pers p{{margin-top:10px;font-size:15.5px;max-width:44ch}}
   .pers .pers-q{{font-family:var(--hand);font-weight:700;font-size:22px;line-height:1.2;color:{PETROL};transform:rotate(-2deg);transform-origin:left;margin-top:14px}}
   /* Lime-Textmarker: wird gezogen, sobald die Stelle sichtbar ist */
@@ -581,9 +602,23 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   <div class="wrap">
     <div class="top">
       {logo("#FFFFFF", OCKER, "#FFFFFF", size=34, w1=15, sub=False)}
-      <ul><li><a href="#kontakt">Kontakt</a></li></ul>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </div>
   </div>
+  <nav class="menu" id="menu" aria-label="Seitenmenü" hidden>
+    <div class="wrap">
+      <ul>
+        <li><a href="#start"><span class="n">01</span>Der Wendepunkt</a></li>
+        <li><a href="#team"><span class="n">02</span>Wir nehmen es persönlich</a></li>
+        <li><a href="#baukasten"><span class="n">03</span>Der Modulare Effizienz-Baukasten</a></li>
+        <li><a href="#kontakt" class="mcta"><span class="n">04</span>Kostenfreies Erstgespräch</a></li>
+      </ul>
+      <ul class="legal">
+        <li><a href="#impressum">Impressum</a></li>
+        <li><a href="#datenschutz">Datenschutz</a></li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
 <!-- ============================ 1 · WENDEPUNKT (Start) ============================ -->
@@ -632,14 +667,16 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <article class="pers">
         <div class="pers-l"><div class="pers-ph">{portrait(1)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
-          <h3>Michael Schenk <span class="role">Ressourceneffizienz</span></h3>
+          <div class="pers-role">Ressourceneffizienz</div>
+          <h3>Michael Schenk</h3>
           <p>Michael hat die meisten dieser Betriebe selbst besucht und fast überall schon in der ersten Stunde Ansatzpunkte gefunden. Seine Stärke: Technik und Wirtschaftlichkeit so zu <strong>erklären</strong>, dass jeder im Betrieb versteht, <strong>warum sich eine Maßnahme lohnt</strong>.</p>
         </div>
       </article>
       <article class="pers">
         <div class="pers-l"><div class="pers-ph">{portrait(2)}<span class="ph-note">Platzhalter</span></div></div>
         <div>
-          <h3>Tobias Wintsche <span class="role">Energieeffizienz</span></h3>
+          <div class="pers-role">Energieeffizienz</div>
+          <h3>Tobias Wintsche</h3>
           <p>Für Tobias ist das Ganze nur so gut wie seine Einzelteile. In einer Welt voller Übertechnisierung <strong>findet er die elegante, einfache Lösung</strong>, die auch dann noch jemand versteht, wenn unsere Arbeit vollendet ist.</p>
         </div>
       </article>
@@ -687,8 +724,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
 <footer class="deep site-foot">
   <div class="wrap">
-    <span class="fsig"><svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#C8F04A"/></svg>Wendepunkt Ingenieure GbR · Büro für Energie- und Ressourceneffizienz · Eisenach / Leipzig</span>
-    <nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></nav>
+    <span class="fsig"><svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true"><path d="M6 52 C 30 52 34 12 58 12" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><circle cx="32" cy="32" r="5.5" fill="#C8F04A"/></svg>Wendepunkt Ingenieure GbR · Eisenach / Leipzig</span>
   </div>
 </footer>
 
@@ -931,6 +967,14 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 
 <script>
 (function(){{
+  var bg=document.getElementById('burger'), mn=document.getElementById('menu');
+  function setMenu(open){{ if(!bg||!mn) return; bg.setAttribute('aria-expanded',open?'true':'false'); bg.setAttribute('aria-label',open?'Menü schließen':'Menü öffnen'); if(open){{mn.hidden=false; void mn.offsetWidth; mn.classList.add('open');}} else {{mn.classList.remove('open'); mn.hidden=true;}} }}
+  if(bg&&mn){{
+    bg.addEventListener('click',function(){{ setMenu(bg.getAttribute('aria-expanded')!=='true'); }});
+    mn.addEventListener('click',function(e){{ if(e.target.closest('a')) setMenu(false); }});
+    document.addEventListener('keydown',function(e){{ if(e.key==='Escape') setMenu(false); }});
+    document.addEventListener('click',function(e){{ if(!mn.hidden && !e.target.closest('header')) setMenu(false); }});
+  }}
   var art=document.querySelector('.wp-art'), mq=window.matchMedia('(max-width:640px)');
   function crop(){{ if(art) art.setAttribute('viewBox', mq.matches ? '0 10 520 272' : '0 0 600 320'); }}
   crop(); if(mq.addEventListener) mq.addEventListener('change',crop);
@@ -1059,7 +1103,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
 # Aufteilen: Landingpage (index.html) und Markensystem (markensystem.html).
 import os
 M_SYS = "<!-- ============================ MARKENSYSTEM ============================ -->"
-M_END = "\n<script>\n(function(){\n  var art="
+M_END = "\n<script>\n(function(){\n  var bg="
 M_HEAD = "<!-- ============================ 1 · WENDEPUNKT (Start) ============================ -->"
 i_sys, i_end, i_head = html.index(M_SYS), html.index(M_END), html.index(M_HEAD)
 head, landing, system, scripts = html[:i_head], html[i_head:i_sys], html[i_sys:i_end], html[i_end:]
