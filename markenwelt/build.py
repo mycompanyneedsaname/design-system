@@ -535,7 +535,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
         <div>
           <h3>Michael Schenk</h3>
           <p>Michael kümmert sich bei uns um die Ressourceneffizienz. Er war in rund 150 Betrieben. In den meisten hat er in der ersten Stunde die ersten Maßnahmen gefunden. Er übersetzt Technik und Wirtschaftlichkeit in Maßnahmen, die man versteht und nachvollziehen kann.</p>
-          <p class="pers-q"><span>„Der Blick von außen wirkt.“</span></p>
+          <p class="pers-q">„Der Blick von außen wirkt.“</p>
         </div>
       </article>
       <article class="pers">
