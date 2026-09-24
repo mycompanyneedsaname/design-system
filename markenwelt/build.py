@@ -714,7 +714,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
           <div class="bc-head">Beispielmaßnahmen</div>
           <ul class="bc-rows" id="bc-rows"></ul>
           <div class="bc-sum"><span>Zusammen<sup>*</sup></span><b id="bc-total">−0 %</b></div>
-          <div class="bc-foot"><sup>*</sup>Richtwerte aus unseren Projekten in rund 150 Betrieben, bezogen auf die jährlichen Energie- und Materialkosten.</div>
+          <div class="bc-foot"><sup>*</sup>Richtwerte aus unseren Projekten, bezogen auf die jährlichen Energie- und Materialkosten.</div>
         </div>
         <div class="chips" id="chips" aria-label="Maßnahmen wählen"></div>
       </div>
