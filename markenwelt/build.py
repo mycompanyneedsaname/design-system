@@ -426,7 +426,7 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .wp-mnotes .k{{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;padding-top:5px}}
   .tl-m{{display:none;text-align:center;margin:36px 0 0;font-family:var(--hand);font-weight:700;font-size:22px;color:{PETROL}}}
   .tl-m .lab{{display:block;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;opacity:.75}}
-  .bk-how{{text-align:left;max-width:44ch;margin:18px 0 26px;font-size:18px;line-height:1.45;color:rgba(255,255,255,.82)}}
+  .bk-how{{text-align:left;max-width:36ch;margin:26px 0 26px;font-size:18px;line-height:1.45;color:rgba(255,255,255,.82)}}
   .bk-how b{{color:#fff;font-weight:600}}
   .bk-contact{{margin:18px 0 0;font-size:15px;color:rgba(255,255,255,.7)}}
   .bk-contact a{{color:#fff;text-decoration:underline;text-underline-offset:3px}}
@@ -436,20 +436,21 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .site-foot .fsig{{display:inline-flex;align-items:center;gap:10px}}
   .site-foot a{{color:#fff;text-decoration:none}}
   .site-foot a:hover{{text-decoration:underline}}
-  .bk-stack .ht{{font-size:clamp(36px,4.2vw,56px)}}
+  .bk-stack .ht{{font-size:clamp(34px,3.6vw,48px);line-height:1.04}}
   @media (max-width:640px){{.wp-art .wp-note{{display:none}}.wp-mnotes{{display:block}}}}
   @media (max-width:980px){{.tl-m{{display:block}}.team-sec{{padding-bottom:48px}}}}
-  .bk-stack{{display:block;text-align:left;padding-top:20px;padding-bottom:20px}}
+  .bk-stack{{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;text-align:left;padding-top:8px;padding-bottom:24px}}
+  @media (max-width:980px){{.bk-stack{{grid-template-columns:1fr;gap:28px}}.bk-l{{display:contents}}.bk-stack .ht{{order:1}}.bk-stack .bk-how{{order:2;margin:0}}.bk-stack .cfg{{order:3}}.bk-stack .bk-cta{{order:4}}}}
   .bk-stack .ht{{margin-top:0}}
   .bk-stack .ht .l2{{max-width:26ch}}
   .bk-stack .ht{{max-width:22ch}}
-  .bk-stack .cfg{{max-width:640px;margin:40px auto 0}}
+  .bk-stack .cfg{{max-width:none;margin:0}}
   .bk-stack .chips{{justify-content:center}}
   .bk-stack .chips .grp{{text-align:center}}
   .bk-stack .hnote{{position:static;transform:rotate(-1.5deg);transform-origin:center;max-width:34ch;text-wrap:balance;text-align:center;font-size:21px;margin:0 auto 6px}}
   .bk-stack .hnote svg{{display:none}}
-  .bk-stack .cfg{{margin-top:12px}}
-  .bk-stack #plate{{max-width:580px;margin:0 auto}}
+  
+  .bk-stack #plate{{max-width:560px;margin:0 auto}}
   .bk-cta .wp-cta{{border-color:#C8F04A}}
   .wp-act{{display:flex;justify-content:center;padding-left:14%;margin-top:6px}}
   @media (max-width:980px){{.wp-act{{padding-left:0}}}}
@@ -635,18 +636,18 @@ html = f'''<title>Wendepunkt Markenwelt</title>
       <circle class="tl-dot" cx="20" cy="50" r="7" fill="#C8F04A"/>
     </svg>
     <div class="hero bk-stack">
-      <div>
+      <div class="bk-l">
         <h2 class="ht"><span class="pre">Unser Versprechen:</span>Der Modulare Effizienz-Baukasten.<span class="l2">Weniger Verbrauch, mehr Spielraum.</span></h2>
+        <p class="bk-how">Für jeden Stein: <b>messen</b>, <b>nachrechnen</b>, <b>umsetzen</b>. Sie entscheiden, welche Steine auf die Platte kommen.</p>
+        <div class="bk-cta" id="kontakt">
+          <a class="wp-cta" href="mailto:kontakt@wendepunkt-ingenieure.de?subject=Kostenfreies%20Erstgespr%C3%A4ch">Kostenfreies Erstgespräch vereinbaren</a>
+          <p class="bk-contact">oder direkt: <a href="mailto:kontakt@wendepunkt-ingenieure.de">kontakt@wendepunkt-ingenieure.de</a> · <a href="tel:+49000000000">+49 000 000000</a></p>
+        </div>
       </div>
       <div class="cfg" id="cfg">
         <div id="plate" style="color:var(--accent)"></div>
         <div class="chips" id="chips" aria-label="Bausteine wählen"></div>
       </div>
-    </div>
-    <p class="bk-how">Für jeden Stein: <b>messen</b>, <b>nachrechnen</b>, <b>umsetzen</b>. Sie entscheiden, welche Steine auf die Platte kommen.</p>
-    <div class="bk-cta" id="kontakt">
-      <a class="wp-cta" href="mailto:kontakt@wendepunkt-ingenieure.de?subject=Kostenfreies%20Erstgespr%C3%A4ch">Kostenfreies Erstgespräch vereinbaren</a>
-      <p class="bk-contact">oder direkt: <a href="mailto:kontakt@wendepunkt-ingenieure.de">kontakt@wendepunkt-ingenieure.de</a> · <a href="tel:+49000000000">+49 000 000000</a></p>
     </div>
   </div>
 </section>
