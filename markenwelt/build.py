@@ -1185,3 +1185,107 @@ os.makedirs(d, exist_ok=True)
 for name, doc in (("index.html", landing_html), ("markensystem.html", system_html)):
     open(d + name, "w").write(doc)
     print("written", name, len(doc))
+
+# ---------- Marken-Paket für Claude Design (brand/) ----------
+# Stilvorlage und Leitfaden ohne React-Komponenten. Werte kommen aus den
+# Konstanten oben, damit Seite und Paket nicht auseinanderlaufen.
+B = "/home/user/design-system/brand/"
+os.makedirs(B + "docs", exist_ok=True)
+brand_css = f"""/* Wendepunkt Ingenieure · Marken-Stilvorlage (generiert aus markenwelt/build.py) */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Kalam:wght@400;700&display=swap");
+
+:root {{
+  /* Farben */
+  --wp-petrol: {PETROL};
+  --wp-deep: {DEEP};
+  --wp-lime: {OCKER};
+  --wp-paper: {PAPER};
+  --wp-sand: {SAND};
+  --wp-mist: {MIST};
+  --wp-ink: {INK};
+  --wp-muted: #4E5A5B;
+  --wp-line-light: #D8D3C8;
+  --wp-line-dark: rgba(255,255,255,.14);
+  /* Schriften */
+  --wp-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wp-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --wp-hand: "Kalam", "Segoe Print", "Bradley Hand", cursive;
+  /* Form */
+  --wp-radius: 12px;
+  --wp-radius-sm: 10px;
+  --wp-maxw: 1200px;
+}}
+
+/* Grundlage */
+.wp-body {{ margin: 0; background: var(--wp-paper); color: var(--wp-ink); font-family: var(--wp-sans); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }}
+.wp-wrap {{ max-width: var(--wp-maxw); margin: 0 auto; padding-inline: 24px; }}
+.wp-section {{ padding-block: 72px; }}
+
+/* Flächen: hell zum Kennenlernen, dunkel fürs Produkt */
+.wp-paper {{ background: var(--wp-paper); color: var(--wp-ink); }}
+.wp-sand {{ background: var(--wp-sand); color: var(--wp-ink); }}
+.wp-mist {{ background: var(--wp-mist); color: var(--wp-ink); }}
+.wp-petrol {{ background: var(--wp-petrol); color: #fff; }}
+.wp-deep {{ background: var(--wp-deep); color: #fff; }}
+
+/* Typografie */
+.wp-h1 {{ font-family: var(--wp-sans); font-weight: 600; font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -.02em; text-wrap: balance; margin: 0; }}
+.wp-h2 {{ font-family: var(--wp-sans); font-weight: 600; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; margin: 0; }}
+.wp-h3 {{ font-family: var(--wp-sans); font-weight: 600; font-size: 26px; line-height: 1.15; letter-spacing: -.02em; margin: 0; }}
+.wp-lead {{ font-size: 19px; line-height: 1.5; max-width: 52ch; }}
+.wp-eyebrow {{ font-family: var(--wp-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; opacity: .75; }}
+.wp-num {{ font-family: var(--wp-mono); font-weight: 500; font-variant-numeric: tabular-nums; }}
+.wp-hand {{ font-family: var(--wp-hand); font-weight: 700; line-height: 1.15; }}
+.wp-muted {{ color: var(--wp-muted); }}
+
+/* Lime-Textmarker: hebt hervor, was zählt (ein Wort, höchstens eine Zeile) */
+.wp-hl {{ color: inherit; background: linear-gradient(var(--wp-lime), var(--wp-lime)) no-repeat 0 80% / 100% 54%; -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 .15em; }}
+
+/* Fachgebiet über dem Namen */
+.wp-role {{ display: inline-block; font-family: var(--wp-sans); font-weight: 600; font-size: 19px; letter-spacing: -.01em; color: var(--wp-petrol); border-bottom: 3px solid var(--wp-lime); padding-bottom: 1px; line-height: 1.2; }}
+.wp-petrol .wp-role, .wp-deep .wp-role {{ color: #fff; }}
+
+/* Erstgespräch-Button: Lime-Fläche, Petrol-Schrift und -Rahmen, runde Ecken, keine Pille */
+.wp-cta {{ display: inline-flex; align-items: center; gap: 14px; background: var(--wp-lime); color: var(--wp-petrol); border: 2px solid var(--wp-petrol); font: 600 16px/1 var(--wp-sans); padding: 16px 24px; border-radius: var(--wp-radius); text-decoration: none; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }}
+.wp-cta:hover, .wp-cta:focus-visible {{ transform: translate(-3px, -3px); box-shadow: 3px 3px 0 var(--wp-petrol); }}
+.wp-petrol .wp-cta, .wp-deep .wp-cta {{ border-color: var(--wp-lime); }}
+.wp-link {{ color: inherit; text-decoration: underline; text-decoration-color: var(--wp-lime); text-decoration-thickness: 2px; text-underline-offset: 3px; }}
+
+/* Korrekturzeichen nach DIN 16511: Behauptung gestrichen, Wert am Rand */
+.wp-korr {{ display: block; }}
+.wp-korr .wp-alt {{ color: rgba(26,26,24,.42); background: linear-gradient(var(--wp-petrol), var(--wp-petrol)) no-repeat 0 58% / 100% 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }}
+.wp-korr .wp-km {{ display: inline-grid; place-items: center; width: 1.5em; height: 1.5em; border: 1.5px solid var(--wp-petrol); border-radius: 50%; font: 500 11px/1 var(--wp-mono); color: var(--wp-petrol); vertical-align: .9em; margin-left: .4em; letter-spacing: 0; }}
+.wp-korr .wp-neu {{ display: flex; gap: 10px; align-items: baseline; margin-top: .55em; padding-top: .55em; border-top: 1px solid var(--wp-petrol); font-family: var(--wp-mono); font-weight: 500; font-size: max(13px, .42em); line-height: 1.4; letter-spacing: 0; color: var(--wp-petrol); }}
+.wp-korr .wp-neu .wp-km {{ vertical-align: 0; margin: 0; flex: none; }}
+.wp-petrol .wp-korr .wp-alt, .wp-deep .wp-korr .wp-alt {{ color: rgba(255,255,255,.5); background-image: linear-gradient(var(--wp-lime), var(--wp-lime)); }}
+.wp-petrol .wp-korr .wp-km, .wp-deep .wp-korr .wp-km {{ border-color: var(--wp-lime); color: var(--wp-lime); }}
+.wp-petrol .wp-korr .wp-neu, .wp-deep .wp-korr .wp-neu {{ border-color: var(--wp-lime); color: var(--wp-lime); }}
+
+/* Summe (große Zahl in Lime, nur auf Petrol) */
+.wp-sum {{ display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.25); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #fff; }}
+.wp-sum b {{ font-family: var(--wp-sans); font-weight: 600; font-size: 34px; line-height: 1; color: var(--wp-lime); letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }}
+.wp-foot {{ font-size: 11px; line-height: 1.45; opacity: .7; }}
+
+/* Karte: Linie statt Schatten */
+.wp-card {{ background: #fff; border: 1px solid var(--wp-line-light); border-radius: var(--wp-radius); padding: 20px; }}
+.wp-petrol .wp-card, .wp-deep .wp-card {{ background: transparent; border-color: var(--wp-line-dark); }}
+
+/* Logo (Markup siehe guidelines/docs/logo.md) */
+.wp-logo {{ display: inline-flex; align-items: center; gap: 12px; }}
+.wp-logo .wp-w1 {{ font: 600 22px/1.05 var(--wp-sans); letter-spacing: -.01em; }}
+.wp-logo .wp-w2 {{ font: 400 22px/1.05 var(--wp-sans); letter-spacing: -.01em; }}
+
+/* Icons (Markup siehe guidelines/docs/icons.md) */
+.wp-icon {{ width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }}
+.wp-badge {{ display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--wp-lime); color: var(--wp-petrol); }}
+.wp-badge .wp-icon {{ width: 20px; height: 20px; stroke-width: 3; }}
+"""
+open(B + "styles.css", "w").write(brand_css)
+
+# Icons als Leitfaden (nur die freigegebenen: neun Felder, drei Schritte)
+ICON_SET = ["Strom", "Wärme", "Kälte", "Druckluft", "Speicher", "Material", "Wasser", "Reststoffe", "Betriebsstoffe", "Messen", "Nachrechnen", "Umsetzen"]
+icons_md = ["# Icons", "", "Zwölf handgezeichnete Linien-Icons: neun Handlungsfelder und drei Schritte. Immer `viewBox=\"0 0 40 40\"`, Klasse `wp-icon` (Linie 2,2, runde Enden, keine Füllung). Farbe über `color`: Lime auf Petrol, Petrol auf hellem Grund. Keine anderen Icon-Sets, keine Windräder, Glühbirnen, Blätter, Weltkugeln, kein PV-Symbol.", "", "Im Porträt steht das Fachgebiet als Lime-Kreis `wp-badge`: Material für Ressourceneffizienz (Michael), Strom für Energieeffizienz (Tobias).", ""]
+for n in ICON_SET:
+    icons_md += [f"## {n}", "", "```html", f'<svg class="wp-icon" viewBox="0 0 40 40" aria-hidden="true">{ICONS[n]}</svg>', "```", ""]
+open(B + "docs/icons.md", "w").write("\n".join(icons_md))
+print("written brand/")

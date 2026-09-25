@@ -1,0 +1,9 @@
+{
+  "name": "@wendepunkt/brand",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Wendepunkt Ingenieure: Marken-Stilvorlage und Leitfaden für Claude Design (ohne Komponenten)",
+  "main": "index.js",
+  "module": "index.js",
+  "style": "styles.css"
+}

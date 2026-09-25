@@ -1,0 +1,8 @@
+{
+  "pkg": "@wendepunkt/brand",
+  "globalName": "WendepunktBrand",
+  "shape": "package",
+  "cssEntry": "styles.css",
+  "guidelinesGlob": ["docs/*.md"],
+  "readmeHeader": ".design-sync/conventions.md"
+}
