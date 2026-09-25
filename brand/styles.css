@@ -18,8 +18,9 @@
   --wp-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --wp-hand: "Kalam", "Segoe Print", "Bradley Hand", cursive;
   /* Form */
-  --wp-radius: 12px;
-  --wp-radius-sm: 10px;
+  --wp-radius: 12px;      /* Buttons, Karten, Flächen, Bilder */
+  --wp-radius-sm: 10px;   /* kleine Karten, Visitenkarte */
+  --wp-radius-xs: 8px;    /* Labels, Bildunterschriften, Chips */
   --wp-maxw: 1200px;
 }
 
@@ -72,6 +73,8 @@
 .wp-sum { display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.25); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #fff; }
 .wp-sum b { font-family: var(--wp-sans); font-weight: 600; font-size: 34px; line-height: 1; color: var(--wp-lime); letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .wp-foot { font-size: 11px; line-height: 1.45; opacity: .7; }
+.wp-chip { display: inline-flex; align-items: center; gap: 8px; font: 500 14px/1 var(--wp-sans); padding: 9px 12px; border: 1.5px solid currentColor; border-radius: var(--wp-radius-xs); }
+.wp-img { display: block; width: 100%; border-radius: var(--wp-radius); overflow: hidden; }
 
 /* Karte: Linie statt Schatten */
 .wp-card { background: #fff; border: 1px solid var(--wp-line-light); border-radius: var(--wp-radius); padding: 20px; }

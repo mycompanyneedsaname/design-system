@@ -17,16 +17,40 @@ def lerp(p, q, t):
 # Veröffentlichte Landingpage; das Markensystem verlinkt dorthin.
 LANDING = "https://claude.ai/artifact/NRh2JC1PZLoyYuV4VstHeP"
 
+_CLIP = [0]
+
+def _unit(a, b):
+    dx, dy = b[0] - a[0], b[1] - a[1]; l = math.hypot(dx, dy)
+    return (dx / l, dy / l)
+
+def rpath(ptsl, r):
+    # Abgerundete Silhouette wie im Baukasten der Landingpage (rpath im JS)
+    n = len(ptsl); A = []; B = []
+    for i in range(n):
+        p, pr, nx = ptsl[i], ptsl[(i + n - 1) % n], ptsl[(i + 1) % n]
+        u1, u2 = _unit(p, pr), _unit(p, nx)
+        rr = min(r, math.hypot(pr[0] - p[0], pr[1] - p[1]) * .35, math.hypot(nx[0] - p[0], nx[1] - p[1]) * .35)
+        A.append((p[0] + u1[0] * rr, p[1] + u1[1] * rr)); B.append((p[0] + u2[0] * rr, p[1] + u2[1] * rr))
+    f = lambda q: f"{q[0]:.1f} {q[1]:.1f}"
+    d = "M" + f(B[0])
+    for j in range(1, n + 1):
+        k = j % n; d += f" L{f(A[k])} Q{f(ptsl[k])} {f(B[k])}"
+    return d + " Z"
+
 def block(x, y, z, w, d, h, s, stroke, top, left, right, hatch=0, sw=1.6, hatch_face="right"):
     ak = "s" if stroke == OCKER else ""
     P = lambda a, b, c: iso(a, b, c, s)
     T = [P(x, y, z + h), P(x + w, y, z + h), P(x + w, y + d, z + h), P(x, y + d, z + h)]
     L = [P(x, y + d, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x, y + d, z + h)]
     R = [P(x + w, y, z), P(x + w, y + d, z), P(x + w, y + d, z + h), P(x + w, y, z + h)]
-    out = []
-    out.append(f'<polygon points="{pts(L)}" fill="{left}" stroke="{stroke}" data-ak="{ak}" stroke-width="{sw}" stroke-linejoin="round"/>')
-    out.append(f'<polygon points="{pts(R)}" fill="{right}" stroke="{stroke}" data-ak="{ak}" stroke-width="{sw}" stroke-linejoin="round"/>')
-    out.append(f'<polygon points="{pts(T)}" fill="{top}" stroke="{stroke}" data-ak="{ak}" stroke-width="{sw}" stroke-linejoin="round"/>')
+    # weiche Silhouette: Flächen in die abgerundete Außenkontur geclippt
+    sil = [T[0], T[1], R[0], R[1], L[0], T[3]]
+    sp = rpath(sil, s * .28)
+    _CLIP[0] += 1; cid = f"pb{_CLIP[0]}"
+    out = [f'<clipPath id="{cid}"><path d="{sp}"/></clipPath><g clip-path="url(#{cid})">']
+    out.append(f'<polygon points="{pts(L)}" fill="{left}"/>')
+    out.append(f'<polygon points="{pts(R)}" fill="{right}"/>')
+    out.append(f'<polygon points="{pts(T)}" fill="{top}"/>')
     if hatch:
         face = R if hatch_face == "right" else L
         a0, a1, b1, b0 = face[0], face[1], face[2], face[3]
@@ -34,6 +58,13 @@ def block(x, y, z, w, d, h, s, stroke, top, left, right, hatch=0, sw=1.6, hatch_
             t = i / hatch
             p = lerp(a0, a1, t); q = lerp(b0, b1, t)
             out.append(f'<line x1="{p[0]:.1f}" y1="{p[1]:.1f}" x2="{q[0]:.1f}" y2="{q[1]:.1f}" stroke="{stroke}" data-ak="{ak}" stroke-width="1" stroke-opacity=".45"/>')
+    # Innenkanten vom vorderen oberen Eck, kurz vor der Kontur endend
+    c = T[2]
+    def sh(p, q):
+        u = _unit(p, q); return (p[0] + u[0] * 2, p[1] + u[1] * 2)
+    edges = " ".join(f"M{sh(c, e)[0]:.1f} {sh(c, e)[1]:.1f} L{sh(e, c)[0]:.1f} {sh(e, c)[1]:.1f}" for e in (T[1], T[3], R[1]))
+    out.append(f'<path d="{edges}" fill="none" stroke="{stroke}" data-ak="{ak}" stroke-width="{sw * .85:.2f}" stroke-opacity=".75" stroke-linecap="round"/>')
+    out.append(f'</g><path d="{sp}" fill="none" stroke="{stroke}" data-ak="{ak}" stroke-width="{sw}"/>')
     return "\n".join(out), T
 
 def bbox(svg_parts):
@@ -617,6 +648,10 @@ html = f'''<title>Wendepunkt Markenwelt</title>
   .comp-c p{{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}}
   @media (max-width:980px){{ .comp{{grid-template-columns:1fr 1fr}} }}
   @media (max-width:560px){{ .comp{{grid-template-columns:1fr}} }}
+  /* Markensystem: so rund wie die Landingpage (Wunsch 25.09.) */
+  .prinzip,.hicons,.src,.type,.photo,.poster,.li,.sig,.report,.sw > div,.mod{{border-radius:12px;overflow:hidden}}
+  .card{{border-radius:10px}}
+  .photo .cap{{border-radius:8px}}
   .sys-div{{background:var(--deep);color:rgba(255,255,255,.75);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-block:18px}}
   .sys-div .wrap{{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}}
   .sys-div span:first-child{{color:#fff}}
@@ -1211,8 +1246,9 @@ brand_css = f"""/* Wendepunkt Ingenieure · Marken-Stilvorlage (generiert aus ma
   --wp-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --wp-hand: "Kalam", "Segoe Print", "Bradley Hand", cursive;
   /* Form */
-  --wp-radius: 12px;
-  --wp-radius-sm: 10px;
+  --wp-radius: 12px;      /* Buttons, Karten, Flächen, Bilder */
+  --wp-radius-sm: 10px;   /* kleine Karten, Visitenkarte */
+  --wp-radius-xs: 8px;    /* Labels, Bildunterschriften, Chips */
   --wp-maxw: 1200px;
 }}
 
@@ -1265,6 +1301,8 @@ brand_css = f"""/* Wendepunkt Ingenieure · Marken-Stilvorlage (generiert aus ma
 .wp-sum {{ display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.25); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #fff; }}
 .wp-sum b {{ font-family: var(--wp-sans); font-weight: 600; font-size: 34px; line-height: 1; color: var(--wp-lime); letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }}
 .wp-foot {{ font-size: 11px; line-height: 1.45; opacity: .7; }}
+.wp-chip {{ display: inline-flex; align-items: center; gap: 8px; font: 500 14px/1 var(--wp-sans); padding: 9px 12px; border: 1.5px solid currentColor; border-radius: var(--wp-radius-xs); }}
+.wp-img {{ display: block; width: 100%; border-radius: var(--wp-radius); overflow: hidden; }}
 
 /* Karte: Linie statt Schatten */
 .wp-card {{ background: #fff; border: 1px solid var(--wp-line-light); border-radius: var(--wp-radius); padding: 20px; }}
@@ -1288,4 +1326,24 @@ icons_md = ["# Icons", "", "Zwölf handgezeichnete Linien-Icons: neun Handlungsf
 for n in ICON_SET:
     icons_md += [f"## {n}", "", "```html", f'<svg class="wp-icon" viewBox="0 0 40 40" aria-hidden="true">{ICONS[n]}</svg>', "```", ""]
 open(B + "docs/icons.md", "w").write("\n".join(icons_md))
+stone = module_iso("Strom", 2.4, 4)
+formen_md = "\n".join([
+    "# Formen: alles rund",
+    "",
+    "Die Marke ist weich, nicht eckig. Das gilt für jede Fläche, jeden Kasten und jede Zeichnung.",
+    "",
+    "- **Radius:** Buttons, Karten, Bilder, Plakate, Tabellen und farbige Flächen `var(--wp-radius)` 12px; kleine Karten `var(--wp-radius-sm)` 10px; Labels, Chips und Bildunterschriften `var(--wp-radius-xs)` 8px. Rahmen mit `overflow: hidden`, damit Inhalte die Rundung nicht anschneiden.",
+    "- **Keine spitzen Ecken:** keine Kästen mit 0px Radius, keine Pill-Form (voll gerundet) für Buttons. Kreise nur für Punkte, Zählzeichen und Symbol-Badges.",
+    "- **Linien:** immer `stroke-linecap: round` und `stroke-linejoin: round`.",
+    "- **Baukasten-Steine:** isometrische Quader mit **weicher Silhouette**: Die Außenkontur ist an jeder Ecke abgerundet (Radius ca. 28 % der Kantenlänge), die drei Innenkanten enden kurz vor der Kontur. Flächen Petrol-Töne (`#14474C` oben, `#0B3236` links, `#0E393D` rechts), Linie Lime 1,5 bis 1,6 px, Schraffur auf der rechten Seite für „umgesetzt“. Keine scharfkantigen Würfel.",
+    "- **Schatten** bleiben tabu, auch mit Rundung.",
+    "",
+    "## Vorlage: ein Stein (Strom)",
+    "",
+    "```html",
+    stone,
+    "```",
+    "",
+])
+open(B + "docs/formen.md", "w").write(formen_md)
 print("written brand/")

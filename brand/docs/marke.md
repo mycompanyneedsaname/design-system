@@ -52,7 +52,7 @@ Nie beides im selben Satz.
 
 ## Form
 
-Runde Ecken: Buttons und Karten 10 bis 12 px. Keine Pill-Buttons, keine Schatten auf Karten (Linie statt Schatten), keine Verläufe, kein Punktraster. Kein zentrierter Hero mit zwei Buttons, nur ein Aufruf pro Seite. Keine pauschale ROI-Zahl im Hero. Kontrast mindestens WCAG AA.
+Alles rund (Details in `formen.md`): Buttons, Karten, Bilder und Flächen 12 px, kleine Karten 10 px, Labels 8 px; Baukasten-Steine mit weicher Silhouette. Keine Pill-Buttons, keine Schatten auf Karten (Linie statt Schatten), keine Verläufe, kein Punktraster. Kein zentrierter Hero mit zwei Buttons, nur ein Aufruf pro Seite. Keine pauschale ROI-Zahl im Hero. Kontrast mindestens WCAG AA.
 
 ## Bildsprache
 
